@@ -17,4 +17,4 @@ nbsphinx
 nbconvert
 sphinx
 sphinx-rtd-theme
-pandoc
+pypandoc
