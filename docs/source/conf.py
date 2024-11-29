@@ -49,6 +49,7 @@ DOCS_DIRECTORY = os.path.dirname(os.path.abspath(getsourcefile(lambda: 0)))
 
 def ensure_pandoc_installed(_):
     import pypandoc
+    import os
 
     # Download pandoc if necessary. If pandoc is already installed and on
     # the PATH, the installed version will be used. Otherwise, we will
