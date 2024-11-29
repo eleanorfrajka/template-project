@@ -5,7 +5,7 @@ script_dir = pathlib.Path(__file__).parent.absolute()
 parent_dir = script_dir.parents[0]
 sys.path.append(str(parent_dir))
 
-from seagliderOG1 import tools
+from projectName import tools
 
 
 def test_convert_units_var():
