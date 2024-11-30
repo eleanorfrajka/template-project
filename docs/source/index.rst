@@ -5,14 +5,19 @@
 Welcome to projectName's documentation!
 ======================================
 
-ProjectName is a Python package aiming to do what.
- 
-There is an example notebook to demonstrate the functionality.
+`template-project` is a repository to demonstrate the structure of a Python project `projectName`, the use of git via Github for collaborative coding, GitHub Actions for running tests and building documentation, and deploying the documentation on GitHub Pages.
 
 For recommendations or bug reports, please visit https://github.com/eleanorfrajka/template-project/issues/new
 
 ======================================
+.. toctree::
+   :maxdepth: 2
+   :caption: Getting started
 
+   installation
+   gitcollab
+   github
+   
 .. toctree::
    :maxdepth: 3
    :caption: Contents:
