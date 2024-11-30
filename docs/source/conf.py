@@ -6,6 +6,7 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 import datetime
+import os
 
 year = datetime.datetime.now(tz=datetime.timezone.utc).date().year
 
@@ -49,7 +50,6 @@ DOCS_DIRECTORY = os.path.dirname(os.path.abspath(getsourcefile(lambda: 0)))
 
 def ensure_pandoc_installed(_):
     import pypandoc
-    import os
 
     # Download pandoc if necessary. If pandoc is already installed and on
     # the PATH, the installed version will be used. Otherwise, we will
