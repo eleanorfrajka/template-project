@@ -1,12 +1,13 @@
 name: Deploy Documentation
 
 on:
+  # This will run on commits with a pull request
   push:
     branches:
       - main
 
 jobs:
-  build-docs:
+  deploy-docs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -14,33 +15,31 @@ jobs:
     steps:
     - name: Run a one-line script
       run: echo "The job was automatically triggered by a ${{ github.event_name }} event."
+
     - name: checkout
       uses: actions/checkout@v4
       with:
         fetch-depth: 0
 
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v2
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        if [ -f requirements-dev.txt ]; then pip install -r requirements-dev.txt; fi
-  
-#    - name: Setup Micromamba ${{ matrix.python-version }}
-#      uses: mamba-org/setup-micromamba@v2.0.1
-#      with:
-#        environment-name: TEST
-#        init-shell: bash
-#        create-args: >-
-#          python=3 pip
-#          --file requirements-dev.txt
-#          --channel conda-forge
+    # Using channel conda-forge helps deal with pandoc installation issues
+    - name: Setup Micromamba ${{ matrix.python-version }}
+      uses: mamba-org/setup-micromamba@v2.0.1
+      with:
+        environment-name: TEST
+        init-shell: bash
+        create-args: >-
+          python=3 pip
+          --file requirements-dev.txt
+          --channel conda-forge
 
-#    - name: Install seagliderOG1
+#    - name: Install projectName
 #      shell: bash -l {0}
 #      run: |
 #        python -m pip install -e . --no-deps --force-reinstall
 
+    # Assumes that the notebook to be documented is located within notebooks/ and is called demo.ipynb
+    # In the example below, we've included the `--ExecutePreprocessor.allow_errors=True` flag to allow the notebook to build even if there are errors
+    # For production runs (and when your code is cleaner), you can remove this flag or set it to False.
     - name: Build documentation
       shell: bash -l {0}
       run: |
