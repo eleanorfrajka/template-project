@@ -1,6 +1,7 @@
 name: Test documentation build
 
 on:
+  # This will run when a pull request is merged
   pull_request:
     paths:
       - '**.py'
@@ -14,14 +15,16 @@ jobs:
       contents: write
 
     steps:
+    - name: Run a one-line script
+      run: echo "The job was automatically triggered by a ${{ github.event_name }} event."
+    - uses: actions/checkout@v4
+
     - name: checkout
       uses: actions/checkout@v4
       with:
         fetch-depth: 0
-    - name: Run a one-line script
-      run: echo "The job was automatically triggered by a ${{ github.event_name }} event."
-    - uses: actions/checkout@v4
   
+    # Using channel conda-forge helps deal with pandoc installation issues
     - name: Setup Micromamba ${{ matrix.python-version }}
       uses: mamba-org/setup-micromamba@v2.0.1
       with:
@@ -32,7 +35,7 @@ jobs:
           --file requirements-dev.txt
           --channel conda-forge
 
-#    - name: Install seagliderOG1
+#    - name: Install projectName
 #      shell: bash -l {0}
 #      run: |
 #        python -m pip install -e . --no-deps --force-reinstall
