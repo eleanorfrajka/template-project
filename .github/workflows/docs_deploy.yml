@@ -1,7 +1,7 @@
 name: Deploy Documentation
 
 on:
-  # This will run on commits with a pull request
+  # This will run after merging a pull request onto main
   push:
     branches:
       - main
