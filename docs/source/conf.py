@@ -1,6 +1,6 @@
 # Configuration file for the Sphinx documentation builder.
 #
-# More information about Sphinx here: https://www.sphinx-doc.org/en/master/usage/configuration.html
+# More information about Sphinx here: https://www.sphinx-doc.org/en/master/usage/index.html
 #
 # For the full list of built-in configuration values, see the documentation:
 # https://www.sphinx-doc.org/en/master/usage/configuration.html

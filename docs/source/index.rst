@@ -14,9 +14,9 @@ For recommendations or bug reports, please visit https://github.com/eleanorfrajk
    :maxdepth: 2
    :caption: Getting started
 
-   installation
-   gitcollab
-   github
+   .. mdinclude:: installation.md
+   .. mdinclude:: gitcollab.md
+   .. mdinclude:: github.md
    
 .. toctree::
    :maxdepth: 3
