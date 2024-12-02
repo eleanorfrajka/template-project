@@ -18,3 +18,4 @@ nbconvert
 sphinx
 sphinx-rtd-theme
 pypandoc
+myst-nb

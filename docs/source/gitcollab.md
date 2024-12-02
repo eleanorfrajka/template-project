@@ -1,11 +1,10 @@
-Collaborate with git
-====================
+# Collaborating with git: Basic workflow
 
 See also, the description of actions in https://github.com/eleanorfrajka/template-project/pull/1.
 
 The instructions below assume that you have cloned this repository, renamed the `projectName` to a project of your own, and would like to work on it - potentially with other people.
 
-### Forking an existing repository
+### Forking & branching someone else's repository
 
 Suppose the original repository is located at: `https://github.com/ifmeo-hamburg/projectName`, and you would like to contribute to it.
 
@@ -83,6 +82,23 @@ pytest-cov
 ```
 in `requirements-dev.txt`.
 
+#### 9. Merge the pull request
+
+Once your edits have passed all tests, a review from a repository owner (if required) and been approved, then you can "merge".  This will push your changes onto the main branch.
+
+#### 10. Rinse and repeat
+
+Now the origin has been updated.  If you want to make further changes *after a merge (by anyone)*, you should pull those changes onto your main branch
+
+```
+$ git checkout main
+$ git pull
+$ git checkout -b yourname-patch-2
+```
+These steps will switch back to your main branch, pull changes from the origin's main to your main, and then create a new branch `yourname-patch-2` based on the new, updated main.  The `-b` option creates a branch (without `-b`, it will try to switch to a branch with that name).
+
+Now you're ready to repeat from step 5.
+
 ### Collaborating with others on your repository
 
-The steps are as above, but your main repository is the original main repository.  
+The steps are as above, but your main repository is the original main repository.  In this case, you still need to do the `git checkout main` and `git pull` steps, but your main = origin.
