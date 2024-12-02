@@ -1,5 +1,5 @@
-Extra GitHub features
-=====================
+Extra GitHub features: Actions & Pages
+======================================
 
 Much of the explanation in [Collaborate with git](gitcollab) can be done whether your repository lives on GitHub or a GitLab server or elsewhere.  In this template-project, we use GitHub-specific features to perform extra functions that may not look the same on other git servers.
 
@@ -7,8 +7,6 @@ On GitHub, we are using two main features:
 
     - GitHub Actions (via workflows)
     - GitHub Pages: to display the documentation as a website (here as https://eleanorfrajka.github.io/template-project)
-
-### GitHub Actions
 
 GitHub Actions provide a way to 
 
@@ -127,7 +125,31 @@ See pull request (PR) [#1](https://github.com/eleanorfrajka/template-project/pul
 
 #### GitHub Action to build documentation
 
+##### Creating docs with sphinx
+
+In this template, we are creating documentation using `sphinx` with a "read the docs" theme.  This requires extra packages in your `requirements-dev.txt` file:
+```
+sphinx
+sphinx-rtd-theme
+pypandoc
+nbsphinx
+nbconvert
+myst_parser
+```
+The `sphinx` is the basic machinery, and `sphinx-rtd-theme` is the "read the docs" theme.  `pypandoc` is a pandoc translater which enables translation from markdown, rst, python etc into formats like html, latex, etc.
+
+The additional `nbsphinx` and `nbconvert` are to handle python notebooks, so that they can be displayed in the sphinx output.  `myst_parser` allows you to include documentation files as `.md` in addition to sphinx's default, `.rst`.
+
+The extra structure within the repository, within the `docs/` directory includes a `Makefile` and `source/conf.py` with some configuration information.  **You should edit `conf.py` to match your repository,** especially the "general information about this project" section.  
+
+When you'd like to test the build of your documentation (prior to submitting pull requests to the repository), navigate to the `docs/` directory in a terminal window, and run 
+```
+template-project/docs $ make html
+```
+This will generate the website within the directory `docs/build/html/`, which you can open from a browser to verify that everything worked.
+
 ##### Workflows to build documentation
+
 In the template-project, we have two workflows for building documentation.  
 
 To test that the documentation can build, there is `.github/workflows/docs.yml` (named "Test documentation build" and viewable on GitHub Actions here: https://github.com/eleanorfrajka/template-project/actions/workflows/docs.yml)

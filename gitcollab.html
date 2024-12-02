@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Collaborate with git &mdash; projName v0.0.0 documentation</title>
+  <title>Collaborating with git: Basic workflow &mdash; projName v0.0.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
 
@@ -19,7 +19,9 @@
       <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" /> 
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Extra GitHub features: Actions &amp; Pages" href="github.html" />
+    <link rel="prev" title="Installation" href="installation.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -42,7 +44,27 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Collaborating with git: Basic workflow</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#forking-branching-someone-else-s-repository">Forking &amp; branching someone else’s repository</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#fork-a-repository">1. Fork a repository</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#clone-to-your-computer">2. Clone to your computer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#find-the-clone-on-your-computer">3. Find the clone on your computer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#create-a-branch-for-edits">4. Create a branch for edits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#make-an-edit-in-the-branch">5. Make an edit in the branch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#commit-the-change-in-your-branch">6. Commit the change in your branch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#create-a-pull-request-to-origin">7. Create a pull request to origin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#compare-pull-request-on-github-com">8. Compare pull request on GitHub.com</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#merge-the-pull-request">9. Merge the pull request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rinse-and-repeat">10. Rinse and repeat</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#collaborating-with-others-on-your-repository">Collaborating with others on your repository</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="github.html">Extra GitHub features: Actions &amp; Pages</a></li>
+</ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="demo-output.html">projectName demo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="projectName.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">projectName</span> <span class="pre">API</span></code></a></li>
@@ -62,7 +84,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Collaborate with git</li>
+      <li class="breadcrumb-item active">Collaborating with git: Basic workflow</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/gitcollab.md.txt" rel="nofollow"> View page source</a>
       </li>
@@ -72,73 +94,107 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="collaborate-with-git">
-<h1>Collaborate with git<a class="headerlink" href="#collaborate-with-git" title="Link to this heading"></a></h1>
-<p>See also, the description of actions in <a class="reference external" href="https://github.com/eleanorfrajka/template-project/pull/1">https://github.com/eleanorfrajka/template-project/pull/1</a>.</p>
-<p>The instructions below assume that you have cloned this repository, renamed the <cite>projectName</cite> to a project of your own, and would like to work on it - potentially with other people.</p>
-<p>### Forking an existing repository</p>
-<p>Suppose the original repository is located at: <cite>https://github.com/ifmeo-hamburg/projectName</cite>, and you would like to contribute to it.</p>
+  <section id="collaborating-with-git-basic-workflow">
+<h1>Collaborating with git: Basic workflow<a class="headerlink" href="#collaborating-with-git-basic-workflow" title="Link to this heading"></a></h1>
+<p>See also, the description of actions in https://github.com/eleanorfrajka/template-project/pull/1.</p>
+<p>The instructions below assume that you have cloned this repository, renamed the <code class="docutils literal notranslate"><span class="pre">projectName</span></code> to a project of your own, and would like to work on it - potentially with other people.</p>
+<section id="forking-branching-someone-else-s-repository">
+<h2>Forking &amp; branching someone else’s repository<a class="headerlink" href="#forking-branching-someone-else-s-repository" title="Link to this heading"></a></h2>
+<p>Suppose the original repository is located at: <code class="docutils literal notranslate"><span class="pre">https://github.com/ifmeo-hamburg/projectName</span></code>, and you would like to contribute to it.</p>
 <p>When you first work with a shared repository, you will want to:</p>
-<p>#### 1. Fork a repository</p>
+<section id="fork-a-repository">
+<h3>1. Fork a repository<a class="headerlink" href="#fork-a-repository" title="Link to this heading"></a></h3>
 <p><strong>Github.com</strong>: Fork the repository into your own Github account.  If prompted, specify that you would like to contribute to the original project.</p>
-<p>#### 2. Clone to your computer</p>
+</section>
+<section id="clone-to-your-computer">
+<h3>2. Clone to your computer<a class="headerlink" href="#clone-to-your-computer" title="Link to this heading"></a></h3>
 <p><strong>Github.com</strong>: From your forked repository, clone the repository to your computer.</p>
-<ol class="lowerroman simple">
-<li><p>Navigate to your repositories on GitHub, <cite>https://github.com/YourGitHubUsername/projectName</cite>.  Click the green <cite>&lt;&gt; Code</cite> dropdown button, and choose a method to clone this.  If you’re not familiar with cloning repositories to your computer, choose <cite>Open with Github Desktop</cite> which will require you to have the application “GitHub Desktop” on your computer.</p></li>
-<li><p>When prompted, choose where on your computer you would like this to live (<cite>/a/path/on/your/computer/</cite>).</p></li>
-</ol>
+<p>(i) Navigate to your repositories on GitHub, <code class="docutils literal notranslate"><span class="pre">https://github.com/YourGitHubUsername/projectName</span></code>.  Click the green <code class="docutils literal notranslate"><span class="pre">&lt;&gt;</span> <span class="pre">Code</span></code> dropdown button, and choose a method to clone this.  If you’re not familiar with cloning repositories to your computer, choose <code class="docutils literal notranslate"><span class="pre">Open</span> <span class="pre">with</span> <span class="pre">Github</span> <span class="pre">Desktop</span></code> which will require you to have the application “GitHub Desktop” on your computer.</p>
+<p>(ii) When prompted, choose where on your computer you would like this to live (<code class="docutils literal notranslate"><span class="pre">/a/path/on/your/computer/</span></code>).</p>
 <p><strong>Tip:</strong> IF you use a cloud backup service, you may find it is recommended to <em>not</em> put this in a folder that is synced with the cloud. This is because the online backups via a cloud service will need to keep copying files back and forth when you switch branches (which replaces the files in your active directory with the versions from each branch), and depending on timing, the synchronisation could cause errors or duplication.  Additionally, using git negates much of the need for cloud backups as local commits <em>and</em> pushes to the online git repository provides backups by design.</p>
-<p>#### 3. Find the clone on your computer</p>
-<p><strong>Your computer</strong> in File Explorer (Windows) or Finder (Mac): Now you have a copy of the repository on your computer, with the associated “git” tracking information.  The repository already knows the history of changes, and has the necessary structure to update.  These are in a hidden folder within the repository folder (likely called <cite>/a/path/on/your/computer/projectName/.git</cite>).   This is a “main” branch of your forked repository <cite>https://github.com/YourGitHubUsername/projectName</cite>.  The “upstream” is where the project originated.  In this example, <cite>https://github.com/ifmeo-hamburg/projectName</cite>.</p>
-<p>#### 4. Create a branch for edits</p>
+</section>
+<section id="find-the-clone-on-your-computer">
+<h3>3. Find the clone on your computer<a class="headerlink" href="#find-the-clone-on-your-computer" title="Link to this heading"></a></h3>
+<p><strong>Your computer</strong> in File Explorer (Windows) or Finder (Mac): Now you have a copy of the repository on your computer, with the associated “git” tracking information.  The repository already knows the history of changes, and has the necessary structure to update.  These are in a hidden folder within the repository folder (likely called <code class="docutils literal notranslate"><span class="pre">/a/path/on/your/computer/projectName/.git</span></code>).   This is a “main” branch of your forked repository <code class="docutils literal notranslate"><span class="pre">https://github.com/YourGitHubUsername/projectName</span></code>.  The “upstream” is where the project originated.  In this example, <code class="docutils literal notranslate"><span class="pre">https://github.com/ifmeo-hamburg/projectName</span></code>.</p>
+</section>
+<section id="create-a-branch-for-edits">
+<h3>4. Create a branch for edits<a class="headerlink" href="#create-a-branch-for-edits" title="Link to this heading"></a></h3>
 <p><strong>Your computer</strong> in a terminal window: When you’d like to start making changes in your repository, <strong>first</strong> make a new branch. For a forked repository from someone else’s original repository, you will never work in your “main” branch.</p>
-<p>To make a branch, at the command line, the series of steps would be (from within <cite>/a/path/on/your/computer/projectName/</cite>):
-<code class="docutils literal notranslate"><span class="pre">`</span>
-<span class="pre">$</span> <span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">main</span>
-<span class="pre">$</span> <span class="pre">git</span> <span class="pre">pull</span>
-<span class="pre">$</span> <span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">-b</span> <span class="pre">yourname-patch-1</span>
-<span class="pre">`</span></code>
-where you change “yourname” to your first name (or other useful identifier, e.g. your GitHub username).</p>
-<p>This branch will now be up-to-date with the latest changes within <cite>main</cite> (which is what the <cite>git pull</cite> command does), but will have a separate copy for you to make your edits in.</p>
-<p><strong>Suggested naming convention:</strong> <cite>yourfirstname-patch-#</cite> where <cite>#</cite> increments by one for each new branch you make.  Some people also name branches by the topic or issue that branch is addressing.  So far, I’ve found for early code development that I’ll intend a branch for one purpose, but find another that should be fixed/changed first, and then I have a branch name called <cite>eleanor-docs-1</cite> but it’s really about a new test of plotters (or something).</p>
-<p>#### 5. Make an edit in the branch</p>
+<p>To make a branch, at the command line, the series of steps would be (from within <code class="docutils literal notranslate"><span class="pre">/a/path/on/your/computer/projectName/</span></code>):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git checkout main
+$ git pull
+$ git checkout -b yourname-patch-1
+</pre></div>
+</div>
+<p>where you change “yourname” to your first name (or other useful identifier, e.g. your GitHub username).</p>
+<p>This branch will now be up-to-date with the latest changes within <code class="docutils literal notranslate"><span class="pre">main</span></code> (which is what the <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span></code> command does), but will have a separate copy for you to make your edits in.</p>
+<p><strong>Suggested naming convention:</strong> <code class="docutils literal notranslate"><span class="pre">yourfirstname-patch-#</span></code> where <code class="docutils literal notranslate"><span class="pre">#</span></code> increments by one for each new branch you make.  Some people also name branches by the topic or issue that branch is addressing.  So far, I’ve found for early code development that I’ll intend a branch for one purpose, but find another that should be fixed/changed first, and then I have a branch name called <code class="docutils literal notranslate"><span class="pre">eleanor-docs-1</span></code> but it’s really about a new test of plotters (or something).</p>
+</section>
+<section id="make-an-edit-in-the-branch">
+<h3>5. Make an edit in the branch<a class="headerlink" href="#make-an-edit-in-the-branch" title="Link to this heading"></a></h3>
 <p><strong>Your computer</strong> in VS Code (or wherever you work on Python): Make a change to a file.  Even adding an extra line of whitespace will do this.  Then save the file.</p>
-<p>#### 6. Commit the change in your branch</p>
+</section>
+<section id="commit-the-change-in-your-branch">
+<h3>6. Commit the change in your branch<a class="headerlink" href="#commit-the-change-in-your-branch" title="Link to this heading"></a></h3>
 <p>In VS Code, to commit the change, you will navigate to the “source explorer” in the left hand bar, and add a commit message (text box above the blue “Commit” button).  This should be short, explaining in present tense what the commit does.</p>
-<p>Optional (recommended): Add a short code at the beginning of the commit message (one word) to help categorise what the commit is doing.  See (<a class="reference external" href="https://dev.to/ashishxcode/mastering-the-art-of-writing-effective-github-commit-messages-5d2p">https://dev.to/ashishxcode/mastering-the-art-of-writing-effective-github-commit-messages-5d2p</a>).  Options include things like:</p>
-<blockquote>
-<div><ul class="simple">
-<li><p>“feat: &lt;extra text explaining more detail&gt;” when you’re adding a new feature or functionality</p></li>
-<li><p>“fix: &lt;extra text explaining more detail&gt;” when you’re committing a fix for a specific problem or issue</p></li>
-<li><p>“style:” - when you’re making changes to style or formatting but not functionality (user should experience no change)</p></li>
-<li><p>“refactor:” - changes to the code that improve structure or organisation, but don’t add features or fix bugs</p></li>
-<li><p>“test:” - when you’re adding or updating tests for the code</p></li>
-<li><p>“chore:” - updating changes to the build process or other tasks not directly related to the code (e.g., GitHub workflows)</p></li>
-<li><p>“perf:” - Changes to improve code performance, e.g. speed</p></li>
-<li><p>“ci:” - changes to the continuous integration process</p></li>
-</ul>
-</div></blockquote>
-<p>#### 7. Create a pull request to origin</p>
-<p><strong>Your computer</strong> in VS Code: Sync the commit to main.  If this is the first time you’ve done this from your branch, you will need to set the upstream.  Set the upstream to be <cite>https://github.com/ifmeo-hamburg/projectName</cite>.  This will direct the pull request to the original main repository (not your main).  Exception, if you’re working on a fork where the original main repository lives in your GitHub account <cite>https://github.com/yourGitHubUsername/projectName</cite> then it will be pulled to your main.</p>
-<p>#### 8. Compare pull request on GitHub.com</p>
-<p><strong>Github.com</strong>: Navigate to the original repository <cite>https://github.com/ifmeo-hamburg/projectName</cite> and you should see the pull request has come through.  There will be a shaded bar at the top with a button “compare and pull request”.  Click this button and on the next page add some useful details for the rest of the contributors to understand what your commit is doing.</p>
-<p>Note that the default version of this template includes some tests to be run when you submit a pull request.  The python code for these tests is located in <cite>tests/</cite>.  The Github Actions “workflow” that calls the tests is in <cite>.github/workflows/tests.yml</cite>.  It requires that your <cite>requirements-txt</cite> file includes the package:
-<code class="docutils literal notranslate"><span class="pre">`</span>
-<span class="pre">pytest</span>
-<span class="pre">`</span></code></p>
-<p>If you’re using the <cite>micromamba</cite> version (commented out below in the <cite>tests.yml</cite> file, then you’ll additionally need the package
-<code class="docutils literal notranslate"><span class="pre">`</span>
-<span class="pre">pytest-cov</span>
-<span class="pre">`</span></code>
-in <cite>requirements-dev.txt</cite>.</p>
-<p>### Collaborating with others on your repository</p>
-<p>The steps are as above, but your main repository is the original main repository.</p>
+<p>Optional (recommended): Add a short code at the beginning of the commit message (one word) to help categorise what the commit is doing.  See (https://dev.to/ashishxcode/mastering-the-art-of-writing-effective-github-commit-messages-5d2p).  Options include things like:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>- &quot;feat: &lt;extra text explaining more detail&gt;&quot; when you&#39;re adding a new feature or functionality
+- &quot;fix: &lt;extra text explaining more detail&gt;&quot; when you&#39;re committing a fix for a specific problem or issue
+- &quot;style:&quot; - when you&#39;re making changes to style or formatting but not functionality (user should experience no change)
+- &quot;refactor:&quot; - changes to the code that improve structure or organisation, but don&#39;t add features or fix bugs
+- &quot;test:&quot; - when you&#39;re adding or updating tests for the code
+- &quot;chore:&quot; - updating changes to the build process or other tasks not directly related to the code (e.g., GitHub workflows)
+- &quot;perf:&quot; - Changes to improve code performance, e.g. speed
+- &quot;ci:&quot; - changes to the continuous integration process
+</pre></div>
+</div>
+</section>
+<section id="create-a-pull-request-to-origin">
+<h3>7. Create a pull request to origin<a class="headerlink" href="#create-a-pull-request-to-origin" title="Link to this heading"></a></h3>
+<p><strong>Your computer</strong> in VS Code: Sync the commit to main.  If this is the first time you’ve done this from your branch, you will need to set the upstream.  Set the upstream to be <code class="docutils literal notranslate"><span class="pre">https://github.com/ifmeo-hamburg/projectName</span></code>.  This will direct the pull request to the original main repository (not your main).  Exception, if you’re working on a fork where the original main repository lives in your GitHub account <code class="docutils literal notranslate"><span class="pre">https://github.com/yourGitHubUsername/projectName</span></code> then it will be pulled to your main.</p>
+</section>
+<section id="compare-pull-request-on-github-com">
+<h3>8. Compare pull request on GitHub.com<a class="headerlink" href="#compare-pull-request-on-github-com" title="Link to this heading"></a></h3>
+<p><strong>Github.com</strong>: Navigate to the original repository <code class="docutils literal notranslate"><span class="pre">https://github.com/ifmeo-hamburg/projectName</span></code> and you should see the pull request has come through.  There will be a shaded bar at the top with a button “compare and pull request”.  Click this button and on the next page add some useful details for the rest of the contributors to understand what your commit is doing.</p>
+<p>Note that the default version of this template includes some tests to be run when you submit a pull request.  The python code for these tests is located in <code class="docutils literal notranslate"><span class="pre">tests/</span></code>.  The Github Actions “workflow” that calls the tests is in <code class="docutils literal notranslate"><span class="pre">.github/workflows/tests.yml</span></code>.  It requires that your <code class="docutils literal notranslate"><span class="pre">requirements-txt</span></code> file includes the package:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pytest</span>
+</pre></div>
+</div>
+<p>If you’re using the <code class="docutils literal notranslate"><span class="pre">micromamba</span></code> version (commented out below in the <code class="docutils literal notranslate"><span class="pre">tests.yml</span></code> file, then you’ll additionally need the package</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pytest</span><span class="o">-</span><span class="n">cov</span>
+</pre></div>
+</div>
+<p>in <code class="docutils literal notranslate"><span class="pre">requirements-dev.txt</span></code>.</p>
+</section>
+<section id="merge-the-pull-request">
+<h3>9. Merge the pull request<a class="headerlink" href="#merge-the-pull-request" title="Link to this heading"></a></h3>
+<p>Once your edits have passed all tests, a review from a repository owner (if required) and been approved, then you can “merge”.  This will push your changes onto the main branch.</p>
+</section>
+<section id="rinse-and-repeat">
+<h3>10. Rinse and repeat<a class="headerlink" href="#rinse-and-repeat" title="Link to this heading"></a></h3>
+<p>Now the origin has been updated.  If you want to make further changes <em>after a merge (by anyone)</em>, you should pull those changes onto your main branch</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git checkout main
+$ git pull
+$ git checkout -b yourname-patch-2
+</pre></div>
+</div>
+<p>These steps will switch back to your main branch, pull changes from the origin’s main to your main, and then create a new branch <code class="docutils literal notranslate"><span class="pre">yourname-patch-2</span></code> based on the new, updated main.  The <code class="docutils literal notranslate"><span class="pre">-b</span></code> option creates a branch (without <code class="docutils literal notranslate"><span class="pre">-b</span></code>, it will try to switch to a branch with that name).</p>
+<p>Now you’re ready to repeat from step 5.</p>
+</section>
+</section>
+<section id="collaborating-with-others-on-your-repository">
+<h2>Collaborating with others on your repository<a class="headerlink" href="#collaborating-with-others-on-your-repository" title="Link to this heading"></a></h2>
+<p>The steps are as above, but your main repository is the original main repository.  In this case, you still need to do the <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">main</span></code> and <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span></code> steps, but your main = origin.</p>
+</section>
 </section>
 
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="installation.html" class="btn btn-neutral float-left" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="github.html" class="btn btn-neutral float-right" title="Extra GitHub features: Actions &amp; Pages" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
   <hr/>
 
