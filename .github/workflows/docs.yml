@@ -35,6 +35,7 @@ jobs:
           python=3 pip
           --file requirements-dev.txt
           --channel conda-forge
+          python=3 pip install myst_parser
 
 #    - name: Install projectName
 #      shell: bash -l {0}
