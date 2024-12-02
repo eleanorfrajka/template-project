@@ -11,7 +11,7 @@ For recommendations or bug reports, please visit https://github.com/eleanorfrajk
 
 ======================================
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 5
    :caption: Getting started
 
    .. mdinclude:: installation.md
@@ -25,6 +25,11 @@ For recommendations or bug reports, please visit https://github.com/eleanorfrajk
    demo-output.ipynb
    projectName
 
+.. toctree::
+   :maxdepth: 3
+   :caption: Contents:
+
+   .. mdinclude:: installation.md
 
 Indices and tables
 ==================
