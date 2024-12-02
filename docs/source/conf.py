@@ -23,9 +23,8 @@ extensions = [
     "sphinx.ext.viewcode",
     "sphinx.ext.napoleon",
     "nbsphinx",
+    "myst_parser",
 ]
-
-
 
 templates_path = ['_templates']
 exclude_patterns = []
