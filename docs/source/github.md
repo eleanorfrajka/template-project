@@ -205,10 +205,16 @@ The last step "Deploy" generates or updates the `gh-pages` branch: https://githu
 ```
 This uses the GitHub Action `peaceiris/actions-gh-pages@v4` (https://github.com/marketplace/actions/github-pages-action).
 
-Once you've successfully run this step, on the original repository, you need to set up "GitHub Pages". Navigate to the repository and click the "Settings" across the top bar (to the right of "Insights"), then in the left sidebar, choose "Pages".  
+##### Activating `github.io/projectName'
 
-Select the "Source" as "Deploy from a branch" and in the next line, "Branch", choose in the dropdown not "main" but "gh-pages".  Leave the rest of the settings and click "save".  This tells GitHub to serve the root level of this branch as the pages.  
+You'll know you're ready for this step when, from the main Github website for the repository (e.g. https;//github.com/eleanorfrajka/template-project/) if you click the drop-down button in the upper left quadrant that says "main", you can scroll through and find the branch "gh-pages".
+
+Now you're ready to set up "Github Pages".
+
+1. Navigate to the repository and click the "Settings" across the top bar (to the right of "Insights"), then in the left sidebar, choose "Pages".  
+
+2. Select the "Source" as "Deploy from a branch" and in the next line, "Branch", choose in the dropdown not "main" but "gh-pages".  Leave the rest of the settings and click "save".  This tells GitHub to serve the root level of this branch as the pages.  
 
 **Note:** If you're following the steps in this template, you should not edit within your `gh-pages` branch since all of the contents here will be automatically generated from the `docs_deploy.yml` using your `notebooks/demo.ipynb` notebook and contents in the repository found in the `docs/` directory.
 
-Then, to help others find your pages, go back to your repository and click the settings cogwheel in the right side bar next to the "About" header.  For the "Website", tick the box that says "Use your GitHub Pages website".  This will auto-populate the URL into the Website box.  Click "save changes". 
+3. Then, to help others find your pages, go back to your repository and click the settings cogwheel in the right side bar next to the "About" header.  For the "Website", tick the box that says "Use your GitHub Pages website".  This will auto-populate the URL into the Website box.  Click "save changes". 
