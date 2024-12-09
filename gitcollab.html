@@ -172,19 +172,21 @@ $ git checkout -b yourname-patch-1
 </section>
 <section id="rinse-and-repeat">
 <h3>10. Rinse and repeat<a class="headerlink" href="#rinse-and-repeat" title="Link to this heading"></a></h3>
-<p>Now the origin has been updated.  If you want to make further changes <em>after a merge (by anyone)</em>, you should pull those changes onto your main branch</p>
+<p>Now the origin has been updated.  If you want to make further changes <em>after a merge (by anyone)</em>, you should <strong>first</strong> sync your fork (main branch) to the origin.  You do this on github.com, on your repository main, <code class="docutils literal notranslate"><span class="pre">https://github.com/yourGitHubUsername/projectName</span></code> where you should see a notification across the top saying “this is behind the origin/main by X commits” with the option to click the <strong>sync</strong> button.  Click it!</p>
+<p>After syncing your fork to the origin’s main on GitHub.com, the next step is to pull any new changes onto your fork’s main branch on your computer.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git checkout main
 $ git pull
 $ git checkout -b yourname-patch-2
 </pre></div>
 </div>
-<p>These steps will switch back to your main branch, pull changes from the origin’s main to your main, and then create a new branch <code class="docutils literal notranslate"><span class="pre">yourname-patch-2</span></code> based on the new, updated main.  The <code class="docutils literal notranslate"><span class="pre">-b</span></code> option creates a branch (without <code class="docutils literal notranslate"><span class="pre">-b</span></code>, it will try to switch to a branch with that name).</p>
+<p>These steps will switch back to your main branch, pull changes from the your fork’s main to your main on your computer, and then create a new branch <code class="docutils literal notranslate"><span class="pre">yourname-patch-2</span></code> based on the new, updated main on your computer.  The <code class="docutils literal notranslate"><span class="pre">-b</span></code> option creates a branch (without <code class="docutils literal notranslate"><span class="pre">-b</span></code>, it will try to switch to a branch with that name).</p>
 <p>Now you’re ready to repeat from step 5.</p>
+<p><strong>Note:</strong> If you forgot to sync your fork (main branch), and then have a new pull request, it will have conflicts when pulling any changes to the main/origin.</p>
 </section>
 </section>
 <section id="collaborating-with-others-on-your-repository">
 <h2>Collaborating with others on your repository<a class="headerlink" href="#collaborating-with-others-on-your-repository" title="Link to this heading"></a></h2>
-<p>The steps are as above, but your main repository is the original main repository.  In this case, you still need to do the <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">main</span></code> and <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span></code> steps, but your main = origin.</p>
+<p>The steps are as above, but your main repository is the original main repository.  In this case, you still need to do the <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">main</span></code> and <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span></code> steps, but your main = origin so you don’t have to do the <strong>sync</strong> step.</p>
 </section>
 </section>
 

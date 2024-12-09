@@ -134,7 +134,7 @@ sphinx-rtd-theme
 pypandoc
 nbsphinx
 nbconvert
-myst_parser
+myst-nb
 ```
 The `sphinx` is the basic machinery, and `sphinx-rtd-theme` is the "read the docs" theme.  `pypandoc` is a pandoc translater which enables translation from markdown, rst, python etc into formats like html, latex, etc.
 
