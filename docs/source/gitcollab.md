@@ -88,17 +88,21 @@ Once your edits have passed all tests, a review from a repository owner (if requ
 
 #### 10. Rinse and repeat
 
-Now the origin has been updated.  If you want to make further changes *after a merge (by anyone)*, you should pull those changes onto your main branch
+Now the origin has been updated.  If you want to make further changes *after a merge (by anyone)*, you should **first** sync your fork (main branch) to the origin.  You do this on github.com, on your repository main, `https://github.com/yourGitHubUsername/projectName` where you should see a notification across the top saying "this is behind the origin/main by X commits" with the option to click the **sync** button.  Click it!
+
+After syncing your fork to the origin's main on GitHub.com, the next step is to pull any new changes onto your fork's main branch on your computer.
 
 ```
 $ git checkout main
 $ git pull
 $ git checkout -b yourname-patch-2
 ```
-These steps will switch back to your main branch, pull changes from the origin's main to your main, and then create a new branch `yourname-patch-2` based on the new, updated main.  The `-b` option creates a branch (without `-b`, it will try to switch to a branch with that name).
+These steps will switch back to your main branch, pull changes from the your fork's main to your main on your computer, and then create a new branch `yourname-patch-2` based on the new, updated main on your computer.  The `-b` option creates a branch (without `-b`, it will try to switch to a branch with that name).
 
 Now you're ready to repeat from step 5.
 
+**Note:** If you forgot to sync your fork (main branch), and then have a new pull request, it will have conflicts when pulling any changes to the main/origin.
+
 ### Collaborating with others on your repository
 
-The steps are as above, but your main repository is the original main repository.  In this case, you still need to do the `git checkout main` and `git pull` steps, but your main = origin.
+The steps are as above, but your main repository is the original main repository.  In this case, you still need to do the `git checkout main` and `git pull` steps, but your main = origin so you don't have to do the **sync** step.
