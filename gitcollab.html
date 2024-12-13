@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Collaborating with git: Basic workflow &mdash; projName v0.0.0 documentation</title>
+  <title>Collaborating with git: Basic workflow &mdash; template_project v0.0.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
 
@@ -33,7 +33,7 @@
           
           
           <a href="index.html" class="icon icon-home">
-            projName
+            template_project
               <img src="_static/logo.jpg" class="logo" alt="Logo"/>
           </a>
 <div role="search">
@@ -73,7 +73,6 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Help and reference</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="projectName.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">projectName</span> <span class="pre">API</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ / Troubleshooting</a></li>
 </ul>
 
@@ -83,7 +82,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">projName</a>
+          <a href="index.html">template_project</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -104,10 +103,10 @@
   <section id="collaborating-with-git-basic-workflow">
 <h1>Collaborating with git: Basic workflow<a class="headerlink" href="#collaborating-with-git-basic-workflow" title="Link to this heading"></a></h1>
 <p>See also, the description of actions in https://github.com/eleanorfrajka/template-project/pull/1.</p>
-<p>The instructions below assume that you have cloned this repository, renamed the <code class="docutils literal notranslate"><span class="pre">projectName</span></code> to a project of your own, and would like to work on it - potentially with other people.</p>
+<p>The instructions below assume that you have cloned this repository, renamed the <code class="docutils literal notranslate"><span class="pre">template-project</span></code> to a project of your own, and would like to work on it - potentially with other people.</p>
 <section id="forking-branching-someone-else-s-repository">
 <h2>Forking &amp; branching someone else’s repository<a class="headerlink" href="#forking-branching-someone-else-s-repository" title="Link to this heading"></a></h2>
-<p>Suppose the original repository is located at: <code class="docutils literal notranslate"><span class="pre">https://github.com/ifmeo-hamburg/projectName</span></code>, and you would like to contribute to it.</p>
+<p>Suppose the original repository is located at: <code class="docutils literal notranslate"><span class="pre">https://github.com/ifmeo-hamburg/template-project</span></code>, and you would like to contribute to it.</p>
 <p>When you first work with a shared repository, you will want to:</p>
 <section id="fork-a-repository">
 <h3>1. Fork a repository<a class="headerlink" href="#fork-a-repository" title="Link to this heading"></a></h3>
@@ -116,7 +115,7 @@
 <section id="clone-to-your-computer">
 <h3>2. Clone to your computer<a class="headerlink" href="#clone-to-your-computer" title="Link to this heading"></a></h3>
 <p><strong>On Github.com:</strong> From your forked repository, clone the repository to your computer.</p>
-<p>(i) Navigate to your repositories on GitHub, <code class="docutils literal notranslate"><span class="pre">https://github.com/YourGitHubUsername/projectName</span></code>.  Click the green <code class="docutils literal notranslate"><span class="pre">&lt;&gt;</span> <span class="pre">Code</span></code> dropdown button, and choose a method to clone this.  If you’re not familiar with cloning repositories to your computer, choose <code class="docutils literal notranslate"><span class="pre">Open</span> <span class="pre">with</span> <span class="pre">Github</span> <span class="pre">Desktop</span></code> which will require you to have the application “GitHub Desktop” on your computer.</p>
+<p>(i) Navigate to your repositories on GitHub, <code class="docutils literal notranslate"><span class="pre">https://github.com/YourGitHubUsername/template-project</span></code>.  Click the green <code class="docutils literal notranslate"><span class="pre">&lt;&gt;</span> <span class="pre">Code</span></code> dropdown button, and choose a method to clone this.  If you’re not familiar with cloning repositories to your computer, choose <code class="docutils literal notranslate"><span class="pre">Open</span> <span class="pre">with</span> <span class="pre">Github</span> <span class="pre">Desktop</span></code> which will require you to have the application “GitHub Desktop” on your computer.</p>
 <p>(ii) When prompted, choose where on your computer you would like this to live (<code class="docutils literal notranslate"><span class="pre">/a/path/on/your/computer/</span></code>).</p>
 <blockquote>
 <div><p><strong>Tip</strong>
@@ -125,12 +124,12 @@ If you use a cloud backup service, you may find it is recommended to <em>not</em
 </section>
 <section id="find-the-clone-on-your-computer">
 <h3>3. Find the clone on your computer<a class="headerlink" href="#find-the-clone-on-your-computer" title="Link to this heading"></a></h3>
-<p><strong>On your computer in File Explorer (Windows) or Finder (Mac):</strong> Now you have a copy of the repository on your computer, with the associated “git” tracking information.  The repository already knows the history of changes, and has the necessary structure to update.  These are in a hidden folder within the repository folder (likely called <code class="docutils literal notranslate"><span class="pre">/a/path/on/your/computer/projectName/.git</span></code>).   This is a “main” branch of your forked repository <code class="docutils literal notranslate"><span class="pre">https://github.com/YourGitHubUsername/projectName</span></code>.  The “upstream” is where the project originated.  In this example, <code class="docutils literal notranslate"><span class="pre">https://github.com/ifmeo-hamburg/projectName</span></code>.</p>
+<p><strong>On your computer in File Explorer (Windows) or Finder (Mac):</strong> Now you have a copy of the repository on your computer, with the associated “git” tracking information.  The repository already knows the history of changes, and has the necessary structure to update.  These are in a hidden folder within the repository folder (likely called <code class="docutils literal notranslate"><span class="pre">/a/path/on/your/computer/template-project/.git</span></code>).   This is a “main” branch of your forked repository <code class="docutils literal notranslate"><span class="pre">https://github.com/YourGitHubUsername/template-project</span></code>.  The “upstream” is where the project originated.  In this example, <code class="docutils literal notranslate"><span class="pre">https://github.com/ifmeo-hamburg/template-project</span></code>.</p>
 </section>
 <section id="create-a-branch-for-edits">
 <h3>4. Create a branch for edits<a class="headerlink" href="#create-a-branch-for-edits" title="Link to this heading"></a></h3>
 <p><strong>On your computer in a terminal window:</strong> When you’d like to start making changes in your repository, <strong>first</strong> make a new branch. For a forked repository from someone else’s original repository, you will never work in your “main” branch.</p>
-<p>To make a branch, at the command line, the series of steps would be (from within <code class="docutils literal notranslate"><span class="pre">/a/path/on/your/computer/projectName/</span></code>):</p>
+<p>To make a branch, at the command line, the series of steps would be (from within <code class="docutils literal notranslate"><span class="pre">/a/path/on/your/computer/template-project/</span></code>):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git checkout main
 $ git pull
 $ git checkout -b yourname-patch-1
@@ -170,11 +169,11 @@ $ git checkout -b yourname-patch-1
 </section>
 <section id="create-a-pull-request-to-origin">
 <h3>7. Create a pull request to origin<a class="headerlink" href="#create-a-pull-request-to-origin" title="Link to this heading"></a></h3>
-<p><strong>On your computer in VS Code:</strong> Sync the commit to main.  If this is the first time you’ve done this from your branch, you will need to set the upstream.  Set the upstream to be <code class="docutils literal notranslate"><span class="pre">https://github.com/ifmeo-hamburg/projectName</span></code>.  This will direct the pull request to the original main repository (not your main).  Exception, if you’re working on a fork where the original main repository lives in your GitHub account <code class="docutils literal notranslate"><span class="pre">https://github.com/yourGitHubUsername/projectName</span></code> then it will be pulled to your main.</p>
+<p><strong>On your computer in VS Code:</strong> Sync the commit to main.  If this is the first time you’ve done this from your branch, you will need to set the upstream.  Set the upstream to be <code class="docutils literal notranslate"><span class="pre">https://github.com/ifmeo-hamburg/template-project</span></code>.  This will direct the pull request to the original main repository (not your main).  Exception, if you’re working on a fork where the original main repository lives in your GitHub account <code class="docutils literal notranslate"><span class="pre">https://github.com/yourGitHubUsername/template-project</span></code> then it will be pulled to your main.</p>
 </section>
 <section id="compare-pull-request-on-github-com">
 <h3>8. Compare pull request on GitHub.com<a class="headerlink" href="#compare-pull-request-on-github-com" title="Link to this heading"></a></h3>
-<p><strong>On Github.com (original repository):</strong> Navigate to the original repository <code class="docutils literal notranslate"><span class="pre">https://github.com/ifmeo-hamburg/projectName</span></code> and you should see the pull request has come through.  There will be a shaded bar at the top with a button “compare and pull request”.  Click this button and on the next page add some useful details for the rest of the contributors to understand what your commit is doing.</p>
+<p><strong>On Github.com (original repository):</strong> Navigate to the original repository <code class="docutils literal notranslate"><span class="pre">https://github.com/ifmeo-hamburg/template-project</span></code> and you should see the pull request has come through.  There will be a shaded bar at the top with a button “compare and pull request”.  Click this button and on the next page add some useful details for the rest of the contributors to understand what your commit is doing.</p>
 <p>Note that the default version of this template includes some tests to be run when you submit a pull request.  The python code for these tests is located in <code class="docutils literal notranslate"><span class="pre">tests/</span></code>.  The Github Actions “workflow” that calls the tests is in <code class="docutils literal notranslate"><span class="pre">.github/workflows/tests.yml</span></code>.  It requires that your <code class="docutils literal notranslate"><span class="pre">requirements-txt</span></code> file includes the package:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pytest</span>
 </pre></div>
@@ -187,14 +186,14 @@ $ git checkout -b yourname-patch-1
 </section>
 <section id="merge-the-pull-request">
 <h3>9. Merge the pull request<a class="headerlink" href="#merge-the-pull-request" title="Link to this heading"></a></h3>
-<p><strong>On Github.com (original repository):</strong> Navigate to the original repository <code class="docutils literal notranslate"><span class="pre">https://github.com/ifmeo-hamburg/projectName</span></code>.  Once your edits have passed all tests, a review from a repository owner (if required) and been approved, then you can “merge”.  This will push your changes onto the origin/main branch.</p>
+<p><strong>On Github.com (original repository):</strong> Navigate to the original repository <code class="docutils literal notranslate"><span class="pre">https://github.com/ifmeo-hamburg/template-project</span></code>.  Once your edits have passed all tests, a review from a repository owner (if required) and been approved, then you can “merge”.  This will push your changes onto the origin/main branch.</p>
 </section>
 <section id="rinse-and-repeat">
 <h3>10. Rinse and repeat<a class="headerlink" href="#rinse-and-repeat" title="Link to this heading"></a></h3>
 <p>Now the origin has been updated.</p>
 <p><strong>On Github.com (your forked repository):</strong> If you want to make further changes <em>after a merge (by anyone)</em>, you should <strong>first</strong> sync your fork (main branch) to the origin.</p>
 <ol class="arabic simple">
-<li><p>On your forked repository main, <code class="docutils literal notranslate"><span class="pre">https://github.com/yourGitHubUsername/projectName</span></code> where you should see a notification across the top saying “this is behind the origin/main by X commits” with the option to click the <strong>sync</strong> button.  Click it!  This gets your forked main branch <em>on Github</em> up-to-date with the origin/main.</p></li>
+<li><p>On your forked repository main, <code class="docutils literal notranslate"><span class="pre">https://github.com/yourGitHubUsername/template-project</span></code> where you should see a notification across the top saying “this is behind the origin/main by X commits” with the option to click the <strong>sync</strong> button.  Click it!  This gets your forked main branch <em>on Github</em> up-to-date with the origin/main.</p></li>
 <li><p><strong>On your computer, terminal window:</strong> After syncing your fork to the origin’s main on GitHub.com, the next step is to pull any new changes onto your fork’s main branch <em>on your computer</em>.</p></li>
 </ol>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git checkout main

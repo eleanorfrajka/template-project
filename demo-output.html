@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>projectName demo &mdash; projName v0.0.0 documentation</title>
+  <title>projectName demo &mdash; template_project v0.0.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/nbsphinx-code-cells.css?v=2aa19091" />
@@ -23,7 +23,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="projectName API" href="projectName.html" />
+    <link rel="next" title="FAQ / Troubleshooting" href="faq.html" />
     <link rel="prev" title="Transferring to an Organisation" href="gitorg.html" /> 
 </head>
 
@@ -36,7 +36,7 @@
           
           
           <a href="index.html" class="icon icon-home">
-            projName
+            template_project
               <img src="_static/logo.jpg" class="logo" alt="Logo"/>
           </a>
 <div role="search">
@@ -60,7 +60,6 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Help and reference</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="projectName.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">projectName</span> <span class="pre">API</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ / Troubleshooting</a></li>
 </ul>
 
@@ -70,7 +69,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">projName</a>
+          <a href="index.html">template_project</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -127,47 +126,7 @@ Cell <span class="ansi-green-fg">In[1], line 11</span>
 <span class="ansi-green-intense-fg ansi-bold">     10</span> <span class="ansi-bold" style="color: rgb(0,135,0)">import</span> <span class="ansi-bold" style="color: rgb(0,0,255)">pooch</span>
 <span class="ansi-green-fg">---&gt; 11</span> <span class="ansi-bold" style="color: rgb(0,135,0)">from</span> <span class="ansi-bold" style="color: rgb(0,0,255)">projectName</span> <span class="ansi-bold" style="color: rgb(0,135,0)">import</span> readers, writers, plotters, tools, utilities
 
-File <span class="ansi-green-fg">~/work/template-project/template-project/projectName/readers.py:31</span>
-<span class="ansi-green-intense-fg ansi-bold">     25</span> server <span style="color: rgb(98,98,98)">=</span> <span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">https://www.ncei.noaa.gov/data/oceans/glider/seaglider/uw/015/20040924/</span><span style="color: rgb(175,0,0)">&#34;</span>
-<span class="ansi-green-intense-fg ansi-bold">     26</span> data_source_og <span style="color: rgb(98,98,98)">=</span> pooch<span style="color: rgb(98,98,98)">.</span>create(
-<span class="ansi-green-intense-fg ansi-bold">     27</span>     path<span style="color: rgb(98,98,98)">=</span>pooch<span style="color: rgb(98,98,98)">.</span>os_cache(<span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">seagliderOG1</span><span style="color: rgb(175,0,0)">&#34;</span>),
-<span class="ansi-green-intense-fg ansi-bold">     28</span>     base_url<span style="color: rgb(98,98,98)">=</span>server,
-<span class="ansi-green-intense-fg ansi-bold">     29</span>     registry<span style="color: rgb(98,98,98)">=</span><span class="ansi-bold" style="color: rgb(0,135,0)">None</span>,
-<span class="ansi-green-intense-fg ansi-bold">     30</span> )
-<span class="ansi-green-fg">---&gt; 31</span> registry_file <span style="color: rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">files</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#39;</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">seagliderOG1</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#39;</span><span class="ansi-yellow-bg">)</span><span style="color: rgb(98,98,98)">.</span>joinpath(<span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">seaglider_registry.txt</span><span style="color: rgb(175,0,0)">&#39;</span>)
-<span class="ansi-green-intense-fg ansi-bold">     32</span> data_source_og<span style="color: rgb(98,98,98)">.</span>load_registry(registry_file)
-<span class="ansi-green-intense-fg ansi-bold">     34</span> <span class="ansi-bold" style="color: rgb(0,135,0)">def</span> <span style="color: rgb(0,0,255)">load_sample_dataset</span>(dataset_name<span style="color: rgb(98,98,98)">=</span><span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">p0040034_20031007.nc</span><span style="color: rgb(175,0,0)">&#34;</span>):
-
-File <span class="ansi-green-fg">~/micromamba/envs/TEST/lib/python3.13/site-packages/importlib_resources/_common.py:46</span>, in <span class="ansi-cyan-fg">package_to_anchor.&lt;locals&gt;.wrapper</span><span class="ansi-blue-fg">(anchor, package)</span>
-<span class="ansi-green-intense-fg ansi-bold">     44</span> <span class="ansi-bold" style="color: rgb(0,135,0)">elif</span> anchor <span class="ansi-bold" style="color: rgb(175,0,255)">is</span> undefined:
-<span class="ansi-green-intense-fg ansi-bold">     45</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> func()
-<span class="ansi-green-fg">---&gt; 46</span> <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> <span class="ansi-yellow-bg">func</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">anchor</span><span class="ansi-yellow-bg">)</span>
-
-File <span class="ansi-green-fg">~/micromamba/envs/TEST/lib/python3.13/site-packages/importlib_resources/_common.py:56</span>, in <span class="ansi-cyan-fg">files</span><span class="ansi-blue-fg">(anchor)</span>
-<span class="ansi-green-intense-fg ansi-bold">     51</span> <span style="color: rgb(175,0,255)">@package_to_anchor</span>
-<span class="ansi-green-intense-fg ansi-bold">     52</span> <span class="ansi-bold" style="color: rgb(0,135,0)">def</span> <span style="color: rgb(0,0,255)">files</span>(anchor: Optional[Anchor] <span style="color: rgb(98,98,98)">=</span> <span class="ansi-bold" style="color: rgb(0,135,0)">None</span>) <span style="color: rgb(98,98,98)">-</span><span style="color: rgb(98,98,98)">&gt;</span> Traversable:
-<span class="ansi-green-intense-fg ansi-bold">     53</span> <span style="color: rgb(188,188,188)">    </span><span style="color: rgb(175,0,0)">&#34;&#34;&#34;</span>
-<span class="ansi-green-intense-fg ansi-bold">     54</span> <span style="color: rgb(175,0,0)">    Get a Traversable resource for an anchor.</span>
-<span class="ansi-green-intense-fg ansi-bold">     55</span> <span style="color: rgb(175,0,0)">    &#34;&#34;&#34;</span>
-<span class="ansi-green-fg">---&gt; 56</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> from_package(<span class="ansi-yellow-bg">resolve</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">anchor</span><span class="ansi-yellow-bg">)</span>)
-
-File <span class="ansi-green-fg">~/micromamba/envs/TEST/lib/python3.13/functools.py:931</span>, in <span class="ansi-cyan-fg">singledispatch.&lt;locals&gt;.wrapper</span><span class="ansi-blue-fg">(*args, **kw)</span>
-<span class="ansi-green-intense-fg ansi-bold">    928</span> <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> <span class="ansi-bold" style="color: rgb(175,0,255)">not</span> args:
-<span class="ansi-green-intense-fg ansi-bold">    929</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">raise</span> <span class="ansi-bold" style="color: rgb(215,95,95)">TypeError</span>(<span style="color: rgb(175,0,0)">f</span><span style="color: rgb(175,0,0)">&#39;</span><span class="ansi-bold" style="color: rgb(175,95,135)">{</span>funcname<span class="ansi-bold" style="color: rgb(175,95,135)">}</span><span style="color: rgb(175,0,0)"> requires at least </span><span style="color: rgb(175,0,0)">&#39;</span>
-<span class="ansi-green-intense-fg ansi-bold">    930</span>                     <span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">1 positional argument</span><span style="color: rgb(175,0,0)">&#39;</span>)
-<span class="ansi-green-fg">--&gt; 931</span> <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> <span class="ansi-yellow-bg">dispatch</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">args</span><span class="ansi-yellow-bg">[</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">0</span><span class="ansi-yellow-bg">]</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg" style="color: rgb(0,0,135)">__class__</span><span class="ansi-yellow-bg">)</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">*</span><span class="ansi-yellow-bg">args</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">*</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">*</span><span class="ansi-yellow-bg">kw</span><span class="ansi-yellow-bg">)</span>
-
-File <span class="ansi-green-fg">~/micromamba/envs/TEST/lib/python3.13/site-packages/importlib_resources/_common.py:82</span>, in <span class="ansi-cyan-fg">_</span><span class="ansi-blue-fg">(cand)</span>
-<span class="ansi-green-intense-fg ansi-bold">     80</span> <span style="color: rgb(175,0,255)">@resolve</span><span style="color: rgb(98,98,98)">.</span>register
-<span class="ansi-green-intense-fg ansi-bold">     81</span> <span class="ansi-bold" style="color: rgb(0,135,0)">def</span> <span style="color: rgb(0,0,255)">_</span>(cand: <span style="color: rgb(0,135,0)">str</span>) <span style="color: rgb(98,98,98)">-</span><span style="color: rgb(98,98,98)">&gt;</span> types<span style="color: rgb(98,98,98)">.</span>ModuleType:
-<span class="ansi-green-fg">---&gt; 82</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> <span class="ansi-yellow-bg">importlib</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">import_module</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">cand</span><span class="ansi-yellow-bg">)</span>
-
-File <span class="ansi-green-fg">~/micromamba/envs/TEST/lib/python3.13/importlib/__init__.py:88</span>, in <span class="ansi-cyan-fg">import_module</span><span class="ansi-blue-fg">(name, package)</span>
-<span class="ansi-green-intense-fg ansi-bold">     86</span>             <span class="ansi-bold" style="color: rgb(0,135,0)">break</span>
-<span class="ansi-green-intense-fg ansi-bold">     87</span>         level <span style="color: rgb(98,98,98)">+</span><span style="color: rgb(98,98,98)">=</span> <span style="color: rgb(98,98,98)">1</span>
-<span class="ansi-green-fg">---&gt; 88</span> <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> <span class="ansi-yellow-bg">_bootstrap</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">_gcd_import</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">name</span><span class="ansi-yellow-bg">[</span><span class="ansi-yellow-bg">level</span><span class="ansi-yellow-bg">:</span><span class="ansi-yellow-bg">]</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">package</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">level</span><span class="ansi-yellow-bg">)</span>
-
-<span class="ansi-red-fg">ModuleNotFoundError</span>: No module named &#39;seagliderOG1&#39;
+<span class="ansi-red-fg">ModuleNotFoundError</span>: No module named &#39;projectName&#39;
 </pre></div></div>
 </div>
 <div class="nbinput nblast docutils container">
@@ -186,7 +145,7 @@ File <span class="ansi-green-fg">~/micromamba/envs/TEST/lib/python3.13/importlib
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="gitorg.html" class="btn btn-neutral float-left" title="Transferring to an Organisation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="projectName.html" class="btn btn-neutral float-right" title="projectName API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="faq.html" class="btn btn-neutral float-right" title="FAQ / Troubleshooting" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
