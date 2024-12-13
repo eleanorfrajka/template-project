@@ -11,22 +11,30 @@ Welcome to projectName's documentation!
 
 For recommendations or bug reports, please visit https://github.com/eleanorfrajka/template-project/issues/new
 
-Getting started
----------------         
+  
 .. toctree::
    :maxdepth: 3
+   :caption: Getting started
 
    installation.md
    gitcollab.md
    github.md
+   gitorg.md
 
-Indices and tables
-------------------
+
 .. toctree::
    :maxdepth: 3
-
+   :caption: Users guide
+   
    demo-output.ipynb
+
+
+.. toctree::
+   :maxdepth: 3
+   :caption: Help and reference
+
    projectName
+   faq
 
 Indices and tables
 ==================
