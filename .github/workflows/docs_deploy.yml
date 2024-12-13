@@ -32,10 +32,10 @@ jobs:
           --file requirements-dev.txt
           --channel conda-forge
 
-#    - name: Install projectName
-#      shell: bash -l {0}
-#      run: |
-#        python -m pip install -e . --no-deps --force-reinstall
+    - name: Install projectName
+      shell: bash -l {0}
+      run: |
+        python -m pip install -e . --no-deps --force-reinstall
 
     # Assumes that the notebook to be documented is located within notebooks/ and is called demo.ipynb
     # In the example below, we've included the `--ExecutePreprocessor.allow_errors=True` flag to allow the notebook to build even if there are errors
