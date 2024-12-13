@@ -9,4 +9,3 @@ gsw
 matplotlib
 cartopy
 cmocean 
-importlib_resources

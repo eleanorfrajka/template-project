@@ -2,11 +2,11 @@
 
 See also, the description of actions in https://github.com/eleanorfrajka/template-project/pull/1.
 
-The instructions below assume that you have cloned this repository, renamed the `projectName` to a project of your own, and would like to work on it - potentially with other people.
+The instructions below assume that you have cloned this repository, renamed the `template-project` to a project of your own, and would like to work on it - potentially with other people.
 
 ### Forking & branching someone else's repository
 
-Suppose the original repository is located at: `https://github.com/ifmeo-hamburg/projectName`, and you would like to contribute to it.
+Suppose the original repository is located at: `https://github.com/ifmeo-hamburg/template-project`, and you would like to contribute to it.
 
 When you first work with a shared repository, you will want to:
 
@@ -18,7 +18,7 @@ When you first work with a shared repository, you will want to:
 
 **On Github.com:** From your forked repository, clone the repository to your computer.  
 
-(i) Navigate to your repositories on GitHub, `https://github.com/YourGitHubUsername/projectName`.  Click the green `<> Code` dropdown button, and choose a method to clone this.  If you're not familiar with cloning repositories to your computer, choose `Open with Github Desktop` which will require you to have the application "GitHub Desktop" on your computer.  
+(i) Navigate to your repositories on GitHub, `https://github.com/YourGitHubUsername/template-project`.  Click the green `<> Code` dropdown button, and choose a method to clone this.  If you're not familiar with cloning repositories to your computer, choose `Open with Github Desktop` which will require you to have the application "GitHub Desktop" on your computer.  
 
 (ii) When prompted, choose where on your computer you would like this to live (`/a/path/on/your/computer/`).  
 
@@ -27,13 +27,13 @@ When you first work with a shared repository, you will want to:
 
 #### 3. Find the clone on your computer
 
-**On your computer in File Explorer (Windows) or Finder (Mac):** Now you have a copy of the repository on your computer, with the associated "git" tracking information.  The repository already knows the history of changes, and has the necessary structure to update.  These are in a hidden folder within the repository folder (likely called `/a/path/on/your/computer/projectName/.git`).   This is a "main" branch of your forked repository `https://github.com/YourGitHubUsername/projectName`.  The "upstream" is where the project originated.  In this example, `https://github.com/ifmeo-hamburg/projectName`.
+**On your computer in File Explorer (Windows) or Finder (Mac):** Now you have a copy of the repository on your computer, with the associated "git" tracking information.  The repository already knows the history of changes, and has the necessary structure to update.  These are in a hidden folder within the repository folder (likely called `/a/path/on/your/computer/template-project/.git`).   This is a "main" branch of your forked repository `https://github.com/YourGitHubUsername/template-project`.  The "upstream" is where the project originated.  In this example, `https://github.com/ifmeo-hamburg/template-project`.
 
 #### 4. Create a branch for edits
 
 **On your computer in a terminal window:** When you'd like to start making changes in your repository, **first** make a new branch. For a forked repository from someone else's original repository, you will never work in your "main" branch.  
 
-To make a branch, at the command line, the series of steps would be (from within `/a/path/on/your/computer/projectName/`):
+To make a branch, at the command line, the series of steps would be (from within `/a/path/on/your/computer/template-project/`):
 ```
 $ git checkout main
 $ git pull
@@ -68,11 +68,11 @@ This branch will now be up-to-date with the latest changes within `main` (which 
 
 #### 7. Create a pull request to origin
 
-**On your computer in VS Code:** Sync the commit to main.  If this is the first time you've done this from your branch, you will need to set the upstream.  Set the upstream to be `https://github.com/ifmeo-hamburg/projectName`.  This will direct the pull request to the original main repository (not your main).  Exception, if you're working on a fork where the original main repository lives in your GitHub account `https://github.com/yourGitHubUsername/projectName` then it will be pulled to your main.  
+**On your computer in VS Code:** Sync the commit to main.  If this is the first time you've done this from your branch, you will need to set the upstream.  Set the upstream to be `https://github.com/ifmeo-hamburg/template-project`.  This will direct the pull request to the original main repository (not your main).  Exception, if you're working on a fork where the original main repository lives in your GitHub account `https://github.com/yourGitHubUsername/template-project` then it will be pulled to your main.  
 
 #### 8. Compare pull request on GitHub.com
 
-**On Github.com (original repository):** Navigate to the original repository `https://github.com/ifmeo-hamburg/projectName` and you should see the pull request has come through.  There will be a shaded bar at the top with a button "compare and pull request".  Click this button and on the next page add some useful details for the rest of the contributors to understand what your commit is doing.  
+**On Github.com (original repository):** Navigate to the original repository `https://github.com/ifmeo-hamburg/template-project` and you should see the pull request has come through.  There will be a shaded bar at the top with a button "compare and pull request".  Click this button and on the next page add some useful details for the rest of the contributors to understand what your commit is doing.  
 
 Note that the default version of this template includes some tests to be run when you submit a pull request.  The python code for these tests is located in `tests/`.  The Github Actions "workflow" that calls the tests is in `.github/workflows/tests.yml`.  It requires that your `requirements-txt` file includes the package:
 ```
@@ -87,7 +87,7 @@ in `requirements-dev.txt`.
 
 #### 9. Merge the pull request
 
-**On Github.com (original repository):** Navigate to the original repository `https://github.com/ifmeo-hamburg/projectName`.  Once your edits have passed all tests, a review from a repository owner (if required) and been approved, then you can "merge".  This will push your changes onto the origin/main branch.
+**On Github.com (original repository):** Navigate to the original repository `https://github.com/ifmeo-hamburg/template-project`.  Once your edits have passed all tests, a review from a repository owner (if required) and been approved, then you can "merge".  This will push your changes onto the origin/main branch.
 
 #### 10. Rinse and repeat
 
@@ -95,7 +95,7 @@ Now the origin has been updated.
 
 **On Github.com (your forked repository):** If you want to make further changes *after a merge (by anyone)*, you should **first** sync your fork (main branch) to the origin.  
 
-1. On your forked repository main, `https://github.com/yourGitHubUsername/projectName` where you should see a notification across the top saying "this is behind the origin/main by X commits" with the option to click the **sync** button.  Click it!  This gets your forked main branch _on Github_ up-to-date with the origin/main.
+1. On your forked repository main, `https://github.com/yourGitHubUsername/template-project` where you should see a notification across the top saying "this is behind the origin/main by X commits" with the option to click the **sync** button.  Click it!  This gets your forked main branch _on Github_ up-to-date with the origin/main.
 
 2. **On your computer, terminal window:** After syncing your fork to the origin's main on GitHub.com, the next step is to pull any new changes onto your fork's main branch _on your computer_.
 

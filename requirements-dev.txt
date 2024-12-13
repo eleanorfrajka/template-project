@@ -9,7 +9,6 @@ gsw
 matplotlib
 cartopy
 cmocean 
-importlib_resources
 jupyterlab
 pytest
 pytest-cov
