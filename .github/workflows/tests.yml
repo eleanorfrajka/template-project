@@ -44,9 +44,9 @@ jobs:
 #        create-args: >-
 #          python=${{ matrix.python-version }} --file requirements-dev.txt --channel conda-forge
 
-#    - name: Install projectName
-#      run: |
-#        python -m pip install -e . --no-deps --force-reinstall
+    - name: Install template_project
+      run: |
+        python -m pip install -e . --no-deps --force-reinstall
 
 #    - name: Full Tests
 #      run: |
