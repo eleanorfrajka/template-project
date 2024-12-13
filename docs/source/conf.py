@@ -7,6 +7,11 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 import datetime
 year = datetime.datetime.now(tz=datetime.timezone.utc).date().year
+import os
+import sys
+sys.path.insert(0, os.path.abspath('..'))
+sys.path.insert(0, os.path.abspath('../..'))
+print(sys.path)
 
 # General information about the project.
 project = 'projName'
