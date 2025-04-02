@@ -7,7 +7,7 @@ requires = [
 ]
 
 [project]
-name = "template-project"
+name = "template-project-efw"
 description = "Example template project for docs, pip install and git"
 readme = "README.md"
 license = { file = "LICENSE" }
@@ -47,6 +47,7 @@ readme = { file = "README.md", content-type = "text/markdown" }
 write_to = "template_project/_version.py"
 write_to_template = "__version__ = '{version}'"
 tag_regex = "^(?P<prefix>v)?(?P<version>[^\\+]+)(?P<suffix>.*)?$"
+local_scheme = "no-local-version"
 
 [tool.check-manifest]
 ignore = [
