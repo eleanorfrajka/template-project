@@ -7,7 +7,7 @@
 Welcome to projectName's documentation!
 ======================================
 
-`template-project` is a repository to demonstrate the structure of a Python project `projectName`, the use of git via Github for collaborative coding, GitHub Actions for running tests and building documentation, and deploying the documentation on GitHub Pages.
+`template-project` is a repository to demonstrate the structure of a Python project `template-project`, the use of git via Github for collaborative coding, GitHub Actions for running tests and building documentation, and deploying the documentation on GitHub Pages.
 
 For recommendations or bug reports, please visit https://github.com/eleanorfrajka/template-project/issues/new
 
@@ -20,6 +20,7 @@ For recommendations or bug reports, please visit https://github.com/eleanorfrajk
    gitcollab.md
    github.md
    gitorg.md
+   pypi-publish.md
 
 
 .. toctree::
@@ -33,7 +34,7 @@ For recommendations or bug reports, please visit https://github.com/eleanorfrajk
    :maxdepth: 3
    :caption: Help and reference
 
-   projectName
+   template-project
    faq
 
 Indices and tables

@@ -6,7 +6,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>template_project.writers &mdash; template_project v0.0.0 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
 
   
@@ -47,10 +47,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../../gitcollab.html">Collaborating with git: Basic workflow</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../github.html">Extra GitHub features: Actions &amp; Pages</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../gitorg.html">Transferring to an Organisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pypi-publish.html">Publishing to PyPi</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Users guide</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../demo-output.html">projectName demo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../demo-output.html">template-project demo</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Help and reference</span></p>
 <ul>
@@ -82,13 +83,13 @@
            <div itemprop="articleBody">
              
   <h1>Source code for template_project.writers</h1><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
-<span class="kn">from</span> <span class="nn">numbers</span> <span class="kn">import</span> <span class="n">Number</span>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xr</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">numbers</span><span class="w"> </span><span class="kn">import</span> <span class="n">Number</span>
 
 <div class="viewcode-block" id="save_dataset">
 <a class="viewcode-back" href="../../template_project.html#template_project.writers.save_dataset">[docs]</a>
-<span class="k">def</span> <span class="nf">save_dataset</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="n">output_file</span><span class="o">=</span><span class="s1">&#39;../test.nc&#39;</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">save_dataset</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="n">output_file</span><span class="o">=</span><span class="s1">&#39;../test.nc&#39;</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Attempts to save the dataset to a NetCDF file. If a TypeError occurs due to invalid attribute values,</span>
 <span class="sd">    it converts the invalid attributes to strings and retries the save operation.</span>
@@ -137,7 +138,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2024, FirstName LastName, FirstName LastName.</p>
+    <p>&#169; Copyright 2025, FirstName LastName, FirstName LastName.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

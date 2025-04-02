@@ -7,7 +7,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Welcome to projectName’s documentation! &mdash; template_project v0.0.0 documentation</title>
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
 
   
@@ -17,8 +17,6 @@
       <script src="_static/doctools.js?v=9bcbadda"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
       <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -51,10 +49,11 @@
 <li class="toctree-l1"><a class="reference internal" href="gitcollab.html">Collaborating with git: Basic workflow</a></li>
 <li class="toctree-l1"><a class="reference internal" href="github.html">Extra GitHub features: Actions &amp; Pages</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gitorg.html">Transferring to an Organisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pypi-publish.html">Publishing to PyPi</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Users guide</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="demo-output.html">projectName demo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="demo-output.html">template-project demo</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Help and reference</span></p>
 <ul>
@@ -87,7 +86,7 @@
              
   <section id="welcome-to-projectname-s-documentation">
 <h1>Welcome to projectName’s documentation!<a class="headerlink" href="#welcome-to-projectname-s-documentation" title="Link to this heading"></a></h1>
-<p><cite>template-project</cite> is a repository to demonstrate the structure of a Python project <cite>projectName</cite>, the use of git via Github for collaborative coding, GitHub Actions for running tests and building documentation, and deploying the documentation on GitHub Pages.</p>
+<p><cite>template-project</cite> is a repository to demonstrate the structure of a Python project <cite>template-project</cite>, the use of git via Github for collaborative coding, GitHub Actions for running tests and building documentation, and deploying the documentation on GitHub Pages.</p>
 <p>For recommendations or bug reports, please visit <a class="reference external" href="https://github.com/eleanorfrajka/template-project/issues/new">https://github.com/eleanorfrajka/template-project/issues/new</a></p>
 <div class="toctree-wrapper compound">
 <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
@@ -125,18 +124,33 @@
 <li class="toctree-l3"><a class="reference internal" href="github.html#creating-docs-with-sphinx">Creating docs with sphinx</a></li>
 <li class="toctree-l3"><a class="reference internal" href="github.html#workflows-to-build-documentation">Workflows to build documentation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="github.html#getting-docs-as-a-github-pages">Getting docs as a GitHub Pages</a></li>
-<li class="toctree-l3"><a class="reference internal" href="github.html#activating-github-io-projectname">Activating `github.io/projectName’</a></li>
+<li class="toctree-l3"><a class="reference internal" href="github.html#activating-github-io-template-project">Activating `github.io/template-project’</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="gitorg.html">Transferring to an Organisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pypi-publish.html">Publishing to PyPi</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pypi-publish.html#creating-the-package-files">Creating the package files</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pypi-publish.html#choosing-a-build-backend">Choosing a build backend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pypi-publish.html#configuring-metadata">Configuring metadata</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pypi-publish.html#generating-distribution-archives">Generating distribution archives</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pypi-publish.html#uploading-the-distribution-archives">Uploading the distribution archives</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pypi-publish.html#first-time-test-it-on-testpypi-first">First time: Test it on testpypi first</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pypi-publish.html#going-live-on-pypi">Going live on pypi</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pypi-publish.html#allowing-github-releases-to-update-the-project-on-pypi">Allowing Github releases to update the project on PyPi</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </div>
 <div class="toctree-wrapper compound">
 <p class="caption" role="heading"><span class="caption-text">Users guide</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="demo-output.html">projectName demo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="demo-output.html">template-project demo</a></li>
 </ul>
 </div>
 <div class="toctree-wrapper compound">
@@ -170,7 +184,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2024, FirstName LastName, FirstName LastName.</p>
+    <p>&#169; Copyright 2025, FirstName LastName, FirstName LastName.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

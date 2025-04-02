@@ -6,7 +6,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>template_project.plotters &mdash; template_project v0.0.0 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
 
   
@@ -47,10 +47,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../../gitcollab.html">Collaborating with git: Basic workflow</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../github.html">Extra GitHub features: Actions &amp; Pages</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../gitorg.html">Transferring to an Organisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pypi-publish.html">Publishing to PyPi</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Users guide</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../demo-output.html">projectName demo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../demo-output.html">template-project demo</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Help and reference</span></p>
 <ul>
@@ -82,19 +83,19 @@
            <div itemprop="articleBody">
              
   <h1>Source code for template_project.plotters</h1><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
-<span class="kn">from</span> <span class="nn">pandas</span> <span class="kn">import</span> <span class="n">DataFrame</span>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xr</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="kn">import</span> <span class="n">DataFrame</span>
 
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 
 <span class="c1">##------------------------------------------------------------------------------------</span>
 <span class="c1">## Views of the ds or nc file</span>
 <span class="c1">##------------------------------------------------------------------------------------</span>
 <div class="viewcode-block" id="show_contents">
 <a class="viewcode-back" href="../../template_project.html#template_project.plotters.show_contents">[docs]</a>
-<span class="k">def</span> <span class="nf">show_contents</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">content_type</span><span class="o">=</span><span class="s1">&#39;variables&#39;</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">show_contents</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">content_type</span><span class="o">=</span><span class="s1">&#39;variables&#39;</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Wrapper function to show contents of an xarray Dataset or a netCDF file.</span>
 <span class="sd">    </span>
@@ -125,7 +126,7 @@
 
 <div class="viewcode-block" id="show_variables">
 <a class="viewcode-back" href="../../template_project.html#template_project.plotters.show_variables">[docs]</a>
-<span class="k">def</span> <span class="nf">show_variables</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">show_variables</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Processes an xarray Dataset or a netCDF file, extracts variable information, </span>
 <span class="sd">    and returns a styled DataFrame with details about the variables.</span>
@@ -140,8 +141,8 @@
 <span class="sd">        - units: The units of the variable (if available).</span>
 <span class="sd">        - comment: Any additional comments about the variable (if available).</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="kn">from</span> <span class="nn">pandas</span> <span class="kn">import</span> <span class="n">DataFrame</span>
-    <span class="kn">from</span> <span class="nn">netCDF4</span> <span class="kn">import</span> <span class="n">Dataset</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="kn">import</span> <span class="n">DataFrame</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">netCDF4</span><span class="w"> </span><span class="kn">import</span> <span class="n">Dataset</span>
 
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;information is based on file: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
@@ -193,7 +194,7 @@
 
 <div class="viewcode-block" id="show_attributes">
 <a class="viewcode-back" href="../../template_project.html#template_project.plotters.show_attributes">[docs]</a>
-<span class="k">def</span> <span class="nf">show_attributes</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">show_attributes</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Processes an xarray Dataset or a netCDF file, extracts attribute information, </span>
 <span class="sd">    and returns a DataFrame with details about the attributes.</span>
@@ -206,8 +207,8 @@
 <span class="sd">        - Attribute: The name of the attribute.</span>
 <span class="sd">        - Value: The value of the attribute.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="kn">from</span> <span class="nn">pandas</span> <span class="kn">import</span> <span class="n">DataFrame</span>
-    <span class="kn">from</span> <span class="nn">netCDF4</span> <span class="kn">import</span> <span class="n">Dataset</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="kn">import</span> <span class="n">DataFrame</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">netCDF4</span><span class="w"> </span><span class="kn">import</span> <span class="n">Dataset</span>
 
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;information is based on file: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
@@ -237,7 +238,7 @@
 
 <div class="viewcode-block" id="show_variables_by_dimension">
 <a class="viewcode-back" href="../../template_project.html#template_project.plotters.show_variables_by_dimension">[docs]</a>
-<span class="k">def</span> <span class="nf">show_variables_by_dimension</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">dimension_name</span><span class="o">=</span><span class="s1">&#39;trajectory&#39;</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">show_variables_by_dimension</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">dimension_name</span><span class="o">=</span><span class="s1">&#39;trajectory&#39;</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Processes an xarray Dataset or a netCDF file, extracts variable information,</span>
 <span class="sd">    and returns a styled DataFrame with details about the variables filtered by a specific dimension.</span>
@@ -311,7 +312,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2024, FirstName LastName, FirstName LastName.</p>
+    <p>&#169; Copyright 2025, FirstName LastName, FirstName LastName.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
