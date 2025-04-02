@@ -205,7 +205,7 @@ The last step "Deploy" generates or updates the `gh-pages` branch: https://githu
 ```
 This uses the GitHub Action `peaceiris/actions-gh-pages@v4` (https://github.com/marketplace/actions/github-pages-action).
 
-##### Activating `github.io/projectName'
+##### Activating `github.io/template-project'
 
 You'll know you're ready for this step when, from the main Github website for the repository (e.g. https;//github.com/eleanorfrajka/template-project/) if you click the drop-down button in the upper left quadrant that says "main", you can scroll through and find the branch "gh-pages".
 
