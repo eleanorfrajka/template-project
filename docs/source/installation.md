@@ -3,7 +3,7 @@
 Since the project in this template isn't really designed to be installed, instead these instructions describe how to get started: first, with a copy (clone) of this repository, and second (after renaming the repository to suit your purposes), how to work with the new repository in a collaborative way (i.e., enabling other people to contribute to your repository).
 
 ## Option 1: Copy this repository as a template for your project
-To copy the repository for your own purposes (e.g., to rename "projectName" to your project) rather than to suggest edits to this template, follow these steps:
+To copy the repository for your own purposes (e.g., to rename "template-project" to your project) rather than to suggest edits to this template, follow these steps:
 
 1. Clone template-project to your local machine: 
     With a command line usage of git, this looks like:
