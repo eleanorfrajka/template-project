@@ -21,7 +21,7 @@ For recommendations or bug reports, please visit https://github.com/eleanorfrajk
    github.md
    gitorg.md
    pypi-publish.md
-
+   citation.md
 
 .. toctree::
    :maxdepth: 3
