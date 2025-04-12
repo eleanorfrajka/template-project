@@ -180,10 +180,9 @@ This is my standard workflow for preparing and publishing a new version of a Pyt
 ## ✅ Workflow Steps
 
 ### 🔀 1. Merge your PRs to `main`
-Ensure all desired changes are merged into the upstream `main` branch.
+Ensure all desired changes are merged into the `main` branch.
 
-If you're working in a fork, make sure on github.com you sync your forked `main` to upstream `main`.
-
+If you're working in a fork from the upstream, sync your main to upstream main on Github.com
 ---
 
 ### 🖥 2. On your local machine
