@@ -16,3 +16,5 @@ version: 0.0.2
 date-released: 2025-04-12
 url: https://github.com/AMOCcommunity/amocarray
 ```
+
+Once you add this to your repository, you'll see an extra "Cite this repository" entry in the right sidebar under the **About** for the repository.
