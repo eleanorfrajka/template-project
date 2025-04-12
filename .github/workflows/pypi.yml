@@ -21,41 +21,34 @@ permissions:
 jobs:
   release-build:
     runs-on: ubuntu-latest
-    environment: release
+    environment: test
     permissions:
       id-token: write
+
     steps:
-    - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+          fetch-depth: 0
 
-    - name: Set up Python
-      uses: actions/setup-python@v5
-      with:
-        python-version: "3.x"
+      - name: Clean repository before build
+        run: git clean -fxd
 
-    - name: Get tags
-      run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*
-      shell: bash
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
 
-    - name: Install build tools
-      run: |
-        python -m pip install --upgrade pip wheel setuptools setuptools_scm build twine
+      - name: Install build tools
+        run: |
+          python -m pip install --upgrade pip wheel setuptools setuptools_scm build twine
 
-      shell: bash
+      - name: Build package
+        run: python -m build --sdist --wheel . --outdir dist
 
-    - name: Build binary wheel
-      run: python -m build --sdist --wheel . --outdir dist
+      - name: Check built distributions
+        run: python -m twine check dist/*
 
-    - name: CheckFiles
-      run: |
-        ls dist
-      shell: bash
-
-    - name: Test wheels
-      run: |
-        cd dist && python -m pip install *.whl
-        python -m twine check *
-      shell: bash
-
-    - name: Publish a Python distribution to PyPI
-      if: success() && github.event_name == 'release'
-      uses: pypa/gh-action-pypi-publish@release/v1
+      - name: Publish to PyPI
+        if: success() && github.event_name == 'release'
+        uses: pypa/gh-action-pypi-publish@release/v1
