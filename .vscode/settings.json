@@ -5,8 +5,19 @@
     "editor.formatOnSave": true,
     // Automatically organize imports on save (isort)
     "editor.codeActionsOnSave": {
-        "source.organizeImports": true
+        "source.organizeImports": "explicit"
     },
     // Optional: set Python interpreter if you want to lock to your virtual environment
     // "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python"
+    // === Run pre-commit on save ===
+    "emeraldwalk.runonsave": {
+        "commands": [
+            {
+                "match": ".*",
+                "isAsync": true,
+                "cmd": "source ./venv/bin/activate && pre-commit run --all-files"
+            }
+        ]
+    },
+    "jupyter.interactiveWindow.creationMode": "perFile"
 }

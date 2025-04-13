@@ -2,9 +2,9 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "Pre-commit: hooks & staging",
+            "label": "Pre-commit: run all hooks",
             "type": "shell",
-            "command": "pre-commit run --all-files && git add .",
+            "command": "source ./venv/bin/activate && pre-commit run --all-files",
             "problemMatcher": [],
             "group": {
                 "kind": "build",
