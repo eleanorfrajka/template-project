@@ -1,10 +1,11 @@
-from datetime import datetime
-
 import gsw
 import numpy as np
-import pandas as pd
 import xarray as xr
+import re
+import logging
 
+# Initialize logging
+_log = logging.getLogger(__name__)
 # Various conversions from the key to units_name with the multiplicative conversion factor
 unit_conversion = {
     "cm/s": {"units_name": "m/s", "factor": 0.01},
@@ -17,11 +18,9 @@ unit_conversion = {
     "mS cm-1": {"units_name": "S m-1", "factor": 10},
     "dbar": {"units_name": "Pa", "factor": 10000},
     "Pa": {"units_name": "dbar", "factor": 0.0001},
-    "dbar": {"units_name": "kPa", "factor": 10},
     "degrees_Celsius": {"units_name": "Celsius", "factor": 1},
     "Celsius": {"units_name": "degrees_Celsius", "factor": 1},
     "m": {"units_name": "cm", "factor": 100},
-    "m": {"units_name": "km", "factor": 0.001},
     "cm": {"units_name": "m", "factor": 0.01},
     "km": {"units_name": "m", "factor": 1000},
     "g m-3": {"units_name": "kg m-3", "factor": 0.001},

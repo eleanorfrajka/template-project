@@ -20,5 +20,5 @@ sphinx-rtd-theme
 pypandoc
 myst-nb
 black[jupyter]
-isort
 pre-commit
+ruff

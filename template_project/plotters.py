@@ -1,6 +1,3 @@
-import matplotlib.pyplot as plt
-import numpy as np
-import pandas as pd
 import xarray as xr
 from pandas import DataFrame
 
@@ -54,12 +51,11 @@ def show_variables(data):
         - units: The units of the variable (if available).
         - comment: Any additional comments about the variable (if available).
     """
-    from netCDF4 import Dataset
     from pandas import DataFrame
 
     if isinstance(data, str):
         print("information is based on file: {}".format(data))
-        dataset = Dataset(data)
+        dataset = xr.Dataset(data)
         variables = dataset.variables
     elif isinstance(data, xr.Dataset):
         print("information is based on xarray Dataset")

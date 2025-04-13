@@ -7,14 +7,6 @@ repos:
         files: \.(py|ipynb)$
         exclude: ^data/
 
-  - repo: https://github.com/pycqa/isort
-    rev: 5.13.2
-    hooks:
-      - id: isort
-        language_version: python3
-        files: \.(py|ipynb)$
-        exclude: ^data/
-
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.5.0
     hooks:
@@ -29,10 +21,9 @@ repos:
         exclude: ^data/
       - id: check-added-large-files
 
-  #  - repo: local
-  #    hooks:
-  #      - id: pytest
-  #        name: pytest
-  #        entry: pytest
-  #        language: system
-  #        types: [python]
+  - repo: https://github.com/charliermarsh/ruff-pre-commit
+    rev: v0.3.0
+    hooks:
+      - id: ruff
+        args: ["--fix", "--exit-zero"]
+        exclude: ^data/

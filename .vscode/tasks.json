@@ -1,0 +1,21 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Pre-commit: hooks & staging",
+            "type": "shell",
+            "command": "pre-commit run --all-files && git add .",
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "dedicated"
+                // Uncomment the next line to auto-close terminal on success:
+                // "close": true
+            }
+        }
+    ]
+}
