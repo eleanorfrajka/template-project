@@ -9,6 +9,7 @@ gsw
 matplotlib
 cartopy
 cmocean 
+importlib_resources
 jupyterlab
 pytest
 pytest-cov
@@ -18,3 +19,6 @@ sphinx
 sphinx-rtd-theme
 pypandoc
 myst-nb
+black[jupyter]
+pre-commit
+ruff

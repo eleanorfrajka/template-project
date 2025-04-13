@@ -1,0 +1,21 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Pre-commit: run all hooks",
+            "type": "shell",
+            "command": "source ./venv/bin/activate && pre-commit run --all-files",
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "dedicated"
+                // Uncomment the next line to auto-close terminal on success:
+                // "close": true
+            }
+        }
+    ]
+}
