@@ -1,0 +1,12 @@
+{
+    // Use Black as the Python formatter
+    "python.formatting.provider": "black",
+    // Format files automatically on save
+    "editor.formatOnSave": true,
+    // Automatically organize imports on save (isort)
+    "editor.codeActionsOnSave": {
+        "source.organizeImports": true
+    },
+    // Optional: set Python interpreter if you want to lock to your virtual environment
+    // "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python"
+}

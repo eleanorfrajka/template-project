@@ -1,9 +1,10 @@
-import xarray as xr
 import os
-from bs4 import BeautifulSoup
-import requests
-from importlib_resources import files
+
 import pooch
+import requests
+import xarray as xr
+from bs4 import BeautifulSoup
+from importlib_resources import files
 
 # readers.py: Will only read files.  Not manipulate them.
 #
@@ -13,9 +14,9 @@ import pooch
 # mylist = fetchers.list_files_in_https_server(server)
 # fetchers.create_pooch_registry_from_directory("/Users/eddifying/Dropbox/data/sg015-ncei-download/")
 # Example usage
-#directory_path = "/Users/eddifying/Dropbox/data/sg015-ncei-snippet"
-#pooch_registry = create_pooch_registry_from_directory(directory_path)
-#print(pooch_registry)
+# directory_path = "/Users/eddifying/Dropbox/data/sg015-ncei-snippet"
+# pooch_registry = create_pooch_registry_from_directory(directory_path)
+# print(pooch_registry)
 
 # Information on creating a registry file: https://www.fatiando.org/pooch/latest/registry-files.html
 # But instead of pkg_resources (https://setuptools.pypa.io/en/latest/pkg_resources.html#)
@@ -28,8 +29,9 @@ data_source_og = pooch.create(
     base_url=server,
     registry=None,
 )
-registry_file = files('seagliderOG1').joinpath('seaglider_registry.txt')
+registry_file = files("seagliderOG1").joinpath("seaglider_registry.txt")
 data_source_og.load_registry(registry_file)
+
 
 def load_sample_dataset(dataset_name="p0040034_20031007.nc"):
     if dataset_name in data_source_og.registry.keys():
@@ -59,7 +61,7 @@ def read_basestation(source, start_profile=None, end_profile=None):
             base_url=source,
             registry=None,
         )
-        registry_file = files('seagliderOG1').joinpath('seaglider_registry.txt')
+        registry_file = files("seagliderOG1").joinpath("seaglider_registry.txt")
         data_source_og.load_registry(registry_file)
 
         # List all files in the URL directory
@@ -70,7 +72,7 @@ def read_basestation(source, start_profile=None, end_profile=None):
         raise ValueError("Source must be a valid URL or directory path.")
 
     filtered_files = filter_files_by_profile(file_list, start_profile, end_profile)
-    
+
     datasets = []
 
     for file in filtered_files:
@@ -78,10 +80,11 @@ def read_basestation(source, start_profile=None, end_profile=None):
             ds = load_sample_dataset(file)
         else:
             ds = xr.open_dataset(os.path.join(source, file))
-        
+
         datasets.append(ds)
 
     return datasets
+
 
 def list_files_in_https_server(url):
     """
@@ -106,6 +109,7 @@ def list_files_in_https_server(url):
 
     return files
 
+
 def create_pooch_registry_from_directory(directory):
     """
     Create a Pooch registry from files in a specified directory.
@@ -126,4 +130,3 @@ def create_pooch_registry_from_directory(directory):
             registry[file] = f"sha256:{sha256_hash}"
 
     return registry
-

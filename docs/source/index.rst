@@ -22,6 +22,8 @@ For recommendations or bug reports, please visit https://github.com/eleanorfrajk
    gitorg.md
    pypi-publish.md
    citation.md
+   code_style.md
+   precommit_setup.md
 
 .. toctree::
    :maxdepth: 3
