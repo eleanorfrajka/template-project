@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pre-commit Hook Setup &mdash; template_project v0.0.0 documentation</title>
+  <title>Setting Up Pre-commit Hooks &mdash; template_project v0.0.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
 
@@ -19,7 +19,9 @@
       <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" /> 
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="GitHub Actions: Automating Your Project" href="actions_overview.html" />
+    <link rel="prev" title="Building Documentation Locally" href="build_docs.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -55,11 +57,28 @@
 <li class="toctree-l1"><a class="reference internal" href="gitcollab_v2.html">Collaborating on Someone Else’s Repository</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Development Guide</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="style_guide.html">Project Style Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="writing_tests.html">Writing and Running Tests</a></li>
 <li class="toctree-l1"><a class="reference internal" href="build_docs.html">Building Documentation Locally</a></li>
-<li class="toctree-l1"><a class="reference internal" href="precommit_guide.html">Setting Up Pre-commit Hooks</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Setting Up Pre-commit Hooks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#what-are-pre-commit-hooks">🧠 What Are Pre-commit Hooks?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#step-by-step-setup">⚙️ Step-by-step Setup</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#add-pre-commit-to-your-dev-requirements">1. Add <code class="docutils literal notranslate"><span class="pre">pre-commit</span></code> to your dev requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#create-pre-commit-config-yaml">2. Create <code class="docutils literal notranslate"><span class="pre">.pre-commit-config.yaml</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#install-the-hooks">3. Install the hooks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#test-the-setup">4. Test the setup</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#using-pre-commit-in-your-workflow">💻 Using Pre-commit in Your Workflow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#terminal-workflow">🧑‍💻 Terminal workflow:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#vscode-workflow">🧑‍🎨 VSCode workflow:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#cheatsheet">📋 Cheatsheet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#learn-more">🔗 Learn More</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="actions_overview.html">GitHub Actions: Automating Your Project</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Project Management</span></p>
@@ -93,9 +112,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Pre-commit Hook Setup</li>
+      <li class="breadcrumb-item active">Setting Up Pre-commit Hooks</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="_sources/precommit_setup.md.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/precommit_guide.md.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -103,36 +122,36 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="pre-commit-hook-setup">
-<h1>Pre-commit Hook Setup<a class="headerlink" href="#pre-commit-hook-setup" title="Link to this heading"></a></h1>
-<p>This document captures the setup and workflow for using <strong>pre-commit hooks</strong> in this project. Pre-commit hooks automate code formatting and quality checks before every commit, keeping the repository clean and consistent.</p>
-<p>There is also a separate document for code formatting tools specifically: <em>see “Code Formatting with Black and isort” for details on those tools.</em></p>
+  <section id="setting-up-pre-commit-hooks">
+<h1>Setting Up Pre-commit Hooks<a class="headerlink" href="#setting-up-pre-commit-hooks" title="Link to this heading"></a></h1>
+<blockquote>
+<div><p>🔄 Pre-commit hooks help keep your code clean. They automatically format, lint, and check your files <em>before</em> a commit is made — reducing review time and improving consistency.</p>
+</div></blockquote>
+<p>This guide walks you through setting up <code class="docutils literal notranslate"><span class="pre">pre-commit</span></code> in your project using the configuration in <code class="docutils literal notranslate"><span class="pre">template-project</span></code>.</p>
 <hr class="docutils" />
-<section id="purpose-of-pre-commit-hooks">
-<h2>Purpose of Pre-commit Hooks<a class="headerlink" href="#purpose-of-pre-commit-hooks" title="Link to this heading"></a></h2>
+<section id="what-are-pre-commit-hooks">
+<h2>🧠 What Are Pre-commit Hooks?<a class="headerlink" href="#what-are-pre-commit-hooks" title="Link to this heading"></a></h2>
 <ul class="simple">
-<li><p><strong>What it does:</strong> Automatically runs code formatters and linters (Black, isort, and more) every time you commit code.</p></li>
-<li><p><strong>Why it’s useful:</strong> Ensures consistency, catches formatting issues early, and automates tedious tasks.</p></li>
-<li><p><strong>Current hooks include:</strong></p>
-<ul>
-<li><p><strong>Black</strong> — Format Python and Jupyter notebooks.</p></li>
-<li><p><strong>isort</strong> — Sort Python imports.</p></li>
-<li><p><strong>End of file fixer</strong> — Ensure files end with a newline.</p></li>
-<li><p><strong>Trailing whitespace remover</strong> — Clean up accidental trailing spaces.</p></li>
-<li><p><strong>YAML checks</strong> — Validate YAML syntax.</p></li>
-<li><p><strong>Large file check</strong> — Prevent accidental commits of large files.</p></li>
+<li><p>Pre-commit hooks run <strong>automatically</strong> when you try to commit code.</p></li>
+<li><p>They check or fix things like formatting, linting, or large file commits.</p></li>
+<li><p>They help prevent messy code or accidental mistakes before it reaches your repository.</p></li>
 </ul>
-</li>
+<p>This project includes hooks for:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">black</span></code> — autoformatting Python code and notebooks</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">codespell</span></code> — catch common misspellings in comments and strings</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ruff</span></code> — fast linting and optional autofixing</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pytest</span></code> — run tests before committing</p></li>
+<li><p>Cleanup tools: end-of-file fixer, trailing whitespace, YAML syntax checks</p></li>
 </ul>
-<p>Later, you can also add test runners (like pytest) and linters!</p>
 </section>
 <hr class="docutils" />
-<section id="installation-and-setup">
-<h2>Installation and Setup<a class="headerlink" href="#installation-and-setup" title="Link to this heading"></a></h2>
-<section id="add-to-requirements-dev-txt">
-<h3>1. Add to <code class="docutils literal notranslate"><span class="pre">requirements-dev.txt</span></code><a class="headerlink" href="#add-to-requirements-dev-txt" title="Link to this heading"></a></h3>
-<p>Add <strong>pre-commit</strong> to your dev requirements:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pre</span><span class="o">-</span><span class="n">commit</span>
+<section id="step-by-step-setup">
+<h2>⚙️ Step-by-step Setup<a class="headerlink" href="#step-by-step-setup" title="Link to this heading"></a></h2>
+<section id="add-pre-commit-to-your-dev-requirements">
+<h3>1. Add <code class="docutils literal notranslate"><span class="pre">pre-commit</span></code> to your dev requirements<a class="headerlink" href="#add-pre-commit-to-your-dev-requirements" title="Link to this heading"></a></h3>
+<p>Make sure your <code class="docutils literal notranslate"><span class="pre">requirements-dev.txt</span></code> includes:</p>
+<div class="highlight-txt notranslate"><div class="highlight"><pre><span></span>pre-commit
 </pre></div>
 </div>
 <p>Then install:</p>
@@ -142,7 +161,7 @@
 </section>
 <section id="create-pre-commit-config-yaml">
 <h3>2. Create <code class="docutils literal notranslate"><span class="pre">.pre-commit-config.yaml</span></code><a class="headerlink" href="#create-pre-commit-config-yaml" title="Link to this heading"></a></h3>
-<p>Create this file at the root of your project with the following content:</p>
+<p>At the root of your project, use:</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">repos</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">repo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/psf/black</span>
 <span class="w">    </span><span class="nt">rev</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">24.3.0</span>
@@ -150,15 +169,13 @@
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">black</span>
 <span class="w">        </span><span class="nt">language_version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python3</span>
 <span class="w">        </span><span class="nt">files</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">\.(py|ipynb)$</span>
-<span class="w">        </span><span class="nt">exclude</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^data/|\.txt$</span>
-
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">repo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/pycqa/isort</span>
-<span class="w">    </span><span class="nt">rev</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5.13.2</span>
-<span class="w">    </span><span class="nt">hooks</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">isort</span>
-<span class="w">        </span><span class="nt">language_version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python3</span>
-<span class="w">        </span><span class="nt">files</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">\.(py|ipynb)$</span>
 <span class="w">        </span><span class="nt">exclude</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^data/</span>
+
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">repo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/codespell-project/codespell</span>
+<span class="w">    </span><span class="nt">rev</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v2.2.6</span>
+<span class="w">    </span><span class="nt">hooks</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">codespell</span>
+<span class="w">        </span><span class="nt">args</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;--ignore-words-list&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;nd&quot;</span><span class="p p-Indicator">]</span>
 
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">repo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/pre-commit/pre-commit-hooks</span>
 <span class="w">    </span><span class="nt">rev</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v4.5.0</span>
@@ -173,127 +190,79 @@
 <span class="w">        </span><span class="nt">files</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">\.(yaml|yml)$</span>
 <span class="w">        </span><span class="nt">exclude</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^data/</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">check-added-large-files</span>
+
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">repo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">local</span>
+<span class="w">    </span><span class="nt">hooks</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pytest</span>
+<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pytest</span>
+<span class="w">        </span><span class="nt">entry</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pytest -q</span>
+<span class="w">        </span><span class="nt">language</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">system</span>
+<span class="w">        </span><span class="nt">types</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">python</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="nt">exclude</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^data/</span>
+
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">repo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/charliermarsh/ruff-pre-commit</span>
+<span class="w">    </span><span class="nt">rev</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v0.3.0</span>
+<span class="w">    </span><span class="nt">hooks</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ruff</span>
+<span class="w">        </span><span class="nt">args</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;--fix&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;--exit-zero&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;--select&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;E,F,W,C90,ANN,B,BLE,TRY,ARG,SLF&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="nt">exclude</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^data/</span>
 </pre></div>
 </div>
-<p><strong>Why exclude <code class="docutils literal notranslate"><span class="pre">.txt</span></code> files from Black?</strong></p>
 <blockquote>
-<div><p><code class="docutils literal notranslate"><span class="pre">.txt</span></code> files often contain data or formatted text where whitespace is meaningful (e.g., aligned tables, scientific data dumps). Black aggressively reformats whitespace, so we explicitly exclude <code class="docutils literal notranslate"><span class="pre">.txt</span></code> files to avoid corrupting data formatting.</p>
+<div><p>💡 Files in <code class="docutils literal notranslate"><span class="pre">data/</span></code> are excluded to avoid disrupting raw or structured data.</p>
 </div></blockquote>
 </section>
-<section id="install-pre-commit-hooks">
-<h3>3. Install pre-commit hooks<a class="headerlink" href="#install-pre-commit-hooks" title="Link to this heading"></a></h3>
-<p>Run this once to install hooks into your Git configuration:</p>
+<section id="install-the-hooks">
+<h3>3. Install the hooks<a class="headerlink" href="#install-the-hooks" title="Link to this heading"></a></h3>
+<p>Once per project:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pre-commit<span class="w"> </span>install
 </pre></div>
 </div>
+<p>This enables hooks to run automatically when you commit.</p>
 </section>
-<section id="test-pre-commit-before-committing">
-<h3>4. Test pre-commit before committing<a class="headerlink" href="#test-pre-commit-before-committing" title="Link to this heading"></a></h3>
-<p>Before making real commits, you can safely test:</p>
+<section id="test-the-setup">
+<h3>4. Test the setup<a class="headerlink" href="#test-the-setup" title="Link to this heading"></a></h3>
+<p>You can manually run all hooks like this:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pre-commit<span class="w"> </span>run<span class="w"> </span>--all-files
 </pre></div>
 </div>
-<p>You can also create a test branch for safety:</p>
+<p>To test safely:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>test/pre-commit-check
 pre-commit<span class="w"> </span>run<span class="w"> </span>--all-files
 </pre></div>
 </div>
-<p>If you’re not happy with the changes, simply discard the branch:</p>
+<p>And to discard:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>branch<span class="w"> </span>-D<span class="w"> </span>test/pre-commit-check
 </pre></div>
 </div>
 </section>
 </section>
 <hr class="docutils" />
-<section id="workflow-notes">
-<h2>Workflow Notes<a class="headerlink" href="#workflow-notes" title="Link to this heading"></a></h2>
-<section id="for-terminal-users">
-<h3>For <strong>terminal users</strong>:<a class="headerlink" href="#for-terminal-users" title="Link to this heading"></a></h3>
-<ol class="arabic">
-<li><p>Make your code changes.</p></li>
-<li><p>Stage changes:</p>
+<section id="using-pre-commit-in-your-workflow">
+<h2>💻 Using Pre-commit in Your Workflow<a class="headerlink" href="#using-pre-commit-in-your-workflow" title="Link to this heading"></a></h2>
+<section id="terminal-workflow">
+<h3>🧑‍💻 Terminal workflow:<a class="headerlink" href="#terminal-workflow" title="Link to this heading"></a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>add<span class="w"> </span>.
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;msg&quot;</span>
 </pre></div>
 </div>
-</li>
-<li><p>Commit:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Your message&quot;</span>
-</pre></div>
-</div>
-</li>
-<li><p>Pre-commit hooks will run automatically. If hooks modify files, you will need to re-stage and re-commit.</p></li>
-<li><p>Optional: run pre-commit manually at any time:</p></li>
-</ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pre-commit<span class="w"> </span>run<span class="w"> </span>--all-files
-</pre></div>
-</div>
+<p>Hooks run automatically on commit. If a hook modifies files, stage the changes again and re-commit.</p>
 </section>
-<section id="for-vscode-users">
-<h3>For <strong>VSCode users</strong>:<a class="headerlink" href="#for-vscode-users" title="Link to this heading"></a></h3>
+<section id="vscode-workflow">
+<h3>🧑‍🎨 VSCode workflow:<a class="headerlink" href="#vscode-workflow" title="Link to this heading"></a></h3>
 <ul class="simple">
-<li><p>Do your editing as normal.</p></li>
-<li><p><strong>Before staging/committing</strong>, run your pre-commit task:</p>
-<ul>
-<li><p>Use your keyboard shortcut (e.g., <code class="docutils literal notranslate"><span class="pre">Cmd+Shift+R</span></code>) <strong>or</strong></p></li>
-<li><p>Click the status bar task button (if you’ve set this up).</p></li>
+<li><p>Save your files</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">Cmd+Shift+R</span></code> or your custom VSCode task</p></li>
+<li><p>Stage and commit via Source Control panel</p></li>
 </ul>
-</li>
-<li><p>After running the task, stage changes and commit in the VSCode Git panel.</p></li>
-</ul>
-<p>Optional reminder: if you try to commit in VSCode and pre-commit modifies files, you’ll need to stage the changes again before the commit goes through!</p>
+<blockquote>
+<div><p>🧠 Tip: If a hook modifies your file, VSCode may show it as changed again — just stage and commit once more.</p>
+</div></blockquote>
 </section>
 </section>
 <hr class="docutils" />
-<section id="adding-pytest-to-pre-commit-optional">
-<h2>Adding Pytest to Pre-commit (Optional)<a class="headerlink" href="#adding-pytest-to-pre-commit-optional" title="Link to this heading"></a></h2>
-<p>You can also add automated test runs to your pre-commit hooks.</p>
-<ol class="arabic simple">
-<li><p>Install pytest if you haven’t already:</p></li>
-</ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>pytest
-</pre></div>
-</div>
-<ol class="arabic simple" start="2">
-<li><p>Add this to your <code class="docutils literal notranslate"><span class="pre">.pre-commit-config.yaml</span></code>:</p></li>
-</ol>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">repo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">local</span>
-<span class="w">    </span><span class="nt">hooks</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pytest</span>
-<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pytest</span>
-<span class="w">        </span><span class="nt">entry</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pytest</span>
-<span class="w">        </span><span class="nt">language</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">system</span>
-<span class="w">        </span><span class="nt">types</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">python</span><span class="p p-Indicator">]</span>
-</pre></div>
-</div>
-<ol class="arabic simple" start="3">
-<li><p>Now, tests will automatically run before every commit!</p></li>
-</ol>
-</section>
-<hr class="docutils" />
-<section id="notes">
-<h2>Notes<a class="headerlink" href="#notes" title="Link to this heading"></a></h2>
-<ul class="simple">
-<li><p><strong>Data files and <code class="docutils literal notranslate"><span class="pre">.txt</span></code> files are excluded from pre-commit hooks.</strong></p>
-<ul>
-<li><p>Files in <code class="docutils literal notranslate"><span class="pre">data/</span></code> and any <code class="docutils literal notranslate"><span class="pre">.txt</span></code> files are considered read-only and are intentionally excluded from automatic formatting or cleanup.</p></li>
-<li><p>These files often contain meaningful whitespace (e.g., alignment in scientific data or structured text formats) that should not be changed automatically.</p></li>
-</ul>
-</li>
-<li><p><strong>Manual pre-commit runs are safe.</strong></p>
-<ul>
-<li><p>You can run <code class="docutils literal notranslate"><span class="pre">pre-commit</span> <span class="pre">run</span> <span class="pre">--all-files</span></code> anytime to pre-clean your repository.</p></li>
-</ul>
-</li>
-<li><p><strong>Pre-commit helps enforce consistency.</strong></p>
-<ul>
-<li><p>Even if one contributor forgets to format their code, pre-commit ensures everything stays clean before merging.</p></li>
-</ul>
-</li>
-</ul>
-</section>
-<hr class="docutils" />
-<section id="summary-cheatsheet">
-<h2>Summary Cheatsheet<a class="headerlink" href="#summary-cheatsheet" title="Link to this heading"></a></h2>
+<section id="cheatsheet">
+<h2>📋 Cheatsheet<a class="headerlink" href="#cheatsheet" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Step</p></th>
@@ -310,28 +279,37 @@ pre-commit<span class="w"> </span>run<span class="w"> </span>--all-files
 <tr class="row-even"><td><p>Run hooks manually</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">pre-commit</span> <span class="pre">run</span> <span class="pre">--all-files</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p>Test safely in a branch</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">-b</span> <span class="pre">test/pre-commit-check</span></code> + <code class="docutils literal notranslate"><span class="pre">pre-commit</span> <span class="pre">run</span> <span class="pre">--all-files</span></code></p></td>
+<tr class="row-odd"><td><p>Test safely in branch</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">-b</span> <span class="pre">test/pre-commit-check</span></code> + run + delete</p></td>
 </tr>
-<tr class="row-even"><td><p>Add pytest (optional)</p></td>
-<td><p>Add local hook to <code class="docutils literal notranslate"><span class="pre">.pre-commit-config.yaml</span></code></p></td>
+<tr class="row-even"><td><p>Run tests via hook</p></td>
+<td><p>Add pytest to <code class="docutils literal notranslate"><span class="pre">.pre-commit-config.yaml</span></code></p></td>
 </tr>
 </tbody>
 </table>
+</section>
 <hr class="docutils" />
+<section id="learn-more">
+<h2>🔗 Learn More<a class="headerlink" href="#learn-more" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://black.readthedocs.io/">Black</a> — the uncompromising Python code formatter</p></li>
+<li><p><a class="reference external" href="https://github.com/codespell-project/codespell">Codespell</a> — a simple spellchecker for code</p></li>
+<li><p><a class="reference external" href="https://docs.astral.sh/ruff/">Ruff</a> — a fast Python linter written in Rust</p></li>
+<li><p><a class="reference external" href="https://docs.pytest.org/">Pytest</a> — a framework for testing Python code</p></li>
+</ul>
 <blockquote>
-<div><p>✅ Your project now has a clean, automated workflow for code quality and pre-commit hooks!</p>
+<div><p>✅ Your commits are now cleaner, safer, and tested — before they even leave your machine!</p>
 </div></blockquote>
-<p>See “Code Formatting with Black and isort” for details on formatting tools and VSCode integration.</p>
-<hr class="docutils" />
-<p><em>This documentation was generated with the help of ChatGPT, in collaboration with the project developer.</em></p>
 </section>
 </section>
 
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="build_docs.html" class="btn btn-neutral float-left" title="Building Documentation Locally" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="actions_overview.html" class="btn btn-neutral float-right" title="GitHub Actions: Automating Your Project" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
   <hr/>
 

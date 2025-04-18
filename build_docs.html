@@ -1,0 +1,260 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Building Documentation Locally &mdash; template_project v0.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=8b92e751"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Setting Up Pre-commit Hooks" href="precommit_guide.html" />
+    <link rel="prev" title="Writing and Running Tests" href="writing_tests.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            template_project
+              <img src="_static/logo.jpg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Getting Started: Setup and Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customisation_checklist.html">Customisation Checklist for New Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="project_structure.html">What’s in This Template Project?</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">GitHub basics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="github_intro.html">Getting Started with GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gitworkflow_solo.html">Solo Git Workflow for Your Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gitcollab_v2.html">Collaborating on Someone Else’s Repository</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Development Guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="style_guide.html">Project Style Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="writing_tests.html">Writing and Running Tests</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Building Documentation Locally</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#step-1-install-documentation-dependencies">📦 Step 1: Install Documentation Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#step-2-build-the-docs">🏗 Step 2: Build the Docs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#writing-in-markdown-or-restructuredtext">🖋 Writing in Markdown or reStructuredText</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tips-for-clean-docs">🧠 Tips for Clean Docs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#rebuild-after-changes">🧪 Rebuild After Changes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#learn-more">📚 Learn More</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#summary-cheatsheet">Summary Cheatsheet</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="precommit_guide.html">Setting Up Pre-commit Hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="actions_overview.html">GitHub Actions: Automating Your Project</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Project Management</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="citation_guide.html">How to Cite This Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pypi_guide.html">Publishing Your Project to PyPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gitorg.html">Transferring to an Organisation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Users' guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="demo-output.html">template-project demo</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Help and reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="http://github.com/eleanorfrajka/template-project">GitHub Repo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="template_project.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">template_project</span> <span class="pre">API</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ / Troubleshooting</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">template_project</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Building Documentation Locally</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/build_docs.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="building-documentation-locally">
+<h1>Building Documentation Locally<a class="headerlink" href="#building-documentation-locally" title="Link to this heading"></a></h1>
+<blockquote>
+<div><p>🧱 This guide walks you through building and previewing your project documentation using Sphinx — the same way it will appear on Read the Docs.</p>
+</div></blockquote>
+<p>This is useful for checking formatting, linking, and rendering before publishing.</p>
+<hr class="docutils" />
+<section id="step-1-install-documentation-dependencies">
+<h2>📦 Step 1: Install Documentation Dependencies<a class="headerlink" href="#step-1-install-documentation-dependencies" title="Link to this heading"></a></h2>
+<p>The required tools are listed in <code class="docutils literal notranslate"><span class="pre">requirements-dev.txt</span></code>. These are included <strong>because the project uses Sphinx-based documentation</strong> and may include Jupyter notebooks or Markdown-based pages.</p>
+<p>To install them:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements-dev.txt
+</pre></div>
+</div>
+<p>This installs:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">sphinx</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sphinx_rtd_theme</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">myst-parser</span></code> for Markdown support</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">numpydoc</span></code> for parsing NumPy-style docstrings</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nbsphinx</span></code> and <code class="docutils literal notranslate"><span class="pre">nbconvert</span></code> for integrating Jupyter notebooks</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pypandoc</span></code> for converting between Markdown and reStructuredText formats</p></li>
+</ul>
+</section>
+<section id="step-2-build-the-docs">
+<h2>🏗 Step 2: Build the Docs<a class="headerlink" href="#step-2-build-the-docs" title="Link to this heading"></a></h2>
+<p>From the root of your project (where <code class="docutils literal notranslate"><span class="pre">docs/</span></code> lives), run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>docs
+make<span class="w"> </span>html
+</pre></div>
+</div>
+<p>This generates the documentation site in <code class="docutils literal notranslate"><span class="pre">docs/_build/html/</span></code>.</p>
+<p>To preview:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>open<span class="w"> </span>_build/html/index.html<span class="w">  </span><span class="c1"># or use your browser</span>
+</pre></div>
+</div>
+<blockquote>
+<div><p>💡 On Windows, use <code class="docutils literal notranslate"><span class="pre">start</span> <span class="pre">_build/html/index.html</span></code></p>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="writing-in-markdown-or-restructuredtext">
+<h2>🖋 Writing in Markdown or reStructuredText<a class="headerlink" href="#writing-in-markdown-or-restructuredtext" title="Link to this heading"></a></h2>
+<p>You can write documentation pages in either:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">.md</span></code> Markdown (using <code class="docutils literal notranslate"><span class="pre">myst-parser</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.rst</span></code> reStructuredText (Sphinx’s default)</p></li>
+</ul>
+<p>Markdown is supported for all new pages — just list them in your <code class="docutils literal notranslate"><span class="pre">index.rst</span></code> using the <code class="docutils literal notranslate"><span class="pre">.md</span></code> extension.</p>
+</section>
+<hr class="docutils" />
+<section id="tips-for-clean-docs">
+<h2>🧠 Tips for Clean Docs<a class="headerlink" href="#tips-for-clean-docs" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Keep filenames and headings consistent</p></li>
+<li><p>Use relative links when referring to other files</p></li>
+<li><p>Use backticks for inline code: <code class="docutils literal notranslate"><span class="pre">like_this()</span></code></p></li>
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">toctree::</span></code> blocks to structure your site</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="rebuild-after-changes">
+<h2>🧪 Rebuild After Changes<a class="headerlink" href="#rebuild-after-changes" title="Link to this heading"></a></h2>
+<p>Sphinx doesn’t auto-rebuild on save, so re-run <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">html</span></code> each time you:</p>
+<ul class="simple">
+<li><p>Add or rename a <code class="docutils literal notranslate"><span class="pre">.md</span></code> or <code class="docutils literal notranslate"><span class="pre">.rst</span></code> file</p></li>
+<li><p>Edit cross-references or links</p></li>
+<li><p>Change docstrings if you’re auto-documenting code</p></li>
+</ul>
+<hr class="docutils" />
+<blockquote>
+<div><p>🧰 The <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">html</span></code> command is defined in the project’s <code class="docutils literal notranslate"><span class="pre">docs/Makefile</span></code>. You can inspect or modify it if needed.</p>
+<p>📁 The <code class="docutils literal notranslate"><span class="pre">docs/_build/</span></code> folder is ignored from version control via <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code>.</p>
+<p>🖼 Static files like images, logos, or custom CSS should go in <code class="docutils literal notranslate"><span class="pre">docs/source/_static</span></code>. A default <code class="docutils literal notranslate"><span class="pre">logo.jpg</span></code> is included there.</p>
+<p>⚙️ The <code class="docutils literal notranslate"><span class="pre">docs/source/conf.py</span></code> controls your Sphinx build settings. Edit project metadata like <code class="docutils literal notranslate"><span class="pre">project</span></code>, <code class="docutils literal notranslate"><span class="pre">author</span></code>, and <code class="docutils literal notranslate"><span class="pre">release</span></code> to match your repo.</p>
+</div></blockquote>
+</section>
+<section id="learn-more">
+<h2>📚 Learn More<a class="headerlink" href="#learn-more" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://myst-parser.readthedocs.io/en/latest/syntax/intro.html">MyST Markdown Reference</a></p></li>
+<li><p><a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html">Sphinx reStructuredText Guide</a></p></li>
+</ul>
+<p>These explain the syntax and tools supported when writing <code class="docutils literal notranslate"><span class="pre">.md</span></code> or <code class="docutils literal notranslate"><span class="pre">.rst</span></code> pages for your docs.</p>
+</section>
+<hr class="docutils" />
+<section id="summary-cheatsheet">
+<h2>Summary Cheatsheet<a class="headerlink" href="#summary-cheatsheet" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Task</p></th>
+<th class="head"><p>Command</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Install dependencies</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-r</span> <span class="pre">requirements-dev.txt</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Build the docs</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">html</span></code> (from inside <code class="docutils literal notranslate"><span class="pre">docs/</span></code>)</p></td>
+</tr>
+<tr class="row-even"><td><p>Preview locally</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">open</span> <span class="pre">_build/html/index.html</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<div><p>✅ Local docs previewing helps you spot problems early and polish your project site before publishing!</p>
+</div></blockquote>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="writing_tests.html" class="btn btn-neutral float-left" title="Writing and Running Tests" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="precommit_guide.html" class="btn btn-neutral float-right" title="Setting Up Pre-commit Hooks" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, FirstName LastName, FirstName LastName.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

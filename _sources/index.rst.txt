@@ -1,47 +1,63 @@
-.. Documentation master file.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+.. template-project documentation master file
 
-:parser: myst_parser.sphinx_ # this is the markdown parser
+====================================
+Template Project: Documentation Hub
+====================================
 
-Welcome to projectName's documentation!
-======================================
+Welcome to the documentation for the **template-project** — a minimal, modern Python project template designed for research groups and scientific code development.
 
-`template-project` is a repository to demonstrate the structure of a Python project `template-project`, the use of git via Github for collaborative coding, GitHub Actions for running tests and building documentation, and deploying the documentation on GitHub Pages.
+This template includes tools for testing, documentation, versioning, citation, publishing to PyPI, and more. Whether you're working solo or collaborating in a team, this guide will help you get started and stay consistent.
 
-For recommendations or bug reports, please visit https://github.com/eleanorfrajka/template-project/issues/new
 
-  
+
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: 2
    :caption: Getting started
 
-   installation.md
-   gitcollab.md
-   github.md
+   setup.md
+   customisation_checklist.md
+   project_structure.md
+
+.. toctree::
+   :maxdepth: 2
+   :caption: GitHub basics
+
+   github_intro.md
+   gitworkflow_solo.md
+   gitcollab_v2.md
+
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Development Guide
+
+   style_guide.md
+   writing_tests.md
+   build_docs.md
+   precommit_guide.md
+   actions_overview.md
+
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Project Management
+
+   citation_guide.md
+   pypi_guide.md
    gitorg.md
-   pypi-publish.md
-   citation.md
-   code_style.md
-   precommit_setup.md
 
 .. toctree::
    :maxdepth: 3
-   :caption: Users guide
-   
+   :caption: Users' guide
+
    demo-output.ipynb
 
 
+
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: 2
    :caption: Help and reference
 
-   template-project
+   GitHub Repo <http://github.com/eleanorfrajka/template-project>
+   template_project
    faq
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`

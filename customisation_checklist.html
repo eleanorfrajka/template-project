@@ -1,0 +1,313 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Customisation Checklist for New Projects &mdash; template_project v0.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=8b92e751"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="What’s in This Template Project?" href="project_structure.html" />
+    <link rel="prev" title="Getting Started: Setup and Installation" href="setup.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            template_project
+              <img src="_static/logo.jpg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Getting Started: Setup and Installation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Customisation Checklist for New Projects</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#core-package-and-import-paths">📁 Core Package and Import Paths</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#testing">🧪 Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configuration-and-metadata">⚙️ Configuration and Metadata</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#pyproject-toml"><code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pre-commit-config-yaml"><code class="docutils literal notranslate"><span class="pre">.pre-commit-config.yaml</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#documentation">📚 Documentation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#docs-source-conf-py"><code class="docutils literal notranslate"><span class="pre">docs/source/conf.py</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#docs-index-rst"><code class="docutils literal notranslate"><span class="pre">docs/index.rst</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#docs-source-template-project-rst"><code class="docutils literal notranslate"><span class="pre">docs/source/template_project.rst</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#docs-source-static-logo-jpg"><code class="docutils literal notranslate"><span class="pre">docs/source/_static/logo.jpg</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#citation-and-license">📝 Citation and License</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#other-markdown-files">📄 Other Markdown Files</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#readme-md"><code class="docutils literal notranslate"><span class="pre">README.md</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#contributing-md"><code class="docutils literal notranslate"><span class="pre">CONTRIBUTING.md</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#optional-automation">🛠 Optional Automation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#github-workflows"><code class="docutils literal notranslate"><span class="pre">.github/workflows/</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="project_structure.html">What’s in This Template Project?</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">GitHub basics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="github_intro.html">Getting Started with GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gitworkflow_solo.html">Solo Git Workflow for Your Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gitcollab_v2.html">Collaborating on Someone Else’s Repository</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Development Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="style_guide.html">Project Style Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="writing_tests.html">Writing and Running Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="build_docs.html">Building Documentation Locally</a></li>
+<li class="toctree-l1"><a class="reference internal" href="precommit_guide.html">Setting Up Pre-commit Hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="actions_overview.html">GitHub Actions: Automating Your Project</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Project Management</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="citation_guide.html">How to Cite This Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pypi_guide.html">Publishing Your Project to PyPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gitorg.html">Transferring to an Organisation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Users' guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="demo-output.html">template-project demo</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Help and reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="http://github.com/eleanorfrajka/template-project">GitHub Repo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="template_project.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">template_project</span> <span class="pre">API</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ / Troubleshooting</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">template_project</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Customisation Checklist for New Projects</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/customisation_checklist.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="customisation-checklist-for-new-projects">
+<h1>Customisation Checklist for New Projects<a class="headerlink" href="#customisation-checklist-for-new-projects" title="Link to this heading"></a></h1>
+<blockquote>
+<div><p>🧰 This checklist highlights places where you should replace or update names like <code class="docutils literal notranslate"><span class="pre">template_project</span></code>, <code class="docutils literal notranslate"><span class="pre">template-project</span></code>, or personal info like <code class="docutils literal notranslate"><span class="pre">Eleanor</span></code> to make the project your own.</p>
+</div></blockquote>
+<p>Use <code class="docutils literal notranslate"><span class="pre">grep</span></code> or your editor’s search tool to find these across the project.</p>
+<hr class="docutils" />
+<section id="core-package-and-import-paths">
+<h2>📁 Core Package and Import Paths<a class="headerlink" href="#core-package-and-import-paths" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>[ ] Rename <code class="docutils literal notranslate"><span class="pre">template_project/</span></code> → <code class="docutils literal notranslate"><span class="pre">your_project_name/</span></code> (<em>Recommended:</em> Don’t use spaces or dashes.  Underscores are OK.)</p></li>
+<li><p>[ ] Update imports in all source and test files:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">template_project</span> <span class="pre">import</span> <span class="pre">...</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">template_project.tools</span></code>, <code class="docutils literal notranslate"><span class="pre">template_project.readers</span></code>, etc.</p></li>
+</ul>
+</li>
+<li><p>[ ] Check for relative paths in notebooks: <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">template_project</span> <span class="pre">import</span> <span class="pre">...</span></code></p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="testing">
+<h2>🧪 Testing<a class="headerlink" href="#testing" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>[ ] In <code class="docutils literal notranslate"><span class="pre">tests/</span></code>, update:</p>
+<ul>
+<li><p>Import statements: <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">template_project</span> <span class="pre">import</span> <span class="pre">...</span></code></p></li>
+<li><p>File/module names like <code class="docutils literal notranslate"><span class="pre">test_template_project.py</span></code></p></li>
+</ul>
+</li>
+<li><p>[ ] In <code class="docutils literal notranslate"><span class="pre">.github/actions/</span></code>, update <code class="docutils literal notranslate"><span class="pre">tests.yml</span></code>:</p>
+<ul>
+<li><p>Coverage flags in <code class="docutils literal notranslate"><span class="pre">pytest</span></code>: <code class="docutils literal notranslate"><span class="pre">--cov=template_project</span></code></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="configuration-and-metadata">
+<h2>⚙️ Configuration and Metadata<a class="headerlink" href="#configuration-and-metadata" title="Link to this heading"></a></h2>
+<section id="pyproject-toml">
+<h3><code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code><a class="headerlink" href="#pyproject-toml" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>[ ] <code class="docutils literal notranslate"><span class="pre">name</span> <span class="pre">=</span> <span class="pre">&quot;template-project-efw&quot;</span></code> → use your PyPI-compatible name</p></li>
+<li><p>[ ] Update <code class="docutils literal notranslate"><span class="pre">description</span></code>, <code class="docutils literal notranslate"><span class="pre">maintainers</span></code>, and <code class="docutils literal notranslate"><span class="pre">urls</span></code></p></li>
+<li><p>[ ] Edit <code class="docutils literal notranslate"><span class="pre">write_to</span> <span class="pre">=</span> <span class="pre">&quot;template_project/_version.py&quot;</span></code></p></li>
+</ul>
+</section>
+<section id="pre-commit-config-yaml">
+<h3><code class="docutils literal notranslate"><span class="pre">.pre-commit-config.yaml</span></code><a class="headerlink" href="#pre-commit-config-yaml" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>[ ] Edit coverage and file match patterns (e.g., <code class="docutils literal notranslate"><span class="pre">pytest</span> <span class="pre">--cov=...</span></code>, excludes)</p></li>
+<li><p>[ ] Adjust if you rename data folders or want to lint different paths</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="documentation">
+<h2>📚 Documentation<a class="headerlink" href="#documentation" title="Link to this heading"></a></h2>
+<section id="docs-source-conf-py">
+<h3><code class="docutils literal notranslate"><span class="pre">docs/source/conf.py</span></code><a class="headerlink" href="#docs-source-conf-py" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>[ ] Change <code class="docutils literal notranslate"><span class="pre">project</span></code>, <code class="docutils literal notranslate"><span class="pre">author</span></code>, <code class="docutils literal notranslate"><span class="pre">release</span></code></p></li>
+<li><p>[ ] Update copyright</p></li>
+</ul>
+</section>
+<section id="docs-index-rst">
+<h3><code class="docutils literal notranslate"><span class="pre">docs/index.rst</span></code><a class="headerlink" href="#docs-index-rst" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>[ ] Change title and subtitle lines</p></li>
+<li><p>[ ] Swap <code class="docutils literal notranslate"><span class="pre">template-project</span></code> references</p></li>
+<li><p>[ ] Replace intro blurb with your own project description</p></li>
+</ul>
+</section>
+<section id="docs-source-template-project-rst">
+<h3><code class="docutils literal notranslate"><span class="pre">docs/source/template_project.rst</span></code><a class="headerlink" href="#docs-source-template-project-rst" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>[ ] Update to match your new package name (or delete if auto-generated)</p></li>
+<li><p>[ ] Update any <code class="docutils literal notranslate"><span class="pre">automodule::</span></code> or <code class="docutils literal notranslate"><span class="pre">:mod:</span></code> references</p></li>
+</ul>
+</section>
+<section id="docs-source-static-logo-jpg">
+<h3><code class="docutils literal notranslate"><span class="pre">docs/source/_static/logo.jpg</span></code><a class="headerlink" href="#docs-source-static-logo-jpg" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>[ ] Replace with your own logo if desired</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="citation-and-license">
+<h2>📝 Citation and License<a class="headerlink" href="#citation-and-license" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>[ ] In <code class="docutils literal notranslate"><span class="pre">CITATION.cff</span></code>:</p>
+<ul>
+<li><p>[ ] Update <code class="docutils literal notranslate"><span class="pre">title</span></code>, <code class="docutils literal notranslate"><span class="pre">authors</span></code>, <code class="docutils literal notranslate"><span class="pre">orcid</span></code>, <code class="docutils literal notranslate"><span class="pre">affiliation</span></code></p></li>
+<li><p>[ ] Insert your GitHub repo URL</p></li>
+<li><p>[ ] (Later step) Add a DOI via Zenodo if desired — see <code class="docutils literal notranslate"><span class="pre">citation_guide.md</span></code></p></li>
+</ul>
+</li>
+<li><p>[ ] Review <code class="docutils literal notranslate"><span class="pre">LICENSE</span></code> to confirm you’re happy with the MIT license or swap for another</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="other-markdown-files">
+<h2>📄 Other Markdown Files<a class="headerlink" href="#other-markdown-files" title="Link to this heading"></a></h2>
+<section id="readme-md">
+<h3><code class="docutils literal notranslate"><span class="pre">README.md</span></code><a class="headerlink" href="#readme-md" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>[ ] Replace:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">template_project/*.py</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Template</span> <span class="pre">for</span> <span class="pre">a</span> <span class="pre">Python</span> <span class="pre">project</span> <span class="pre">for</span> <span class="pre">oceanography</span></code></p></li>
+</ul>
+</li>
+<li><p>[ ] Customize usage examples and purpose statement</p></li>
+<li><p>[ ] Add badges for Zenodo or PyPI once those steps are completed</p></li>
+</ul>
+</section>
+<section id="contributing-md">
+<h3><code class="docutils literal notranslate"><span class="pre">CONTRIBUTING.md</span></code><a class="headerlink" href="#contributing-md" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>[ ] Update module paths in examples (e.g., <code class="docutils literal notranslate"><span class="pre">template_project.tools</span></code>)</p></li>
+<li><p>[ ] Mention your GitHub handle or org instead of “Eleanor”</p></li>
+<li><p>[ ] Replace style file references like <code class="docutils literal notranslate"><span class="pre">template_project/template_project.mplstyle</span></code></p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="optional-automation">
+<h2>🛠 Optional Automation<a class="headerlink" href="#optional-automation" title="Link to this heading"></a></h2>
+<section id="github-workflows">
+<h3><code class="docutils literal notranslate"><span class="pre">.github/workflows/</span></code><a class="headerlink" href="#github-workflows" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>[ ] In <code class="docutils literal notranslate"><span class="pre">tests.yml</span></code>, <code class="docutils literal notranslate"><span class="pre">docs.yml</span></code>, <code class="docutils literal notranslate"><span class="pre">pypi.yml</span></code>:</p>
+<ul>
+<li><p>[ ] Update paths and module names</p></li>
+<li><p>[ ] Adjust PyPI settings (project name, build backend, etc.)</p></li>
+</ul>
+</li>
+</ul>
+<hr class="docutils" />
+<blockquote>
+<div><p>✅ Once all these are updated, your project is cleanly decoupled from the original template and ready for public release or team collaboration.</p>
+</div></blockquote>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="setup.html" class="btn btn-neutral float-left" title="Getting Started: Setup and Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="project_structure.html" class="btn btn-neutral float-right" title="What’s in This Template Project?" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, FirstName LastName, FirstName LastName.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

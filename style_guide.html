@@ -1,0 +1,303 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Project Style Guide &mdash; template_project v0.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=8b92e751"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Writing and Running Tests" href="writing_tests.html" />
+    <link rel="prev" title="Collaborating on Someone Else’s Repository" href="gitcollab_v2.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            template_project
+              <img src="_static/logo.jpg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Getting Started: Setup and Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customisation_checklist.html">Customisation Checklist for New Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="project_structure.html">What’s in This Template Project?</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">GitHub basics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="github_intro.html">Getting Started with GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gitworkflow_solo.html">Solo Git Workflow for Your Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gitcollab_v2.html">Collaborating on Someone Else’s Repository</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Development Guide</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Project Style Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#python-coding-conventions">🧑‍💻 Python Coding Conventions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#function-definitions">✅ Function Definitions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#naming">🐍 Naming</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#docstrings">📝 Docstrings</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#dataset-metadata-conventions">🗂 Dataset &amp; Metadata Conventions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#variable-names">🧬 Variable Names</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#attributes">🧾 Attributes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#consistency">📐 Consistency</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#automating-formatting-optional">🔁 Automating Formatting (Optional)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#optional-vscode-setup-for-auto-formatting">🛠 Optional: VSCode Setup for Auto-formatting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#future-considerations">💡 Future Considerations</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="writing_tests.html">Writing and Running Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="build_docs.html">Building Documentation Locally</a></li>
+<li class="toctree-l1"><a class="reference internal" href="precommit_guide.html">Setting Up Pre-commit Hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="actions_overview.html">GitHub Actions: Automating Your Project</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Project Management</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="citation_guide.html">How to Cite This Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pypi_guide.html">Publishing Your Project to PyPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gitorg.html">Transferring to an Organisation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Users' guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="demo-output.html">template-project demo</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Help and reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="http://github.com/eleanorfrajka/template-project">GitHub Repo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="template_project.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">template_project</span> <span class="pre">API</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ / Troubleshooting</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">template_project</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Project Style Guide</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/style_guide.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="project-style-guide">
+<h1>Project Style Guide<a class="headerlink" href="#project-style-guide" title="Link to this heading"></a></h1>
+<blockquote>
+<div><p>🎨 This guide explains the coding and formatting conventions used in the project, and how to keep things consistent when adding or editing code.</p>
+</div></blockquote>
+<p>It combines Python code conventions, documentation standards, and metadata formatting guidelines.</p>
+<hr class="docutils" />
+<section id="python-coding-conventions">
+<h2>🧑‍💻 Python Coding Conventions<a class="headerlink" href="#python-coding-conventions" title="Link to this heading"></a></h2>
+<section id="function-definitions">
+<h3>✅ Function Definitions<a class="headerlink" href="#function-definitions" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Use <strong>type hints</strong> for all parameters and return types.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">convert_units</span><span class="p">(</span>
+    <span class="n">values</span><span class="p">:</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">,</span>
+    <span class="n">current</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">target</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">:</span>
+    <span class="o">...</span>
+</pre></div>
+</div>
+</section>
+<section id="naming">
+<h3>🐍 Naming<a class="headerlink" href="#naming" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Functions and variables: <code class="docutils literal notranslate"><span class="pre">snake_case</span></code></p></li>
+<li><p>Constants (e.g., in xarray datasets): <code class="docutils literal notranslate"><span class="pre">ALL_CAPS</span></code></p></li>
+</ul>
+</section>
+<section id="docstrings">
+<h3>📝 Docstrings<a class="headerlink" href="#docstrings" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Use <strong>NumPy-style</strong> docstrings</p></li>
+<li><p>Required for all functions.</p></li>
+<li><p>Sections include: <code class="docutils literal notranslate"><span class="pre">Parameters</span></code>, <code class="docutils literal notranslate"><span class="pre">Returns</span></code>, <code class="docutils literal notranslate"><span class="pre">Notes</span></code>, (optionally <code class="docutils literal notranslate"><span class="pre">Examples</span></code>, <code class="docutils literal notranslate"><span class="pre">References</span></code>)</p></li>
+</ul>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">convert_units_var</span><span class="p">(</span>
+    <span class="n">var_values</span><span class="p">:</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">,</span>
+    <span class="n">current_unit</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">new_unit</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">unit_conversion</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="n">unit_conversion</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Convert variable values from one unit to another.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    var_values : xr.DataArray</span>
+<span class="sd">        The numerical values to convert.</span>
+<span class="sd">    current_unit : str</span>
+<span class="sd">        Unit of the original values.</span>
+<span class="sd">    new_unit : str</span>
+<span class="sd">        Desired unit for the output values.</span>
+<span class="sd">    unit_conversion : dict, optional</span>
+<span class="sd">        Dictionary containing conversion factors between units.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    xr.DataArray</span>
+<span class="sd">        Converted values in the desired unit.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    If no valid conversion is found, the original values are returned unchanged.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</pre></div>
+</div>
+<blockquote>
+<div><p>📚 NumPy-style docstrings render cleanly in Sphinx documentation (e.g. on Read the Docs). See <a class="reference external" href="https://numpydoc.readthedocs.io/en/latest/format.html">NumPy docstring style</a>.</p>
+<p>💡 Alternatives like <a class="reference external" href="https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html">Google-style</a> and <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/restructuredtext/domains.html#info-field-lists">reST-style</a> docstrings are also valid with Sphinx if configured properly.</p>
+</div></blockquote>
+</section>
+</section>
+<hr class="docutils" />
+<section id="dataset-metadata-conventions">
+<h2>🗂 Dataset &amp; Metadata Conventions<a class="headerlink" href="#dataset-metadata-conventions" title="Link to this heading"></a></h2>
+<section id="variable-names">
+<h3>🧬 Variable Names<a class="headerlink" href="#variable-names" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>ALL CAPITALS</strong> for variables and dimensions: <code class="docutils literal notranslate"><span class="pre">TRANSPORT</span></code>, <code class="docutils literal notranslate"><span class="pre">DEPTH</span></code>, <code class="docutils literal notranslate"><span class="pre">TIME</span></code></p></li>
+<li><p>Keep short and unambiguous</p></li>
+</ul>
+</section>
+<section id="attributes">
+<h3>🧾 Attributes<a class="headerlink" href="#attributes" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Follow <a class="reference external" href="https://oceangliderscommunity.github.io/OG-format-user-manual/OG_Format.html">OceanGliders OG1 format</a></p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">units</span></code>, <code class="docutils literal notranslate"><span class="pre">long_name</span></code>, <code class="docutils literal notranslate"><span class="pre">comment</span></code></p></li>
+<li><p>Avoid placing units in variable names — use attributes instead</p></li>
+</ul>
+</section>
+<section id="consistency">
+<h3>📐 Consistency<a class="headerlink" href="#consistency" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Units are checked and converted using helper functions</p></li>
+<li><p>Time is standardized using utility functions across the project</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="automating-formatting-optional">
+<h2>🔁 Automating Formatting (Optional)<a class="headerlink" href="#automating-formatting-optional" title="Link to this heading"></a></h2>
+<p>The project uses tools like <code class="docutils literal notranslate"><span class="pre">black</span></code>, <code class="docutils literal notranslate"><span class="pre">ruff</span></code>, and <code class="docutils literal notranslate"><span class="pre">pytest</span></code> to enforce style, linting, and test consistency. These are integrated into the workflow using <a class="reference internal" href="precommit_guide.html"><span class="std std-doc">pre-commit hooks</span></a>.</p>
+<p>You don’t need to run them manually, but setting up pre-commit ensures your code follows project standards automatically.</p>
+</section>
+<hr class="docutils" />
+<section id="optional-vscode-setup-for-auto-formatting">
+<h2>🛠 Optional: VSCode Setup for Auto-formatting<a class="headerlink" href="#optional-vscode-setup-for-auto-formatting" title="Link to this heading"></a></h2>
+<p>To automatically format code when you save a file, add this to your <strong>Workspace Settings</strong> (<code class="docutils literal notranslate"><span class="pre">.vscode/settings.json</span></code>):</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;python.formatting.provider&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;black&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;editor.formatOnSave&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;editor.codeActionsOnSave&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;source.organizeImports&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>You can also add a VSCode task to format manually:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Format Code&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;shell&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;black . &amp;&amp; ruff check . --fix&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="err">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Then bind it to a keyboard shortcut (e.g. <code class="docutils literal notranslate"><span class="pre">Cmd+Shift+R</span></code>) or run it from the command palette.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="future-considerations">
+<h2>💡 Future Considerations<a class="headerlink" href="#future-considerations" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">mypy</span></code> for static type checking</p></li>
+<li><p>Use Sphinx for auto-generating documentation (already partially configured)</p></li>
+</ul>
+<hr class="docutils" />
+<blockquote>
+<div><p>✅ By following these conventions, your code will integrate smoothly with the rest of the project — clean, consistent, and ready for collaboration.</p>
+</div></blockquote>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="gitcollab_v2.html" class="btn btn-neutral float-left" title="Collaborating on Someone Else’s Repository" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="writing_tests.html" class="btn btn-neutral float-right" title="Writing and Running Tests" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, FirstName LastName, FirstName LastName.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

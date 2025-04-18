@@ -1,0 +1,428 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Collaborating on Someone Else’s Repository &mdash; template_project v0.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=8b92e751"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Project Style Guide" href="style_guide.html" />
+    <link rel="prev" title="Solo Git Workflow for Your Project" href="gitworkflow_solo.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            template_project
+              <img src="_static/logo.jpg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Getting Started: Setup and Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customisation_checklist.html">Customisation Checklist for New Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="project_structure.html">What’s in This Template Project?</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">GitHub basics</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="github_intro.html">Getting Started with GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gitworkflow_solo.html">Solo Git Workflow for Your Project</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Collaborating on Someone Else’s Repository</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#fork-the-repository">1. Fork the Repository</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#github-com">GitHub.com</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#clone-the-repository">2. Clone the Repository</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#terminal">Terminal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#github-desktop">GitHub Desktop</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#add-the-original-repo-as-upstream">3. Add the Original Repo as “Upstream”</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Terminal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#vscode">VSCode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">GitHub Desktop</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#create-a-branch-for-your-changes">4. Create a Branch for Your Changes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Terminal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">VSCode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">GitHub Desktop</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#make-and-commit-your-changes">5. Make and Commit Your Changes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#save-your-files-first">Save your files first!</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">Terminal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">VSCode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">GitHub Desktop</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#push-your-branch-to-github">6. Push Your Branch to GitHub</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id9">Terminal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">VSCode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id11">GitHub Desktop</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#open-a-pull-request">7. Open a Pull Request</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id12">GitHub.com</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#sync-your-fork-for-next-time">8. Sync Your Fork (for Next Time)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id13">GitHub.com</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id14">Terminal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id15">VSCode</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#tips">Tips</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cheatsheet-handy-git-commands">Cheatsheet: Handy Git Commands</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Development Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="style_guide.html">Project Style Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="writing_tests.html">Writing and Running Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="build_docs.html">Building Documentation Locally</a></li>
+<li class="toctree-l1"><a class="reference internal" href="precommit_guide.html">Setting Up Pre-commit Hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="actions_overview.html">GitHub Actions: Automating Your Project</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Project Management</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="citation_guide.html">How to Cite This Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pypi_guide.html">Publishing Your Project to PyPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gitorg.html">Transferring to an Organisation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Users' guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="demo-output.html">template-project demo</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Help and reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="http://github.com/eleanorfrajka/template-project">GitHub Repo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="template_project.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">template_project</span> <span class="pre">API</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ / Troubleshooting</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">template_project</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Collaborating on Someone Else’s Repository</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/gitcollab_v2.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="collaborating-on-someone-else-s-repository">
+<h1>Collaborating on Someone Else’s Repository<a class="headerlink" href="#collaborating-on-someone-else-s-repository" title="Link to this heading"></a></h1>
+<blockquote>
+<div><p>📝 This guide is part of the <code class="docutils literal notranslate"><span class="pre">template-project</span></code> documentation and is designed for contributors who are working on <strong>a fork of someone else’s repository</strong>.</p>
+</div></blockquote>
+<p>This guide walks you through the typical GitHub workflow to:</p>
+<ul class="simple">
+<li><p><strong>Fork</strong> a repository</p></li>
+<li><p><strong>Clone</strong> it to your computer</p></li>
+<li><p>Create a <strong>branch</strong></p></li>
+<li><p>Make and <strong>commit</strong> changes</p></li>
+<li><p><strong>Push</strong> and open a <strong>pull request</strong></p></li>
+</ul>
+<p>It assumes you’re working on GitHub and contributing to a project you don’t own.</p>
+<p>See <a class="reference internal" href="github_intro.html"><span class="std std-doc">Github Intro</span></a> for some (brief) additional information about this terminology.</p>
+<hr class="docutils" />
+<section id="fork-the-repository">
+<h2>1. Fork the Repository<a class="headerlink" href="#fork-the-repository" title="Link to this heading"></a></h2>
+<p>Create your <em>own copy</em> of a repository on GitHub.</p>
+<section id="github-com">
+<h3>GitHub.com<a class="headerlink" href="#github-com" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Navigate to the repository you’re interested in copying (e.g., <code class="docutils literal notranslate"><span class="pre">https://github.com/eleanorfrajka/template-project</span></code>).</p></li>
+<li><p>Click the <strong>Fork</strong> button (top right).</p></li>
+<li><p>Select your account as the destination.</p></li>
+</ul>
+<p>This creates <code class="docutils literal notranslate"><span class="pre">https://github.com/YOUR_USERNAME/template-project</span></code> — your personal fork, in your account on Github.com.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="clone-the-repository">
+<h2>2. Clone the Repository<a class="headerlink" href="#clone-the-repository" title="Link to this heading"></a></h2>
+<p>Download your forked repo to your local machine.</p>
+<section id="terminal">
+<h3>Terminal<a class="headerlink" href="#terminal" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/yourusername/template-project.git
+<span class="nb">cd</span><span class="w"> </span>template-project
+</pre></div>
+</div>
+</section>
+<section id="github-desktop">
+<h3>GitHub Desktop<a class="headerlink" href="#github-desktop" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Open GitHub Desktop.</p></li>
+<li><p>File → Clone Repository.</p></li>
+<li><p>Choose your fork from the list.</p></li>
+</ul>
+<blockquote>
+<div><p>💡 Avoid syncing to cloud storage folders — Git and cloud services don’t play well together.</p>
+</div></blockquote>
+<p>Now you have a “local” copy of the repository on your machine.  At the point when you clone it, it’s an exact replica of your forked repository on Github.com.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="add-the-original-repo-as-upstream">
+<h2>3. Add the Original Repo as “Upstream”<a class="headerlink" href="#add-the-original-repo-as-upstream" title="Link to this heading"></a></h2>
+<p>This allows you to fetch changes from the original repository later.</p>
+<section id="id1">
+<h3>Terminal<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>upstream<span class="w"> </span>https://github.com/eleanorfrajka/template-project.git
+git<span class="w"> </span>remote<span class="w"> </span>-v<span class="w">  </span><span class="c1"># Check remotes</span>
+</pre></div>
+</div>
+</section>
+<section id="vscode">
+<h3>VSCode<a class="headerlink" href="#vscode" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Open Terminal in VSCode and run the same commands.</p></li>
+</ul>
+</section>
+<section id="id2">
+<h3>GitHub Desktop<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Not supported directly, but you can add upstream via command line.</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="create-a-branch-for-your-changes">
+<h2>4. Create a Branch for Your Changes<a class="headerlink" href="#create-a-branch-for-your-changes" title="Link to this heading"></a></h2>
+<p>Best practice: You should never edit your <code class="docutils literal notranslate"><span class="pre">main</span></code> branch directly. Always work in a new branch.  So, start by making a branch.</p>
+<section id="id3">
+<h3>Terminal<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>checkout<span class="w"> </span>main
+git<span class="w"> </span>pull<span class="w"> </span>upstream<span class="w"> </span>main<span class="w">              </span><span class="c1"># Make sure your fork is up to date</span>
+git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>yourname-patch-1<span class="w">    </span><span class="c1"># Create and switch to a new branch</span>
+</pre></div>
+</div>
+</section>
+<section id="id4">
+<h3>VSCode<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Use the bottom-left branch menu to select <code class="docutils literal notranslate"><span class="pre">main</span></code>.</p></li>
+<li><p>Pull (if needed).</p></li>
+<li><p>Click <code class="docutils literal notranslate"><span class="pre">+</span> <span class="pre">Create</span> <span class="pre">new</span> <span class="pre">branch</span></code>, and name it.</p></li>
+</ul>
+</section>
+<section id="id5">
+<h3>GitHub Desktop<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Switch to <code class="docutils literal notranslate"><span class="pre">main</span></code>.</p></li>
+<li><p>Fetch origin.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Branch</span> <span class="pre">&gt;</span> <span class="pre">New</span> <span class="pre">branch</span></code> → name and create.</p></li>
+</ul>
+<blockquote>
+<div><p>🔁 Syncing upstream ensures you’re working from the latest version of the main project.</p>
+</div></blockquote>
+</section>
+</section>
+<hr class="docutils" />
+<section id="make-and-commit-your-changes">
+<h2>5. Make and Commit Your Changes<a class="headerlink" href="#make-and-commit-your-changes" title="Link to this heading"></a></h2>
+<section id="save-your-files-first">
+<h3>Save your files first!<a class="headerlink" href="#save-your-files-first" title="Link to this heading"></a></h3>
+<p>Then commit them:</p>
+</section>
+<section id="id6">
+<h3>Terminal<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>add<span class="w"> </span>.
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;fix: clarify file handling in utils.py&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="id7">
+<h3>VSCode<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Open the Source Control panel.</p></li>
+<li><p>Write a message.</p></li>
+<li><p>Click ✔ Commit.</p></li>
+</ul>
+</section>
+<section id="id8">
+<h3>GitHub Desktop<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Bottom left: write a commit message.</p></li>
+<li><p>Click <code class="docutils literal notranslate"><span class="pre">Commit</span> <span class="pre">to</span> <span class="pre">your-branch-name</span></code>.</p></li>
+</ul>
+<p>Now your new changes are stored in your local repository: hopefully on a branch of your forked main (if you followed step 4).</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="push-your-branch-to-github">
+<h2>6. Push Your Branch to GitHub<a class="headerlink" href="#push-your-branch-to-github" title="Link to this heading"></a></h2>
+<section id="id9">
+<h3>Terminal<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span>origin<span class="w"> </span>yourname-patch-1<span class="w">  </span><span class="c1"># First time only (sets upstream)</span>
+</pre></div>
+</div>
+</section>
+<section id="id10">
+<h3>VSCode<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Click <code class="docutils literal notranslate"><span class="pre">Publish</span> <span class="pre">Branch</span></code> in Source Control tab.</p></li>
+</ul>
+</section>
+<section id="id11">
+<h3>GitHub Desktop<a class="headerlink" href="#id11" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Click <code class="docutils literal notranslate"><span class="pre">Push</span> <span class="pre">origin</span></code> in the top toolbar.</p></li>
+</ul>
+<p>This step pushes your changes to the <strong>upstream main</strong>, the original repository (e.g., if you’re contributing to http://github.com/eleanorfrajka/template-project, then this is where they’ll end up.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="open-a-pull-request">
+<h2>7. Open a Pull Request<a class="headerlink" href="#open-a-pull-request" title="Link to this heading"></a></h2>
+<section id="id12">
+<h3>GitHub.com<a class="headerlink" href="#id12" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Navigate to your fork.</p></li>
+<li><p>You should see a banner to open a pull request.</p></li>
+<li><p>Click <strong>Compare &amp; pull request</strong>.</p></li>
+<li><p>Add a short title and description.</p></li>
+<li><p>Submit the pull request to the original repository.</p></li>
+</ul>
+<p>The project maintainers will review and merge if appropriate.</p>
+<p>Recommended: Maintainers (someone besides you, if it’s collaborative) will check that your changes appear sensible and appropriate for the direction the collaborative repository is headed.  They’ll review the changes, maybe suggest some edits (which you should then implement and commit a new version), and eventually “approve” the changes.  Once approved, you–as the originator of the changes–should “merge” the pull request (if you have the rights to do this).</p>
+<p>Don’t worry - if you made the pull request by mistake, or changed your mind, you can close the pull request without merging it into the <strong>upstream main</strong>.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="sync-your-fork-for-next-time">
+<h2>8. Sync Your Fork (for Next Time)<a class="headerlink" href="#sync-your-fork-for-next-time" title="Link to this heading"></a></h2>
+<p>When the original project updates, you’ll want to sync your fork.  For now, your forked main on Github.com doesn’t know about any of these (or anyone else’s changes).</p>
+<section id="id13">
+<h3>GitHub.com<a class="headerlink" href="#id13" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>On your fork, click <strong>Sync fork</strong> (if available).</p></li>
+</ul>
+</section>
+<section id="id14">
+<h3>Terminal<a class="headerlink" href="#id14" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>checkout<span class="w"> </span>main
+git<span class="w"> </span>pull<span class="w"> </span>upstream<span class="w"> </span>main
+git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>main
+</pre></div>
+</div>
+</section>
+<section id="id15">
+<h3>VSCode<a class="headerlink" href="#id15" title="Link to this heading"></a></h3>
+<p><em>After</em> syncing your fork on Github.com, then</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>checkout<span class="w"> </span>main
+git<span class="w"> </span>pull<span class="w"> </span>
+git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>yourname-patch-5
+</pre></div>
+</div>
+<p>I try to remember to do this syncing step after every pull request, including making a new branch, so that the next time I open the project in my VSCode, I don’t accidently start making changes on main.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="tips">
+<h2>Tips<a class="headerlink" href="#tips" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Always branch off of <code class="docutils literal notranslate"><span class="pre">main</span></code>, not an old feature branch.</p></li>
+<li><p>Use clear commit messages (<code class="docutils literal notranslate"><span class="pre">feat:</span></code>, <code class="docutils literal notranslate"><span class="pre">fix:</span></code>, <code class="docutils literal notranslate"><span class="pre">docs:</span></code> are great tags).</p></li>
+<li><p>If you see merge conflicts during pull or push, ask for help or check GitHub Docs.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="cheatsheet-handy-git-commands">
+<h2>Cheatsheet: Handy Git Commands<a class="headerlink" href="#cheatsheet-handy-git-commands" title="Link to this heading"></a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>status<span class="w">                </span><span class="c1"># Check file changes and branch info</span>
+
+git<span class="w"> </span>remote<span class="w"> </span>-v<span class="w">             </span><span class="c1"># Show remotes</span>
+
+git<span class="w"> </span>fetch<span class="w"> </span>upstream<span class="w">        </span><span class="c1"># Get new data from original repo</span>
+git<span class="w"> </span>merge<span class="w"> </span>upstream/main<span class="w">   </span><span class="c1"># Merge upstream changes into your main</span>
+
+git<span class="w"> </span>branch<span class="w">                </span><span class="c1"># List branches</span>
+git<span class="w"> </span>branch<span class="w"> </span>-d<span class="w"> </span>name<span class="w">        </span><span class="c1"># Delete branch (if merged)</span>
+
+git<span class="w"> </span>log<span class="w"> </span>--oneline<span class="w">         </span><span class="c1"># View recent commit messages</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<blockquote>
+<div><p>✅ Now you’re ready to contribute to open source and collaborative repositories on GitHub!</p>
+</div></blockquote>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="gitworkflow_solo.html" class="btn btn-neutral float-left" title="Solo Git Workflow for Your Project" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="style_guide.html" class="btn btn-neutral float-right" title="Project Style Guide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, FirstName LastName, FirstName LastName.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

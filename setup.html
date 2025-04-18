@@ -1,0 +1,272 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Getting Started: Setup and Installation &mdash; template_project v0.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=8b92e751"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Customisation Checklist for New Projects" href="customisation_checklist.html" />
+    <link rel="prev" title="Template Project: Documentation Hub" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            template_project
+              <img src="_static/logo.jpg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Getting Started: Setup and Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#step-1-get-the-repository">Step 1: Get the Repository</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#option-a-use-this-template-for-your-own-project">Option A: Use this template for your own project</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#a-clone-the-repository-to-your-computer">a. Clone the repository to your computer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#b-optional-change-the-remote-origin">b. (Optional) Change the remote origin</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#option-b-contribute-to-someone-else-s-project">Option B: Contribute to someone else’s project</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#step-2-set-up-a-python-environment">Step 2: Set Up a Python Environment</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#option-a-use-venv-and-pip">Option A: Use <code class="docutils literal notranslate"><span class="pre">venv</span></code> and <code class="docutils literal notranslate"><span class="pre">pip</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#step-3-install-the-package-editable-mode">Step 3: Install the Package (Editable Mode)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#step-4-test-that-it-works">Step 4: Test That It Works</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#optional-use-github-desktop-instead-of-terminal">Optional: Use GitHub Desktop Instead of Terminal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#git-workflows">Git Workflows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#you-re-all-set">You’re All Set!</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="customisation_checklist.html">Customisation Checklist for New Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="project_structure.html">What’s in This Template Project?</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">GitHub basics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="github_intro.html">Getting Started with GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gitworkflow_solo.html">Solo Git Workflow for Your Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gitcollab_v2.html">Collaborating on Someone Else’s Repository</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Development Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="style_guide.html">Project Style Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="writing_tests.html">Writing and Running Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="build_docs.html">Building Documentation Locally</a></li>
+<li class="toctree-l1"><a class="reference internal" href="precommit_guide.html">Setting Up Pre-commit Hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="actions_overview.html">GitHub Actions: Automating Your Project</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Project Management</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="citation_guide.html">How to Cite This Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pypi_guide.html">Publishing Your Project to PyPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gitorg.html">Transferring to an Organisation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Users' guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="demo-output.html">template-project demo</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Help and reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="http://github.com/eleanorfrajka/template-project">GitHub Repo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="template_project.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">template_project</span> <span class="pre">API</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ / Troubleshooting</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">template_project</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Getting Started: Setup and Installation</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/setup.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="getting-started-setup-and-installation">
+<h1>Getting Started: Setup and Installation<a class="headerlink" href="#getting-started-setup-and-installation" title="Link to this heading"></a></h1>
+<p>This guide walks you through the setup process when starting a new project using this template, or contributing to one based on it. It includes instructions for both terminal users and those using GitHub Desktop.</p>
+<hr class="docutils" />
+<section id="step-1-get-the-repository">
+<h2>Step 1: Get the Repository<a class="headerlink" href="#step-1-get-the-repository" title="Link to this heading"></a></h2>
+<p>You have two choices, depending on whether you’re making a copy for your own use or contributing to someone else’s.</p>
+<section id="option-a-use-this-template-for-your-own-project">
+<h3>Option A: Use this template for your own project<a class="headerlink" href="#option-a-use-this-template-for-your-own-project" title="Link to this heading"></a></h3>
+<p>You’re making a fresh project based on this template.</p>
+<section id="a-clone-the-repository-to-your-computer">
+<h4>a. Clone the repository to your computer<a class="headerlink" href="#a-clone-the-repository-to-your-computer" title="Link to this heading"></a></h4>
+<p>From a <strong>terminal</strong>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/eleanorfrajka/template-project
+</pre></div>
+</div>
+<p>Or in your <strong>browser</strong>:</p>
+<ol class="arabic simple">
+<li><p>Navigate to <a class="reference external" href="https://github.com/eleanorfrajka/template-project">https://github.com/eleanorfrajka/template-project</a></p></li>
+<li><p>Click the green <code class="docutils literal notranslate"><span class="pre">&lt;&gt;</span> <span class="pre">Code</span></code> button.</p></li>
+<li><p>Choose <strong>Open with GitHub Desktop</strong>.</p></li>
+</ol>
+<blockquote>
+<div><p>💡 You can rename the folder after cloning.</p>
+</div></blockquote>
+</section>
+<section id="b-optional-change-the-remote-origin">
+<h4>b. (Optional) Change the remote origin<a class="headerlink" href="#b-optional-change-the-remote-origin" title="Link to this heading"></a></h4>
+<p>If you want to push to your own GitHub repository, create a new repo on <a class="reference external" href="https://github.com">GitHub.com</a> and set it as the remote:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>remote<span class="w"> </span>set-url<span class="w"> </span>origin<span class="w"> </span>https://github.com/YOUR_USERNAME/new-repo-name.git
+git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span>origin<span class="w"> </span>main
+</pre></div>
+</div>
+</section>
+</section>
+<section id="option-b-contribute-to-someone-else-s-project">
+<h3>Option B: Contribute to someone else’s project<a class="headerlink" href="#option-b-contribute-to-someone-else-s-project" title="Link to this heading"></a></h3>
+<p>See <a class="reference internal" href="gitcollab_v2.html"><span class="std std-doc">Git Collaboration</span></a> for full instructions on forking and branching when contributing to another repository.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="step-2-set-up-a-python-environment">
+<h2>Step 2: Set Up a Python Environment<a class="headerlink" href="#step-2-set-up-a-python-environment" title="Link to this heading"></a></h2>
+<p>We recommend using a clean Python environment with <code class="docutils literal notranslate"><span class="pre">micromamba</span></code>, <code class="docutils literal notranslate"><span class="pre">conda</span></code>, <code class="docutils literal notranslate"><span class="pre">venv</span></code>, or similar. Below is the example using <code class="docutils literal notranslate"><span class="pre">venv</span></code>.</p>
+<!---
+### Option A: Use `micromamba` (recommended for reproducibility)
+If you're using `micromamba`, create an environment from the included YAML file:
+```bash
+micromamba create -f environment.yml
+micromamba activate template_env
+```
+--->
+<section id="option-a-use-venv-and-pip">
+<h3>Option A: Use <code class="docutils literal notranslate"><span class="pre">venv</span></code> and <code class="docutils literal notranslate"><span class="pre">pip</span></code><a class="headerlink" href="#option-a-use-venv-and-pip" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>venv
+<span class="nb">source</span><span class="w"> </span>venv/bin/activate<span class="w">  </span><span class="c1"># On Windows use `venv\Scripts\activate`</span>
+pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements-dev.txt<span class="w">  </span><span class="c1"># For development tools and testing</span>
+</pre></div>
+</div>
+<blockquote>
+<div><p>🔁 These install all runtime and development dependencies.</p>
+</div></blockquote>
+</section>
+</section>
+<hr class="docutils" />
+<section id="step-3-install-the-package-editable-mode">
+<h2>Step 3: Install the Package (Editable Mode)<a class="headerlink" href="#step-3-install-the-package-editable-mode" title="Link to this heading"></a></h2>
+<p>To use the code as an importable package:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.
+</pre></div>
+</div>
+<p>This sets up the local repository in <em>editable</em> mode, so changes you make to <code class="docutils literal notranslate"><span class="pre">.py</span></code> files will immediately be reflected when imported.</p>
+</section>
+<hr class="docutils" />
+<section id="step-4-test-that-it-works">
+<h2>Step 4: Test That It Works<a class="headerlink" href="#step-4-test-that-it-works" title="Link to this heading"></a></h2>
+<p>Try running the tests:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pytest
+</pre></div>
+</div>
+<p>If all goes well, this runs the unit tests in the <code class="docutils literal notranslate"><span class="pre">tests/</span></code> folder.</p>
+</section>
+<hr class="docutils" />
+<section id="optional-use-github-desktop-instead-of-terminal">
+<h2>Optional: Use GitHub Desktop Instead of Terminal<a class="headerlink" href="#optional-use-github-desktop-instead-of-terminal" title="Link to this heading"></a></h2>
+<p>If you prefer not to use the terminal:</p>
+<ul class="simple">
+<li><p>Clone the repo using GitHub Desktop.</p></li>
+<li><p>Set up your Python environment using a tool like Anaconda or venv.</p></li>
+<li><p>Open the project folder in VSCode.</p></li>
+<li><p>Install the Python extension and interpreter.</p></li>
+<li><p>Run test scripts in the terminal panel or from notebooks.</p></li>
+</ul>
+<p>See also <a class="reference internal" href="faq.html"><span class="std std-doc">faq.md</span></a> for troubleshooting installation problems.</p>
+</section>
+<hr class="docutils" />
+<section id="git-workflows">
+<h2>Git Workflows<a class="headerlink" href="#git-workflows" title="Link to this heading"></a></h2>
+<p>Depending on how you’re working:</p>
+<ul class="simple">
+<li><p>If you are <strong>working on your own project</strong> using this template, see: <a class="reference internal" href="gitworkflow_solo.html"><span class="std std-doc">Solo Git</span></a></p></li>
+<li><p>If you are <strong>contributing to someone else’s project</strong>, see: <a class="reference internal" href="gitcollab_v2.html"><span class="std std-doc">Git Collaboration</span></a></p></li>
+</ul>
+<p>Both guides include step-by-step workflows with examples using Terminal, VSCode, and GitHub Desktop.</p>
+</section>
+<hr class="docutils" />
+<section id="you-re-all-set">
+<h2>You’re All Set!<a class="headerlink" href="#you-re-all-set" title="Link to this heading"></a></h2>
+<p>From here, you can start editing code, writing documentation, or adding tests.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Template Project: Documentation Hub" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="customisation_checklist.html" class="btn btn-neutral float-right" title="Customisation Checklist for New Projects" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, FirstName LastName, FirstName LastName.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

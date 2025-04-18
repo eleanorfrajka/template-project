@@ -1,0 +1,267 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GitHub Actions: Automating Your Project &mdash; template_project v0.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=8b92e751"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="How to Cite This Project" href="citation_guide.html" />
+    <link rel="prev" title="Setting Up Pre-commit Hooks" href="precommit_guide.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            template_project
+              <img src="_static/logo.jpg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Getting Started: Setup and Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customisation_checklist.html">Customisation Checklist for New Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="project_structure.html">What’s in This Template Project?</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">GitHub basics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="github_intro.html">Getting Started with GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gitworkflow_solo.html">Solo Git Workflow for Your Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gitcollab_v2.html">Collaborating on Someone Else’s Repository</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Development Guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="style_guide.html">Project Style Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="writing_tests.html">Writing and Running Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="build_docs.html">Building Documentation Locally</a></li>
+<li class="toctree-l1"><a class="reference internal" href="precommit_guide.html">Setting Up Pre-commit Hooks</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">GitHub Actions: Automating Your Project</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#what-is-a-github-action">🤖 What Is a GitHub Action?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tests-yml-run-your-tests-automatically">🧪 <code class="docutils literal notranslate"><span class="pre">tests.yml</span></code>: Run Your Tests Automatically</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#docs-yml-test-your-documentation-build">🧱 <code class="docutils literal notranslate"><span class="pre">docs.yml</span></code>: Test Your Documentation Build</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#docs-deploy-yml-publish-to-github-pages">🚀 <code class="docutils literal notranslate"><span class="pre">docs_deploy.yml</span></code>: Publish to GitHub Pages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pypi-yml-publish-a-package-to-pypi">📦 <code class="docutils literal notranslate"><span class="pre">pypi.yml</span></code>: Publish a Package to PyPI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-customize-these-workflows">🛠️ How to Customize These Workflows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#summary">✅ Summary</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Project Management</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="citation_guide.html">How to Cite This Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pypi_guide.html">Publishing Your Project to PyPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gitorg.html">Transferring to an Organisation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Users' guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="demo-output.html">template-project demo</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Help and reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="http://github.com/eleanorfrajka/template-project">GitHub Repo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="template_project.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">template_project</span> <span class="pre">API</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ / Troubleshooting</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">template_project</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">GitHub Actions: Automating Your Project</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/actions_overview.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="github-actions-automating-your-project">
+<h1>GitHub Actions: Automating Your Project<a class="headerlink" href="#github-actions-automating-your-project" title="Link to this heading"></a></h1>
+<blockquote>
+<div><p>⚙️ GitHub Actions are tools that run automatically when certain things happen in your repository. They can test your code, build your docs, publish your package, and more.</p>
+</div></blockquote>
+<p>In <code class="docutils literal notranslate"><span class="pre">template-project</span></code>, GitHub Actions live in the <code class="docutils literal notranslate"><span class="pre">.github/workflows/</span></code> folder.</p>
+<hr class="docutils" />
+<section id="what-is-a-github-action">
+<h2>🤖 What Is a GitHub Action?<a class="headerlink" href="#what-is-a-github-action" title="Link to this heading"></a></h2>
+<p>A GitHub Action is a set of instructions that GitHub runs in response to events like:</p>
+<ul class="simple">
+<li><p>Opening a pull request</p></li>
+<li><p>Pushing new code</p></li>
+<li><p>Creating a release tag</p></li>
+</ul>
+<p>Each Action is defined in a <code class="docutils literal notranslate"><span class="pre">.yml</span></code> file inside <code class="docutils literal notranslate"><span class="pre">.github/workflows/</span></code>.</p>
+</section>
+<hr class="docutils" />
+<section id="tests-yml-run-your-tests-automatically">
+<h2>🧪 <code class="docutils literal notranslate"><span class="pre">tests.yml</span></code>: Run Your Tests Automatically<a class="headerlink" href="#tests-yml-run-your-tests-automatically" title="Link to this heading"></a></h2>
+<p><strong>When it runs:</strong></p>
+<ul class="simple">
+<li><p>Every time you open or update a pull request</p></li>
+</ul>
+<p><strong>What it does:</strong></p>
+<ul class="simple">
+<li><p>Sets up Python</p></li>
+<li><p>Installs your dependencies</p></li>
+<li><p>Runs <code class="docutils literal notranslate"><span class="pre">pytest</span></code> to check your code</p></li>
+</ul>
+<p><strong>Why it matters:</strong></p>
+<ul class="simple">
+<li><p>Makes sure new code doesn’t break old code</p></li>
+<li><p>Helps catch bugs early</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="docs-yml-test-your-documentation-build">
+<h2>🧱 <code class="docutils literal notranslate"><span class="pre">docs.yml</span></code>: Test Your Documentation Build<a class="headerlink" href="#docs-yml-test-your-documentation-build" title="Link to this heading"></a></h2>
+<p><strong>When it runs:</strong></p>
+<ul class="simple">
+<li><p>On every pull request to <code class="docutils literal notranslate"><span class="pre">main</span></code></p></li>
+</ul>
+<p><strong>What it does:</strong></p>
+<ul class="simple">
+<li><p>Builds your documentation using Sphinx</p></li>
+<li><p>Ensures you haven’t broken the docs accidentally</p></li>
+</ul>
+<p><strong>Why it matters:</strong></p>
+<ul class="simple">
+<li><p>Keeps your docs up to date with your code</p></li>
+<li><p>Warns you if a bad docstring or config breaks the build</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="docs-deploy-yml-publish-to-github-pages">
+<h2>🚀 <code class="docutils literal notranslate"><span class="pre">docs_deploy.yml</span></code>: Publish to GitHub Pages<a class="headerlink" href="#docs-deploy-yml-publish-to-github-pages" title="Link to this heading"></a></h2>
+<p><strong>When it runs:</strong></p>
+<ul class="simple">
+<li><p>After a pull request is merged into <code class="docutils literal notranslate"><span class="pre">main</span></code></p></li>
+</ul>
+<p><strong>What it does:</strong></p>
+<ul class="simple">
+<li><p>Rebuilds the documentation</p></li>
+<li><p>Publishes the result to the <code class="docutils literal notranslate"><span class="pre">gh-pages</span></code> branch</p></li>
+</ul>
+<p><strong>Why it matters:</strong></p>
+<ul class="simple">
+<li><p>You get a public documentation site (e.g., <code class="docutils literal notranslate"><span class="pre">https://yourusername.github.io/your-repo</span></code>)</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="pypi-yml-publish-a-package-to-pypi">
+<h2>📦 <code class="docutils literal notranslate"><span class="pre">pypi.yml</span></code>: Publish a Package to PyPI<a class="headerlink" href="#pypi-yml-publish-a-package-to-pypi" title="Link to this heading"></a></h2>
+<p><strong>When it runs:</strong></p>
+<ul class="simple">
+<li><p>When you push a GitHub release tag (e.g., <code class="docutils literal notranslate"><span class="pre">v0.1.0</span></code>)</p></li>
+</ul>
+<p><strong>What it does:</strong></p>
+<ul class="simple">
+<li><p>Builds your Python package</p></li>
+<li><p>Uploads it to <a class="reference external" href="https://pypi.org">PyPI</a> using secure GitHub credentials</p></li>
+</ul>
+<p><strong>Why it matters:</strong></p>
+<ul class="simple">
+<li><p>Makes your code <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span></code>-able by others</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="how-to-customize-these-workflows">
+<h2>🛠️ How to Customize These Workflows<a class="headerlink" href="#how-to-customize-these-workflows" title="Link to this heading"></a></h2>
+<p>Look in <code class="docutils literal notranslate"><span class="pre">.github/workflows/*.yml</span></code> files. You’ll see sections like:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">on:</span></code> — what triggers the workflow</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">jobs:</span></code> — what steps to run</p></li>
+</ul>
+<p>Each step can run shell commands or call existing actions (e.g., <code class="docutils literal notranslate"><span class="pre">actions/setup-python</span></code>).</p>
+<p>If you want to:</p>
+<ul class="simple">
+<li><p><strong>Add coverage reports</strong> → modify <code class="docutils literal notranslate"><span class="pre">tests.yml</span></code></p></li>
+<li><p><strong>Deploy to a different site</strong> → update <code class="docutils literal notranslate"><span class="pre">docs_deploy.yml</span></code></p></li>
+<li><p><strong>Use conda</strong> instead of pip → swap the environment setup steps</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="summary">
+<h2>✅ Summary<a class="headerlink" href="#summary" title="Link to this heading"></a></h2>
+<p>GitHub Actions in this template help you:</p>
+<ul class="simple">
+<li><p>Test every pull request</p></li>
+<li><p>Keep documentation working</p></li>
+<li><p>Publish code to the web or to PyPI automatically</p></li>
+</ul>
+<blockquote>
+<div><p>💡 You don’t have to do anything to use them — they just work when you push code to GitHub!</p>
+</div></blockquote>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="precommit_guide.html" class="btn btn-neutral float-left" title="Setting Up Pre-commit Hooks" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="citation_guide.html" class="btn btn-neutral float-right" title="How to Cite This Project" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, FirstName LastName, FirstName LastName.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

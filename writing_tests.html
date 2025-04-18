@@ -1,0 +1,283 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Writing and Running Tests &mdash; template_project v0.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=8b92e751"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Building Documentation Locally" href="build_docs.html" />
+    <link rel="prev" title="Project Style Guide" href="style_guide.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            template_project
+              <img src="_static/logo.jpg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Getting Started: Setup and Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customisation_checklist.html">Customisation Checklist for New Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="project_structure.html">What’s in This Template Project?</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">GitHub basics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="github_intro.html">Getting Started with GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gitworkflow_solo.html">Solo Git Workflow for Your Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gitcollab_v2.html">Collaborating on Someone Else’s Repository</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Development Guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="style_guide.html">Project Style Guide</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Writing and Running Tests</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#where-tests-go">📁 Where Tests Go</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#writing-your-first-test">✍️ Writing Your First Test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#running-tests-locally">▶️ Running Tests Locally</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#recommended-conventions">🛠 Recommended Conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#checking-test-coverage">📊 Checking Test Coverage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#install-the-extra-dev-dependency">1. Install the extra dev dependency:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#run-tests-with-coverage">2. Run tests with coverage:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#summary-cheatsheet">Summary Cheatsheet</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="build_docs.html">Building Documentation Locally</a></li>
+<li class="toctree-l1"><a class="reference internal" href="precommit_guide.html">Setting Up Pre-commit Hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="actions_overview.html">GitHub Actions: Automating Your Project</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Project Management</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="citation_guide.html">How to Cite This Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pypi_guide.html">Publishing Your Project to PyPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gitorg.html">Transferring to an Organisation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Users' guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="demo-output.html">template-project demo</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Help and reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="http://github.com/eleanorfrajka/template-project">GitHub Repo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="template_project.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">template_project</span> <span class="pre">API</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ / Troubleshooting</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">template_project</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Writing and Running Tests</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/writing_tests.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="writing-and-running-tests">
+<h1>Writing and Running Tests<a class="headerlink" href="#writing-and-running-tests" title="Link to this heading"></a></h1>
+<blockquote>
+<div><p>🧪 This guide explains how to write and run tests using <code class="docutils literal notranslate"><span class="pre">pytest</span></code>, following the structure used in the template-project.</p>
+</div></blockquote>
+<p>Writing good tests helps you avoid bugs, refactor safely, and ensure your code does what you expect — even weeks or months later.</p>
+<hr class="docutils" />
+<section id="where-tests-go">
+<h2>📁 Where Tests Go<a class="headerlink" href="#where-tests-go" title="Link to this heading"></a></h2>
+<p>All test code lives in the <code class="docutils literal notranslate"><span class="pre">tests/</span></code> directory at the root of the project.</p>
+<ul class="simple">
+<li><p>Each Python file in this folder starts with <code class="docutils literal notranslate"><span class="pre">test_</span></code></p></li>
+<li><p>Each test function inside starts with <code class="docutils literal notranslate"><span class="pre">test_</span></code></p></li>
+<li><p>You can organize tests by topic or module: <code class="docutils literal notranslate"><span class="pre">test_utils.py</span></code>, <code class="docutils literal notranslate"><span class="pre">test_readers.py</span></code>, etc.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="writing-your-first-test">
+<h2>✍️ Writing Your First Test<a class="headerlink" href="#writing-your-first-test" title="Link to this heading"></a></h2>
+<p>Tests are written as plain Python functions and typically use assertions to check behavior:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># tests/test_math.py</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_addition</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">==</span> <span class="mi">2</span>
+</pre></div>
+</div>
+<p>To test your own project modules, just import them like normal:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># tests/test_tools.py</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">template_project.tools</span><span class="w"> </span><span class="kn">import</span> <span class="n">convert_units</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_convert_units_basic</span><span class="p">():</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">convert_units</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="s2">&quot;m&quot;</span><span class="p">,</span> <span class="s2">&quot;km&quot;</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">result</span> <span class="o">==</span> <span class="mf">0.01</span>
+</pre></div>
+</div>
+<blockquote>
+<div><p>💡 All test functions must start with <code class="docutils literal notranslate"><span class="pre">test_</span></code> so <code class="docutils literal notranslate"><span class="pre">pytest</span></code> can discover them.</p>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="running-tests-locally">
+<h2>▶️ Running Tests Locally<a class="headerlink" href="#running-tests-locally" title="Link to this heading"></a></h2>
+<p>Make sure you’ve installed the dev dependencies:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements-dev.txt
+</pre></div>
+</div>
+<p>Then run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pytest
+</pre></div>
+</div>
+<p>This will automatically find and run any <code class="docutils literal notranslate"><span class="pre">test_*.py</span></code> files under the <code class="docutils literal notranslate"><span class="pre">tests/</span></code> folder.</p>
+<p>To run a specific test file:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pytest<span class="w"> </span>tests/test_tools.py
+</pre></div>
+</div>
+<p>To run a specific test function:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pytest<span class="w"> </span>tests/test_tools.py::test_convert_units_basic
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="recommended-conventions">
+<h2>🛠 Recommended Conventions<a class="headerlink" href="#recommended-conventions" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Group related tests by file (e.g. <code class="docutils literal notranslate"><span class="pre">test_utilities.py</span></code>, <code class="docutils literal notranslate"><span class="pre">test_standardise.py</span></code>)</p></li>
+<li><p>Name test functions to reflect what they check (e.g. <code class="docutils literal notranslate"><span class="pre">test_raises_on_invalid_units</span></code>)</p></li>
+<li><p>Use fixtures or test classes to share setup code when needed</p></li>
+<li><p>Keep each test focused on one thing</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="checking-test-coverage">
+<h2>📊 Checking Test Coverage<a class="headerlink" href="#checking-test-coverage" title="Link to this heading"></a></h2>
+<p>You can use <code class="docutils literal notranslate"><span class="pre">pytest-cov</span></code> to measure how much of your code is covered by tests.</p>
+<section id="install-the-extra-dev-dependency">
+<h3>1. Install the extra dev dependency:<a class="headerlink" href="#install-the-extra-dev-dependency" title="Link to this heading"></a></h3>
+<p>Make sure this line is in your <code class="docutils literal notranslate"><span class="pre">requirements-dev.txt</span></code>:</p>
+<div class="highlight-txt notranslate"><div class="highlight"><pre><span></span>pytest-cov
+</pre></div>
+</div>
+<p>Then install:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements-dev.txt
+</pre></div>
+</div>
+</section>
+<section id="run-tests-with-coverage">
+<h3>2. Run tests with coverage:<a class="headerlink" href="#run-tests-with-coverage" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pytest<span class="w"> </span>--cov<span class="o">=</span>template_project
+</pre></div>
+</div>
+<p>This will show a summary of test coverage by file.</p>
+<p>To generate an HTML report:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pytest<span class="w"> </span>--cov<span class="o">=</span>template_project<span class="w"> </span>--cov-report<span class="o">=</span>html
+</pre></div>
+</div>
+<p>Then open the <code class="docutils literal notranslate"><span class="pre">htmlcov/index.html</span></code> file in your browser to view a coverage dashboard.</p>
+<blockquote>
+<div><p>📉 Files with low coverage help you find missing tests.</p>
+</div></blockquote>
+<p>If you’re using <a class="reference internal" href="precommit_guide.html"><span class="std std-doc">pre-commit hooks</span></a>, you can configure them to run <code class="docutils literal notranslate"><span class="pre">pytest</span></code> before each commit. This helps you catch test failures early.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="summary-cheatsheet">
+<h2>Summary Cheatsheet<a class="headerlink" href="#summary-cheatsheet" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Task</p></th>
+<th class="head"><p>Command</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Run all tests</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">pytest</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Run specific test file</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">pytest</span> <span class="pre">tests/test_xyz.py</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Run specific test</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">pytest</span> <span class="pre">tests/test_xyz.py::test_name</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Install test tools</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-r</span> <span class="pre">requirements-dev.txt</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<div><p>✅ Tests help you make confident changes. Use them early, and use them often!</p>
+</div></blockquote>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="style_guide.html" class="btn btn-neutral float-left" title="Project Style Guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="build_docs.html" class="btn btn-neutral float-right" title="Building Documentation Locally" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, FirstName LastName, FirstName LastName.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,379 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Publishing Your Project to PyPI &mdash; template_project v0.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=8b92e751"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Transferring to an Organisation" href="gitorg.html" />
+    <link rel="prev" title="How to Cite This Project" href="citation_guide.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            template_project
+              <img src="_static/logo.jpg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Getting Started: Setup and Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customisation_checklist.html">Customisation Checklist for New Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="project_structure.html">What’s in This Template Project?</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">GitHub basics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="github_intro.html">Getting Started with GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gitworkflow_solo.html">Solo Git Workflow for Your Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gitcollab_v2.html">Collaborating on Someone Else’s Repository</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Development Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="style_guide.html">Project Style Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="writing_tests.html">Writing and Running Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="build_docs.html">Building Documentation Locally</a></li>
+<li class="toctree-l1"><a class="reference internal" href="precommit_guide.html">Setting Up Pre-commit Hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="actions_overview.html">GitHub Actions: Automating Your Project</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Project Management</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="citation_guide.html">How to Cite This Project</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Publishing Your Project to PyPI</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#step-1-prepare-your-project">📁 Step 1: Prepare Your Project</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#choosing-a-build-backend">Choosing a Build Backend</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#step-2-edit-your-project-metadata">📝 Step 2: Edit Your Project Metadata</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#versioning-with-setuptools-scm">Versioning with <code class="docutils literal notranslate"><span class="pre">setuptools_scm</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#step-3-build-your-package">🛠️ Step 3: Build Your Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#step-4-test-on-testpypi">🧪 Step 4: Test on TestPyPI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#step-5-upload-to-pypi">🚀 Step 5: Upload to PyPI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#optional-automate-publishing-with-github-actions">🤖 Optional: Automate Publishing with GitHub Actions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#to-use-it">To use it:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#recommended-github-local-release-workflow">✅ Recommended GitHub + Local Release Workflow</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#summary">✅ Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="gitorg.html">Transferring to an Organisation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Users' guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="demo-output.html">template-project demo</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Help and reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="http://github.com/eleanorfrajka/template-project">GitHub Repo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="template_project.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">template_project</span> <span class="pre">API</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ / Troubleshooting</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">template_project</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Publishing Your Project to PyPI</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/pypi_guide.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="publishing-your-project-to-pypi">
+<h1>Publishing Your Project to PyPI<a class="headerlink" href="#publishing-your-project-to-pypi" title="Link to this heading"></a></h1>
+<blockquote>
+<div><p>📦 PyPI (Python Package Index) is where you publish Python packages so others can install them with <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">yourproject</span></code>.</p>
+</div></blockquote>
+<p>This guide walks you through publishing your project from <code class="docutils literal notranslate"><span class="pre">template-project</span></code> to PyPI — manually or automatically using GitHub Actions.</p>
+<hr class="docutils" />
+<section id="step-1-prepare-your-project">
+<h2>📁 Step 1: Prepare Your Project<a class="headerlink" href="#step-1-prepare-your-project" title="Link to this heading"></a></h2>
+<p>To publish to PyPI, your project needs:</p>
+<ul class="simple">
+<li><p>A <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> file with metadata</p></li>
+<li><p>A <code class="docutils literal notranslate"><span class="pre">README.md</span></code>, <code class="docutils literal notranslate"><span class="pre">LICENSE</span></code>, and version number</p></li>
+<li><p>A working <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> or version file</p></li>
+</ul>
+<p>This template already includes most of what you need.</p>
+<p>You can also follow the official tutorial:
+👉 <a class="reference external" href="https://packaging.python.org/en/latest/tutorials/packaging-projects/">Packaging Projects — Python Packaging User Guide</a></p>
+<section id="choosing-a-build-backend">
+<h3>Choosing a Build Backend<a class="headerlink" href="#choosing-a-build-backend" title="Link to this heading"></a></h3>
+<p>The official Python tutorial uses <code class="docutils literal notranslate"><span class="pre">hatchling</span></code>, like this:</p>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[build-system]</span>
+<span class="n">requires</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;hatchling &gt;= 1.26&quot;</span><span class="p">]</span>
+<span class="n">build-backend</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;hatchling.build&quot;</span>
+</pre></div>
+</div>
+<p>In this template, we use <code class="docutils literal notranslate"><span class="pre">setuptools</span></code> instead:</p>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[build-system]</span>
+<span class="n">build-backend</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;setuptools.build_meta&quot;</span>
+<span class="n">requires</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">  </span><span class="s2">&quot;setuptools&gt;=42&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;setuptools-scm[toml]&gt;=3.4&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;wheel&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>This setup works well for scientific projects that use version tagging.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="step-2-edit-your-project-metadata">
+<h2>📝 Step 2: Edit Your Project Metadata<a class="headerlink" href="#step-2-edit-your-project-metadata" title="Link to this heading"></a></h2>
+<p>Update <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> under the <code class="docutils literal notranslate"><span class="pre">[project]</span></code> section:</p>
+<p>Example from this template:</p>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[project]</span>
+<span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;template-project-efw&quot;</span>
+<span class="n">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Example template project for docs, pip install and git&quot;</span>
+<span class="n">readme</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;README.md&quot;</span>
+<span class="n">license</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">file</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;LICENSE&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="n">maintainers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;Eleanor Frajka-Williams&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">email</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;eleanorfrajka@gmail.com&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="p">]</span>
+<span class="n">requires-python</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&gt;=3.8&quot;</span>
+<span class="n">classifiers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">  </span><span class="s2">&quot;Programming Language :: Python :: 3 :: Only&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;Programming Language :: Python :: 3.8&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;Programming Language :: Python :: 3.9&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;Programming Language :: Python :: 3.10&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;Programming Language :: Python :: 3.11&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;Programming Language :: Python :: 3.12&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+<span class="n">dynamic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">  </span><span class="s2">&quot;dependencies&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;version&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+
+<span class="k">[project.urls]</span>
+<span class="n">documentation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;https://github.com/eleanorfrajka/template-project&quot;</span>
+<span class="n">homepage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;https://github.com/eleanorfrajka/template-project&quot;</span>
+<span class="n">repository</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;https://github.com/eleanorfrajka/template-project&quot;</span>
+</pre></div>
+</div>
+<blockquote>
+<div><p>🎯 Change the <code class="docutils literal notranslate"><span class="pre">name</span></code>, <code class="docutils literal notranslate"><span class="pre">description</span></code>, <code class="docutils literal notranslate"><span class="pre">maintainers</span></code>, and URLs to match your own project.</p>
+</div></blockquote>
+<section id="versioning-with-setuptools-scm">
+<h3>Versioning with <code class="docutils literal notranslate"><span class="pre">setuptools_scm</span></code><a class="headerlink" href="#versioning-with-setuptools-scm" title="Link to this heading"></a></h3>
+<p>This template uses automatic versioning from git tags. Here’s the config:</p>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[tool.setuptools_scm]</span>
+<span class="n">write_to</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;template_project/_version.py&quot;</span>
+<span class="n">write_to_template</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;__version__ = &#39;{version}&#39;&quot;</span>
+<span class="n">tag_regex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;^(?P&lt;prefix&gt;v)?(?P&lt;version&gt;[^</span><span class="se">\+</span><span class="s2">]+)(?P&lt;suffix&gt;.*)?$&quot;</span>
+<span class="n">local_scheme</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;no-local-version&quot;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="step-3-build-your-package">
+<h2>🛠️ Step 3: Build Your Package<a class="headerlink" href="#step-3-build-your-package" title="Link to this heading"></a></h2>
+<p>Make sure you have the latest <code class="docutils literal notranslate"><span class="pre">build</span></code> module:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>build
+</pre></div>
+</div>
+<p>Then from the project root:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>-m<span class="w"> </span>build
+</pre></div>
+</div>
+<p>This generates a <code class="docutils literal notranslate"><span class="pre">dist/</span></code> folder with <code class="docutils literal notranslate"><span class="pre">.whl</span></code> and <code class="docutils literal notranslate"><span class="pre">.tar.gz</span></code> files.</p>
+</section>
+<hr class="docutils" />
+<section id="step-4-test-on-testpypi">
+<h2>🧪 Step 4: Test on TestPyPI<a class="headerlink" href="#step-4-test-on-testpypi" title="Link to this heading"></a></h2>
+<p>Before publishing for real, try everything out on <a class="reference external" href="https://test.pypi.org">TestPyPI</a>.</p>
+<ol class="arabic simple">
+<li><p>Create an account at <a class="reference external" href="https://test.pypi.org/account/register">test.pypi.org/account/register</a></p></li>
+<li><p>Create an API token and store it securely</p></li>
+<li><p>Install or upgrade Twine:</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>twine
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>Upload your package:</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>-m<span class="w"> </span>twine<span class="w"> </span>upload<span class="w"> </span>--repository<span class="w"> </span>testpypi<span class="w"> </span>dist/*
+</pre></div>
+</div>
+<ol class="arabic simple" start="5">
+<li><p>Install from TestPyPI:</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-i<span class="w"> </span>https://test.pypi.org/simple/<span class="w"> </span>--no-deps<span class="w"> </span>template-project-efw
+</pre></div>
+</div>
+<blockquote>
+<div><p>⚠️ If you see an error like:</p>
+</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Invalid</span> <span class="n">distribution</span> <span class="n">metadata</span><span class="p">:</span> <span class="n">unrecognized</span> <span class="ow">or</span> <span class="n">malformed</span> <span class="n">field</span> <span class="s1">&#39;license-file&#39;</span>
+</pre></div>
+</div>
+<p>Update your packaging tools:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>packaging<span class="w"> </span>setuptools
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="step-5-upload-to-pypi">
+<h2>🚀 Step 5: Upload to PyPI<a class="headerlink" href="#step-5-upload-to-pypi" title="Link to this heading"></a></h2>
+<p>When you’re ready to go live:</p>
+<ol class="arabic simple">
+<li><p>Create an account at <a class="reference external" href="https://pypi.org/account/register">pypi.org</a></p></li>
+<li><p>Generate a separate API token</p></li>
+<li><p>Upload with Twine:</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>-m<span class="w"> </span>twine<span class="w"> </span>upload<span class="w"> </span>dist/*
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="optional-automate-publishing-with-github-actions">
+<h2>🤖 Optional: Automate Publishing with GitHub Actions<a class="headerlink" href="#optional-automate-publishing-with-github-actions" title="Link to this heading"></a></h2>
+<p>This template includes <code class="docutils literal notranslate"><span class="pre">.github/workflows/pypi.yml</span></code>, which:</p>
+<ul class="simple">
+<li><p>Builds your package</p></li>
+<li><p>Publishes to PyPI when you push a release tag (e.g. <code class="docutils literal notranslate"><span class="pre">v0.1.0</span></code>)</p></li>
+</ul>
+<section id="to-use-it">
+<h3>To use it:<a class="headerlink" href="#to-use-it" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Register GitHub as a <a class="reference external" href="https://docs.pypi.org/trusted-publishers/creating-a-project-through-oidc/">trusted publisher</a></p></li>
+<li><p>Push a tag:</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>tag<span class="w"> </span>v0.1.0
+git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>v0.1.0
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>GitHub will run the Action to publish your package.</p></li>
+</ol>
+</section>
+<section id="recommended-github-local-release-workflow">
+<h3>✅ Recommended GitHub + Local Release Workflow<a class="headerlink" href="#recommended-github-local-release-workflow" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>Merge your pull requests to <code class="docutils literal notranslate"><span class="pre">main</span></code></strong></p>
+<ul class="simple">
+<li><p>Make sure all desired changes are merged.</p></li>
+<li><p>If you’re working in a fork, sync with upstream <code class="docutils literal notranslate"><span class="pre">main</span></code> on GitHub.</p></li>
+</ul>
+</li>
+<li><p><strong>On your local machine:</strong></p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>checkout<span class="w"> </span>main
+git<span class="w"> </span>pull<span class="w"> </span>origin<span class="w"> </span>main
+git<span class="w"> </span>log<span class="w"> </span>-1<span class="w">   </span><span class="c1"># Confirm you&#39;re tagging the latest commit</span>
+
+git<span class="w"> </span>tag<span class="w"> </span>v0.1.0<span class="w">   </span><span class="c1"># Follow PEP 440</span>
+git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>v0.1.0
+</pre></div>
+</div>
+<blockquote>
+<div><p>Make sure the tag is on the tip of <code class="docutils literal notranslate"><span class="pre">main</span></code> — otherwise <code class="docutils literal notranslate"><span class="pre">setuptools_scm</span></code> may think you’re ahead and bump the version (e.g. <code class="docutils literal notranslate"><span class="pre">0.1.0.dev1</span></code>).</p>
+</div></blockquote>
+<ol class="arabic simple" start="3">
+<li><p><strong>On GitHub.com:</strong></p>
+<ul class="simple">
+<li><p>Go to the <strong>Releases</strong> tab</p></li>
+<li><p>Click <strong>“Draft a new release”</strong></p></li>
+<li><p>Choose the tag you just pushed (e.g. <code class="docutils literal notranslate"><span class="pre">v0.1.0</span></code>)</p></li>
+<li><p>Add changelog/release notes</p></li>
+<li><p>Click <strong>“Publish release”</strong></p></li>
+</ul>
+</li>
+</ol>
+<p>The PyPI workflow will be triggered and your package will be published.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="summary">
+<h2>✅ Summary<a class="headerlink" href="#summary" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Fill in <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code></p></li>
+<li><p>Build your distribution with <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">-m</span> <span class="pre">build</span></code></p></li>
+<li><p>Test on TestPyPI, then upload to PyPI</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">pypi.yml</span></code> to automate releases</p></li>
+</ul>
+<blockquote>
+<div><p>📦 Now others can <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span></code> your project!</p>
+</div></blockquote>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="citation_guide.html" class="btn btn-neutral float-left" title="How to Cite This Project" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="gitorg.html" class="btn btn-neutral float-right" title="Transferring to an Organisation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, FirstName LastName, FirstName LastName.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
