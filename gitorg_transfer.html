@@ -1,0 +1,268 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Transferring a Repository to an Organisation &mdash; template_project v0.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=8b92e751"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="template-project demo" href="demo-output.html" />
+    <link rel="prev" title="Publishing Your Project to PyPI" href="pypi_guide.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            template_project
+              <img src="_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Getting Started: Setup and Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customisation_checklist.html">Customisation Checklist for New Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="project_structure.html">What’s in This Template Project?</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">GitHub basics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="github_intro.html">Getting Started with GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gitworkflow_solo.html">Solo Git Workflow for Your Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gitcollab.html">Collaborating on Someone Else’s Repository</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Development Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="style_guide.html">Project Style Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="writing_tests.html">Writing and Running Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="build_docs.html">Building Documentation Locally</a></li>
+<li class="toctree-l1"><a class="reference internal" href="precommit_guide.html">Setting Up Pre-commit Hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="actions_overview.html">GitHub Actions: Automating Your Project</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Project Management</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="citation_guide.html">How to Cite This Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pypi_guide.html">Publishing Your Project to PyPI</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Transferring a Repository to an Organisation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#why-transfer-to-an-organisation">📦 Why Transfer to an Organisation?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#steps-for-transferring-a-repository">🔁 Steps for Transferring a Repository</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#prepare-an-organisation-and-team">1. Prepare an Organisation and Team</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#transfer-the-repository">2. Transfer the Repository</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#verify-the-move">3. Verify the Move</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#reassign-roles">4. Reassign Roles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#notify-collaborators">5. Notify Collaborators</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#post-transfer-clean-up">⚙️ Post-Transfer Clean-up</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#update-links">🔗 Update Links</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pypi-and-trusted-publisher-later-step">📄 PyPI and Trusted Publisher (Later Step)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#conda-forge-later-step">🐍 Conda-forge (Later Step)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyproject-toml">📝 <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#final-step-for-original-owner">👤 Final Step for Original Owner</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Users' guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="demo-output.html">template-project demo</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Help and reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="http://github.com/eleanorfrajka/template-project">GitHub Repo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="template_project.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">template_project</span> <span class="pre">API</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ / Troubleshooting</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">template_project</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Transferring a Repository to an Organisation</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/gitorg_transfer.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="transferring-a-repository-to-an-organisation">
+<h1>Transferring a Repository to an Organisation<a class="headerlink" href="#transferring-a-repository-to-an-organisation" title="Link to this heading"></a></h1>
+<blockquote>
+<div><p>🏢 This guide explains how to transfer a GitHub repository from a personal account to an organisation. While not required, this can help promote collaborative ownership and reduce barriers to contribution.</p>
+</div></blockquote>
+<hr class="docutils" />
+<section id="why-transfer-to-an-organisation">
+<h2>📦 Why Transfer to an Organisation?<a class="headerlink" href="#why-transfer-to-an-organisation" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Enables team-based permissions</p></li>
+<li><p>Reduces visibility of individual ownership</p></li>
+<li><p>Simplifies future collaboration and maintenance</p></li>
+</ul>
+<p>You might want to transfer if you’re planning broader community involvement, long-term support, or a publication release.</p>
+</section>
+<hr class="docutils" />
+<section id="steps-for-transferring-a-repository">
+<h2>🔁 Steps for Transferring a Repository<a class="headerlink" href="#steps-for-transferring-a-repository" title="Link to this heading"></a></h2>
+<section id="prepare-an-organisation-and-team">
+<h3>1. Prepare an Organisation and Team<a class="headerlink" href="#prepare-an-organisation-and-team" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Make sure you’re an admin of the destination GitHub organisation.</p></li>
+<li><p>Create a team for maintainers (e.g., <a class="reference external" href="https://github.com/orgs/ifmeo-hamburg/teams/seagliderOG1-maintainers"><code class="docutils literal notranslate"><span class="pre">ifmeo-hamburg/seagliderOG1-maintainers</span></code></a>).</p></li>
+</ul>
+</section>
+<section id="transfer-the-repository">
+<h3>2. Transfer the Repository<a class="headerlink" href="#transfer-the-repository" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Go to <strong>Settings</strong> in your GitHub repo.</p></li>
+<li><p>Scroll to <strong>Danger Zone</strong> and click <strong>Transfer Ownership</strong>.</p></li>
+<li><p>Enter the organisation name and confirm.</p></li>
+</ul>
+</section>
+<section id="verify-the-move">
+<h3>3. Verify the Move<a class="headerlink" href="#verify-the-move" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Go to the new repository URL under the organisation.</p></li>
+<li><p>Check that all content moved:</p>
+<ul>
+<li><p>Issues</p></li>
+<li><p>Pull requests</p></li>
+<li><p>Branch protection rules</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="reassign-roles">
+<h3>4. Reassign Roles<a class="headerlink" href="#reassign-roles" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Visit <strong>Settings &gt; Collaborators and Teams</strong>.</p></li>
+<li><p>Ensure team members have appropriate roles (e.g., “Write” or “Maintain”).</p></li>
+</ul>
+</section>
+<section id="notify-collaborators">
+<h3>5. Notify Collaborators<a class="headerlink" href="#notify-collaborators" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Let team members and contributors know the repo has moved.</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="post-transfer-clean-up">
+<h2>⚙️ Post-Transfer Clean-up<a class="headerlink" href="#post-transfer-clean-up" title="Link to this heading"></a></h2>
+<section id="update-links">
+<h3>🔗 Update Links<a class="headerlink" href="#update-links" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>[ ] Update all internal links to the repo in:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">README.md</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">docs/index.rst</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">docs/source/conf.py</span></code></p></li>
+<li><p>Citation files (e.g. <code class="docutils literal notranslate"><span class="pre">CITATION.cff</span></code> → <code class="docutils literal notranslate"><span class="pre">url:</span></code> field)</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="pypi-and-trusted-publisher-later-step">
+<h3>📄 PyPI and Trusted Publisher (Later Step)<a class="headerlink" href="#pypi-and-trusted-publisher-later-step" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>[ ] In <a class="reference external" href="https://pypi.org/manage/project/">PyPI settings</a>, update the GitHub repository address.</p></li>
+<li><p>[ ] Reconfigure trusted publisher settings for the new repo path.</p></li>
+</ul>
+</section>
+<section id="conda-forge-later-step">
+<h3>🐍 Conda-forge (Later Step)<a class="headerlink" href="#conda-forge-later-step" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>[ ] If distributing via conda-forge, update <code class="docutils literal notranslate"><span class="pre">meta.yaml</span></code> to match the new repo location.</p></li>
+</ul>
+</section>
+<section id="pyproject-toml">
+<h3>📝 <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code><a class="headerlink" href="#pyproject-toml" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>[ ] Update <code class="docutils literal notranslate"><span class="pre">urls.repository</span></code> and <code class="docutils literal notranslate"><span class="pre">urls.documentation</span></code> to the new GitHub URL.</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="final-step-for-original-owner">
+<h2>👤 Final Step for Original Owner<a class="headerlink" href="#final-step-for-original-owner" title="Link to this heading"></a></h2>
+<p>If the repo started under your personal account (e.g., <code class="docutils literal notranslate"><span class="pre">github.com/eleanorfrajka/seagliderOG1</span></code>) and you want to keep working on it:</p>
+<ul class="simple">
+<li><p>Fork the new repo from the organisation to your personal GitHub account.</p></li>
+</ul>
+<hr class="docutils" />
+<blockquote>
+<div><p>✅ After transfer and cleanup, your repository is easier to maintain as a team project and better prepared for citation, publishing, and long-term support.</p>
+</div></blockquote>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="pypi_guide.html" class="btn btn-neutral float-left" title="Publishing Your Project to PyPI" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="demo-output.html" class="btn btn-neutral float-right" title="template-project demo" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, FirstName LastName, FirstName LastName.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

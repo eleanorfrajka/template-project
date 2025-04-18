@@ -34,7 +34,7 @@
           
           <a href="index.html" class="icon icon-home">
             template_project
-              <img src="_static/logo.jpg" class="logo" alt="Logo"/>
+              <img src="_static/logo.png" class="logo" alt="Logo"/>
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -116,7 +116,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="citation_guide.html">How to Cite This Project</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pypi_guide.html">Publishing Your Project to PyPI</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gitorg.html">Transferring to an Organisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gitorg_transfer.html">Transferring a Repository to an Organisation</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Users' guide</span></p>
 <ul>
@@ -145,7 +145,7 @@
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
       <li class="breadcrumb-item active">Collaborating on Someone Else’s Repository</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="_sources/gitcollab_v2.md.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/gitcollab.md.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -166,6 +166,8 @@
 <li><p>Make and <strong>commit</strong> changes</p></li>
 <li><p><strong>Push</strong> and open a <strong>pull request</strong></p></li>
 </ul>
+<p><img alt="GitHub fork-and-PR workflow" src="_images/github_workflow2.png" /></p>
+<p><em>A typical GitHub fork and pull request workflow with syncing back to the fork.  You work in a branch; the important copy of the code (and its history) is in the Upstream Main.  The forked main and local main are just a means of transferring information.</em></p>
 <p>It assumes you’re working on GitHub and contributing to a project you don’t own.</p>
 <p>See <a class="reference internal" href="github_intro.html"><span class="std std-doc">Github Intro</span></a> for some (brief) additional information about this terminology.</p>
 <hr class="docutils" />
@@ -336,7 +338,7 @@ git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </sp
 <hr class="docutils" />
 <section id="sync-your-fork-for-next-time">
 <h2>8. Sync Your Fork (for Next Time)<a class="headerlink" href="#sync-your-fork-for-next-time" title="Link to this heading"></a></h2>
-<p>When the original project updates, you’ll want to sync your fork.  For now, your forked main on Github.com doesn’t know about any of these (or anyone else’s changes).</p>
+<p>When the original project (the <strong>upstream main</strong>) updates, you’ll want to sync your forked main to the upstream main.  Until you do,  your forked main on Github.com doesn’t know about any of these (or anyone else’s changes).</p>
 <section id="id13">
 <h3>GitHub.com<a class="headerlink" href="#id13" title="Link to this heading"></a></h3>
 <ul class="simple">
@@ -366,7 +368,7 @@ git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </
 <section id="tips">
 <h2>Tips<a class="headerlink" href="#tips" title="Link to this heading"></a></h2>
 <ul class="simple">
-<li><p>Always branch off of <code class="docutils literal notranslate"><span class="pre">main</span></code>, not an old feature branch.</p></li>
+<li><p>Always branch off of <code class="docutils literal notranslate"><span class="pre">main</span></code> (in this workflow, your <strong>local main</strong>, which has pulled changes from your <strong>forked main</strong>, which has been synced to the <strong>upstream main</strong>), not an old feature branch.</p></li>
 <li><p>Use clear commit messages (<code class="docutils literal notranslate"><span class="pre">feat:</span></code>, <code class="docutils literal notranslate"><span class="pre">fix:</span></code>, <code class="docutils literal notranslate"><span class="pre">docs:</span></code> are great tags).</p></li>
 <li><p>If you see merge conflicts during pull or push, ask for help or check GitHub Docs.</p></li>
 </ul>

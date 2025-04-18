@@ -33,7 +33,7 @@
           
           <a href="#" class="icon icon-home">
             template_project
-              <img src="_static/logo.jpg" class="logo" alt="Logo"/>
+              <img src="_static/logo.png" class="logo" alt="Logo"/>
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -53,7 +53,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="github_intro.html">Getting Started with GitHub</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gitworkflow_solo.html">Solo Git Workflow for Your Project</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gitcollab_v2.html">Collaborating on Someone Else’s Repository</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gitcollab.html">Collaborating on Someone Else’s Repository</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Development Guide</span></p>
 <ul>
@@ -67,7 +67,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="citation_guide.html">How to Cite This Project</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pypi_guide.html">Publishing Your Project to PyPI</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gitorg.html">Transferring to an Organisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gitorg_transfer.html">Transferring a Repository to an Organisation</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Users' guide</span></p>
 <ul>
@@ -169,17 +169,17 @@
 <li class="toctree-l2"><a class="reference internal" href="gitworkflow_solo.html#cheatsheet-handy-git-commands">Cheatsheet: Handy Git Commands</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="gitcollab_v2.html">Collaborating on Someone Else’s Repository</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="gitcollab_v2.html#fork-the-repository">1. Fork the Repository</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gitcollab_v2.html#clone-the-repository">2. Clone the Repository</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gitcollab_v2.html#add-the-original-repo-as-upstream">3. Add the Original Repo as “Upstream”</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gitcollab_v2.html#create-a-branch-for-your-changes">4. Create a Branch for Your Changes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gitcollab_v2.html#make-and-commit-your-changes">5. Make and Commit Your Changes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gitcollab_v2.html#push-your-branch-to-github">6. Push Your Branch to GitHub</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gitcollab_v2.html#open-a-pull-request">7. Open a Pull Request</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gitcollab_v2.html#sync-your-fork-for-next-time">8. Sync Your Fork (for Next Time)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gitcollab_v2.html#tips">Tips</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gitcollab_v2.html#cheatsheet-handy-git-commands">Cheatsheet: Handy Git Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gitcollab.html">Collaborating on Someone Else’s Repository</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="gitcollab.html#fork-the-repository">1. Fork the Repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gitcollab.html#clone-the-repository">2. Clone the Repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gitcollab.html#add-the-original-repo-as-upstream">3. Add the Original Repo as “Upstream”</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gitcollab.html#create-a-branch-for-your-changes">4. Create a Branch for Your Changes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gitcollab.html#make-and-commit-your-changes">5. Make and Commit Your Changes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gitcollab.html#push-your-branch-to-github">6. Push Your Branch to GitHub</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gitcollab.html#open-a-pull-request">7. Open a Pull Request</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gitcollab.html#sync-your-fork-for-next-time">8. Sync Your Fork (for Next Time)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gitcollab.html#tips">Tips</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gitcollab.html#cheatsheet-handy-git-commands">Cheatsheet: Handy Git Commands</a></li>
 </ul>
 </li>
 </ul>
@@ -254,7 +254,13 @@
 <li class="toctree-l2"><a class="reference internal" href="pypi_guide.html#summary">✅ Summary</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="gitorg.html">Transferring to an Organisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gitorg_transfer.html">Transferring a Repository to an Organisation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="gitorg_transfer.html#why-transfer-to-an-organisation">📦 Why Transfer to an Organisation?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gitorg_transfer.html#steps-for-transferring-a-repository">🔁 Steps for Transferring a Repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gitorg_transfer.html#post-transfer-clean-up">⚙️ Post-Transfer Clean-up</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gitorg_transfer.html#final-step-for-original-owner">👤 Final Step for Original Owner</a></li>
+</ul>
+</li>
 </ul>
 </div>
 <div class="toctree-wrapper compound">
@@ -284,13 +290,21 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ / Troubleshooting</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="faq.html#i-get-an-error-when-doing-from-template-project-import-plotters">I get an error when doing <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">template_project</span> <span class="pre">import</span> <span class="pre">plotters</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="faq.html#failing-to-install-the-package-in-a-github-action">Failing to install the package in a Github Action</a></li>
-<li class="toctree-l2"><a class="reference internal" href="faq.html#what-s-the-difference-between-template-project-and-template-project">What’s the difference between <code class="docutils literal notranslate"><span class="pre">template-project</span></code> and <code class="docutils literal notranslate"><span class="pre">template_project</span></code>??</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq.html#import-error-from-template-project-import-plotters">🐍 Import Error: <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">template_project</span> <span class="pre">import</span> <span class="pre">plotters</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq.html#pip-install-error-in-github-actions">💥 Pip install error in GitHub Actions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq.html#what-s-the-difference-between-template-project-and-template-project">🤔 What’s the difference between <code class="docutils literal notranslate"><span class="pre">template-project</span></code> and <code class="docutils literal notranslate"><span class="pre">template_project</span></code>?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq.html#i-accidentally-committed-to-main-instead-of-a-branch">😬 I accidentally committed to <code class="docutils literal notranslate"><span class="pre">main</span></code> instead of a branch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq.html#continuous-integration-ci-is-failing">🚨 Continuous Integration (CI) is failing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq.html#how-do-i-check-which-branch-i-m-on">🧭 How do I check which branch I’m on?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq.html#i-cloned-the-repo-but-dont-see-the-latest-updates">🔄 I cloned the repo but don’t see the latest updates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq.html#i-made-changes-but-github-doesnt-show-them">✍️ I made changes but GitHub doesn’t show them</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq.html#i-opened-a-pull-request-what-happens-now">📋 I opened a pull request — what happens now?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq.html#still-stuck">🙋 Still stuck?</a></li>
 </ul>
 </li>
 </ul>
 </div>
+<p>These documentation pages were edited using chatGPT.</p>
 </section>
 
 

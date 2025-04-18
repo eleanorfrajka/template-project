@@ -20,7 +20,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Collaborating on Someone Else’s Repository" href="gitcollab_v2.html" />
+    <link rel="next" title="Collaborating on Someone Else’s Repository" href="gitcollab.html" />
     <link rel="prev" title="Getting Started with GitHub" href="github_intro.html" /> 
 </head>
 
@@ -34,7 +34,7 @@
           
           <a href="index.html" class="icon icon-home">
             template_project
-              <img src="_static/logo.jpg" class="logo" alt="Logo"/>
+              <img src="_static/logo.png" class="logo" alt="Logo"/>
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -92,7 +92,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#cheatsheet-handy-git-commands">Cheatsheet: Handy Git Commands</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="gitcollab_v2.html">Collaborating on Someone Else’s Repository</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gitcollab.html">Collaborating on Someone Else’s Repository</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Development Guide</span></p>
 <ul>
@@ -106,7 +106,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="citation_guide.html">How to Cite This Project</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pypi_guide.html">Publishing Your Project to PyPI</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gitorg.html">Transferring to an Organisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gitorg_transfer.html">Transferring a Repository to an Organisation</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Users' guide</span></p>
 <ul>
@@ -155,6 +155,8 @@
 <li><p>Avoid merge conflicts and lost work.</p></li>
 </ul>
 <p>This assumes you’re working <strong>alone or in a small team</strong> and that this is your own project repository (not a fork).</p>
+<p><img alt="GitHub branch-and-PR workflow" src="_images/github_solo_workflow.png" /></p>
+<p><em>A typical GitHub branch and pull request workflow (for solo working).  You work in a branch of <strong>your main</strong>; the important copy of the code (and its history) is in the main branch.  The local main are just a means of transferring information (or running the latest clean version of the code).</em></p>
 <hr class="docutils" />
 <section id="keep-main-clean">
 <h2>1. Keep <code class="docutils literal notranslate"><span class="pre">main</span></code> Clean<a class="headerlink" href="#keep-main-clean" title="Link to this heading"></a></h2>
@@ -261,7 +263,7 @@ git<span class="w"> </span>push<span class="w">                </span><span clas
 <ul class="simple">
 <li><p>Save your changes and commit.</p></li>
 <li><p>Click <code class="docutils literal notranslate"><span class="pre">Publish</span> <span class="pre">Branch</span></code> or <code class="docutils literal notranslate"><span class="pre">Sync</span> <span class="pre">Changes</span></code> in the “Source Control” tab.</p></li>
-<li><p>If prompted to select a remote, choose <code class="docutils literal notranslate"><span class="pre">origin</span></code> (your GitHub-hosted repo).  Note, if you’re collaborating with an external repository, you may instead be choosing <code class="docutils literal notranslate"><span class="pre">upstream</span></code> (see <a class="reference internal" href="gitcollab_v2.html"><span class="std std-doc">Git Collaboration</span></a>).</p></li>
+<li><p>If prompted to select a remote, choose <code class="docutils literal notranslate"><span class="pre">origin</span></code> (your GitHub-hosted repo).  Note, if you’re collaborating with an external repository, you may instead be choosing <code class="docutils literal notranslate"><span class="pre">upstream</span></code> (see <a class="reference internal" href="#gitcollab_v2.md"><span class="xref myst">Git Collaboration</span></a>).</p></li>
 </ul>
 </section>
 <section id="github-com">
@@ -373,7 +375,7 @@ git<span class="w"> </span>restore<span class="w"> </span>filename<span class="w
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="github_intro.html" class="btn btn-neutral float-left" title="Getting Started with GitHub" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="gitcollab_v2.html" class="btn btn-neutral float-right" title="Collaborating on Someone Else’s Repository" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="gitcollab.html" class="btn btn-neutral float-right" title="Collaborating on Someone Else’s Repository" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

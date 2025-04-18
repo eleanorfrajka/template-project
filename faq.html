@@ -33,7 +33,7 @@
           
           <a href="index.html" class="icon icon-home">
             template_project
-              <img src="_static/logo.jpg" class="logo" alt="Logo"/>
+              <img src="_static/logo.png" class="logo" alt="Logo"/>
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -53,7 +53,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="github_intro.html">Getting Started with GitHub</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gitworkflow_solo.html">Solo Git Workflow for Your Project</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gitcollab_v2.html">Collaborating on Someone Else’s Repository</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gitcollab.html">Collaborating on Someone Else’s Repository</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Development Guide</span></p>
 <ul>
@@ -67,7 +67,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="citation_guide.html">How to Cite This Project</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pypi_guide.html">Publishing Your Project to PyPI</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gitorg.html">Transferring to an Organisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gitorg_transfer.html">Transferring a Repository to an Organisation</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Users' guide</span></p>
 <ul>
@@ -78,9 +78,32 @@
 <li class="toctree-l1"><a class="reference external" href="http://github.com/eleanorfrajka/template-project">GitHub Repo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="template_project.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">template_project</span> <span class="pre">API</span></code></a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">FAQ / Troubleshooting</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#i-get-an-error-when-doing-from-template-project-import-plotters">I get an error when doing <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">template_project</span> <span class="pre">import</span> <span class="pre">plotters</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#failing-to-install-the-package-in-a-github-action">Failing to install the package in a Github Action</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#what-s-the-difference-between-template-project-and-template-project">What’s the difference between <code class="docutils literal notranslate"><span class="pre">template-project</span></code> and <code class="docutils literal notranslate"><span class="pre">template_project</span></code>??</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#import-error-from-template-project-import-plotters">🐍 Import Error: <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">template_project</span> <span class="pre">import</span> <span class="pre">plotters</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#option-1-install-the-package-locally-recommended">✅ Option 1: Install the package locally (recommended)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#option-2-add-the-path-manually-in-a-notebook">🛠 Option 2: Add the path manually (in a notebook)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#pip-install-error-in-github-actions">💥 Pip install error in GitHub Actions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#what-s-the-difference-between-template-project-and-template-project">🤔 What’s the difference between <code class="docutils literal notranslate"><span class="pre">template-project</span></code> and <code class="docutils literal notranslate"><span class="pre">template_project</span></code>?</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#could-they-be-the-same-name">Could they be the same name?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#why-this-setup">Why this setup?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#i-accidentally-committed-to-main-instead-of-a-branch">😬 I accidentally committed to <code class="docutils literal notranslate"><span class="pre">main</span></code> instead of a branch</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#option-1-create-a-new-branch-from-the-current-commit">🧼 Option 1: Create a new branch from the current commit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#option-2-move-the-commit-off-main-before-push">🗑 Option 2: Move the commit off <code class="docutils literal notranslate"><span class="pre">main</span></code> (before push)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#continuous-integration-ci-is-failing">🚨 Continuous Integration (CI) is failing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#if-the-failure-is-in-tests">🧪 If the failure is in tests:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#if-the-failure-is-in-documentation">📚 If the failure is in documentation:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#how-do-i-check-which-branch-i-m-on">🧭 How do I check which branch I’m on?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#i-cloned-the-repo-but-dont-see-the-latest-updates">🔄 I cloned the repo but don’t see the latest updates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#i-made-changes-but-github-doesnt-show-them">✍️ I made changes but GitHub doesn’t show them</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#i-opened-a-pull-request-what-happens-now">📋 I opened a pull request — what happens now?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#still-stuck">🙋 Still stuck?</a></li>
 </ul>
 </li>
 </ul>
@@ -111,51 +134,209 @@
              
   <section id="faq-troubleshooting">
 <h1>FAQ / Troubleshooting<a class="headerlink" href="#faq-troubleshooting" title="Link to this heading"></a></h1>
-<section id="i-get-an-error-when-doing-from-template-project-import-plotters">
-<h2>I get an error when doing <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">template_project</span> <span class="pre">import</span> <span class="pre">plotters</span></code><a class="headerlink" href="#i-get-an-error-when-doing-from-template-project-import-plotters" title="Link to this heading"></a></h2>
-<p>This is because your code can’t find the project <code class="docutils literal notranslate"><span class="pre">template_project</span></code>.</p>
-<p><strong>Option 1:</strong> Install the package <code class="docutils literal notranslate"><span class="pre">template_project</span></code> locally</p>
-<p>Activate your environment.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">micromamba</span> <span class="n">activate</span> <span class="n">template_env</span>
+<blockquote>
+<div><p>🧩 Common issues and how to fix them when working with this project template.</p>
+</div></blockquote>
+<hr class="docutils" />
+<section id="import-error-from-template-project-import-plotters">
+<h2>🐍 Import Error: <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">template_project</span> <span class="pre">import</span> <span class="pre">plotters</span></code><a class="headerlink" href="#import-error-from-template-project-import-plotters" title="Link to this heading"></a></h2>
+<p><strong>Problem:</strong> Python can’t find the <code class="docutils literal notranslate"><span class="pre">template_project</span></code> module.</p>
+<section id="option-1-install-the-package-locally-recommended">
+<h3>✅ Option 1: Install the package locally (recommended)<a class="headerlink" href="#option-1-install-the-package-locally-recommended" title="Link to this heading"></a></h3>
+<p>Activate your environment:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>micromamba<span class="w"> </span>activate<span class="w"> </span>template_env<span class="w">  </span><span class="c1"># or conda activate template_env</span>
 </pre></div>
 </div>
-<p>then install your project from the terminal window in, e.g., <code class="docutils literal notranslate"><span class="pre">/Users/eddifying/github/template-project</span></code> as</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">e</span> <span class="o">.</span>
+<p>Then install your project in “editable” mode:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.
 </pre></div>
 </div>
-<p>This will set it up so that you are installing the package in “editable” mode.  Then any changes you make to the scripts will be taken into account (though you may need to restart your kernel).</p>
-<p><strong>Option 2:</strong> Add the path to the <code class="docutils literal notranslate"><span class="pre">template_project</span></code> to the code</p>
-<p>Alternatively, you could add to your notebook some lines so that your code can “find” the package.  This might look like</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;/Users/eddifying/github/template-project&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>before the line where you try <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">template_project</span> <span class="pre">import</span> <span class="pre">plotters</span></code>.  The secon</p>
+<p>This lets Python find your package and reflects changes without needing to reinstall. Restart your kernel to apply changes.</p>
+<p>📚 See also: <a class="reference internal" href="setup.html"><span class="std std-doc">setup.md</span></a></p>
 </section>
-<section id="failing-to-install-the-package-in-a-github-action">
-<h2>Failing to install the package in a Github Action<a class="headerlink" href="#failing-to-install-the-package-in-a-github-action" title="Link to this heading"></a></h2>
+<section id="option-2-add-the-path-manually-in-a-notebook">
+<h3>🛠 Option 2: Add the path manually (in a notebook)<a class="headerlink" href="#option-2-add-the-path-manually-in-a-notebook" title="Link to this heading"></a></h3>
+<p>If you’re working in a Jupyter notebook and haven’t installed the package, insert this before importing:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;/path/to/your/template-project&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Then you can run:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">template_project</span><span class="w"> </span><span class="kn">import</span> <span class="n">plotters</span>
+</pre></div>
+</div>
+<p>This is useful for testing during development, but installation is preferred.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="pip-install-error-in-github-actions">
+<h2>💥 Pip install error in GitHub Actions<a class="headerlink" href="#pip-install-error-in-github-actions" title="Link to this heading"></a></h2>
+<p><strong>Error message:</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>× Getting requirements to build editable did not run successfully.
 │ exit code: 1
 ╰─&gt; See above for output.
 </pre></div>
 </div>
-<p>To test the installation, you’ll want a fresh environment.</p>
-<p><strong>In a terminal window, at the root of your project</strong> (for me, this is <code class="docutils literal notranslate"><span class="pre">/Users/eddifying/github/template-project/</span></code>), run the following commands in order.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">virtualenv</span> <span class="n">venv</span> 
-<span class="n">source</span> <span class="n">venv</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">activate</span> <span class="o">&amp;&amp;</span> <span class="n">micromamba</span> <span class="n">deactivate</span> 
-<span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="o">.</span><span class="n">txt</span> 
-<span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">e</span> <span class="o">.</span> 
+<p>This usually means something is wrong with the local installation process. Try the following locally in a clean environment:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>virtualenv<span class="w"> </span>venv
+<span class="nb">source</span><span class="w"> </span>venv/bin/activate<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>micromamba<span class="w"> </span>deactivate
+pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.
 </pre></div>
 </div>
-<p>Then check and troubleshoot any errors.  When this runs, you are probably ready to try it with the GitHub Actions (where the workflows are in your repository in <code class="docutils literal notranslate"><span class="pre">.github/workflows/*.yml</span></code>)</p>
+<p>If this works locally, your GitHub Actions will likely succeed too.</p>
+<p>📁 GitHub workflows live in <code class="docutils literal notranslate"><span class="pre">.github/workflows/*.yml</span></code></p>
 </section>
+<hr class="docutils" />
 <section id="what-s-the-difference-between-template-project-and-template-project">
-<h2>What’s the difference between <code class="docutils literal notranslate"><span class="pre">template-project</span></code> and <code class="docutils literal notranslate"><span class="pre">template_project</span></code>??<a class="headerlink" href="#what-s-the-difference-between-template-project-and-template-project" title="Link to this heading"></a></h2>
-<p>Our repository is called <code class="docutils literal notranslate"><span class="pre">template-project</span></code>.  You can have dashes in a repository name.</p>
-<p>Within the repository, the code (<code class="docutils literal notranslate"><span class="pre">*.py</span></code> files) are located in a subdirectory called <code class="docutils literal notranslate"><span class="pre">template_project</span></code>.  This is the package or module that we are creating and that will be installed, e.g., by <code class="docutils literal notranslate"><span class="pre">pip</span></code> when you do a <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-e</span> <span class="pre">.</span></code>.  Python packages should not have dashes in them!</p>
-<p><strong>Could we have called them both <code class="docutils literal notranslate"><span class="pre">template_project</span></code>?</strong>  Yes!</p>
-<p><strong>Could we have called them both <code class="docutils literal notranslate"><span class="pre">template-project</span></code>?</strong>  No!  Not recommended for python packages even though it’s totally fine for repositories.</p>
-<p><strong>Why did you do this confusing thing in the template?</strong>  Two answers: First, by accident.  It was called <code class="docutils literal notranslate"><span class="pre">template-project/projectName</span></code> but since it appears to be common practice to have the package/module with the same name as the repository, this would mean <code class="docutils literal notranslate"><span class="pre">projectName</span></code> should be more like <code class="docutils literal notranslate"><span class="pre">template</span> <span class="pre">project</span></code>.  But it also provides some clarity for what we’re talking about in the various steps–as long as we didn’t make mistakes with the hyphens and dashes, you know whether we’re referring to the <code class="docutils literal notranslate"><span class="pre">template-project</span></code> repository or the <code class="docutils literal notranslate"><span class="pre">template_project</span></code> package/module.</p>
+<h2>🤔 What’s the difference between <code class="docutils literal notranslate"><span class="pre">template-project</span></code> and <code class="docutils literal notranslate"><span class="pre">template_project</span></code>?<a class="headerlink" href="#what-s-the-difference-between-template-project-and-template-project" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">template-project</span></code></strong> is the name of the repository — it’s fine to use hyphens in GitHub repo names.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">template_project</span></code></strong> is the name of the Python package (i.e., the importable module) — dashes are not allowed in Python package names.</p></li>
+</ul>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Term</p></th>
+<th class="head"><p>Use For</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">template-project</span></code></p></td>
+<td><p>GitHub repository name</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">template_project</span></code></p></td>
+<td><p>Python package (<code class="docutils literal notranslate"><span class="pre">import</span></code> syntax)</p></td>
+</tr>
+</tbody>
+</table>
+<section id="could-they-be-the-same-name">
+<h3>Could they be the same name?<a class="headerlink" href="#could-they-be-the-same-name" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>✅ Yes: Both could be <code class="docutils literal notranslate"><span class="pre">template_project</span></code></p></li>
+<li><p>🚫 No: Avoid <code class="docutils literal notranslate"><span class="pre">template-project</span></code> for the Python module</p></li>
+</ul>
+</section>
+<section id="why-this-setup">
+<h3>Why this setup?<a class="headerlink" href="#why-this-setup" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Originally accidental, but it reinforces the distinction between repo and code module.</p></li>
+<li><p>Helps clarify which name to use in each context, especially when editing docs, imports, or packaging configs.</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="i-accidentally-committed-to-main-instead-of-a-branch">
+<h2>😬 I accidentally committed to <code class="docutils literal notranslate"><span class="pre">main</span></code> instead of a branch<a class="headerlink" href="#i-accidentally-committed-to-main-instead-of-a-branch" title="Link to this heading"></a></h2>
+<p>It happens! If you haven’t pushed yet:</p>
+<section id="option-1-create-a-new-branch-from-the-current-commit">
+<h3>🧼 Option 1: Create a new branch from the current commit<a class="headerlink" href="#option-1-create-a-new-branch-from-the-current-commit" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>branch<span class="w"> </span>new-feature-branch
+</pre></div>
+</div>
+<p>Then switch to it:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>checkout<span class="w"> </span>new-feature-branch
+</pre></div>
+</div>
+<p>You’re now safe to push your changes and create a pull request.</p>
+</section>
+<section id="option-2-move-the-commit-off-main-before-push">
+<h3>🗑 Option 2: Move the commit off <code class="docutils literal notranslate"><span class="pre">main</span></code> (before push)<a class="headerlink" href="#option-2-move-the-commit-off-main-before-push" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>branch<span class="w"> </span>temp-fix
+
+git<span class="w"> </span>reset<span class="w"> </span>--hard<span class="w"> </span>origin/main<span class="w">  </span><span class="c1"># resets main to the last pushed commit</span>
+
+git<span class="w"> </span>checkout<span class="w"> </span>temp-fix
+</pre></div>
+</div>
+<p>Now your <code class="docutils literal notranslate"><span class="pre">main</span></code> is clean and you can cherry-pick or merge your changes onto a feature branch properly.</p>
+<blockquote>
+<div><p>⚠️ Only use <code class="docutils literal notranslate"><span class="pre">reset</span> <span class="pre">--hard</span></code> if you’re sure you haven’t pushed yet and don’t need to keep local-only changes.</p>
+</div></blockquote>
+</section>
+</section>
+<hr class="docutils" />
+<section id="continuous-integration-ci-is-failing">
+<h2>🚨 Continuous Integration (CI) is failing<a class="headerlink" href="#continuous-integration-ci-is-failing" title="Link to this heading"></a></h2>
+<section id="if-the-failure-is-in-tests">
+<h3>🧪 If the failure is in tests:<a class="headerlink" href="#if-the-failure-is-in-tests" title="Link to this heading"></a></h3>
+<p>Run tests locally to reproduce the issue:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pytest
+</pre></div>
+</div>
+<p>Try running an individual test:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pytest<span class="w"> </span>tests/test_tools.py::test_my_function
+</pre></div>
+</div>
+<p>📚 See: <a class="reference internal" href="writing_tests.html"><span class="std std-doc">writing_tests.md</span></a></p>
+</section>
+<section id="if-the-failure-is-in-documentation">
+<h3>📚 If the failure is in documentation:<a class="headerlink" href="#if-the-failure-is-in-documentation" title="Link to this heading"></a></h3>
+<p>Try rebuilding the docs locally:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>docs
+make<span class="w"> </span>html
+</pre></div>
+</div>
+<p>Then open <code class="docutils literal notranslate"><span class="pre">_build/html/index.html</span></code> in a browser.</p>
+<p>📚 See: <a class="reference internal" href="build_docs.html"><span class="std std-doc">build_docs.md</span></a></p>
+<p>If your changes involve docstrings or <code class="docutils literal notranslate"><span class="pre">.md</span></code> files, a local preview will help catch errors before pushing.</p>
+<blockquote>
+<div><p>💡 The GitHub Actions logs show exactly which step failed — start there!</p>
+</div></blockquote>
+</section>
+</section>
+<hr class="docutils" />
+<section id="how-do-i-check-which-branch-i-m-on">
+<h2>🧭 How do I check which branch I’m on?<a class="headerlink" href="#how-do-i-check-which-branch-i-m-on" title="Link to this heading"></a></h2>
+<p><strong>In the terminal:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>branch
+</pre></div>
+</div>
+<p>The active branch is marked with an asterisk.</p>
+<p><strong>In VSCode:</strong></p>
+<ul class="simple">
+<li><p>Look at the lower-left corner — your current branch name is shown there.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="i-cloned-the-repo-but-dont-see-the-latest-updates">
+<h2>🔄 I cloned the repo but don’t see the latest updates<a class="headerlink" href="#i-cloned-the-repo-but-dont-see-the-latest-updates" title="Link to this heading"></a></h2>
+<p>Make sure you’re on the <code class="docutils literal notranslate"><span class="pre">main</span></code> branch and that it’s up to date:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>checkout<span class="w"> </span>main
+git<span class="w"> </span>pull<span class="w"> </span>origin<span class="w"> </span>main
+</pre></div>
+</div>
+<p>If you forked the repo, check out <a class="reference internal" href="gitcollab.html"><span class="std std-doc">gitcollab.md</span></a> for syncing instructions.</p>
+</section>
+<hr class="docutils" />
+<section id="i-made-changes-but-github-doesnt-show-them">
+<h2>✍️ I made changes but GitHub doesn’t show them<a class="headerlink" href="#i-made-changes-but-github-doesnt-show-them" title="Link to this heading"></a></h2>
+<p>You need to commit and push your work:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>add<span class="w"> </span>.
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Describe your changes&quot;</span>
+git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>your-branch-name
+</pre></div>
+</div>
+<blockquote>
+<div><p>💡 Pushing updates your branch on GitHub. Committing saves changes locally.</p>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="i-opened-a-pull-request-what-happens-now">
+<h2>📋 I opened a pull request — what happens now?<a class="headerlink" href="#i-opened-a-pull-request-what-happens-now" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Your changes will be reviewed.</p></li>
+<li><p>GitHub Actions (CI) will check that tests and docs pass.</p></li>
+<li><p>You might be asked to tweak something.</p></li>
+<li><p>Once all is approved, your changes will be merged.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="still-stuck">
+<h2>🙋 Still stuck?<a class="headerlink" href="#still-stuck" title="Link to this heading"></a></h2>
+<p>Check <a class="reference internal" href="setup.html"><span class="std std-doc">setup.md</span></a>, or ask a question by opening an issue at <a class="reference external" href="https://github.com/eleanorfrajka/template-project/issues">github.com/eleanorfrajka/template-project</a>.</p>
+<blockquote>
+<div><p>✅ This FAQ is a living document — feel free to suggest improvements!</p>
+</div></blockquote>
 </section>
 </section>
 
