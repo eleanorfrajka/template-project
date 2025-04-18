@@ -9,6 +9,11 @@ This guide explains how to work **on your own project** using Git. You’ll lear
 
 This assumes you're working **alone or in a small team** and that this is your own project repository (not a fork).
 
+![GitHub branch-and-PR workflow](_static/github_solo_workflow.png)
+
+*A typical GitHub branch and pull request workflow (for solo working).  You work in a branch of **your main**; the important copy of the code (and its history) is in the main branch.  The local main are just a means of transferring information (or running the latest clean version of the code).*
+
+
 ---
 
 ## 1. Keep `main` Clean

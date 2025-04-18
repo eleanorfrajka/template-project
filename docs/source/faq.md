@@ -139,4 +139,54 @@ If your changes involve docstrings or `.md` files, a local preview will help cat
 
 ---
 
-> ✅ Still stuck? Check `setup.md`, search issues on GitHub, or open a new one for help. Check `setup.md`, search issues on GitHub, or open a new one for help.
+## 🧭 How do I check which branch I'm on?
+
+**In the terminal:**
+```bash
+git branch
+```
+The active branch is marked with an asterisk.
+
+**In VSCode:**
+- Look at the lower-left corner — your current branch name is shown there.
+
+---
+
+## 🔄 I cloned the repo but don’t see the latest updates
+
+Make sure you're on the `main` branch and that it’s up to date:
+```bash
+git checkout main
+git pull origin main
+```
+
+If you forked the repo, check out [gitcollab.md](gitcollab.md) for syncing instructions.
+
+---
+
+## ✍️ I made changes but GitHub doesn’t show them
+
+You need to commit and push your work:
+```bash
+git add .
+git commit -m "Describe your changes"
+git push origin your-branch-name
+```
+> 💡 Pushing updates your branch on GitHub. Committing saves changes locally.
+
+---
+
+## 📋 I opened a pull request — what happens now?
+
+- Your changes will be reviewed.
+- GitHub Actions (CI) will check that tests and docs pass.
+- You might be asked to tweak something.
+- Once all is approved, your changes will be merged.
+
+---
+
+## 🙋 Still stuck?
+
+Check [setup.md](setup.md), or ask a question by opening an issue at [github.com/eleanorfrajka/template-project](https://github.com/eleanorfrajka/template-project/issues).
+
+> ✅ This FAQ is a living document — feel free to suggest improvements!

@@ -24,7 +24,7 @@ This template includes tools for testing, documentation, versioning, citation, p
 
    github_intro.md
    gitworkflow_solo.md
-   gitcollab_v2.md
+   gitcollab.md
 
 
 .. toctree::
@@ -61,3 +61,5 @@ This template includes tools for testing, documentation, versioning, citation, p
    GitHub Repo <http://github.com/eleanorfrajka/template-project>
    template_project
    faq
+
+These documentation pages were edited using chatGPT.

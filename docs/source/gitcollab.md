@@ -9,6 +9,10 @@ This guide walks you through the typical GitHub workflow to:
 - Make and **commit** changes
 - **Push** and open a **pull request**
 
+![GitHub fork-and-PR workflow](_static/github_workflow2.png)
+
+*A typical GitHub fork and pull request workflow with syncing back to the fork.  You work in a branch; the important copy of the code (and its history) is in the Upstream Main.  The forked main and local main are just a means of transferring information.*
+
 It assumes you're working on GitHub and contributing to a project you don’t own.
 
 See [Github Intro](github_intro.md) for some (brief) additional information about this terminology.
@@ -152,7 +156,7 @@ Don't worry - if you made the pull request by mistake, or changed your mind, you
 
 ## 8. Sync Your Fork (for Next Time)
 
-When the original project updates, you'll want to sync your fork.  For now, your forked main on Github.com doesn't know about any of these (or anyone else's changes).
+When the original project (the **upstream main**) updates, you'll want to sync your forked main to the upstream main.  Until you do,  your forked main on Github.com doesn't know about any of these (or anyone else's changes).
 
 ### GitHub.com
 - On your fork, click **Sync fork** (if available).
@@ -179,7 +183,7 @@ I try to remember to do this syncing step after every pull request, including ma
 
 ## Tips
 
-- Always branch off of `main`, not an old feature branch.
+- Always branch off of `main` (in this workflow, your **local main**, which has pulled changes from your **forked main**, which has been synced to the **upstream main**), not an old feature branch.
 - Use clear commit messages (`feat:`, `fix:`, `docs:` are great tags).
 - If you see merge conflicts during pull or push, ask for help or check GitHub Docs.
 
