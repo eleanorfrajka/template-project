@@ -1,0 +1,15 @@
+axes.titlesize : 20
+axes.labelsize : 15
+date.autoformatter.day: %Y-%m-%d
+date.converter: auto
+figure.figsize: 14,10
+font.family:  sans-serif
+font.style:   normal
+font.size: 15
+legend.fontsize: 15
+lines.linewidth : 1
+lines.linestyle: -
+lines.markersize : 10
+xtick.labelsize : 15
+xtick.alignment: center
+ytick.labelsize : 15
