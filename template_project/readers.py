@@ -1,132 +1,187 @@
-import os
+from pathlib import Path
+from typing import Union
 
-import pooch
-import requests
+import pandas as pd
 import xarray as xr
-from bs4 import BeautifulSoup
-from importlib_resources import files
 
-# readers.py: Will only read files.  Not manipulate them.
-#
-# Comment 2024 Oct 30: I needed an initial file list to create the registry
-# This is impractical for expansion, so may need to move away from pooch.
-# This was necessary to get an initial file list
-# mylist = fetchers.list_files_in_https_server(server)
-# fetchers.create_pooch_registry_from_directory("/Users/eddifying/Dropbox/data/sg015-ncei-download/")
-# Example usage
-# directory_path = "/Users/eddifying/Dropbox/data/sg015-ncei-snippet"
-# pooch_registry = create_pooch_registry_from_directory(directory_path)
-# print(pooch_registry)
+from template_project import logger
+from template_project.logger import log_info
+from template_project.read_rapid import read_rapid
 
-# Information on creating a registry file: https://www.fatiando.org/pooch/latest/registry-files.html
-# But instead of pkg_resources (https://setuptools.pypa.io/en/latest/pkg_resources.html#)
-# we should use importlib.resources
-# Here's how to use importlib.resources (https://importlib-resources.readthedocs.io/en/latest/using.html)
-server = "https://www.dropbox.com/scl/fo/dhinr4hvpk05zcecqyz2x/ADTqIuEpWHCxeZDspCiTN68?rlkey=bt9qheandzbucca5zhf5v9j7a&dl=0"
-server = "https://www.ncei.noaa.gov/data/oceans/glider/seaglider/uw/015/20040924/"
-data_source_og = pooch.create(
-    path=pooch.os_cache("seagliderOG1"),
-    base_url=server,
-    registry=None,
-)
-registry_file = files("seagliderOG1").joinpath("seaglider_registry.txt")
-data_source_og.load_registry(registry_file)
+log = logger.log
 
 
-def load_sample_dataset(dataset_name="p0040034_20031007.nc"):
-    if dataset_name in data_source_og.registry.keys():
-        file_path = data_source_og.fetch(dataset_name)
-        return xr.open_dataset(file_path)
-    else:
-        msg = f"Requested sample dataset {dataset_name} not known"
-        raise ValueError(msg)
+def _get_reader(array_name: str):
+    """Return the reader function for the given array name.
 
+    Parameters
+    ----------
+    array_name : str
+        The name of the observing array.
 
-def read_basestation(source, start_profile=None, end_profile=None):
+    Returns
+    -------
+    function
+        Reader function corresponding to the given array name.
+
+    Raises
+    ------
+    ValueError
+        If an unknown array name is provided.
+
     """
-    Load datasets from either an online source or a local directory, optionally filtering by profile range.
-
-    Parameters:
-    source (str): The URL to the directory containing the NetCDF files or the path to the local directory.
-    start_profile (int, optional): The starting profile number to filter files. Defaults to None.
-    end_profile (int, optional): The ending profile number to filter files. Defaults to None.
-
-    Returns:
-    A list of xarray.Dataset objects loaded from the filtered NetCDF files.
-    """
-    if source.startswith("http://") or source.startswith("https://"):
-        # Create a Pooch object to manage the remote files
-        data_source_online = pooch.create(
-            path=pooch.os_cache("seagliderOG1"),
-            base_url=source,
-            registry=None,
+    readers = {
+        "rapid": read_rapid,
+    }
+    try:
+        return readers[array_name.lower()]
+    except KeyError:
+        raise ValueError(
+            f"Unknown array name: {array_name}. Valid options are: {list(readers.keys())}",
         )
-        registry_file = files("seagliderOG1").joinpath("seaglider_registry.txt")
-        data_source_og.load_registry(registry_file)
 
-        # List all files in the URL directory
-        file_list = list_files_in_https_server(source)
-    elif os.path.isdir(source):
-        file_list = os.listdir(source)
-    else:
-        raise ValueError("Source must be a valid URL or directory path.")
 
-    filtered_files = filter_files_by_profile(file_list, start_profile, end_profile)
+def load_sample_dataset(array_name: str = "rapid") -> xr.Dataset:
+    """Load a sample dataset for quick testing.
 
-    datasets = []
+    Currently supports:
+    - 'rapid' : loads the 'RAPID_26N_TRANSPORT.nc' file
 
-    for file in filtered_files:
-        if source.startswith("http://") or source.startswith("https://"):
-            ds = load_sample_dataset(file)
-        else:
-            ds = xr.open_dataset(os.path.join(source, file))
+    Parameters
+    ----------
+    array_name : str, optional
+        The name of the observing array to load. Default is 'rapid'.
 
-        datasets.append(ds)
+    Returns
+    -------
+    xr.Dataset
+        A single xarray Dataset from the sample file.
+
+    Raises
+    ------
+    ValueError
+        If the array_name is not recognised.
+
+    """
+    if array_name.lower() == "rapid":
+        sample_file = "moc_transports.nc"
+        datasets = load_dataset(
+            array_name=array_name,
+            file_list=sample_file,
+            transport_only=True,
+        )
+        if not datasets:
+            raise FileNotFoundError(
+                f"No datasets were loaded for sample file: {sample_file}",
+            )
+        return datasets[0]
+
+    raise ValueError(
+        f"Sample dataset for array '{array_name}' is not defined. "
+        "Currently only 'rapid' is supported.",
+    )
+
+
+def load_dataset(
+    array_name: str,
+    source: str = None,
+    file_list: Union[str | list[str]] = None,
+    transport_only: bool = True,
+    data_dir: Union[str, Path, None] = None,
+    redownload: bool = False,
+) -> list[xr.Dataset]:
+    """Load raw datasets from a selected AMOC observing array.
+
+    Parameters
+    ----------
+    array_name : str
+        The name of the observing array to load. Options are:
+        - 'rapid' : RAPID 26N array
+    source : str, optional
+        URL or local path to the data source.
+        If None, the reader-specific default source will be used.
+    file_list : str or list of str, optional
+        Filename or list of filenames to process.
+        If None, the reader-specific default files will be used.
+    transport_only : bool, optional
+        If True, restrict to transport files only.
+    data_dir : str, optional
+        Local directory for downloaded files.
+    redownload : bool, optional
+        If True, force redownload of the data.
+
+    Returns
+    -------
+    list of xarray.Dataset
+        List of datasets loaded from the specified array.
+
+    Raises
+    ------
+    ValueError
+        If an unknown array name is provided.
+
+    """
+    if logger.LOGGING_ENABLED:
+        logger.setup_logger(array_name=array_name)
+
+    # Use logger globally
+    log = logger.log
+    log_info(f"Loading dataset for array: {array_name}")
+
+    reader = _get_reader(array_name)
+    datasets = reader(
+        source=source,
+        file_list=file_list,
+        transport_only=transport_only,
+        data_dir=data_dir,
+        redownload=redownload,
+    )
+
+    log_info(f"Successfully loaded {len(datasets)} dataset(s) for array: {array_name}")
+    _summarise_datasets(datasets, array_name)
 
     return datasets
 
 
-def list_files_in_https_server(url):
-    """
-    List files in an HTTPS server directory using BeautifulSoup and requests.
+def _summarise_datasets(datasets: list, array_name: str):
+    """Print and log a summary of loaded datasets."""
+    summary_lines = []
+    summary_lines.append(f"Summary for array '{array_name}':")
+    summary_lines.append(f"Total datasets loaded: {len(datasets)}\n")
 
-    Parameters:
-    url (str): The URL to the directory containing the files.
+    for idx, ds in enumerate(datasets, start=1):
+        summary_lines.append(f"Dataset {idx}:")
 
-    Returns:
-    list: A list of filenames found in the directory.
-    """
-    response = requests.get(url)
-    response.raise_for_status()  # Raise an error for bad status codes
+        # Filename from metadata
+        source_file = ds.attrs.get("source_file", "Unknown")
+        summary_lines.append(f"  Source file: {source_file}")
 
-    soup = BeautifulSoup(response.text, "html.parser")
-    files = []
+        # Time coverage
+        time_var = ds.get("TIME")
+        if time_var is not None:
+            time_start = pd.to_datetime(time_var.values[0]).strftime("%Y-%m-%d")
+            time_end = pd.to_datetime(time_var.values[-1]).strftime("%Y-%m-%d")
+            summary_lines.append(f"  Time coverage: {time_start} to {time_end}")
+        else:
+            summary_lines.append("  Time coverage: TIME variable not found")
 
-    for link in soup.find_all("a"):
-        href = link.get("href")
-        if href and href.endswith(".nc"):
-            files.append(href)
+        # Dimensions
+        summary_lines.append("  Dimensions:")
+        for dim, size in ds.sizes.items():
+            summary_lines.append(f"    - {dim}: {size}")
 
-    return files
+        # Variables
+        summary_lines.append("  Variables:")
+        for var in ds.data_vars:
+            shape = ds[var].shape
+            summary_lines.append(f"    - {var}: shape {shape}")
 
+        summary_lines.append("")  # empty line between datasets
 
-def create_pooch_registry_from_directory(directory):
-    """
-    Create a Pooch registry from files in a specified directory.
+    summary = "\n".join(summary_lines)
 
-    Parameters:
-    directory (str): The path to the directory containing the files.
+    # Print to console
+    print(summary)
 
-    Returns:
-    dict: A dictionary representing the Pooch registry with filenames as keys and their SHA256 hashes as values.
-    """
-    registry = {}
-    files = os.listdir(directory)
-
-    for file in files:
-        if file.endswith(".nc"):
-            file_path = os.path.join(directory, file)
-            sha256_hash = pooch.file_hash(file_path, alg="sha256")
-            registry[file] = f"sha256:{sha256_hash}"
-
-    return registry
+    # Write to log
+    log_info("\n" + summary)

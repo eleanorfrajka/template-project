@@ -1,10 +1,33 @@
-import pathlib
-import sys
-from template_project import tools
+import numpy as np
+import xarray as xr
 
-script_dir = pathlib.Path(__file__).parent.absolute()
-parent_dir = script_dir.parents[0]
-sys.path.append(str(parent_dir))
+from template_project import tools
+from template_project.tools import reformat_units_var
+
+
+def test_reformat_units_var_sv_conversion():
+    # Create a fake transport DataArray with units in m3/s
+    ds = xr.Dataset(
+        {
+            "transport": xr.DataArray(
+                data=np.array([1.0e6, 2.0e6]),
+                dims=["time"],
+                attrs={"units": "m^3/s", "long_name": "Volume transport"},
+            ),
+            "velocity": xr.DataArray(
+                data=np.array([100.0, 200.0]),
+                dims=["time"],
+                attrs={"units": "cm/s", "long_name": "Flow velocity"},
+            ),
+        }
+    )
+
+    new_unit = reformat_units_var(ds, "transport")
+    # Units should now be Sv
+    assert new_unit == "Sv"
+
+    new_unit = reformat_units_var(ds, "velocity")
+    assert new_unit == "cm s-1"
 
 
 def test_convert_units_var():

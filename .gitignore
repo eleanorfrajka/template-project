@@ -1,5 +1,7 @@
 setup.sh
 */_version.py
+data/temp.nc 
+logs/*log
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

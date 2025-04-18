@@ -1,14 +1,9 @@
 netcdf4
-pooch
 xarray
 numpy
 pandas  
 scipy 
-tqdm
-gsw
 matplotlib
-cartopy
-cmocean 
 importlib_resources
 jupyterlab
 pytest
@@ -19,6 +14,6 @@ sphinx
 sphinx-rtd-theme
 pypandoc
 myst-nb
-black[jupyter]
+black
 pre-commit
 ruff
