@@ -44,7 +44,7 @@ This template includes tools for testing, documentation, versioning, citation, p
 
    citation_guide.md
    pypi_guide.md
-   gitorg.md
+   gitorg_transfer.md
 
 .. toctree::
    :maxdepth: 3
