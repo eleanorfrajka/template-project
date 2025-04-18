@@ -93,9 +93,6 @@ If you prefer not to use the terminal:
 
 See also [faq.md](faq.md) for troubleshooting installation problems.
 
----
-
-More detail in [precommit_setup.md](precommit_setup.md) and [code_style.md](code_style.md).
 
 ---
 

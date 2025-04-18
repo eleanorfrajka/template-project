@@ -1,5 +1,5 @@
 :mod:`template_project API`
------------------------
+---------------------------
 
 .. automodule:: template_project.readers
    :members:

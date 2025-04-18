@@ -16,9 +16,15 @@ This template includes tools for testing, documentation, versioning, citation, p
 
    setup.md
    customisation_checklist.md
+   project_structure.md
+
+.. toctree::
+   :maxdepth: 2
+   :caption: GitHub basics
+
+   github_intro.md
    gitworkflow_solo.md
    gitcollab_v2.md
-
 
 
 .. toctree::
@@ -38,6 +44,7 @@ This template includes tools for testing, documentation, versioning, citation, p
 
    citation_guide.md
    pypi_guide.md
+   gitorg.md
 
 .. toctree::
    :maxdepth: 3
@@ -52,4 +59,5 @@ This template includes tools for testing, documentation, versioning, citation, p
    :caption: Help and reference
 
    GitHub Repo <http://github.com/eleanorfrajka/template-project>
-   template-project
+   template_project
+   faq
