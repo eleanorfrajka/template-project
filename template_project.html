@@ -78,19 +78,19 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference external" href="http://github.com/eleanorfrajka/template-project">GitHub Repo</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">template_project</span> <span class="pre">API</span></code></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#template_project.readers.load_dataset"><code class="docutils literal notranslate"><span class="pre">load_dataset()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#template_project.readers.load_sample_dataset"><code class="docutils literal notranslate"><span class="pre">load_sample_dataset()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#template_project.plotters.plot_monthly_transport"><code class="docutils literal notranslate"><span class="pre">plot_monthly_transport()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#template_project.plotters.show_attributes"><code class="docutils literal notranslate"><span class="pre">show_attributes()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#template_project.plotters.show_contents"><code class="docutils literal notranslate"><span class="pre">show_contents()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#template_project.plotters.show_variables"><code class="docutils literal notranslate"><span class="pre">show_variables()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#template_project.plotters.show_variables_by_dimension"><code class="docutils literal notranslate"><span class="pre">show_variables_by_dimension()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#template_project.writers.save_dataset"><code class="docutils literal notranslate"><span class="pre">save_dataset()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#template_project.tools.calc_Z"><code class="docutils literal notranslate"><span class="pre">calc_Z()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#template_project.tools.convert_qc_flags"><code class="docutils literal notranslate"><span class="pre">convert_qc_flags()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#template_project.tools.convert_units_var"><code class="docutils literal notranslate"><span class="pre">convert_units_var()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#template_project.tools.find_best_dtype"><code class="docutils literal notranslate"><span class="pre">find_best_dtype()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#template_project.tools.reformat_units_var"><code class="docutils literal notranslate"><span class="pre">reformat_units_var()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#template_project.tools.set_best_dtype"><code class="docutils literal notranslate"><span class="pre">set_best_dtype()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#template_project.tools.set_fill_value"><code class="docutils literal notranslate"><span class="pre">set_fill_value()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#template_project.tools.split_by_unique_dims"><code class="docutils literal notranslate"><span class="pre">split_by_unique_dims()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#template_project.utilities.apply_defaults"><code class="docutils literal notranslate"><span class="pre">apply_defaults()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#template_project.utilities.download_file"><code class="docutils literal notranslate"><span class="pre">download_file()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#template_project.utilities.get_default_data_dir"><code class="docutils literal notranslate"><span class="pre">get_default_data_dir()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#template_project.utilities.resolve_file_path"><code class="docutils literal notranslate"><span class="pre">resolve_file_path()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#template_project.utilities.safe_update_attrs"><code class="docutils literal notranslate"><span class="pre">safe_update_attrs()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ / Troubleshooting</a></li>
@@ -120,8 +120,74 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="module-template_project.plotters">
-<span id="template-project-api"></span><h1><code class="xref py py-mod docutils literal notranslate"><span class="pre">template_project</span> <span class="pre">API</span></code><a class="headerlink" href="#module-template_project.plotters" title="Link to this heading"></a></h1>
+  <section id="module-template_project.readers">
+<span id="template-project-api"></span><h1><code class="xref py py-mod docutils literal notranslate"><span class="pre">template_project</span> <span class="pre">API</span></code><a class="headerlink" href="#module-template_project.readers" title="Link to this heading"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="template_project.readers.load_dataset">
+<span class="sig-prename descclassname"><span class="pre">template_project.readers.</span></span><span class="sig-name descname"><span class="pre">load_dataset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">array_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transport_only</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">redownload</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">Dataset</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/template_project/readers.html#load_dataset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#template_project.readers.load_dataset" title="Link to this definition"></a></dt>
+<dd><p>Load raw datasets from a selected AMOC observing array.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>array_name</strong> (<em>str</em>) – The name of the observing array to load. Options are:
+- ‘rapid’ : RAPID 26N array</p></li>
+<li><p><strong>source</strong> (<em>str</em><em>, </em><em>optional</em>) – URL or local path to the data source.
+If None, the reader-specific default source will be used.</p></li>
+<li><p><strong>file_list</strong> (<em>str</em><em> or </em><em>list</em><em> of </em><em>str</em><em>, </em><em>optional</em>) – Filename or list of filenames to process.
+If None, the reader-specific default files will be used.</p></li>
+<li><p><strong>transport_only</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, restrict to transport files only.</p></li>
+<li><p><strong>data_dir</strong> (<em>str</em><em>, </em><em>optional</em>) – Local directory for downloaded files.</p></li>
+<li><p><strong>redownload</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, force redownload of the data.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>List of datasets loaded from the specified array.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list of xarray.Dataset</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If an unknown array name is provided.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="template_project.readers.load_sample_dataset">
+<span class="sig-prename descclassname"><span class="pre">template_project.readers.</span></span><span class="sig-name descname"><span class="pre">load_sample_dataset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">array_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'rapid'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dataset</span></span></span><a class="reference internal" href="_modules/template_project/readers.html#load_sample_dataset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#template_project.readers.load_sample_dataset" title="Link to this definition"></a></dt>
+<dd><p>Load a sample dataset for quick testing.</p>
+<p>Currently supports:
+- ‘rapid’ : loads the ‘RAPID_26N_TRANSPORT.nc’ file</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>array_name</strong> (<em>str</em><em>, </em><em>optional</em>) – The name of the observing array to load. Default is ‘rapid’.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A single xarray Dataset from the sample file.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>xr.Dataset</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If the array_name is not recognised.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function" id="module-template_project.plotters">
+<dt class="sig sig-object py" id="template_project.plotters.plot_monthly_transport">
+<span class="sig-prename descclassname"><span class="pre">template_project.plotters.</span></span><span class="sig-name descname"><span class="pre">plot_monthly_transport</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ds</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">var</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'moc_mar_hc10'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/template_project/plotters.html#plot_monthly_transport"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#template_project.plotters.plot_monthly_transport" title="Link to this definition"></a></dt>
+<dd><p>Plot original and monthly averaged transport time series.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ds</strong> (<em>xr.Dataset</em>) – Dataset with a time dimension and a transport variable.</p></li>
+<li><p><strong>var</strong> (<em>str</em><em>, </em><em>optional</em>) – Name of the variable to plot. Default is “moc_mar_hc10”.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="template_project.plotters.show_attributes">
 <span class="sig-prename descclassname"><span class="pre">template_project.plotters.</span></span><span class="sig-name descname"><span class="pre">show_attributes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/template_project/plotters.html#show_attributes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#template_project.plotters.show_attributes" title="Link to this definition"></a></dt>
@@ -137,17 +203,6 @@ pandas.DataFrame: A DataFrame containing the following columns:</p>
 <li><p>Value: The value of the attribute.</p></li>
 </ul>
 </div></blockquote>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="template_project.plotters.show_contents">
-<span class="sig-prename descclassname"><span class="pre">template_project.plotters.</span></span><span class="sig-name descname"><span class="pre">show_contents</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">content_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'variables'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/template_project/plotters.html#show_contents"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#template_project.plotters.show_contents" title="Link to this definition"></a></dt>
-<dd><p>Wrapper function to show contents of an xarray Dataset or a netCDF file.</p>
-<p>Parameters:
-data (str or xr.Dataset): The input data, either a file path to a netCDF file or an xarray Dataset.
-content_type (str): The type of content to show, either ‘variables’ (or ‘vars’) or ‘attributes’ (or ‘attrs’). Default is ‘variables’.</p>
-<p>Returns:
-pandas.io.formats.style.Styler or pandas.DataFrame: A styled DataFrame with details about the variables or attributes.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -169,29 +224,9 @@ pandas.io.formats.style.Styler: A styled DataFrame containing the following colu
 </div></blockquote>
 </dd></dl>
 
-<dl class="py function">
-<dt class="sig sig-object py" id="template_project.plotters.show_variables_by_dimension">
-<span class="sig-prename descclassname"><span class="pre">template_project.plotters.</span></span><span class="sig-name descname"><span class="pre">show_variables_by_dimension</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dimension_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'trajectory'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/template_project/plotters.html#show_variables_by_dimension"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#template_project.plotters.show_variables_by_dimension" title="Link to this definition"></a></dt>
-<dd><p>Processes an xarray Dataset or a netCDF file, extracts variable information,
-and returns a styled DataFrame with details about the variables filtered by a specific dimension.</p>
-<p>Parameters:
-data (str or xr.Dataset): The input data, either a file path to a netCDF file or an xarray Dataset.
-dimension_name (str): The name of the dimension to filter variables by.</p>
-<p>Returns:
-pandas.io.formats.style.Styler: A styled DataFrame containing the following columns:</p>
-<blockquote>
-<div><ul class="simple">
-<li><p>dims: The dimension of the variable (or “string” if it is a string type).</p></li>
-<li><p>name: The name of the variable.</p></li>
-<li><p>units: The units of the variable (if available).</p></li>
-<li><p>comment: Any additional comments about the variable (if available).</p></li>
-</ul>
-</div></blockquote>
-</dd></dl>
-
 <dl class="py function" id="module-template_project.writers">
 <dt class="sig sig-object py" id="template_project.writers.save_dataset">
-<span class="sig-prename descclassname"><span class="pre">template_project.writers.</span></span><span class="sig-name descname"><span class="pre">save_dataset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'../test.nc'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/template_project/writers.html#save_dataset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#template_project.writers.save_dataset" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">template_project.writers.</span></span><span class="sig-name descname"><span class="pre">save_dataset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'../data/test.nc'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delete_existing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prompt_user</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/template_project/writers.html#save_dataset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#template_project.writers.save_dataset" title="Link to this definition"></a></dt>
 <dd><p>Attempts to save the dataset to a NetCDF file. If a TypeError occurs due to invalid attribute values,
 it converts the invalid attributes to strings and retries the save operation.</p>
 <dl class="field-list simple">
@@ -199,6 +234,8 @@ it converts the invalid attributes to strings and retries the save operation.</p
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>(</strong><strong>xarray.Dataset</strong><strong>)</strong> (<em>ds</em>)</p></li>
 <li><p><strong>(</strong><strong>str</strong><strong>)</strong> (<em>output_file</em>)</p></li>
+<li><p><strong>(</strong><strong>bool</strong><strong>)</strong> (<em>prompt_user</em>)</p></li>
+<li><p><strong>(</strong><strong>bool</strong><strong>)</strong></p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -212,28 +249,6 @@ it converts the invalid attributes to strings and retries the save operation.</p
 </dd></dl>
 
 <dl class="py function" id="module-template_project.tools">
-<dt class="sig sig-object py" id="template_project.tools.calc_Z">
-<span class="sig-prename descclassname"><span class="pre">template_project.tools.</span></span><span class="sig-name descname"><span class="pre">calc_Z</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ds</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/template_project/tools.html#calc_Z"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#template_project.tools.calc_Z" title="Link to this definition"></a></dt>
-<dd><p>Calculate the depth (Z position) of the glider using the gsw library to convert pressure to depth.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>(</strong><strong>xarray.Dataset</strong><strong>)</strong> (<em>ds</em>)</p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>xarray.Dataset</strong></p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>The dataset with an additional ‘DEPTH’ variable.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="template_project.tools.convert_qc_flags">
-<span class="sig-prename descclassname"><span class="pre">template_project.tools.</span></span><span class="sig-name descname"><span class="pre">convert_qc_flags</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dsa</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qc_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/template_project/tools.html#convert_qc_flags"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#template_project.tools.convert_qc_flags" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
 <dt class="sig sig-object py" id="template_project.tools.convert_units_var">
 <span class="sig-prename descclassname"><span class="pre">template_project.tools.</span></span><span class="sig-name descname"><span class="pre">convert_units_var</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">var_values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">current_unit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_unit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unit_conversion</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{'Celsius':</span> <span class="pre">{'factor':</span> <span class="pre">1,</span> <span class="pre">'units_name':</span> <span class="pre">'degrees_Celsius'},</span> <span class="pre">'Pa':</span> <span class="pre">{'factor':</span> <span class="pre">0.0001,</span> <span class="pre">'units_name':</span> <span class="pre">'dbar'},</span> <span class="pre">'S</span> <span class="pre">m-1':</span> <span class="pre">{'factor':</span> <span class="pre">0.1,</span> <span class="pre">'units_name':</span> <span class="pre">'mS</span> <span class="pre">cm-1'},</span> <span class="pre">'S/m':</span> <span class="pre">{'factor':</span> <span class="pre">0.1,</span> <span class="pre">'units_name':</span> <span class="pre">'mS/cm'},</span> <span class="pre">'cm':</span> <span class="pre">{'factor':</span> <span class="pre">0.01,</span> <span class="pre">'units_name':</span> <span class="pre">'m'},</span> <span class="pre">'cm</span> <span class="pre">s-1':</span> <span class="pre">{'factor':</span> <span class="pre">0.01,</span> <span class="pre">'units_name':</span> <span class="pre">'m</span> <span class="pre">s-1'},</span> <span class="pre">'cm/s':</span> <span class="pre">{'factor':</span> <span class="pre">0.01,</span> <span class="pre">'units_name':</span> <span class="pre">'m/s'},</span> <span class="pre">'dbar':</span> <span class="pre">{'factor':</span> <span class="pre">10000,</span> <span class="pre">'units_name':</span> <span class="pre">'Pa'},</span> <span class="pre">'degrees_Celsius':</span> <span class="pre">{'factor':</span> <span class="pre">1,</span> <span class="pre">'units_name':</span> <span class="pre">'Celsius'},</span> <span class="pre">'g</span> <span class="pre">m-3':</span> <span class="pre">{'factor':</span> <span class="pre">0.001,</span> <span class="pre">'units_name':</span> <span class="pre">'kg</span> <span class="pre">m-3'},</span> <span class="pre">'kg</span> <span class="pre">m-3':</span> <span class="pre">{'factor':</span> <span class="pre">1000,</span> <span class="pre">'units_name':</span> <span class="pre">'g</span> <span class="pre">m-3'},</span> <span class="pre">'km':</span> <span class="pre">{'factor':</span> <span class="pre">1000,</span> <span class="pre">'units_name':</span> <span class="pre">'m'},</span> <span class="pre">'m':</span> <span class="pre">{'factor':</span> <span class="pre">100,</span> <span class="pre">'units_name':</span> <span class="pre">'cm'},</span> <span class="pre">'m</span> <span class="pre">s-1':</span> <span class="pre">{'factor':</span> <span class="pre">100,</span> <span class="pre">'units_name':</span> <span class="pre">'cm</span> <span class="pre">s-1'},</span> <span class="pre">'m/s':</span> <span class="pre">{'factor':</span> <span class="pre">100,</span> <span class="pre">'units_name':</span> <span class="pre">'cm/s'},</span> <span class="pre">'mS</span> <span class="pre">cm-1':</span> <span class="pre">{'factor':</span> <span class="pre">10,</span> <span class="pre">'units_name':</span> <span class="pre">'S</span> <span class="pre">m-1'},</span> <span class="pre">'mS/cm':</span> <span class="pre">{'factor':</span> <span class="pre">10,</span> <span class="pre">'units_name':</span> <span class="pre">'S/m'}}</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/template_project/tools.html#convert_units_var"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#template_project.tools.convert_units_var" title="Link to this definition"></a></dt>
 <dd><p>Convert the units of variables in an xarray Dataset to preferred units.  This is useful, for instance, to convert cm/s to m/s.</p>
@@ -265,13 +280,8 @@ it converts the invalid attributes to strings and retries the save operation.</p
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="template_project.tools.find_best_dtype">
-<span class="sig-prename descclassname"><span class="pre">template_project.tools.</span></span><span class="sig-name descname"><span class="pre">find_best_dtype</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">var_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">da</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/template_project/tools.html#find_best_dtype"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#template_project.tools.find_best_dtype" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
 <dt class="sig sig-object py" id="template_project.tools.reformat_units_var">
-<span class="sig-prename descclassname"><span class="pre">template_project.tools.</span></span><span class="sig-name descname"><span class="pre">reformat_units_var</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">var_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unit_format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{'S/m':</span> <span class="pre">'S</span> <span class="pre">m-1',</span> <span class="pre">'cm/s':</span> <span class="pre">'cm</span> <span class="pre">s-1',</span> <span class="pre">'degrees_Celsius':</span> <span class="pre">'Celsius',</span> <span class="pre">'g/m^3':</span> <span class="pre">'g</span> <span class="pre">m-3',</span> <span class="pre">'m/s':</span> <span class="pre">'m</span> <span class="pre">s-1',</span> <span class="pre">'meters':</span> <span class="pre">'m'}</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/template_project/tools.html#reformat_units_var"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#template_project.tools.reformat_units_var" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">template_project.tools.</span></span><span class="sig-name descname"><span class="pre">reformat_units_var</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">var_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unit_format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{'S/m':</span> <span class="pre">'S</span> <span class="pre">m-1',</span> <span class="pre">'cm/s':</span> <span class="pre">'cm</span> <span class="pre">s-1',</span> <span class="pre">'degrees_Celsius':</span> <span class="pre">'Celsius',</span> <span class="pre">'g/m^3':</span> <span class="pre">'g</span> <span class="pre">m-3',</span> <span class="pre">'m/s':</span> <span class="pre">'m</span> <span class="pre">s-1',</span> <span class="pre">'m^3/s':</span> <span class="pre">'Sv',</span> <span class="pre">'meters':</span> <span class="pre">'m'}</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/template_project/tools.html#reformat_units_var"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#template_project.tools.reformat_units_var" title="Link to this definition"></a></dt>
 <dd><p>Renames units in the dataset based on the provided dictionary for OG1.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -289,27 +299,102 @@ it converts the invalid attributes to strings and retries the save operation.</p
 </dl>
 </dd></dl>
 
-<dl class="py function">
-<dt class="sig sig-object py" id="template_project.tools.set_best_dtype">
-<span class="sig-prename descclassname"><span class="pre">template_project.tools.</span></span><span class="sig-name descname"><span class="pre">set_best_dtype</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ds</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/template_project/tools.html#set_best_dtype"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#template_project.tools.set_best_dtype" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="template_project.tools.set_fill_value">
-<span class="sig-prename descclassname"><span class="pre">template_project.tools.</span></span><span class="sig-name descname"><span class="pre">set_fill_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_dtype</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/template_project/tools.html#set_fill_value"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#template_project.tools.set_fill_value" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="template_project.tools.split_by_unique_dims">
-<span class="sig-prename descclassname"><span class="pre">template_project.tools.</span></span><span class="sig-name descname"><span class="pre">split_by_unique_dims</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ds</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/template_project/tools.html#split_by_unique_dims"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#template_project.tools.split_by_unique_dims" title="Link to this definition"></a></dt>
-<dd><p>Splits an xarray dataset into multiple datasets based on the unique set of dimensions of the variables.</p>
-<p>Parameters:
-ds (xarray.Dataset): The input xarray dataset containing various variables.</p>
-<p>Returns:
-tuple: A tuple containing xarray datasets, each with variables sharing the same set of dimensions.</p>
+<dl class="py function" id="module-template_project.utilities">
+<dt class="sig sig-object py" id="template_project.utilities.apply_defaults">
+<span class="sig-prename descclassname"><span class="pre">template_project.utilities.</span></span><span class="sig-name descname"><span class="pre">apply_defaults</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">default_source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_files</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Callable</span></span></span><a class="reference internal" href="_modules/template_project/utilities.html#apply_defaults"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#template_project.utilities.apply_defaults" title="Link to this definition"></a></dt>
+<dd><p>Decorator to apply default values for ‘source’ and ‘file_list’ parameters if they are None.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>default_source</strong> (<em>str</em>) – Default source URL or path.</p></li>
+<li><p><strong>default_files</strong> (<em>list</em><em> of </em><em>str</em>) – Default list of filenames.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A wrapped function with defaults applied.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Callable</p>
+</dd>
+</dl>
 </dd></dl>
 
-<span class="target" id="module-template_project.utilities"></span></section>
+<dl class="py function">
+<dt class="sig sig-object py" id="template_project.utilities.download_file">
+<span class="sig-prename descclassname"><span class="pre">template_project.utilities.</span></span><span class="sig-name descname"><span class="pre">download_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dest_folder</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">redownload</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/template_project/utilities.html#download_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#template_project.utilities.download_file" title="Link to this definition"></a></dt>
+<dd><p>Download a file from HTTP(S) or FTP to the specified destination folder.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>url</strong> (<em>str</em>) – The URL of the file to download.</p></li>
+<li><p><strong>dest_folder</strong> (<em>str</em>) – Local folder to save the downloaded file.</p></li>
+<li><p><strong>redownload</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, force re-download of the file even if it exists.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The full path to the downloaded file.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If the URL scheme is unsupported.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="template_project.utilities.get_default_data_dir">
+<span class="sig-prename descclassname"><span class="pre">template_project.utilities.</span></span><span class="sig-name descname"><span class="pre">get_default_data_dir</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Path</span></span></span><a class="reference internal" href="_modules/template_project/utilities.html#get_default_data_dir"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#template_project.utilities.get_default_data_dir" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="template_project.utilities.resolve_file_path">
+<span class="sig-prename descclassname"><span class="pre">template_project.utilities.</span></span><span class="sig-name descname"><span class="pre">resolve_file_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">download_url</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">local_data_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">redownload</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Path</span></span></span><a class="reference internal" href="_modules/template_project/utilities.html#resolve_file_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#template_project.utilities.resolve_file_path" title="Link to this definition"></a></dt>
+<dd><p>Resolve the path to a data file, using local source, cache, or downloading if necessary.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>file_name</strong> (<em>str</em>) – The name of the file to resolve.</p></li>
+<li><p><strong>source</strong> (<em>str</em><em> or </em><em>Path</em><em> or </em><em>None</em>) – Optional local source directory.</p></li>
+<li><p><strong>download_url</strong> (<em>str</em><em> or </em><em>None</em>) – URL to download the file if needed.</p></li>
+<li><p><strong>local_data_dir</strong> (<em>Path</em>) – Directory where downloaded files are stored.</p></li>
+<li><p><strong>redownload</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, force redownload even if cached file exists.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Path to the resolved file.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Path</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="template_project.utilities.safe_update_attrs">
+<span class="sig-prename descclassname"><span class="pre">template_project.utilities.</span></span><span class="sig-name descname"><span class="pre">safe_update_attrs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ds</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_attrs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dataset</span></span></span><a class="reference internal" href="_modules/template_project/utilities.html#safe_update_attrs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#template_project.utilities.safe_update_attrs" title="Link to this definition"></a></dt>
+<dd><p>Safely update attributes of an xarray Dataset without overwriting existing keys,
+unless explicitly allowed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ds</strong> (<em>xr.Dataset</em>) – The xarray Dataset whose attributes will be updated.</p></li>
+<li><p><strong>new_attrs</strong> (<em>dict</em><em> of </em><em>str</em>) – Dictionary of new attributes to add.</p></li>
+<li><p><strong>overwrite</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, allow overwriting existing attributes. Defaults to False.</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, emit a warning when skipping existing attributes. Defaults to True.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The dataset with updated attributes.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>xr.Dataset</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
 
 
            </div>
