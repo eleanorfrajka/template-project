@@ -1,7 +1,10 @@
 setup.sh
 */_version.py
-data/temp.nc 
+data/temp.nc
 logs/*log
+
+# VSCode settings
+.vscode/*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
