@@ -1,55 +1,112 @@
 # template-project
-Template for a Python project for oceanography.  It is designed to be used as a template for your own specific project, where you can then change the name of the project (here `template_project`), update the code (`template_project/*.py`), and use the example code to build a project with documentation, citation information, etc.
 
-Functionality currently includes:
-- Sample code with naming conventions in `template_project/*.py`
-- Demo notebook in `notebooks/demo.ipynb`
-- Initial example for documentation using sphinx and a read-the-docs theme in `docs/` (see build at [https://eleanorfrajka.github.io/template-project/](https://eleanorfrajka.github.io/template-project/))
-- Examples of test code in `tests/test_tools.py`
-- Workflows for testing the build of documentation on pull request (`.github/workflows/docs.yml`) and for running the tests using `pytest` (`.github/workflows/tests.yml`)
-- Both a `requirements.txt` file for the python packages to run the code, and a `requirements-dev.txt` file for packages needed to develop the code.  The additions are there for running tests (`pytest` and `pytest-cov`) and building documentation (`nbsphinx`, `nbconvert`, etc).
-- Examples of a `CONTRIBUTING.md` file generated initially using [https://github.com/bttger/contributing-gen](https://github.com/bttger/contributing-gen) and then edited.
-- Examples of a `CITATION.cff` file which provides citation information for your software package on Github.
-- Necessary files to enable installing the package locally using pip (`pyproject.toml`) and [instructions](https://eleanorfrajka.github.io/template-project/pypi-publish.html) and a github workflow (`.github/workflows/pypi.yml`) for publishing a release to [https://pypi.org](https://pypi.org) so that others can install your package using pip.
+> 🧪 A modern Python template for scientific projects — with clean code, automated tests, documentation, citation, and publication tools, ready out-of-the-box.
 
-Future plans for template project include adding instructions for how to test your build locally, and run your tests (and generate a report) locally are pending.
+This repository is designed to help researchers and developers (especially in the [UHH Experimental Oceanography group](http://eleanorfrajka.com) quickly launch well-structured Python projects with consistent tooling for open science.
 
-I'll also (once I know how) add instructions for how to publish the package to conda forge, so that folks who use conda or mamba for environment management can also install that way.
+📘 Full documentation available at:  
+👉 https://eleanorfrajka.github.io/template-project/
+
+---
+
+## 🚀 What's Included
+
+- ✅ Example Python package layout: `template_project/*.py`
+- 📓 Jupyter notebook demo: `notebooks/demo.ipynb`
+- 📄 Markdown and Sphinx-based documentation in `docs/`
+- 🔍 Tests with `pytest` in `tests/`, CI with GitHub Actions
+- 🎨 Code style via `black`, `ruff`, `pre-commit`
+- 📦 Package config via `pyproject.toml` + optional PyPI release workflow
+- 🧾 Machine-readable citation: `CITATION.cff`
+
+---
+
+## Project structure
+
+template-project/
+├── .github/
+│   └── workflows/              # GitHub Actions for tests, docs, PyPI
+├── docs/                       # Sphinx-based documentation
+│   ├── source/                 # reStructuredText + MyST Markdown + _static
+│   └── Makefile                # for building HTML docs
+├── notebooks/                  # Example notebooks
+├── template_project/           # Main Python package
+│   ├── __init__.py
+│   ├── _version.py
+│   ├── tools.py
+│   ├── readers.py
+│   ├── writers.py
+│   ├── utilities.py
+│   ├── plotters.py
+│   └── template_project.mplstyle  # Optional: matplotlib style file
+├── tests/                      # Pytest test suite
+│   ├── test_tools.py
+│   └── test_utilities.py
+├── .gitignore
+├── .pre-commit-config.yaml
+├── CITATION.cff                # Sample file for citable software
+├── CONTRIBUTING.md             # Sample file for inviting contributions
+├── LICENSE                     # Sample MIT license
+├── README.md
+├── pyproject.toml              # Modern packaging config
+├── requirements.txt            # Package requirements
+├── customisation_checklist.md  # Development requirements
+└── requirements-dev.txt        # Linting, testing, docs tools
 
 
-### Install
+---
 
-Install locally using
-```sh
-pip install -e .
-```
+## 🔧 Quickstart
 
-### Documentation
+Install in development mode:
 
-Documentation is available at [https://eleanorfrajka.github.io/template-project](https://eleanorfrajka.github.io/template-project/).
-
-Check out the demo notebook `notebooks/demo.ipynb` for example functionality.
-
-### Contributing
-
-All contributions are welcome!  See [contributing](CONTRIBUTING.md) for more details.
-
-To install a local, development version of template-project, clone the repository, open a terminal in teh root directory (next to this readme file) and run these commands:
-
-```sh 
+```bash
 git clone https://github.com/eleanorfrajka/template-project.git
 cd template-project
 pip install -r requirements-dev.txt
 pip install -e .
 ```
-This installs template-project locally.  The `-e` ensures that any edits you make in the files will be picked up by scripts that impport functions from glidertest.
 
-You can run the example jupyter notebook by launching jupyterlab with `jupyter-lab` and navigating to the `notebooks` directory, or in VS Code or another python GUI.
+To run tests:
 
-All new functions should include tests.  You can run tests locally and generate a coverage reporrt with:
-```sh
-pytest --cov=template-project --cov-report term-missing tests/
+```bash
+pytest
 ```
 
-Try to ensure that all the lines of your contribution are covered in the tests.
+To build the documentation locally:
 
+```bash
+cd docs
+make html
+```
+
+---
+
+## 📚 Learn More
+
+- [Setup instructions](https://eleanorfrajka.github.io/template-project/setup.html)
+- [Solo Git workflow](https://eleanorfrajka.github.io/template-project/gitworkflow_solo.html)
+- [Fork-based collaboration](https://eleanorfrajka.github.io/template-project/gitcollab_v2.html)
+- [Building docs](https://eleanorfrajka.github.io/template-project/build_docs.html)
+- [Publishing to PyPI](https://eleanorfrajka.github.io/template-project/pypi_guide.html)
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome!  Please also consider adding an [issue](https://github.com/eleanorfrajka/template-project/issues) when something isn't clear.
+
+See the [customisation checklist](customisation_checklist.md) to adapt this template to your own project.
+
+---
+
+## Future plans
+
+I'll also (once I know how) add instructions for how to publish the package to conda forge, so that folks who use conda or mamba for environment management can also install that way.
+
+---
+
+## 📣 Citation
+
+This repository includes a `CITATION.cff` file so that users of this template can include one in their own project.  
+There is no need to cite this repository directly.

@@ -1,23 +1,32 @@
 {
-    // Use Black as the Python formatter
+    // === Python Environment ===
+    "python.defaultInterpreterPath": "${workspaceFolder}/venv/bin/python",
+    "python.pythonPath": "${workspaceFolder}/venv/bin/python",
+    // === Formatting ===
     "python.formatting.provider": "black",
-    // Format files automatically on save
     "editor.formatOnSave": true,
-    // Automatically organize imports on save (isort)
     "editor.codeActionsOnSave": {
-        "source.organizeImports": "explicit"
+        "source.organizeImports": "explicit",
+        "source.fixAll": "explicit"
     },
-    // Optional: set Python interpreter if you want to lock to your virtual environment
-    // "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python"
-    // === Run pre-commit on save ===
-    "emeraldwalk.runonsave": {
-        "commands": [
-            {
-                "match": ".*",
-                "isAsync": true,
-                "cmd": "source ./venv/bin/activate && pre-commit run --all-files"
-            }
-        ]
+    // === Linting ===
+    "python.linting.enabled": true,
+    "python.linting.pylintEnabled": false,
+    "ruff.enable": true,
+    "ruff.lintOnSave": true,
+    "ruff.path": [
+        "${workspaceFolder}/venv/bin/ruff"
+    ],
+    "pre-commit.executablePath": "${workspaceFolder}/venv/bin/pre-commit",
+    "terminal.integrated.env.osx": {
+        "PATH": "${workspaceFolder}/venv/bin:${env:PATH}:/opt/homebrew/bin:/opt/homebrew/opt/tcl-tk@8/bin:$HOME/.pyenv/bin"
     },
-    "jupyter.interactiveWindow.creationMode": "perFile"
+    "git.terminalAuthentication": true,
+    "git.useGitUserTerminal": true,
+    // === VSCode experience ===
+    "files.trimTrailingWhitespace": true,
+    "files.insertFinalNewline": true,
+    "files.autoSave": "onFocusChange",
+    // === Jupyter support (optional) ===
+    "jupyter.jupyterServerType": "local",
 }

@@ -1,39 +1,50 @@
-import xarray as xr
+from pathlib import Path
+
 from pandas import DataFrame
+import matplotlib.pyplot as plt
+import xarray as xr
 
 
-##------------------------------------------------------------------------------------
-## Views of the ds or nc file
-##------------------------------------------------------------------------------------
-def show_contents(data, content_type="variables"):
+def plot_monthly_transport(ds: xr.Dataset, var: str = "moc_mar_hc10") -> None:
+    """Plot original and monthly averaged transport time series.
+
+    Parameters
+    ----------
+    ds : xr.Dataset
+        Dataset with a time dimension and a transport variable.
+    var : str, optional
+        Name of the variable to plot. Default is "moc_mar_hc10".
     """
-    Wrapper function to show contents of an xarray Dataset or a netCDF file.
+    here = Path(__file__).resolve().parent
+    plt.style.use(here / "template_project.mplstyle")
 
-    Parameters:
-    data (str or xr.Dataset): The input data, either a file path to a netCDF file or an xarray Dataset.
-    content_type (str): The type of content to show, either 'variables' (or 'vars') or 'attributes' (or 'attrs'). Default is 'variables'.
+    da = ds[var]
+    ds_monthly = ds.resample(TIME="ME").mean()
 
-    Returns:
-    pandas.io.formats.style.Styler or pandas.DataFrame: A styled DataFrame with details about the variables or attributes.
-    """
-    if content_type in ["variables", "vars"]:
-        if isinstance(data, str):
-            return show_variables(data)
-        elif isinstance(data, xr.Dataset):
-            return show_variables(data)
-        else:
-            raise TypeError("Input data must be a file path (str) or an xarray Dataset")
-    elif content_type in ["attributes", "attrs"]:
-        if isinstance(data, str):
-            return show_attributes(data)
-        elif isinstance(data, xr.Dataset):
-            return show_attributes(data)
-        else:
-            raise TypeError("Attributes can only be shown for netCDF files (str)")
-    else:
-        raise ValueError(
-            "content_type must be either 'variables' (or 'vars') or 'attributes' (or 'attrs')"
-        )
+    fig, ax = plt.subplots()
+    ax.plot(ds.TIME, da, color="grey", alpha=0.5, linewidth=0.5, label="Original")
+    ax.plot(
+        ds_monthly.TIME,
+        ds_monthly[var],
+        color="red",
+        linewidth=1.0,
+        label="Monthly Avg",
+    )
+    ax.axhline(0, color="black", linestyle="--", linewidth=0.5)
+
+    ax.set_title("RAPID 26°N - AMOC")
+
+    # Use variable attributes if present
+    label = da.attrs.get("long_name", var)
+    units = da.attrs.get("units", "")
+    ax.set_ylabel(f"{label} [{units}]" if units else label)
+
+    ax.spines["top"].set_visible(False)
+    ax.spines["right"].set_visible(False)
+    ax.legend()
+    plt.tight_layout()
+
+    return fig, ax
 
 
 def show_variables(data):
@@ -51,7 +62,6 @@ def show_variables(data):
         - units: The units of the variable (if available).
         - comment: Any additional comments about the variable (if available).
     """
-    from pandas import DataFrame
 
     if isinstance(data, str):
         print("information is based on file: {}".format(data))
@@ -115,7 +125,6 @@ def show_attributes(data):
         - Value: The value of the attribute.
     """
     from netCDF4 import Dataset
-    from pandas import DataFrame
 
     if isinstance(data, str):
         print("information is based on file: {}".format(data))
@@ -137,67 +146,3 @@ def show_attributes(data):
     attrs = DataFrame(info).T
 
     return attrs
-
-
-def show_variables_by_dimension(data, dimension_name="trajectory"):
-    """
-    Processes an xarray Dataset or a netCDF file, extracts variable information,
-    and returns a styled DataFrame with details about the variables filtered by a specific dimension.
-
-    Parameters:
-    data (str or xr.Dataset): The input data, either a file path to a netCDF file or an xarray Dataset.
-    dimension_name (str): The name of the dimension to filter variables by.
-
-    Returns:
-    pandas.io.formats.style.Styler: A styled DataFrame containing the following columns:
-        - dims: The dimension of the variable (or "string" if it is a string type).
-        - name: The name of the variable.
-        - units: The units of the variable (if available).
-        - comment: Any additional comments about the variable (if available).
-    """
-
-    if isinstance(data, str):
-        print("information is based on file: {}".format(data))
-        dataset = Dataset(data)
-        variables = dataset.variables
-    elif isinstance(data, xr.Dataset):
-        print("information is based on xarray Dataset")
-        variables = data.variables
-    else:
-        raise TypeError("Input data must be a file path (str) or an xarray Dataset")
-
-    info = {}
-    for i, key in enumerate(variables):
-        var = variables[key]
-        if isinstance(data, str):
-            dims = var.dimensions[0] if len(var.dimensions) == 1 else "string"
-            units = "" if not hasattr(var, "units") else var.units
-            comment = "" if not hasattr(var, "comment") else var.comment
-        else:
-            dims = var.dims[0] if len(var.dims) == 1 else "string"
-            units = var.attrs.get("units", "")
-            comment = var.attrs.get("comment", "")
-
-        if dims == dimension_name:
-            info[i] = {
-                "name": key,
-                "dims": dims,
-                "units": units,
-                "comment": comment,
-            }
-
-    vars = DataFrame(info).T
-
-    dim = vars.dims
-    dim[dim.str.startswith("str")] = "string"
-    vars["dims"] = dim
-
-    vars = (
-        vars.sort_values(["dims", "name"])
-        .reset_index(drop=True)
-        .loc[:, ["dims", "name", "units", "comment"]]
-        .set_index("name")
-        .style
-    )
-
-    return vars
