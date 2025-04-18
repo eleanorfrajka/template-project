@@ -13,8 +13,9 @@
             "presentation": {
                 "reveal": "always",
                 "panel": "dedicated"
-                // Uncomment the next line to auto-close terminal on success:
-                // "close": true
+            },
+            "runOptions": {
+                "runOn": "folderOpen"
             }
         }
     ]

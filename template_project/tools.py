@@ -1,7 +1,3 @@
-import gsw
-import numpy as np
-import xarray as xr
-import re
 import logging
 
 # Initialize logging
@@ -38,79 +34,8 @@ unit_str_format = {
     "meters": "m",
     "degrees_Celsius": "Celsius",
     "g/m^3": "g m-3",
+    "m^3/s": "Sv",
 }
-
-
-##-----------------------------------------------------------------------------------------------------------
-## Calculations for new variables
-##-----------------------------------------------------------------------------------------------------------
-def calc_Z(ds):
-    """
-    Calculate the depth (Z position) of the glider using the gsw library to convert pressure to depth.
-
-    Parameters
-    ----------
-    ds (xarray.Dataset): The input dataset containing 'PRES', 'LATITUDE', and 'LONGITUDE' variables.
-
-    Returns
-    -------
-    xarray.Dataset: The dataset with an additional 'DEPTH' variable.
-    """
-    # Ensure the required variables are present
-    if (
-        "PRES" not in ds.variables
-        or "LATITUDE" not in ds.variables
-        or "LONGITUDE" not in ds.variables
-    ):
-        raise ValueError(
-            "Dataset must contain 'PRES', 'LATITUDE', and 'LONGITUDE' variables."
-        )
-
-    # Initialize the new variable with the same dimensions as dive_num
-    ds["DEPTH_Z"] = (["N_MEASUREMENTS"], np.full(ds.dims["N_MEASUREMENTS"], np.nan))
-
-    # Calculate depth using gsw
-    depth = gsw.z_from_p(ds["PRES"], ds["LATITUDE"])
-    ds["DEPTH_Z"] = depth
-
-    # Assign the calculated depth to a new variable in the dataset
-    ds["DEPTH_Z"].attrs = {
-        "units": "meters",
-        "positive": "up",
-        "standard_name": "depth",
-        "comment": "Depth calculated from pressure using gsw library, positive up.",
-    }
-
-    return ds
-
-
-def split_by_unique_dims(ds):
-    """
-    Splits an xarray dataset into multiple datasets based on the unique set of dimensions of the variables.
-
-    Parameters:
-    ds (xarray.Dataset): The input xarray dataset containing various variables.
-
-    Returns:
-    tuple: A tuple containing xarray datasets, each with variables sharing the same set of dimensions.
-    """
-    # Dictionary to hold datasets with unique dimension sets
-    unique_dims_datasets = {}
-
-    # Iterate over the variables in the dataset
-    for var_name, var_data in ds.data_vars.items():
-        # Get the dimensions of the variable
-        dims = tuple(var_data.dims)
-
-        # If this dimension set is not in the dictionary, create a new dataset
-        if dims not in unique_dims_datasets:
-            unique_dims_datasets[dims] = xr.Dataset()
-
-        # Add the variable to the corresponding dataset
-        unique_dims_datasets[dims][var_name] = var_data
-
-    # Convert the dictionary values to a dictionary of datasets
-    return {dims: dataset for dims, dataset in unique_dims_datasets.items()}
 
 
 def reformat_units_var(ds, var_name, unit_format=unit_str_format):
@@ -164,72 +89,3 @@ def convert_units_var(
         print(f"No conversion information found for {current_unit} to {new_unit}")
     #        raise ValueError(f"No conversion information found for {current_unit} to {new_unit}")
     return new_values
-
-
-def convert_qc_flags(dsa, qc_name):
-    # Must be called *after* var_name has OG1 long_name
-    var_name = qc_name[:-3]
-    if qc_name in list(dsa):
-        # Seaglider default type was a string.  Convert to int8.
-        dsa[qc_name].values = dsa[qc_name].values.astype("int8")
-        # Seaglider default flag_meanings were prefixed with 'QC_'. Remove this prefix.
-        if "flag_meaning" in dsa[qc_name].attrs:
-            flag_meaning = dsa[qc_name].attrs["flag_meaning"]
-            dsa[qc_name].attrs["flag_meaning"] = flag_meaning.replace("QC_", "")
-        # Add a long_name attribute to the QC variable
-        dsa[qc_name].attrs["long_name"] = (
-            dsa[var_name].attrs.get("long_name", "") + " quality flag"
-        )
-        dsa[qc_name].attrs["standard_name"] = "status_flag"
-        # Mention the QC variable in the variable attributes
-        dsa[var_name].attrs["ancillary_variables"] = qc_name
-    return dsa
-
-
-def find_best_dtype(var_name, da):
-    input_dtype = da.dtype.type
-    if "latitude" in var_name.lower() or "longitude" in var_name.lower():
-        return np.double
-    if var_name[-2:].lower() == "qc":
-        return np.int8
-    if "time" in var_name.lower():
-        return input_dtype
-    if var_name[-3:] == "raw" or "int" in str(input_dtype):
-        if np.nanmax(da.values) < 2**16 / 2:
-            return np.int16
-        elif np.nanmax(da.values) < 2**32 / 2:
-            return np.int32
-    if input_dtype == np.float64:
-        return np.float32
-    return input_dtype
-
-
-def set_fill_value(new_dtype):
-    fill_val = 2 ** (int(re.findall("\d+", str(new_dtype))[0]) - 1) - 1
-    return fill_val
-
-
-def set_best_dtype(ds):
-    bytes_in = ds.nbytes
-    for var_name in list(ds):
-        da = ds[var_name]
-        input_dtype = da.dtype.type
-        new_dtype = find_best_dtype(var_name, da)
-        for att in ["valid_min", "valid_max"]:
-            if att in da.attrs.keys():
-                da.attrs[att] = np.array(da.attrs[att]).astype(new_dtype)
-        if new_dtype == input_dtype:
-            continue
-        _log.debug(f"{var_name} input dtype {input_dtype} change to {new_dtype}")
-        da_new = da.astype(new_dtype)
-        ds = ds.drop_vars(var_name)
-        if "int" in str(new_dtype):
-            fill_val = set_fill_value(new_dtype)
-            da_new[np.isnan(da)] = fill_val
-            da_new.encoding["_FillValue"] = fill_val
-        ds[var_name] = da_new
-    bytes_out = ds.nbytes
-    _log.info(
-        f"Space saved by dtype downgrade: {int(100 * (bytes_in - bytes_out) / bytes_in)} %",
-    )
-    return ds

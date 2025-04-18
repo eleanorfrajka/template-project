@@ -3,7 +3,7 @@
 
 First off, thanks for taking the time to contribute! ❤️
 
-All types of contributions are encouraged and valued. See the [Table of Contents](#table-of-contents) for different ways to help and details about how this project handles them. 
+All types of contributions are encouraged and valued. See the [Table of Contents](#table-of-contents) for different ways to help and details about how this project handles them.
 
 
 <!-- omit in toc -->
@@ -101,7 +101,7 @@ This section guides you through submitting an enhancement suggestion for templat
 - Make sure that you are using the latest version.
 - Read the [documentation](https://eleanorfrajka.github.io/template-project/) carefully and find out if the functionality is already covered, maybe by an individual configuration.
 - Perform a [search](https://github.com/eleanorfrajka/template-project/issues) to see if the enhancement has already been suggested. If it has, add a comment to the existing issue instead of opening a new one.
-- Find out whether your idea fits with the scope and aims of the project.  Keep in mind that we want features that will be useful to the majority of our users and not just a small subset. 
+- Find out whether your idea fits with the scope and aims of the project.  Keep in mind that we want features that will be useful to the majority of our users and not just a small subset.
 
 <!-- omit in toc -->
 #### How Do I Submit a Good Enhancement Suggestion?
@@ -111,7 +111,7 @@ Enhancement suggestions are tracked as [GitHub issues](https://github.com/eleano
 - Use a **clear and descriptive title** for the issue to identify the suggestion.
 - Provide a **step-by-step description of the suggested enhancement** in as many details as possible.
 - **Describe the current behavior** and **explain which behavior you expected to see instead** and why. At this point you can also tell which alternatives do not work for you.
-- You may want to **include screenshots** which help you demonstrate the steps or point out the part which the suggestion is related to. 
+- You may want to **include screenshots** which help you demonstrate the steps or point out the part which the suggestion is related to.
 - **Explain why this enhancement would be useful** to most template-project users. You may also want to point out the other projects that solved it better and which could serve as inspiration.
 
 <!-- You might want to create an issue template for enhancement suggestions that can be used as a guide and that defines the structure of the information to be included. If you do so, reference it here in the description. -->
@@ -129,7 +129,7 @@ The *.py* files are separated into broad categories of readers (to load datesets
 #### Best practices for new functions
 
 - Once you've added a function, you can test it against one of the sample datasets in `notebooks/demo.ipynb`. Does it have the same behaviour on those sample datasets as you expect?
-- Have you followed the conventions for naming your function? Generally, function names should be short, agnostic about the array data used, and understandable to Person X. We also loosely follow naming conventions to help the new user understand what a function might do (e.g., plotting functions in `plotter.py` typically start with the name `plot_blahblah()` while calculations are `calc_blahblah()` and calculations with special outputs are `compute_blahblah()`. Functions not inteded for use by the end user (e.g. sub-calculations) should be added to `utilities.py`
+- Have you followed the conventions for naming your function? Generally, function names should be short, agnostic about the array data used, and understandable to Person X. We also loosely follow naming conventions to help the new user understand what a function might do (e.g., plotting functions in `plotter.py` typically start with the name `plot_blahblah()` while calculations are `calc_blahblah()` and calculations with special outputs are `compute_blahblah()`. Functions not intended for use by the end user (e.g. sub-calculations) should be added to `utilities.py`
 - Unless otherwise required, we suggest to pass an xarray dataset (as you get from loading an array dataset) as the input. There are some parameters that can be additionally passed to carry out subsets on the data or select the variable of interest.
 - Did you write a docstring? We use the [numpy standard for docstings](https://numpydoc.readthedocs.io/en/latest/format.html#docstring-standard). We also suggest including your name or GitHub handle under the original author heading. Look at some existing docstrings in `template_project` if you are unsure of the format.
 - There are also some basic error checking behaviours you should consider including. If you're plotting a particular variable, use the `template_project.utilities._check_necessary_variables()` function to check whether or not the required variables are within the dataset passed to the function.
@@ -146,7 +146,7 @@ To build the documentation locally you need to install a few extra requirements:
 - Install `make` for your computer, e.g. on ubuntu with `sudo apt install make`
 - Install the additional python requirements. Activate the environment you use for working with glidertest, navigate to the top directory of this repo, then run `pip install -r requirements-dev.txt`
 
-Once you have the extras installed, you can build the docs locally by navigating to the `docs/` directory and running `make clean html`. This command will create a directory called `build/` which contains the html files of the documentation. Open the file `docs/builld/html/index.html` in your browser, and you will see the docs with your changes applied. After making more changes, just run make clean html again to rebuild the docs.
+Once you have the extras installed, you can build the docs locally by navigating to the `docs/` directory and running `make clean html`. This command will create a directory called `build/` which contains the html files of the documentation. Open the file `docs/build/html/index.html` in your browser, and you will see the docs with your changes applied. After making more changes, just run make clean html again to rebuild the docs.
 
 <!-- omit in toc -->
 ## Attribution
