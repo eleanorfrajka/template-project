@@ -15,61 +15,76 @@ A minimal, modular Python project structure for collaborative research and repro
 
 ```
 template-project/
-├── template_project              # Main Python package with scientific code
-│   ├── __init__.py               # Makes this a Python package
-│   ├── plotters.py               # Functions to plot data
-│   ├── readers.py                # Functions to read raw data into xarray datasets
-│   ├── read_rapid.py             # Example for a separate module for a specific dataset
-│   ├── writers.py                # Functions to write data (e.g., to NetCDF)
-│   ├── tools.py                  # Utilities for unit conversion, calculations, etc.
-│   ├── logger.py                 # Structured logging configuration for reproducible runs
-│   ├── template_project.mplstyle # Default plotting parameters
-│   └── utilities.py              # Helper functions (e.g., file download, header parsing)
+├── template_project              # [core] Main Python package with scientific code
+│   ├── __init__.py               # [core] Makes this a Python package
+│   ├── plotters.py               # [core] Functions to plot data
+│   ├── readers.py                # [core] Functions to read raw data into xarray datasets
+│   ├── read_rapid.py             # [core] Example for a separate module for a specific dataset
+│   ├── writers.py                # [core] Functions to write data (e.g., to NetCDF)
+│   ├── tools.py                  # [core] Utilities for unit conversion, calculations, etc.
+│   ├── logger.py                 # [core] Structured logging configuration for reproducible runs
+│   ├── template_project.mplstyle # [core] Default plotting parameters
+│   └── utilities.py              # [core] Helper functions (e.g., file download or parsing)
 │
-├── tests/                        # Unit tests using pytest
-│   ├── test_readers.py
-│   ├── test_tools.py
-│   ├── test_utilities.py
+├── tests/                        # [test] Unit tests using pytest
+│   ├── test_readers.py           # [test] Test functions in readers.py
+│   ├── test_tools.py             # [test] Test functions in tools.py
+│   ├── test_utilities.py         # [test] Test functions in utilities.py
 │   └── ...
 │
-├── docs/                         # Sphinx documentation source files
-│   ├── source/
-│   |   ├── conf.py               # Setup for documentation
-│   |   ├── index.rst             # Main page with menus in *.rst
-│   |   ├── setup.md              # One of the documention pages in *.md
-│   |   ├── template_project.rst  # The file to create the API based on docstrings
-│   |   ├── ...                   # More *.md or *.rst linked in index.rst
-│   |   └── _static               # Figures
-|   |       ├── css/custom.css    # Custom style sheet
-|   |       └── logo.png          # logo for top left of docs/
-│   └── Makefile
+├── docs/                         # [docs]
+│   ├── source/                   # [docs] Sphinx documentation source files
+│   │   ├── conf.py               # [docs] Setup for documentation
+│   │   ├── index.rst             # [docs] Main page with menus in *.rst
+│   │   ├── setup.md              # [docs] One of the documentation pages in *.md
+│   │   ├── template_project.rst  # [docs] The file to create the API based on docstrings
+│   │   ├── ...                   # [docs] More *.md or *.rst linked in index.rst
+│   │   └── _static               # [docs] Figures
+│   │       ├── css/custom.css    # [docs, style] Custom style sheet for docs
+│   │       └── logo.png          # [docs] logo for top left of docs/
+│   └── Makefile                  # [docs] Build the docs
 │
-├── notebooks/                    # Example notebooks
-│   ├── demo.ipynb                # Note - this is run in .github/workflows/docs.yml to appear in index.rst as demo-output.ipynb
+├── notebooks/                    # [demo] Example notebooks
+│   ├── demo.ipynb                # [demo] Also run in docs.yml to appear in docs
 │   └── ...
 │
-├── data/                         # (Optional) Example input data or placeholder
-│   └── moc_transports.nc         # Example data file used for the template.
+├── data/                         # [data]
+│   └── moc_transports.nc         # [data] Example data file used for the template.
 │
-├── logs/                         # Log output from structured logging
-│   └── amocarray_*.log
+├── logs/                         # [core] Log output from structured logging
+│   └── amocarray_*.log           # [core]
 │
-├── .github/                      # GitHub-specific workflows (e.g., Actions)
-│   └── workflows/
-|       ├── docs.yml              # Test build documents on *pull-request*
-|       ├── docs_deploy.yml       # Build and deploy documents on "merge"
-|       ├── pypi.yml              # Package and release on GitHub.com "release"
-│       └── test.yml              # Run pytest on tests/test_<name>.py on *pull-request*
+├── .github/                      # [ci] GitHub-specific workflows (e.g., Actions)
+│   ├── workflows/
+│   │   ├── docs.yml              # [ci] Test build documents on *pull-request*
+│   │   ├── docs_deploy.yml       # [ci] Build and deploy documents on "merge"
+│   │   ├── pypi.yml              # [ci] Package and release on GitHub.com "release"
+│   │   └── test.yml              # [ci] Run pytest on tests/test_<name>.py on *pull-request*
+│   ├── ISSUE_TEMPLATE.md         # [ci, meta] Template for issues on Github
+│   └── PULL_REQUEST_TEMPLATE.md  # [ci, meta] Template for pull requests on Github
 │
-├── .gitignore                    # Exclude build files, logs, data, etc.
-├── requirements.txt              # Pip requirements
-├── requirements-dev.txt          # Pip requirements for development (docs, tests, linting)
-├── .pre-commit-config.yaml       # Instructions for pre-commits to run (linting)
-├── pyproject.toml                # Build system and tool config (e.g., black, isort)
-├── CITATION.cff                  # Citation info so Github can populate the "cite" button
-├── README.md                     # Project overview and getting started
-└── LICENSE                       # Open source license (e.g., MIT as default)
+├── .gitignore                    # [meta] Exclude build files, logs, data, etc.
+├── requirements.txt              # [meta] Pip requirements
+├── requirements-dev.txt          # [meta] Pip requirements for development (docs, tests, linting)
+├── .pre-commit-config.yaml       # [style] Instructions for pre-commits to run (linting)
+├── pyproject.toml                # [ci, meta, style] Build system and config linters
+├── CITATION.cff                  # [meta] So Github can populate the "cite" button
+├── README.md                     # [meta] Project overview and getting started
+└── LICENSE                       # [meta] Open source license (e.g., MIT as default)
 ```
+
+The tags above give an indication of what parts of this template project are used for what purposes, where:
+- `# [core]` – Scientific core logic or core functions used across the project.
+<!--- `# [api]` – Public-facing functions or modules users are expected to import and use.-->
+- `# [docs]` – Documentation sources, configs, and assets for building project docs.
+- `# [test]` – Automated tests for validating functionality.
+- `# [demo]` – Notebooks and minimal working examples for demos or tutorials.
+- `# [data]` – Sample or test data files.
+- `# [ci]` – Continuous integration setup (GitHub Actions).
+- `# [style]` – Configuration for code style, linting, and formatting.
+- `# [meta]` – Project metadata (e.g., citation info, license, README).
+
+**Note:** There are also files that you may end up generating but which don't necessarily appear in the project on GitHub.com (due to being ignored by your `.gitignore`).  These may include your environment (`venv/`, if you use pip and virtual environments), distribution files `dist/` for building packages to deploy on http://pypi.org, `htmlcov/` for coverage reports for tests, `template_project_efw.egg-info` for editable installs (e.g., `pip install -e .`).
 
 ## 🔍 Notes
 
