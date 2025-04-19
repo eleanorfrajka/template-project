@@ -90,7 +90,7 @@ source_suffix = [".rst", ".md"]
 
 # The name of an image file (relative to this directory) to place at the top
 # of the sidebar.
-html_logo = "_static/logo.png"
+html_logo = "_static/logo_template.png"
 
 # If false, no index is generated.
 # html_use_index = True
