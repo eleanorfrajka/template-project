@@ -1,6 +1,7 @@
 import time
 from pathlib import Path
 from template_project import logger
+import logging
 
 
 def test_setup_logger_creates_file_and_logs():
