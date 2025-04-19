@@ -8,8 +8,6 @@ Welcome to the documentation for the **template-project** — a minimal, modern 
 
 This template includes tools for testing, documentation, versioning, citation, publishing to PyPI, and more. Whether you're working solo or collaborating in a team, this guide will help you get started and stay consistent.
 
-
-
 .. toctree::
    :maxdepth: 2
    :caption: Getting started
@@ -62,4 +60,4 @@ This template includes tools for testing, documentation, versioning, citation, p
    template_project
    faq
 
-These documentation pages were edited using chatGPT.
+These documentation pages were created based on processes used to develop and maintain http://github.com/OceanGlidersCommunity/glidertest and edited using chatGPT.

@@ -9,6 +9,7 @@
   <title>What’s in This Template Project? &mdash; template_project v0.0.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=20758594" />
 
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
@@ -34,7 +35,7 @@
           
           <a href="index.html" class="icon icon-home">
             template_project
-              <img src="_static/logo.png" class="logo" alt="Logo"/>
+              <img src="_static/logo_template.png" class="logo" alt="Logo"/>
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -134,62 +135,79 @@
 <h1>📁 <code class="docutils literal notranslate"><span class="pre">template-project</span></code> File Structure<a class="headerlink" href="#template-project-file-structure" title="Link to this heading"></a></h1>
 <p>A minimal, modular Python project structure for collaborative research and reproducible workflows.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>template-project/
-├── template_project              # Main Python package with scientific code
-│   ├── __init__.py               # Makes this a Python package
-│   ├── plotters.py               # Functions to plot data
-│   ├── readers.py                # Functions to read raw data into xarray datasets
-│   ├── read_rapid.py             # Example for a separate module for a specific dataset
-│   ├── writers.py                # Functions to write data (e.g., to NetCDF)
-│   ├── tools.py                  # Utilities for unit conversion, calculations, etc.
-│   ├── logger.py                 # Structured logging configuration for reproducible runs
-│   ├── template_project.mplstyle # Default plotting parameters
-│   └── utilities.py              # Helper functions (e.g., file download, header parsing)
+├── template_project              # [core] Main Python package with scientific code
+│   ├── __init__.py               # [core] Makes this a Python package
+│   ├── plotters.py               # [core] Functions to plot data
+│   ├── readers.py                # [core] Functions to read raw data into xarray datasets
+│   ├── read_rapid.py             # [core] Example for a separate module for a specific dataset
+│   ├── writers.py                # [core] Functions to write data (e.g., to NetCDF)
+│   ├── tools.py                  # [core] Utilities for unit conversion, calculations, etc.
+│   ├── logger.py                 # [core] Structured logging configuration for reproducible runs
+│   ├── template_project.mplstyle # [core] Default plotting parameters
+│   └── utilities.py              # [core] Helper functions (e.g., file download or parsing)
 │
-├── tests/                        # Unit tests using pytest
-│   ├── test_readers.py
-│   ├── test_tools.py
-│   ├── test_utilities.py
+├── tests/                        # [test] Unit tests using pytest
+│   ├── test_readers.py           # [test] Test functions in readers.py
+│   ├── test_tools.py             # [test] Test functions in tools.py
+│   ├── test_utilities.py         # [test] Test functions in utilities.py
 │   └── ...
 │
-├── docs/                         # Sphinx documentation source files
-│   ├── source/
-│   |   ├── conf.py               # Setup for documentation
-│   |   ├── index.rst             # Main page with menus in *.rst
-│   |   ├── setup.md              # One of the documention pages in *.md
-│   |   ├── template_project.rst  # The file to create the API based on docstrings
-│   |   ├── ...                   # More *.md or *.rst linked in index.rst
-│   |   └── _static               # Figures
-|   |       ├── css/custom.css    # Custom style sheet
-|   |       └── logo.png          # logo for top left of docs/
-│   └── Makefile
+├── docs/                         # [docs]
+│   ├── source/                   # [docs] Sphinx documentation source files
+│   │   ├── conf.py               # [docs] Setup for documentation
+│   │   ├── index.rst             # [docs] Main page with menus in *.rst
+│   │   ├── setup.md              # [docs] One of the documentation pages in *.md
+│   │   ├── template_project.rst  # [docs] The file to create the API based on docstrings
+│   │   ├── ...                   # [docs] More *.md or *.rst linked in index.rst
+│   │   └── _static               # [docs] Figures
+│   │       ├── css/custom.css    # [docs, style] Custom style sheet for docs
+│   │       └── logo.png          # [docs] logo for top left of docs/
+│   └── Makefile                  # [docs] Build the docs
 │
-├── notebooks/                    # Example notebooks
-│   ├── demo.ipynb                # Note - this is run in .github/workflows/docs.yml to appear in index.rst as demo-output.ipynb
+├── notebooks/                    # [demo] Example notebooks
+│   ├── demo.ipynb                # [demo] Also run in docs.yml to appear in docs
 │   └── ...
 │
-├── data/                         # (Optional) Example input data or placeholder
-│   └── moc_transports.nc         # Example data file used for the template.
+├── data/                         # [data]
+│   └── moc_transports.nc         # [data] Example data file used for the template.
 │
-├── logs/                         # Log output from structured logging
-│   └── amocarray_*.log
+├── logs/                         # [core] Log output from structured logging
+│   └── amocarray_*.log           # [core]
 │
-├── .github/                      # GitHub-specific workflows (e.g., Actions)
-│   └── workflows/
-|       ├── docs.yml              # Test build documents on *pull-request*
-|       ├── docs_deploy.yml       # Build and deploy documents on &quot;merge&quot;
-|       ├── pypi.yml              # Package and release on GitHub.com &quot;release&quot;
-│       └── test.yml              # Run pytest on tests/test_&lt;name&gt;.py on *pull-request*
+├── .github/                      # [ci] GitHub-specific workflows (e.g., Actions)
+│   ├── workflows/
+│   │   ├── docs.yml              # [ci] Test build documents on *pull-request*
+│   │   ├── docs_deploy.yml       # [ci] Build and deploy documents on &quot;merge&quot;
+│   │   ├── pypi.yml              # [ci] Package and release on GitHub.com &quot;release&quot;
+│   │   └── test.yml              # [ci] Run pytest on tests/test_&lt;name&gt;.py on *pull-request*
+│   ├── ISSUE_TEMPLATE.md         # [ci, meta] Template for issues on Github
+│   └── PULL_REQUEST_TEMPLATE.md  # [ci, meta] Template for pull requests on Github
 │
-├── .gitignore                    # Exclude build files, logs, data, etc.
-├── requirements.txt              # Pip requirements
-├── requirements-dev.txt          # Pip requirements for development (docs, tests, linting)
-├── .pre-commit-config.yaml       # Instructions for pre-commits to run (linting)
-├── pyproject.toml                # Build system and tool config (e.g., black, isort)
-├── CITATION.cff                  # Citation info so Github can populate the &quot;cite&quot; button
-├── README.md                     # Project overview and getting started
-└── LICENSE                       # Open source license (e.g., MIT as default)
+├── .gitignore                    # [meta] Exclude build files, logs, data, etc.
+├── requirements.txt              # [meta] Pip requirements
+├── requirements-dev.txt          # [meta] Pip requirements for development (docs, tests, linting)
+├── .pre-commit-config.yaml       # [style] Instructions for pre-commits to run (linting)
+├── pyproject.toml                # [ci, meta, style] Build system and config linters
+├── CITATION.cff                  # [meta] So Github can populate the &quot;cite&quot; button
+├── README.md                     # [meta] Project overview and getting started
+└── LICENSE                       # [meta] Open source license (e.g., MIT as default)
 </pre></div>
 </div>
+<p>The tags above give an indication of what parts of this template project are used for what purposes, where:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">[core]</span></code> – Scientific core logic or core functions used across the project.</p></li>
+</ul>
+<!--- `# [api]` – Public-facing functions or modules users are expected to import and use.-->
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">[docs]</span></code> – Documentation sources, configs, and assets for building project docs.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">[test]</span></code> – Automated tests for validating functionality.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">[demo]</span></code> – Notebooks and minimal working examples for demos or tutorials.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">[data]</span></code> – Sample or test data files.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">[ci]</span></code> – Continuous integration setup (GitHub Actions).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">[style]</span></code> – Configuration for code style, linting, and formatting.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">[meta]</span></code> – Project metadata (e.g., citation info, license, README).</p></li>
+</ul>
+<p><strong>Note:</strong> There are also files that you may end up generating but which don’t necessarily appear in the project on GitHub.com (due to being ignored by your <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code>).  These may include your environment (<code class="docutils literal notranslate"><span class="pre">venv/</span></code>, if you use pip and virtual environments), distribution files <code class="docutils literal notranslate"><span class="pre">dist/</span></code> for building packages to deploy on http://pypi.org, <code class="docutils literal notranslate"><span class="pre">htmlcov/</span></code> for coverage reports for tests, <code class="docutils literal notranslate"><span class="pre">template_project_efw.egg-info</span></code> for editable installs (e.g., <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-e</span> <span class="pre">.</span></code>).</p>
 <section id="notes">
 <h2>🔍 Notes<a class="headerlink" href="#notes" title="Link to this heading"></a></h2>
 <ul class="simple">
@@ -289,7 +307,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2025, FirstName LastName, FirstName LastName.</p>
+    <p>&#169; Copyright 2025, Eleanor Frajka-Williams, FirstName LastName.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
