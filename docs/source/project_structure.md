@@ -9,8 +9,75 @@ Below is an overview of the files and folders you’ll find in the `template-pro
 ## 🔍 Project Structure Overview
 
 📷 *This is what the template looks like when you clone or fork it:*
+# 📁 `template-project` File Structure
 
-![Project directory screenshot](Screenshot%202025-04-18%20at%2010.33.52.png)
+A minimal, modular Python project structure for collaborative research and reproducible workflows.
+
+```
+template-project/
+├── template_project              # Main Python package with scientific code
+│   ├── __init__.py               # Makes this a Python package
+│   ├── plotters.py               # Functions to plot data
+│   ├── readers.py                # Functions to read raw data into xarray datasets
+│   ├── read_rapid.py             # Example for a separate module for a specific dataset
+│   ├── writers.py                # Functions to write data (e.g., to NetCDF)
+│   ├── tools.py                  # Utilities for unit conversion, calculations, etc.
+│   ├── logger.py                 # Structured logging configuration for reproducible runs
+│   ├── template_project.mplstyle # Default plotting parameters
+│   └── utilities.py              # Helper functions (e.g., file download, header parsing)
+│
+├── tests/                        # Unit tests using pytest
+│   ├── test_readers.py
+│   ├── test_tools.py
+│   ├── test_utilities.py
+│   └── ...
+│
+├── docs/                         # Sphinx documentation source files
+│   ├── source/
+│   |   ├── conf.py               # Setup for documentation
+│   |   ├── index.rst             # Main page with menus in *.rst
+│   |   ├── setup.md              # One of the documention pages in *.md
+│   |   ├── template_project.rst  # The file to create the API based on docstrings
+│   |   ├── ...                   # More *.md or *.rst linked in index.rst
+│   |   └── _static               # Figures
+|   |       ├── css/custom.css    # Custom style sheet
+|   |       └── logo.png          # logo for top left of docs/
+│   └── Makefile
+│
+├── notebooks/                    # Example notebooks
+│   ├── demo.ipynb                # Note - this is run in .github/workflows/docs.yml to appear in index.rst as demo-output.ipynb
+│   └── ...
+│
+├── data/                         # (Optional) Example input data or placeholder
+│   └── moc_transports.nc         # Example data file used for the template.
+│
+├── logs/                         # Log output from structured logging
+│   └── amocarray_*.log
+│
+├── .github/                      # GitHub-specific workflows (e.g., Actions)
+│   └── workflows/
+|       ├── docs.yml              # Test build documents on *pull-request*
+|       ├── docs_deploy.yml       # Build and deploy documents on "merge"
+|       ├── pypi.yml              # Package and release on GitHub.com "release"
+│       └── test.yml              # Run pytest on tests/test_<name>.py on *pull-request*
+│
+├── .gitignore                    # Exclude build files, logs, data, etc.
+├── requirements.txt              # Pip requirements
+├── requirements-dev.txt          # Pip requirements for development (docs, tests, linting)
+├── .pre-commit-config.yaml       # Instructions for pre-commits to run (linting)
+├── pyproject.toml                # Build system and tool config (e.g., black, isort)
+├── CITATION.cff                  # Citation info so Github can populate the "cite" button
+├── README.md                     # Project overview and getting started
+└── LICENSE                       # Open source license (e.g., MIT as default)
+```
+
+## 🔍 Notes
+
+- **Modularity**: Code is split by function (reading, writing, tools).
+- **Logging**: All major functions support structured logging to `logs/`.
+- **Tests**: Pytest-compatible tests are in `tests/`, with one file per module.
+- **Docs**: Sphinx documentation is in `docs/`.
+
 
 ---
 
