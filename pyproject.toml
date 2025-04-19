@@ -31,7 +31,6 @@ urls.homepage = "https://github.com/eleanorfrajka/template-project"
 urls.repository = "https://github.com/eleanorfrajka/template-project"
 
 
-
 [tool.setuptools.packages.find]
 where = ["."]
 include = ["template_project"]

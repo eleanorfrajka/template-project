@@ -18,7 +18,7 @@ year = datetime.datetime.now(tz=datetime.timezone.utc).date().year
 
 # General information about the project.
 project = "template_project"
-author = "FirstName LastName, FirstName LastName"
+author = "Eleanor Frajka-Williams, FirstName LastName"
 copyright = f"{year}, {author}"
 release = "v0.0.0"
 
@@ -78,6 +78,9 @@ html_static_path = ["_static"]
 # html_context = {
 #    "css_files": ["_static/css/custom.css"],
 # }
+html_css_files = [
+    "css/custom.css",
+]
 
 # If not '', a 'Last updated on:' timestamp is inserted at every page bottom,
 # using the given strftime format.
@@ -87,7 +90,7 @@ source_suffix = [".rst", ".md"]
 
 # The name of an image file (relative to this directory) to place at the top
 # of the sidebar.
-html_logo = "_static/logo.png"
+html_logo = "_static/logo_template.png"
 
 # If false, no index is generated.
 # html_use_index = True
