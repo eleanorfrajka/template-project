@@ -50,6 +50,10 @@
 <li class="toctree-l1"><a class="reference internal" href="customisation_checklist.html">Customisation Checklist for New Projects</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">What’s in This Template Project?</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#project-structure-overview">🔍 Project Structure Overview</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#template-project-file-structure">📁 <code class="docutils literal notranslate"><span class="pre">template-project</span></code> File Structure</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#notes">🔍 Notes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#the-basics-always-included">🔰 The Basics (Always Included)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#python-packaging-and-development">🧰 Python Packaging and Development</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#testing-and-continuous-integration">🧪 Testing and Continuous Integration</a></li>
@@ -124,7 +128,76 @@
 <section id="project-structure-overview">
 <h2>🔍 Project Structure Overview<a class="headerlink" href="#project-structure-overview" title="Link to this heading"></a></h2>
 <p>📷 <em>This is what the template looks like when you clone or fork it:</em></p>
-<p><img alt="Project directory screenshot" src="Screenshot%202025-04-18%20at%2010.33.52.png" /></p>
+</section>
+</section>
+<section id="template-project-file-structure">
+<h1>📁 <code class="docutils literal notranslate"><span class="pre">template-project</span></code> File Structure<a class="headerlink" href="#template-project-file-structure" title="Link to this heading"></a></h1>
+<p>A minimal, modular Python project structure for collaborative research and reproducible workflows.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>template-project/
+├── template_project              # Main Python package with scientific code
+│   ├── __init__.py               # Makes this a Python package
+│   ├── plotters.py               # Functions to plot data
+│   ├── readers.py                # Functions to read raw data into xarray datasets
+│   ├── read_rapid.py             # Example for a separate module for a specific dataset
+│   ├── writers.py                # Functions to write data (e.g., to NetCDF)
+│   ├── tools.py                  # Utilities for unit conversion, calculations, etc.
+│   ├── logger.py                 # Structured logging configuration for reproducible runs
+│   ├── template_project.mplstyle # Default plotting parameters
+│   └── utilities.py              # Helper functions (e.g., file download, header parsing)
+│
+├── tests/                        # Unit tests using pytest
+│   ├── test_readers.py
+│   ├── test_tools.py
+│   ├── test_utilities.py
+│   └── ...
+│
+├── docs/                         # Sphinx documentation source files
+│   ├── source/
+│   |   ├── conf.py               # Setup for documentation
+│   |   ├── index.rst             # Main page with menus in *.rst
+│   |   ├── setup.md              # One of the documention pages in *.md
+│   |   ├── template_project.rst  # The file to create the API based on docstrings
+│   |   ├── ...                   # More *.md or *.rst linked in index.rst
+│   |   └── _static               # Figures
+|   |       ├── css/custom.css    # Custom style sheet
+|   |       └── logo.png          # logo for top left of docs/
+│   └── Makefile
+│
+├── notebooks/                    # Example notebooks
+│   ├── demo.ipynb                # Note - this is run in .github/workflows/docs.yml to appear in index.rst as demo-output.ipynb
+│   └── ...
+│
+├── data/                         # (Optional) Example input data or placeholder
+│   └── moc_transports.nc         # Example data file used for the template.
+│
+├── logs/                         # Log output from structured logging
+│   └── amocarray_*.log
+│
+├── .github/                      # GitHub-specific workflows (e.g., Actions)
+│   └── workflows/
+|       ├── docs.yml              # Test build documents on *pull-request*
+|       ├── docs_deploy.yml       # Build and deploy documents on &quot;merge&quot;
+|       ├── pypi.yml              # Package and release on GitHub.com &quot;release&quot;
+│       └── test.yml              # Run pytest on tests/test_&lt;name&gt;.py on *pull-request*
+│
+├── .gitignore                    # Exclude build files, logs, data, etc.
+├── requirements.txt              # Pip requirements
+├── requirements-dev.txt          # Pip requirements for development (docs, tests, linting)
+├── .pre-commit-config.yaml       # Instructions for pre-commits to run (linting)
+├── pyproject.toml                # Build system and tool config (e.g., black, isort)
+├── CITATION.cff                  # Citation info so Github can populate the &quot;cite&quot; button
+├── README.md                     # Project overview and getting started
+└── LICENSE                       # Open source license (e.g., MIT as default)
+</pre></div>
+</div>
+<section id="notes">
+<h2>🔍 Notes<a class="headerlink" href="#notes" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>Modularity</strong>: Code is split by function (reading, writing, tools).</p></li>
+<li><p><strong>Logging</strong>: All major functions support structured logging to <code class="docutils literal notranslate"><span class="pre">logs/</span></code>.</p></li>
+<li><p><strong>Tests</strong>: Pytest-compatible tests are in <code class="docutils literal notranslate"><span class="pre">tests/</span></code>, with one file per module.</p></li>
+<li><p><strong>Docs</strong>: Sphinx documentation is in <code class="docutils literal notranslate"><span class="pre">docs/</span></code>.</p></li>
+</ul>
 </section>
 <hr class="docutils" />
 <section id="the-basics-always-included">
