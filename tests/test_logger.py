@@ -20,6 +20,8 @@ def test_setup_logger_creates_file_and_logs():
         print(contents)
         assert "This is an info message" in contents
 
+    logger.log.handlers.clear()
+    logging.shutdown()
     log_file.unlink()
 
 
