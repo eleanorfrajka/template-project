@@ -58,7 +58,8 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#step-2-set-up-a-python-environment">Step 2: Set Up a Python Environment</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#option-a-use-venv-and-pip">Option A: Use <code class="docutils literal notranslate"><span class="pre">venv</span></code> and <code class="docutils literal notranslate"><span class="pre">pip</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#option-a-use-conda-mamba-or-micromamba-recommended-for-reproducibility">Option A: Use <code class="docutils literal notranslate"><span class="pre">conda</span></code>, <code class="docutils literal notranslate"><span class="pre">mamba</span></code>, or <code class="docutils literal notranslate"><span class="pre">micromamba</span></code> (recommended for reproducibility)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#option-b-use-venv-and-pip">Option B: Use <code class="docutils literal notranslate"><span class="pre">venv</span></code> and <code class="docutils literal notranslate"><span class="pre">pip</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#step-3-install-the-package-editable-mode">Step 3: Install the Package (Editable Mode)</a></li>
@@ -75,6 +76,7 @@
 <p class="caption" role="heading"><span class="caption-text">GitHub basics</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="github_intro.html">Getting Started with GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="github_tags_guide.html">GitHub Tags for Oceanographic Projects</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gitworkflow_solo.html">Solo Git Workflow for Your Project</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gitcollab.html">Collaborating on Someone Else’s Repository</a></li>
 </ul>
@@ -164,23 +166,32 @@ git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span
 </section>
 <section id="option-b-contribute-to-someone-else-s-project">
 <h3>Option B: Contribute to someone else’s project<a class="headerlink" href="#option-b-contribute-to-someone-else-s-project" title="Link to this heading"></a></h3>
-<p>See <a class="reference internal" href="#gitcollab_v2.md"><span class="xref myst">Git Collaboration</span></a> for full instructions on forking and branching when contributing to another repository.</p>
+<p>See <a class="reference internal" href="gitcollab.html"><span class="std std-doc">Git Collaboration</span></a> for full instructions on forking and branching when contributing to another repository.</p>
 </section>
 </section>
 <hr class="docutils" />
 <section id="step-2-set-up-a-python-environment">
 <h2>Step 2: Set Up a Python Environment<a class="headerlink" href="#step-2-set-up-a-python-environment" title="Link to this heading"></a></h2>
-<p>We recommend using a clean Python environment with <code class="docutils literal notranslate"><span class="pre">micromamba</span></code>, <code class="docutils literal notranslate"><span class="pre">conda</span></code>, <code class="docutils literal notranslate"><span class="pre">venv</span></code>, or similar. Below is the example using <code class="docutils literal notranslate"><span class="pre">venv</span></code>.</p>
-<!---
-### Option A: Use `micromamba` (recommended for reproducibility)
-If you're using `micromamba`, create an environment from the included YAML file:
-```bash
-micromamba create -f environment.yml
-micromamba activate template_env
-```
---->
-<section id="option-a-use-venv-and-pip">
-<h3>Option A: Use <code class="docutils literal notranslate"><span class="pre">venv</span></code> and <code class="docutils literal notranslate"><span class="pre">pip</span></code><a class="headerlink" href="#option-a-use-venv-and-pip" title="Link to this heading"></a></h3>
+<p>We recommend using a clean Python environment. Choose your preferred environment manager:</p>
+<section id="option-a-use-conda-mamba-or-micromamba-recommended-for-reproducibility">
+<h3>Option A: Use <code class="docutils literal notranslate"><span class="pre">conda</span></code>, <code class="docutils literal notranslate"><span class="pre">mamba</span></code>, or <code class="docutils literal notranslate"><span class="pre">micromamba</span></code> (recommended for reproducibility)<a class="headerlink" href="#option-a-use-conda-mamba-or-micromamba-recommended-for-reproducibility" title="Link to this heading"></a></h3>
+<p>If you’re using conda-based environment management, create an environment from the included YAML file:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Using conda</span>
+conda<span class="w"> </span>env<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>environment.yml
+conda<span class="w"> </span>activate<span class="w"> </span>template-project
+
+<span class="c1"># Using mamba (faster)</span>
+mamba<span class="w"> </span>env<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>environment.yml
+mamba<span class="w"> </span>activate<span class="w"> </span>template-project
+
+<span class="c1"># Using micromamba (lightweight)</span>
+micromamba<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>environment.yml
+micromamba<span class="w"> </span>activate<span class="w"> </span>template-project
+</pre></div>
+</div>
+</section>
+<section id="option-b-use-venv-and-pip">
+<h3>Option B: Use <code class="docutils literal notranslate"><span class="pre">venv</span></code> and <code class="docutils literal notranslate"><span class="pre">pip</span></code><a class="headerlink" href="#option-b-use-venv-and-pip" title="Link to this heading"></a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>venv
 <span class="nb">source</span><span class="w"> </span>venv/bin/activate<span class="w">  </span><span class="c1"># On Windows use `venv\Scripts\activate`</span>
 pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
@@ -188,7 +199,7 @@ pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </s
 </pre></div>
 </div>
 <blockquote>
-<div><p>🔁 These install all runtime and development dependencies.</p>
+<div><p>🔁 Both methods install all runtime and development dependencies.</p>
 </div></blockquote>
 </section>
 </section>
@@ -229,7 +240,7 @@ pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </s
 <p>Depending on how you’re working:</p>
 <ul class="simple">
 <li><p>If you are <strong>working on your own project</strong> using this template, see: <a class="reference internal" href="gitworkflow_solo.html"><span class="std std-doc">Solo Git</span></a></p></li>
-<li><p>If you are <strong>contributing to someone else’s project</strong>, see: <a class="reference internal" href="#gitcollab_v2.md"><span class="xref myst">Git Collaboration</span></a></p></li>
+<li><p>If you are <strong>contributing to someone else’s project</strong>, see: <a class="reference internal" href="gitcollab.html"><span class="std std-doc">Git Collaboration</span></a></p></li>
 </ul>
 <p>Both guides include step-by-step workflows with examples using Terminal, VSCode, and GitHub Desktop.</p>
 </section>
