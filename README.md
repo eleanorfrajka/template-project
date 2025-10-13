@@ -21,37 +21,34 @@ This repository is designed to help researchers and developers (especially in th
 
 ---
 
-## Project structure
+## Project Structure
 
+```
 template-project/
-├── .github/
-│   └── workflows/              # GitHub Actions for tests, docs, PyPI
-├── docs/                       # Sphinx-based documentation
-│   ├── source/                 # reStructuredText + MyST Markdown + _static
-│   └── Makefile                # for building HTML docs
-├── notebooks/                  # Example notebooks
+├── .github/workflows/          # CI/CD for tests, docs, PyPI
+├── docs/                       # Sphinx documentation  
+├── notebooks/                  # Example Jupyter notebooks
 ├── template_project/           # Main Python package
-│   ├── __init__.py
-│   ├── _version.py
 │   ├── tools.py
-│   ├── readers.py
-│   ├── writers.py
-│   ├── utilities.py
+│   ├── readers.py  
 │   ├── plotters.py
-│   └── template_project.mplstyle  # Optional: matplotlib style file
+│   └── utilities.py
 ├── tests/                      # Pytest test suite
-│   ├── test_tools.py
-│   └── test_utilities.py
-├── .gitignore
-├── .pre-commit-config.yaml
-├── CITATION.cff                # Sample file for citable software
-├── CONTRIBUTING.md             # Sample file for inviting contributions
-├── LICENSE                     # Sample MIT license
-├── README.md
 ├── pyproject.toml              # Modern packaging config
-├── requirements.txt            # Package requirements
-├── customisation_checklist.md  # Development requirements
-└── requirements-dev.txt        # Linting, testing, docs tools
+├── environment.yml             # Conda environment
+├── requirements.txt            # Core dependencies
+├── requirements-dev.txt        # Development dependencies
+└── CITATION.cff                # Academic citation
+```
+
+## Key Features
+
+- 📦 **Modern Python packaging** with `pyproject.toml` and automated versioning
+- 🧪 **Testing setup** with pytest and pre-commit hooks for code quality  
+- 📚 **Documentation** with Sphinx, supporting both Markdown and reStructuredText
+- 🔄 **CI/CD workflows** for automated testing, docs building, and PyPI publishing
+- 📊 **Scientific Python** integration with numpy, pandas, xarray, matplotlib
+- 🌍 **Environment management** with both pip and conda/mamba support
 
 
 ---

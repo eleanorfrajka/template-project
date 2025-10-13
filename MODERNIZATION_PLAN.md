@@ -30,29 +30,23 @@ This document outlines planned improvements to keep the template current with be
 
 ## 🗂 **GitHub Repository Structure**
 
-### **3. Missing Community Health Files**
+### **3. GitHub Template Improvements**
 **Current state:** Basic ISSUE_TEMPLATE.md and PULL_REQUEST_TEMPLATE.md exist but need updates
 
-**Required additions:**
-- `CODE_OF_CONDUCT.md` - Research community behavioral standards
-- `SECURITY.md` - Vulnerability reporting procedures
-- `SUPPORT.md` - Community support channels
+**Priority improvements:**
+- Fix template references (remove "amocarray" artifacts)
 - Enhanced issue templates with proper YAML frontmatter
+- Improve existing template structure and usability
 
-### **4. GitHub Templates Modernization**
-**Issues found:**
-- Current issue template references "amocarray" instead of template project
-- PR template lacks the structured format from amocatlas
-- Missing multiple issue templates for bugs vs features
+**Optional additions (for larger projects):**
+- `CODE_OF_CONDUCT.md` - Community behavioral standards (if needed)
+- `SECURITY.md` - Vulnerability reporting (if expecting security issues)
+- `SUPPORT.md` - Support channels (probably just points to GitHub issues)
 
-**Updates needed:**
-- Fix template references and branding
-- Adopt amocatlas PR title conventions (`[DOC]`, `[FIX]`, `[FEAT]`, etc.)
-- Add separate issue templates for different types
 
 ## 📦 **Package Structure & Organization**
 
-### **5. Module Architecture**
+### **4. Module Architecture**
 **Current:** Basic template_project package
 **amocatlas pattern:** Modular reader architecture with specialized components
 
@@ -62,7 +56,7 @@ This document outlines planned improvements to keep the template current with be
 - Add specialized module templates (readers, plotters, tools)
 - Include logging configuration as standard
 
-### **6. Testing & Quality Assurance**
+### **5. Testing & Quality Assurance**
 **Missing elements:**
 - Type hints throughout codebase
 - Comprehensive pytest configuration in pyproject.toml
@@ -71,7 +65,7 @@ This document outlines planned improvements to keep the template current with be
 
 ## 📚 **Documentation Improvements**
 
-### **7. Documentation Structure**
+### **6. Documentation Structure**
 **Current:** Good Sphinx setup but could be enhanced
 **Needed additions:**
 - API documentation generation setup
@@ -79,7 +73,7 @@ This document outlines planned improvements to keep the template current with be
 - Contributing guidelines in docs
 - Research software citation guidelines
 
-### **8. Educational Content**
+### **7. Educational Content**
 **Gaps identified:**
 - No guidance on research data management
 - Missing sections on reproducibility
@@ -87,7 +81,7 @@ This document outlines planned improvements to keep the template current with be
 
 ## 🔄 **Workflow & Automation**
 
-### **9. GitHub Actions Enhancement**
+### **8. GitHub Actions Enhancement**
 **Already improved:** Micromamba integration complete ✅
 **Additional opportunities:**
 - Add dependency update automation (dependabot)
@@ -95,7 +89,7 @@ This document outlines planned improvements to keep the template current with be
 - Add draft release automation
 - Include security scanning workflows
 
-### **10. Development Workflow**
+### **9. Development Workflow**
 **Missing features:**
 - Automated changelog generation (towncrier)
 - Version bumping automation
@@ -105,8 +99,7 @@ This document outlines planned improvements to keep the template current with be
 
 ### **Phase 1: Critical Infrastructure** 
 - [ ] Update pyproject.toml with modern configuration
-- [ ] Add missing community health files
-- [ ] Fix GitHub template references
+- [ ] Fix GitHub template references and improve structure
 - [ ] Pre-commit updates *(optional/advanced)*
 
 ### **Phase 2: Package Modernization**
