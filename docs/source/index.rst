@@ -21,6 +21,7 @@ This template includes tools for testing, documentation, versioning, citation, p
    :caption: GitHub basics
 
    github_intro.md
+   github_tags_guide.md
    gitworkflow_solo.md
    gitcollab.md
 
@@ -43,6 +44,12 @@ This template includes tools for testing, documentation, versioning, citation, p
    citation_guide.md
    pypi_guide.md
    gitorg_transfer.md
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Development
+
+   Development Roadmap <../../MODERNIZATION_PLAN.md>
 
 .. toctree::
    :maxdepth: 3

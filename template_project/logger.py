@@ -1,3 +1,10 @@
+"""
+Logging configuration for template_project.
+
+This module provides a centrally configured logger for the project,
+with support for file and console output at different verbosity levels.
+"""
+
 # amocarray/logger.py
 import datetime
 import logging

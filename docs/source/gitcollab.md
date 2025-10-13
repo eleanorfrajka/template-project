@@ -177,7 +177,7 @@ git pull
 git checkout -b yourname-patch-5
 ```
 
-I try to remember to do this syncing step after every pull request, including making a new branch, so that the next time I open the project in my VSCode, I don't accidently start making changes on main.
+I try to remember to do this syncing step after every pull request, including making a new branch, so that the next time I open the project in my VSCode, I don't accidentally start making changes on main.
 
 ---
 
