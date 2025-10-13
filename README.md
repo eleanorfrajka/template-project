@@ -63,6 +63,13 @@ Install in development mode:
 ```bash
 git clone https://github.com/eleanorfrajka/template-project.git
 cd template-project
+
+# Option A: Using conda/mamba (recommended)
+conda env create -f environment.yml
+conda activate template-project
+pip install -e .
+
+# Option B: Using pip
 pip install -r requirements-dev.txt
 pip install -e .
 ```
@@ -97,6 +104,8 @@ make html
 Contributions are welcome!  Please also consider adding an [issue](https://github.com/eleanorfrajka/template-project/issues) when something isn't clear.
 
 See the [customisation checklist](customisation_checklist.md) to adapt this template to your own project.
+
+For information about planned improvements and the development roadmap, see [MODERNIZATION_PLAN.md](MODERNIZATION_PLAN.md).
 
 ---
 

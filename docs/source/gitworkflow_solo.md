@@ -105,7 +105,7 @@ In a solo project, this usually works automatically. You only need to set the up
 ### VSCode
 - Save your changes and commit.
 - Click `Publish Branch` or `Sync Changes` in the "Source Control" tab.
-- If prompted to select a remote, choose `origin` (your GitHub-hosted repo).  Note, if you're collaborating with an external repository, you may instead be choosing `upstream` (see [Git Collaboration](gitcollab_v2.md)).
+- If prompted to select a remote, choose `origin` (your GitHub-hosted repo).  Note, if you're collaborating with an external repository, you may instead be choosing `upstream` (see [Git Collaboration](gitcollab.md)).
 
 ### GitHub.com
 - After pushing, visit your repository on GitHub, e.g. `http://github.com/YOUR_USERNAME/template-project`.

@@ -33,24 +33,33 @@ git push -u origin main
 ```
 
 ### Option B: Contribute to someone else's project
-See [Git Collaboration](gitcollab_v2.md) for full instructions on forking and branching when contributing to another repository.
+See [Git Collaboration](gitcollab.md) for full instructions on forking and branching when contributing to another repository.
 
 ---
 
 ## Step 2: Set Up a Python Environment
 
-We recommend using a clean Python environment with `micromamba`, `conda`, `venv`, or similar. Below is the example using `venv`.
+We recommend using a clean Python environment. Choose your preferred environment manager:
 
-<!---
-### Option A: Use `micromamba` (recommended for reproducibility)
-If you're using `micromamba`, create an environment from the included YAML file:
+### Option A: Use `conda`, `mamba`, or `micromamba` (recommended for reproducibility)
+
+If you're using conda-based environment management, create an environment from the included YAML file:
+
 ```bash
-micromamba create -f environment.yml
-micromamba activate template_env
-```
---->
+# Using conda
+conda env create -f environment.yml
+conda activate template-project
 
-### Option A: Use `venv` and `pip`
+# Using mamba (faster)
+mamba env create -f environment.yml
+mamba activate template-project
+
+# Using micromamba (lightweight)
+micromamba create -f environment.yml
+micromamba activate template-project
+```
+
+### Option B: Use `venv` and `pip`
 ```bash
 python -m venv venv
 source venv/bin/activate  # On Windows use `venv\Scripts\activate`
@@ -58,7 +67,7 @@ pip install -r requirements.txt
 pip install -r requirements-dev.txt  # For development tools and testing
 ```
 
-> 🔁 These install all runtime and development dependencies.
+> 🔁 Both methods install all runtime and development dependencies.
 
 ---
 
@@ -101,7 +110,7 @@ See also [faq.md](faq.md) for troubleshooting installation problems.
 Depending on how you’re working:
 
 - If you are **working on your own project** using this template, see: [Solo Git](gitworkflow_solo.md)
-- If you are **contributing to someone else’s project**, see: [Git Collaboration](gitcollab_v2.md)
+- If you are **contributing to someone else's project**, see: [Git Collaboration](gitcollab.md)
 
 Both guides include step-by-step workflows with examples using Terminal, VSCode, and GitHub Desktop.
 
