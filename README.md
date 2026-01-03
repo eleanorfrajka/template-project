@@ -67,8 +67,7 @@ conda activate template-project
 pip install -e .
 
 # Option B: Using pip
-pip install -r requirements-dev.txt
-pip install -e .
+pip install -e ".[dev]"
 ```
 
 To run tests:

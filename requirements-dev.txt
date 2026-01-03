@@ -1,5 +1,4 @@
-# Pull in the base stack so we don't duplicate pins here
--r requirements.txt
+# Development dependencies only (base dependencies included via pyproject.toml)
 
 # Jupyter and notebooks
 jupyterlab>=4.0
