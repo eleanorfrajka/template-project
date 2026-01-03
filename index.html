@@ -18,8 +18,6 @@
       <script src="_static/doctools.js?v=9bcbadda"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
       <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -62,6 +60,7 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Development Guide</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="style_guide.html">Project Style Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="writing_tests.html">Writing and Running Tests</a></li>
 <li class="toctree-l1"><a class="reference internal" href="build_docs.html">Building Documentation Locally</a></li>
@@ -73,10 +72,6 @@
 <li class="toctree-l1"><a class="reference internal" href="citation_guide.html">How to Cite This Project</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pypi_guide.html">Publishing Your Project to PyPI</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gitorg_transfer.html">Transferring a Repository to an Organisation</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">Users' guide</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="demo-output.html">template-project demo</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Help and reference</span></p>
 <ul>
@@ -147,6 +142,7 @@
 <li class="toctree-l2"><a class="reference internal" href="project_structure.html#testing-and-continuous-integration">🧪 Testing and Continuous Integration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="project_structure.html#documentation">📝 Documentation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="project_structure.html#metadata-and-community">🧾 Metadata and Community</a></li>
+<li class="toctree-l2"><a class="reference internal" href="project_structure.html#automation-features">🤖 Automation Features</a></li>
 <li class="toctree-l2"><a class="reference internal" href="project_structure.html#summary">✅ Summary</a></li>
 </ul>
 </li>
@@ -207,6 +203,17 @@
 <div class="toctree-wrapper compound">
 <p class="caption" role="heading"><span class="caption-text">Development Guide</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#getting-started">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#development-workflow">Development Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#types-of-contributions">Types of Contributions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#pull-request-process">Pull Request Process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#research-software-engineering-best-practices">Research Software Engineering Best Practices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#scientific-citation-guidelines">Scientific Citation Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#getting-help">Getting Help</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#recognition">Recognition</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="style_guide.html">Project Style Guide</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="style_guide.html#python-coding-conventions">🧑‍💻 Python Coding Conventions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="style_guide.html#dataset-metadata-conventions">🗂 Dataset &amp; Metadata Conventions</a></li>
@@ -286,10 +293,6 @@
 <div class="toctree-wrapper compound">
 </div>
 <div class="toctree-wrapper compound">
-<p class="caption" role="heading"><span class="caption-text">Users' guide</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="demo-output.html">template-project demo</a></li>
-</ul>
 </div>
 <div class="toctree-wrapper compound">
 <p class="caption" role="heading"><span class="caption-text">Help and reference</span></p>
@@ -339,7 +342,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2025, Eleanor Frajka-Williams, FirstName LastName.</p>
+    <p>&#169; Copyright 2026, Eleanor Frajka-Williams, FirstName LastName.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

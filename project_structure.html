@@ -60,6 +60,12 @@
 <li class="toctree-l2"><a class="reference internal" href="#testing-and-continuous-integration">🧪 Testing and Continuous Integration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#documentation">📝 Documentation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#metadata-and-community">🧾 Metadata and Community</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#automation-features">🤖 Automation Features</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#dependabot-dependency-updates">Dependabot (Dependency Updates)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#towncrier-automated-changelog">Towncrier (Automated Changelog)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pre-commit-hooks">Pre-commit Hooks</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#summary">✅ Summary</a></li>
 </ul>
 </li>
@@ -73,6 +79,7 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Development Guide</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="style_guide.html">Project Style Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="writing_tests.html">Writing and Running Tests</a></li>
 <li class="toctree-l1"><a class="reference internal" href="build_docs.html">Building Documentation Locally</a></li>
@@ -84,10 +91,6 @@
 <li class="toctree-l1"><a class="reference internal" href="citation_guide.html">How to Cite This Project</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pypi_guide.html">Publishing Your Project to PyPI</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gitorg_transfer.html">Transferring a Repository to an Organisation</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">Users' guide</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="demo-output.html">template-project demo</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Help and reference</span></p>
 <ul>
@@ -281,6 +284,44 @@
 </ul>
 </section>
 <hr class="docutils" />
+<section id="automation-features">
+<h2>🤖 Automation Features<a class="headerlink" href="#automation-features" title="Link to this heading"></a></h2>
+<p>This template includes several automation features to streamline development:</p>
+<section id="dependabot-dependency-updates">
+<h3>Dependabot (Dependency Updates)<a class="headerlink" href="#dependabot-dependency-updates" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>File</strong>: <code class="docutils literal notranslate"><span class="pre">.github/dependabot.yml</span></code></p></li>
+<li><p><strong>Purpose</strong>: Automatically creates PRs to update Python dependencies and GitHub Actions</p></li>
+<li><p><strong>Schedule</strong>: Weekly on Mondays</p></li>
+<li><p><strong>To disable</strong>: Delete <code class="docutils literal notranslate"><span class="pre">.github/dependabot.yml</span></code> or comment out the package ecosystems you don’t want</p></li>
+</ul>
+</section>
+<section id="towncrier-automated-changelog">
+<h3>Towncrier (Automated Changelog)<a class="headerlink" href="#towncrier-automated-changelog" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Files</strong>: <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> ([tool.towncrier] section), <code class="docutils literal notranslate"><span class="pre">changelog.d/</span></code></p></li>
+<li><p><strong>Purpose</strong>: Generates changelogs from fragment files</p></li>
+<li><p><strong>Usage</strong>: Create <code class="docutils literal notranslate"><span class="pre">.md</span></code> files in <code class="docutils literal notranslate"><span class="pre">changelog.d/</span></code> describing changes, then run <code class="docutils literal notranslate"><span class="pre">towncrier</span> <span class="pre">build</span></code></p></li>
+<li><p><strong>To disable</strong>:</p>
+<ul>
+<li><p>Remove <code class="docutils literal notranslate"><span class="pre">towncrier</span></code> from <code class="docutils literal notranslate"><span class="pre">requirements-dev.txt</span></code></p></li>
+<li><p>Remove <code class="docutils literal notranslate"><span class="pre">[tool.towncrier]</span></code> section from <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code></p></li>
+<li><p>Delete <code class="docutils literal notranslate"><span class="pre">changelog.d/</span></code> directory</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="pre-commit-hooks">
+<h3>Pre-commit Hooks<a class="headerlink" href="#pre-commit-hooks" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>File</strong>: <code class="docutils literal notranslate"><span class="pre">.pre-commit-config.yaml</span></code></p></li>
+<li><p><strong>Purpose</strong>: Runs code quality checks before each commit</p></li>
+<li><p><strong>To disable</strong>: Remove the file or run <code class="docutils literal notranslate"><span class="pre">pre-commit</span> <span class="pre">uninstall</span></code></p></li>
+</ul>
+<p><strong>Note</strong>: These automation features are optional but recommended for maintaining code quality and staying up-to-date with dependencies.</p>
+</section>
+</section>
+<hr class="docutils" />
 <section id="summary">
 <h2>✅ Summary<a class="headerlink" href="#summary" title="Link to this heading"></a></h2>
 <p>This template is a starting point for research or open-source Python projects. It supports:</p>
@@ -308,7 +349,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2025, Eleanor Frajka-Williams, FirstName LastName.</p>
+    <p>&#169; Copyright 2026, Eleanor Frajka-Williams, FirstName LastName.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

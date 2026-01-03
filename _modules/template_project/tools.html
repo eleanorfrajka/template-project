@@ -58,6 +58,7 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Development Guide</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing.html">Contributing Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../style_guide.html">Project Style Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../writing_tests.html">Writing and Running Tests</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../build_docs.html">Building Documentation Locally</a></li>
@@ -69,10 +70,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../../citation_guide.html">How to Cite This Project</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../pypi_guide.html">Publishing Your Project to PyPI</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../gitorg_transfer.html">Transferring a Repository to an Organisation</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">Users' guide</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../demo-output.html">template-project demo</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Help and reference</span></p>
 <ul>
@@ -107,6 +104,9 @@
              
   <h1>Source code for template_project.tools</h1><div class="highlight"><pre>
 <span></span><span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Union</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xr</span>
 
 <span class="c1"># Initialize logging</span>
 <span class="n">_log</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
@@ -148,7 +148,9 @@
 
 <div class="viewcode-block" id="reformat_units_var">
 <a class="viewcode-back" href="../../template_project.html#template_project.tools.reformat_units_var">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">reformat_units_var</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="n">var_name</span><span class="p">,</span> <span class="n">unit_format</span><span class="o">=</span><span class="n">unit_str_format</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">reformat_units_var</span><span class="p">(</span>
+    <span class="n">ds</span><span class="p">:</span> <span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">,</span> <span class="n">var_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">unit_format</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">unit_str_format</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Renames units in the dataset based on the provided dictionary for OG1.</span>
 
@@ -173,8 +175,11 @@
 <div class="viewcode-block" id="convert_units_var">
 <a class="viewcode-back" href="../../template_project.html#template_project.tools.convert_units_var">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">convert_units_var</span><span class="p">(</span>
-    <span class="n">var_values</span><span class="p">,</span> <span class="n">current_unit</span><span class="p">,</span> <span class="n">new_unit</span><span class="p">,</span> <span class="n">unit_conversion</span><span class="o">=</span><span class="n">unit_conversion</span>
-<span class="p">):</span>
+    <span class="n">var_values</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
+    <span class="n">current_unit</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">new_unit</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">unit_conversion</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">]]]</span> <span class="o">=</span> <span class="n">unit_conversion</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Convert the units of variables in an xarray Dataset to preferred units.  This is useful, for instance, to convert cm/s to m/s.</span>
 
@@ -212,7 +217,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2025, Eleanor Frajka-Williams, FirstName LastName.</p>
+    <p>&#169; Copyright 2026, Eleanor Frajka-Williams, FirstName LastName.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

@@ -61,6 +61,7 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Development Guide</span></p>
 <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="style_guide.html">Project Style Guide</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Writing and Running Tests</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#where-tests-go">📁 Where Tests Go</a></li>
@@ -68,8 +69,10 @@
 <li class="toctree-l2"><a class="reference internal" href="#running-tests-locally">▶️ Running Tests Locally</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#recommended-conventions">🛠 Recommended Conventions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#checking-test-coverage">📊 Checking Test Coverage</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#install-the-extra-dev-dependency">1. Install the extra dev dependency:</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#run-tests-with-coverage">2. Run tests with coverage:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#quick-coverage-check">Quick Coverage Check</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#detailed-coverage-analysis">Detailed Coverage Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#reading-coverage-reports">Reading Coverage Reports</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#coverage-guidelines">Coverage Guidelines</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#summary-cheatsheet">Summary Cheatsheet</a></li>
@@ -84,10 +87,6 @@
 <li class="toctree-l1"><a class="reference internal" href="citation_guide.html">How to Cite This Project</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pypi_guide.html">Publishing Your Project to PyPI</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gitorg_transfer.html">Transferring a Repository to an Organisation</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">Users' guide</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="demo-output.html">template-project demo</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Help and reference</span></p>
 <ul>
@@ -193,32 +192,73 @@
 <hr class="docutils" />
 <section id="checking-test-coverage">
 <h2>📊 Checking Test Coverage<a class="headerlink" href="#checking-test-coverage" title="Link to this heading"></a></h2>
-<p>You can use <code class="docutils literal notranslate"><span class="pre">pytest-cov</span></code> to measure how much of your code is covered by tests.</p>
-<section id="install-the-extra-dev-dependency">
-<h3>1. Install the extra dev dependency:<a class="headerlink" href="#install-the-extra-dev-dependency" title="Link to this heading"></a></h3>
-<p>Make sure this line is in your <code class="docutils literal notranslate"><span class="pre">requirements-dev.txt</span></code>:</p>
-<div class="highlight-txt notranslate"><div class="highlight"><pre><span></span>pytest-cov
+<p>Test coverage shows which lines of code are executed during testing. Higher coverage generally means better testing, but 100% coverage doesn’t guarantee perfect tests.</p>
+<section id="quick-coverage-check">
+<h3>Quick Coverage Check<a class="headerlink" href="#quick-coverage-check" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Basic coverage report in terminal</span>
+pytest<span class="w"> </span>--cov<span class="o">=</span>template_project<span class="w"> </span>--cov-report<span class="o">=</span>term-missing
 </pre></div>
 </div>
-<p>Then install:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements-dev.txt
-</pre></div>
-</div>
+<p>This shows:</p>
+<ul class="simple">
+<li><p><strong>Percentage covered</strong> for each file</p></li>
+<li><p><strong>Missing lines</strong> that aren’t tested</p></li>
+</ul>
 </section>
-<section id="run-tests-with-coverage">
-<h3>2. Run tests with coverage:<a class="headerlink" href="#run-tests-with-coverage" title="Link to this heading"></a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pytest<span class="w"> </span>--cov<span class="o">=</span>template_project
-</pre></div>
-</div>
-<p>This will show a summary of test coverage by file.</p>
-<p>To generate an HTML report:</p>
+<section id="detailed-coverage-analysis">
+<h3>Detailed Coverage Analysis<a class="headerlink" href="#detailed-coverage-analysis" title="Link to this heading"></a></h3>
+<p>For a comprehensive view, generate an HTML report:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pytest<span class="w"> </span>--cov<span class="o">=</span>template_project<span class="w"> </span>--cov-report<span class="o">=</span>html
 </pre></div>
 </div>
-<p>Then open the <code class="docutils literal notranslate"><span class="pre">htmlcov/index.html</span></code> file in your browser to view a coverage dashboard.</p>
-<blockquote>
-<div><p>📉 Files with low coverage help you find missing tests.</p>
-</div></blockquote>
+<p>Then open <code class="docutils literal notranslate"><span class="pre">htmlcov/index.html</span></code> in your browser.</p>
+</section>
+<section id="reading-coverage-reports">
+<h3>Reading Coverage Reports<a class="headerlink" href="#reading-coverage-reports" title="Link to this heading"></a></h3>
+<p><strong>Terminal output example:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Name</span>                    <span class="n">Stmts</span>   <span class="n">Miss</span>  <span class="n">Cover</span>   <span class="n">Missing</span>
+<span class="o">-----------------------------------------------------</span>
+<span class="n">template_project</span><span class="o">/</span><span class="n">tools</span><span class="o">.</span><span class="n">py</span>    <span class="mi">20</span>      <span class="mi">3</span>    <span class="mi">85</span><span class="o">%</span>   <span class="mi">63</span><span class="p">,</span> <span class="mi">96</span><span class="o">-</span><span class="mi">97</span>
+<span class="n">template_project</span><span class="o">/</span><span class="n">utils</span><span class="o">.</span><span class="n">py</span>    <span class="mi">78</span>     <span class="mi">24</span>    <span class="mi">69</span><span class="o">%</span>   <span class="mi">79</span><span class="o">-</span><span class="mi">80</span><span class="p">,</span> <span class="mi">113</span><span class="o">-</span><span class="mi">120</span>
+<span class="o">-----------------------------------------------------</span>
+<span class="n">TOTAL</span>                       <span class="mi">354</span>     <span class="mi">76</span>    <span class="mi">79</span><span class="o">%</span>
+</pre></div>
+</div>
+<p><strong>What this means:</strong></p>
+<ul class="simple">
+<li><p><strong>Stmts</strong>: Total executable statements</p></li>
+<li><p><strong>Miss</strong>: Statements not covered by tests</p></li>
+<li><p><strong>Cover</strong>: Percentage covered</p></li>
+<li><p><strong>Missing</strong>: Specific line numbers not tested</p></li>
+</ul>
+<p><strong>HTML report shows:</strong></p>
+<ul class="simple">
+<li><p>🟢 <strong>Green lines</strong>: Covered by tests</p></li>
+<li><p>🔴 <strong>Red lines</strong>: Not covered by tests</p></li>
+<li><p>🟡 <strong>Yellow lines</strong>: Partially covered (e.g., branches)</p></li>
+</ul>
+</section>
+<section id="coverage-guidelines">
+<h3>Coverage Guidelines<a class="headerlink" href="#coverage-guidelines" title="Link to this heading"></a></h3>
+<p><strong>Target coverage levels:</strong></p>
+<ul class="simple">
+<li><p><strong>80%+</strong>: Good coverage for most projects</p></li>
+<li><p><strong>90%+</strong>: Excellent coverage</p></li>
+<li><p><strong>100%</strong>: Often impractical (includes error handling, edge cases)</p></li>
+</ul>
+<p><strong>Focus on:</strong></p>
+<ul class="simple">
+<li><p>Core business logic functions</p></li>
+<li><p>Complex algorithms and calculations</p></li>
+<li><p>Error handling paths</p></li>
+<li><p>Public API functions</p></li>
+</ul>
+<p><strong>Less critical to test:</strong></p>
+<ul class="simple">
+<li><p>Simple getters/setters</p></li>
+<li><p>Third-party library integration</p></li>
+<li><p>Configuration/setup code</p></li>
+</ul>
 <p>If you’re using <a class="reference internal" href="precommit_guide.html"><span class="std std-doc">pre-commit hooks</span></a>, you can configure them to run <code class="docutils literal notranslate"><span class="pre">pytest</span></code> before each commit. This helps you catch test failures early.</p>
 </section>
 </section>
@@ -240,6 +280,12 @@
 </tr>
 <tr class="row-even"><td><p>Run specific test</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">pytest</span> <span class="pre">tests/test_xyz.py::test_name</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Coverage report (terminal)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">pytest</span> <span class="pre">--cov=template_project</span> <span class="pre">--cov-report=term-missing</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Coverage report (HTML)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">pytest</span> <span class="pre">--cov=template_project</span> <span class="pre">--cov-report=html</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p>Install test tools</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-r</span> <span class="pre">requirements-dev.txt</span></code></p></td>
@@ -263,7 +309,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2025, Eleanor Frajka-Williams, FirstName LastName.</p>
+    <p>&#169; Copyright 2026, Eleanor Frajka-Williams, FirstName LastName.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

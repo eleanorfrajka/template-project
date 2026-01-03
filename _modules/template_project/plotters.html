@@ -58,6 +58,7 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Development Guide</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing.html">Contributing Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../style_guide.html">Project Style Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../writing_tests.html">Writing and Running Tests</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../build_docs.html">Building Documentation Locally</a></li>
@@ -69,10 +70,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../../citation_guide.html">How to Cite This Project</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../pypi_guide.html">Publishing Your Project to PyPI</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../gitorg_transfer.html">Transferring a Repository to an Organisation</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">Users' guide</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../demo-output.html">template-project demo</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Help and reference</span></p>
 <ul>
@@ -107,15 +104,19 @@
              
   <h1>Source code for template_project.plotters</h1><div class="highlight"><pre>
 <span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Union</span>
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="kn">import</span> <span class="n">DataFrame</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xr</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="kn">import</span> <span class="n">DataFrame</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pandas.io.formats.style</span><span class="w"> </span><span class="kn">import</span> <span class="n">Styler</span>
 
 
 <div class="viewcode-block" id="plot_monthly_transport">
 <a class="viewcode-back" href="../../template_project.html#template_project.plotters.plot_monthly_transport">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">plot_monthly_transport</span><span class="p">(</span><span class="n">ds</span><span class="p">:</span> <span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">,</span> <span class="n">var</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;moc_mar_hc10&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_monthly_transport</span><span class="p">(</span>
+    <span class="n">ds</span><span class="p">:</span> <span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">,</span> <span class="n">var</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;moc_mar_hc10&quot;</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Plot original and monthly averaged transport time series.</span>
 
 <span class="sd">    Parameters</span>
@@ -160,24 +161,25 @@
 
 <div class="viewcode-block" id="show_variables">
 <a class="viewcode-back" href="../../template_project.html#template_project.plotters.show_variables">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">show_variables</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">show_variables</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Styler</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Processes an xarray Dataset or a netCDF file, extracts variable information,</span>
 <span class="sd">    and returns a styled DataFrame with details about the variables.</span>
 
-<span class="sd">    Parameters:</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
 <span class="sd">    data (str or xr.Dataset): The input data, either a file path to a netCDF file or an xarray Dataset.</span>
 
-<span class="sd">    Returns:</span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
 <span class="sd">    pandas.io.formats.style.Styler: A styled DataFrame containing the following columns:</span>
 <span class="sd">        - dims: The dimension of the variable (or &quot;string&quot; if it is a string type).</span>
 <span class="sd">        - name: The name of the variable.</span>
 <span class="sd">        - units: The units of the variable (if available).</span>
 <span class="sd">        - comment: Any additional comments about the variable (if available).</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;information is based on file: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;information is based on file: </span><span class="si">{</span><span class="n">data</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
         <span class="n">dataset</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
         <span class="n">variables</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">variables</span>
     <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">):</span>
@@ -227,15 +229,17 @@
 
 <div class="viewcode-block" id="show_attributes">
 <a class="viewcode-back" href="../../template_project.html#template_project.plotters.show_attributes">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">show_attributes</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">show_attributes</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">DataFrame</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Processes an xarray Dataset or a netCDF file, extracts attribute information,</span>
 <span class="sd">    and returns a DataFrame with details about the attributes.</span>
 
-<span class="sd">    Parameters:</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
 <span class="sd">    data (str or xr.Dataset): The input data, either a file path to a netCDF file or an xarray Dataset.</span>
 
-<span class="sd">    Returns:</span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
 <span class="sd">    pandas.DataFrame: A DataFrame containing the following columns:</span>
 <span class="sd">        - Attribute: The name of the attribute.</span>
 <span class="sd">        - Value: The value of the attribute.</span>
@@ -243,7 +247,7 @@
     <span class="kn">from</span><span class="w"> </span><span class="nn">netCDF4</span><span class="w"> </span><span class="kn">import</span> <span class="n">Dataset</span>
 
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;information is based on file: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;information is based on file: </span><span class="si">{</span><span class="n">data</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
         <span class="n">rootgrp</span> <span class="o">=</span> <span class="n">Dataset</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;NETCDF4&quot;</span><span class="p">)</span>
         <span class="n">attributes</span> <span class="o">=</span> <span class="n">rootgrp</span><span class="o">.</span><span class="n">ncattrs</span><span class="p">()</span>
         <span class="n">get_attr</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">key</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">rootgrp</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
@@ -272,7 +276,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2025, Eleanor Frajka-Williams, FirstName LastName.</p>
+    <p>&#169; Copyright 2026, Eleanor Frajka-Williams, FirstName LastName.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

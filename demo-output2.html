@@ -23,9 +23,7 @@
       <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="template_project API" href="template_project.html" />
-    <link rel="prev" title="Transferring a Repository to an Organisation" href="gitorg_transfer.html" /> 
+    <link rel="search" title="Search" href="search.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -64,6 +62,7 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Development Guide</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="style_guide.html">Project Style Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="writing_tests.html">Writing and Running Tests</a></li>
 <li class="toctree-l1"><a class="reference internal" href="build_docs.html">Building Documentation Locally</a></li>
@@ -75,10 +74,6 @@
 <li class="toctree-l1"><a class="reference internal" href="citation_guide.html">How to Cite This Project</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pypi_guide.html">Publishing Your Project to PyPI</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gitorg_transfer.html">Transferring a Repository to an Organisation</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">Users' guide</span></p>
-<ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">template-project demo</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Help and reference</span></p>
 <ul>
@@ -103,7 +98,7 @@
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
       <li class="breadcrumb-item active">template-project demo</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="_sources/demo-output.ipynb.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/demo-output2.ipynb.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -126,7 +121,7 @@
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">template_project</span><span class="w"> </span><span class="kn">import</span> <span class="n">plotters</span><span class="p">,</span> <span class="n">readers</span><span class="p">,</span> <span class="n">tools</span><span class="p">,</span> <span class="n">utilities</span><span class="p">,</span> <span class="n">writers</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">template_project</span><span class="w"> </span><span class="kn">import</span> <span class="n">plotters</span><span class="p">,</span> <span class="n">readers</span><span class="p">,</span> <span class="n">writers</span>
 <br/></pre></div>
 </div>
 </div>
@@ -143,16 +138,16 @@
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-20251013T052731 INFO     setup_logger Logger initialized for array: rapid, writing to /home/runner/work/template-project/template-project/logs/RAPID_20251013T05_read.log
-20251013T052731 INFO     load_dataset Loading dataset for array: rapid
-20251013T052731 INFO     read_rapid Starting to read RAPID dataset
-20251013T052731 INFO     resolve_file_path Using cached file: /home/runner/work/template-project/template-project/data/moc_transports.nc
-20251013T052731 INFO     read_rapid Opening RAPID dataset: /home/runner/work/template-project/template-project/data/moc_transports.nc
-20251013T052731 INFO     read_rapid Attaching metadata to RAPID dataset from file: moc_transports.nc
-20251013T052731 INFO     read_rapid Renaming &#39;time&#39; dimension/coordinate to &#39;TIME&#39;
-20251013T052731 INFO     read_rapid Successfully loaded 1 RAPID dataset(s)
-20251013T052731 INFO     load_dataset Successfully loaded 1 dataset(s) for array: rapid
-20251013T052731 INFO     _summarise_datasets
+20260103T124542 INFO     setup_logger Logger initialized for array: rapid, writing to /home/runner/work/template-project/template-project/logs/RAPID_20260103T12_read.log
+20260103T124542 INFO     load_dataset Loading dataset for array: rapid
+20260103T124542 INFO     read_rapid Starting to read RAPID dataset
+20260103T124542 INFO     resolve_file_path Using cached file: /home/runner/work/template-project/template-project/data/moc_transports.nc
+20260103T124542 INFO     read_rapid Opening RAPID dataset: /home/runner/work/template-project/template-project/data/moc_transports.nc
+20260103T124542 INFO     read_rapid Attaching metadata to RAPID dataset from file: moc_transports.nc
+20260103T124542 INFO     read_rapid Renaming &#39;time&#39; dimension/coordinate to &#39;TIME&#39;
+20260103T124542 INFO     read_rapid Successfully loaded 1 RAPID dataset(s)
+20260103T124542 INFO     load_dataset Successfully loaded 1 dataset(s) for array: rapid
+20260103T124542 INFO     _summarise_datasets
 Summary for array &#39;rapid&#39;:
 Total datasets loaded: 1
 
@@ -222,7 +217,7 @@ Dataset 1:
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="_images/demo-output_3_1.png" src="_images/demo-output_3_1.png" />
+<img alt="_images/demo-output2_3_1.png" src="_images/demo-output2_3_1.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
@@ -248,15 +243,12 @@ True
 
            </div>
           </div>
-          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="gitorg_transfer.html" class="btn btn-neutral float-left" title="Transferring a Repository to an Organisation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="template_project.html" class="btn btn-neutral float-right" title="template_project API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-    </div>
+          <footer>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2025, Eleanor Frajka-Williams, FirstName LastName.</p>
+    <p>&#169; Copyright 2026, Eleanor Frajka-Williams, FirstName LastName.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

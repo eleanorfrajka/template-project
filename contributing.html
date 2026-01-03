@@ -1,0 +1,403 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contributing Guide &mdash; template_project v0.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=20758594" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=8b92e751"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Project Style Guide" href="style_guide.html" />
+    <link rel="prev" title="Collaborating on Someone Else’s Repository" href="gitcollab.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            template_project
+              <img src="_static/logo_template.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Getting Started: Setup and Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customisation_checklist.html">Customisation Checklist for New Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="project_structure.html">What’s in This Template Project?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="project_structure.html#template-project-file-structure">📁 <code class="docutils literal notranslate"><span class="pre">template-project</span></code> File Structure</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">GitHub basics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="github_intro.html">Getting Started with GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="github_tags_guide.html">GitHub Tags for Oceanographic Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gitworkflow_solo.html">Solo Git Workflow for Your Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gitcollab.html">Collaborating on Someone Else’s Repository</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Development Guide</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Contributing Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#getting-started">Getting Started</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#development-environment-setup">Development Environment Setup</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#development-workflow">Development Workflow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#create-a-branch">1. Create a Branch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#code-quality-standards">2. Code Quality Standards</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#running-tests">3. Running Tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#code-quality-checks">4. Code Quality Checks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#scientific-validation">5. Scientific Validation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#types-of-contributions">Types of Contributions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#bug-fixes">Bug Fixes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#new-features">New Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#scientific-accuracy-issues">Scientific Accuracy Issues</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#documentation">Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#pull-request-process">Pull Request Process</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#title-convention">1. Title Convention</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#description-template">2. Description Template</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#review-process">3. Review Process</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#research-software-engineering-best-practices">Research Software Engineering Best Practices</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#version-control">Version Control</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#testing">Testing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#reproducibility">Reproducibility</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#scientific-citation-guidelines">Scientific Citation Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#getting-help">Getting Help</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#recognition">Recognition</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="style_guide.html">Project Style Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="writing_tests.html">Writing and Running Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="build_docs.html">Building Documentation Locally</a></li>
+<li class="toctree-l1"><a class="reference internal" href="precommit_guide.html">Setting Up Pre-commit Hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="actions_overview.html">GitHub Actions: Automating Your Project</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Project Management</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="citation_guide.html">How to Cite This Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pypi_guide.html">Publishing Your Project to PyPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gitorg_transfer.html">Transferring a Repository to an Organisation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Help and reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="http://github.com/eleanorfrajka/template-project">GitHub Repo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="template_project.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">template_project</span> <span class="pre">API</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ / Troubleshooting</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">template_project</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Contributing Guide</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/contributing.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="contributing-guide">
+<h1>Contributing Guide<a class="headerlink" href="#contributing-guide" title="Link to this heading"></a></h1>
+<p>Thank you for your interest in contributing to this project! This guide will help you get started with contributing to our research software.</p>
+<section id="getting-started">
+<h2>Getting Started<a class="headerlink" href="#getting-started" title="Link to this heading"></a></h2>
+<section id="development-environment-setup">
+<h3>Development Environment Setup<a class="headerlink" href="#development-environment-setup" title="Link to this heading"></a></h3>
+<ol class="arabic">
+<li><p><strong>Fork and Clone</strong>: Fork the repository on GitHub and clone your fork locally:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/YOUR-USERNAME/<span class="o">[</span>REPO-NAME<span class="o">]</span>.git
+<span class="nb">cd</span><span class="w"> </span><span class="o">[</span>REPO-NAME<span class="o">]</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Create Development Environment</strong>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Option A: Using conda/mamba (recommended)</span>
+conda<span class="w"> </span>env<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>environment.yml
+conda<span class="w"> </span>activate<span class="w"> </span><span class="o">[</span>project-name<span class="o">]</span>
+pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.
+
+<span class="c1"># Option B: Using pip</span>
+pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements-dev.txt
+pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.
+</pre></div>
+</div>
+</li>
+<li><p><strong>Install Pre-commit Hooks</strong>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pre-commit<span class="w"> </span>install
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+</section>
+<section id="development-workflow">
+<h2>Development Workflow<a class="headerlink" href="#development-workflow" title="Link to this heading"></a></h2>
+<section id="create-a-branch">
+<h3>1. Create a Branch<a class="headerlink" href="#create-a-branch" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>feature/your-feature-name
+<span class="c1"># or</span>
+git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>fix/bug-description
+</pre></div>
+</div>
+</section>
+<section id="code-quality-standards">
+<h3>2. Code Quality Standards<a class="headerlink" href="#code-quality-standards" title="Link to this heading"></a></h3>
+<p>We maintain high code quality standards with automated tools:</p>
+<ul class="simple">
+<li><p><strong>Code Formatting</strong>: We use <a class="reference external" href="https://black.readthedocs.io/">Black</a> with 88-character line length</p></li>
+<li><p><strong>Linting</strong>: <a class="reference external" href="https://docs.astral.sh/ruff/">Ruff</a> for comprehensive code analysis</p></li>
+<li><p><strong>Type Hints</strong>: Required for all new functions and methods</p></li>
+<li><p><strong>Documentation</strong>: NumPy-style docstrings for all public functions</p></li>
+</ul>
+</section>
+<section id="running-tests">
+<h3>3. Running Tests<a class="headerlink" href="#running-tests" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run all tests</span>
+pytest
+
+<span class="c1"># Run specific test types using markers</span>
+pytest<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;not slow&quot;</span><span class="w">          </span><span class="c1"># Skip slow tests</span>
+pytest<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;unit&quot;</span><span class="w">              </span><span class="c1"># Run only unit tests</span>
+pytest<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;integration&quot;</span><span class="w">       </span><span class="c1"># Run only integration tests</span>
+
+<span class="c1"># Run tests with coverage</span>
+pytest<span class="w"> </span>--cov<span class="o">=</span>template_project<span class="w"> </span>--cov-report<span class="w"> </span>term-missing
+</pre></div>
+</div>
+</section>
+<section id="code-quality-checks">
+<h3>4. Code Quality Checks<a class="headerlink" href="#code-quality-checks" title="Link to this heading"></a></h3>
+<p>Before committing, run the full quality check suite:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Format code</span>
+black<span class="w"> </span>.
+
+<span class="c1"># Check and fix linting issues</span>
+ruff<span class="w"> </span>check<span class="w"> </span>--fix<span class="w"> </span>.
+
+<span class="c1"># Run all pre-commit hooks</span>
+pre-commit<span class="w"> </span>run<span class="w"> </span>--all-files
+</pre></div>
+</div>
+</section>
+<section id="scientific-validation">
+<h3>5. Scientific Validation<a class="headerlink" href="#scientific-validation" title="Link to this heading"></a></h3>
+<p>For contributions involving scientific calculations:</p>
+<ul class="simple">
+<li><p><strong>Reference Methods</strong>: Cite published methods or established practices</p></li>
+<li><p><strong>Validation</strong>: Include test cases with known reference values</p></li>
+<li><p><strong>Units</strong>: Ensure proper handling of units and coordinate systems</p></li>
+<li><p><strong>Documentation</strong>: Document assumptions and limitations</p></li>
+</ul>
+</section>
+</section>
+<section id="types-of-contributions">
+<h2>Types of Contributions<a class="headerlink" href="#types-of-contributions" title="Link to this heading"></a></h2>
+<section id="bug-fixes">
+<h3>Bug Fixes<a class="headerlink" href="#bug-fixes" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Use the 🐛 Bug Report template</p></li>
+<li><p>Include minimal reproducible example</p></li>
+<li><p>Reference any related issues</p></li>
+</ul>
+</section>
+<section id="new-features">
+<h3>New Features<a class="headerlink" href="#new-features" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Use the 💡 Feature Request template first for discussion</p></li>
+<li><p>Include scientific motivation and use cases</p></li>
+<li><p>Ensure backward compatibility where possible</p></li>
+</ul>
+</section>
+<section id="scientific-accuracy-issues">
+<h3>Scientific Accuracy Issues<a class="headerlink" href="#scientific-accuracy-issues" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Use the 🔬 Scientific Accuracy template</p></li>
+<li><p>Provide references to correct methods</p></li>
+<li><p>Include validation data or test cases</p></li>
+</ul>
+</section>
+<section id="documentation">
+<h3>Documentation<a class="headerlink" href="#documentation" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Follow existing structure and style</p></li>
+<li><p>Include examples where appropriate</p></li>
+<li><p>Update API documentation for code changes</p></li>
+</ul>
+</section>
+</section>
+<section id="pull-request-process">
+<h2>Pull Request Process<a class="headerlink" href="#pull-request-process" title="Link to this heading"></a></h2>
+<section id="title-convention">
+<h3>1. Title Convention<a class="headerlink" href="#title-convention" title="Link to this heading"></a></h3>
+<p>Use one of these prefixes:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[FEAT]</span></code> - New features</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[FIX]</span></code> - Bug fixes</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[DOC]</span></code> - Documentation updates</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[REFACTOR]</span></code> - Code improvements</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[TEST]</span></code> - Tests</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[CI]</span></code> - CI/CD updates</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[CLEANUP]</span></code> - General maintenance</p></li>
+</ul>
+</section>
+<section id="description-template">
+<h3>2. Description Template<a class="headerlink" href="#description-template" title="Link to this heading"></a></h3>
+<p>Fill out the pull request template completely, including:</p>
+<ul class="simple">
+<li><p>Summary and motivation</p></li>
+<li><p>Type of change checklist</p></li>
+<li><p>Testing verification</p></li>
+<li><p>Documentation updates</p></li>
+<li><p>Scientific validation (if applicable)</p></li>
+</ul>
+</section>
+<section id="review-process">
+<h3>3. Review Process<a class="headerlink" href="#review-process" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>All PRs require at least one review</p></li>
+<li><p>Automated checks must pass (tests, linting, type checking)</p></li>
+<li><p>Scientific contributions may require domain expert review</p></li>
+</ul>
+</section>
+</section>
+<section id="research-software-engineering-best-practices">
+<h2>Research Software Engineering Best Practices<a class="headerlink" href="#research-software-engineering-best-practices" title="Link to this heading"></a></h2>
+<section id="version-control">
+<h3>Version Control<a class="headerlink" href="#version-control" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Conventional Commits</strong>: Use clear, descriptive commit messages</p></li>
+<li><p><strong>Atomic Commits</strong>: One logical change per commit</p></li>
+<li><p><strong>Branch Protection</strong>: Main branch requires PR approval</p></li>
+</ul>
+</section>
+<section id="id1">
+<h3>Documentation<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Code Documentation</strong>: NumPy-style docstrings</p></li>
+<li><p><strong>User Documentation</strong>: Clear examples and tutorials</p></li>
+<li><p><strong>Scientific Documentation</strong>: Reference methods and assumptions</p></li>
+</ul>
+</section>
+<section id="testing">
+<h3>Testing<a class="headerlink" href="#testing" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Unit Tests</strong>: Test individual functions and methods</p></li>
+<li><p><strong>Integration Tests</strong>: Test component interactions</p></li>
+<li><p><strong>Scientific Tests</strong>: Validate against known results</p></li>
+<li><p><strong>Coverage Target</strong>: Aim for &gt;80% test coverage</p></li>
+</ul>
+</section>
+<section id="reproducibility">
+<h3>Reproducibility<a class="headerlink" href="#reproducibility" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Environment Files</strong>: Keep environment.yml and requirements.txt updated</p></li>
+<li><p><strong>Seed Values</strong>: Use fixed random seeds in tests</p></li>
+<li><p><strong>Version Pinning</strong>: Pin critical dependencies</p></li>
+</ul>
+</section>
+</section>
+<section id="scientific-citation-guidelines">
+<h2>Scientific Citation Guidelines<a class="headerlink" href="#scientific-citation-guidelines" title="Link to this heading"></a></h2>
+<p>When contributing scientific functionality:</p>
+<ol class="arabic simple">
+<li><p><strong>Literature Review</strong>: Research existing methods and implementations</p></li>
+<li><p><strong>Method Documentation</strong>: Clearly document the scientific approach</p></li>
+<li><p><strong>Reference Implementation</strong>: Compare against established tools where possible</p></li>
+<li><p><strong>Uncertainty Quantification</strong>: Document limitations and error bounds</p></li>
+<li><p><strong>Reproducible Examples</strong>: Provide complete working examples</p></li>
+</ol>
+</section>
+<section id="getting-help">
+<h2>Getting Help<a class="headerlink" href="#getting-help" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>Documentation</strong>: Check our comprehensive docs</p></li>
+<li><p><strong>Discussions</strong>: Use GitHub Discussions for questions</p></li>
+<li><p><strong>Issues</strong>: Report bugs or request features via GitHub Issues</p></li>
+<li><p><strong>Code Review</strong>: Ask questions during the review process</p></li>
+</ul>
+</section>
+<section id="recognition">
+<h2>Recognition<a class="headerlink" href="#recognition" title="Link to this heading"></a></h2>
+<p>All contributors are recognized in our project documentation. Significant contributions will be acknowledged in publications that use this software.</p>
+<p>Thank you for contributing to open research software! 🚀</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="gitcollab.html" class="btn btn-neutral float-left" title="Collaborating on Someone Else’s Repository" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="style_guide.html" class="btn btn-neutral float-right" title="Project Style Guide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Eleanor Frajka-Williams, FirstName LastName.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
