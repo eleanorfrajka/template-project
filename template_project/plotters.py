@@ -4,6 +4,7 @@ from typing import Any, Tuple, Union
 import matplotlib.pyplot as plt
 import xarray as xr
 from pandas import DataFrame
+from pandas.io.formats.style import Styler
 
 
 def plot_monthly_transport(
@@ -50,7 +51,7 @@ def plot_monthly_transport(
     return fig, ax
 
 
-def show_variables(data: Union[str, xr.Dataset]) -> Any:
+def show_variables(data: Union[str, xr.Dataset]) -> Styler:
     """
     Processes an xarray Dataset or a netCDF file, extracts variable information,
     and returns a styled DataFrame with details about the variables.
