@@ -5,10 +5,17 @@ on:
     branches:
       - main
   workflow_dispatch:
+  release:
+    types:
+      - published
 
 jobs:
   deploy-docs:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        # Critical: "bash -l {0}" is required for Micromamba environments to activate
+        shell: bash -l {0}
     permissions:
       contents: write
 
@@ -18,34 +25,32 @@ jobs:
       with:
         fetch-depth: 0
 
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: "3.9"
+
     - name: Setup Micromamba
-      uses: mamba-org/setup-micromamba@v2
+      uses: mamba-org/setup-micromamba@v1
       with:
         environment-file: environment.yml
-        init-shell: bash
-        condarc: |
-          channels:
-            - conda-forge
-          channel_priority: strict
-          cache-environment: true
+        cache-environment: true
 
-    - name: Install package (editable)
-      shell: bash -l {0}
+    - name: Install package
       run: |
-        micromamba run -n template-project python -m pip install --upgrade pip
-        micromamba run -n template-project python -m pip install -e . --no-deps --force-reinstall
+        python -m pip install -e . --force-reinstall
+        # Force version file regeneration with setuptools-scm
+        python -c "import setuptools_scm; print('Version detected:', setuptools_scm.get_version())"
+        # Verify what version the docs will see
+        python -c "from template_project._version import __version__; print('Docs will use version:', __version__)"
 
-    # Assumes that the notebook to be documented is located within notebooks/ and is called demo.ipynb
-    # In the example below, we've set `--ExecutePreprocessor.allow_errors=False` to fail if there are notebook errors
-    # For testing/development runs (when your code might have errors), you can set this flag to True.
     - name: Build documentation
-      shell: bash -l {0}
       run: |
         set -e
-        micromamba run -n template-project jupyter nbconvert --to notebook --execute notebooks/demo.ipynb --output=demo-output.ipynb --ExecutePreprocessor.allow_errors=False
-        mv notebooks/*output.ipynb docs/source/
+        jupyter nbconvert --to notebook --execute notebooks/demo.ipynb --output=demo-output2.ipynb --ExecutePreprocessor.allow_errors=False
+        mv notebooks/*output2.ipynb docs/source/
         pushd docs
-        micromamba run -n template-project make clean html
+        make clean html
         popd
 
     - name: Deploy to GitHub Pages

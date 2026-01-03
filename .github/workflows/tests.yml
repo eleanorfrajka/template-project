@@ -1,56 +1,55 @@
 name: Run tests
 
 on:
-  pull_request:
-    branches:
-      - main
+  push:
+    branches: [ "main" ]
     paths:
       - '**.py'
-      - '**.ipynb'
+      - 'template_project/**'
+      - 'tests/**'
+      - 'pyproject.toml'
+      - 'requirements*.txt'
+      - '.pre-commit-config.yaml'
+  pull_request:
+    branches: [ "main" ]
+    paths:
+      - '**.py'
+      - 'template_project/**'
+      - 'tests/**'
+      - 'pyproject.toml'
+      - 'requirements*.txt'
+      - '.pre-commit-config.yaml'
 
 jobs:
-  job_mytests:
+  test:
+    name: ${{ matrix.os }} / Py ${{ matrix.python-version }}
     runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
-        python-version: ["3.12"]
-      fail-fast: true
     defaults:
       run:
-        shell: bash -l {0}
+        shell: bash
+    strategy:
+      fail-fast: true
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        # Testing across all selected supported versions from your spec
+        python-version: ["3.9", "3.12"]
+
     steps:
-    - name: Run a one-line script
-      run: echo "The job was automatically triggered by a ${{ github.event_name }} event."
-    - uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v2
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
 
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        python -m pip install flake8 pytest
-        if [ -f requirements-dev.txt ]; then pip install -r requirements-dev.txt; fi
-    - name: Install template_project
-      run: |
-        python -m pip install -e . --no-deps --force-reinstall
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip setuptools wheel
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
-    - name: Test with pytest
-      run: |
-        pytest
+      - name: Install package
+        run: |
+          python -m pip install -e .[dev] --force-reinstall --prefer-binary
 
-# Use the below code after deploying a release
-#    - name: Setup Micromamba Python ${{ matrix.python-version }}
-#      uses: mamba-org/setup-micromamba@v2
-#      with:
-#        environment-name: TEST
-#        init-shell: bash
-#        create-args: >-
-#          python=${{ matrix.python-version }} --file requirements-dev.txt --channel conda-forge
-
-
-
-#    - name: Full Tests
-#      run: |
-#        python -m pytest --cov=seagliderOG1 --cov-report term-missing  tests/
+      - name: Test with pytest
+        run: |
+          pytest

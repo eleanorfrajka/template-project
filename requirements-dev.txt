@@ -1,5 +1,4 @@
-# Pull in the base stack so we don't duplicate pins here
--r requirements.txt
+# Development dependencies only (base dependencies included via pyproject.toml)
 
 # Jupyter and notebooks
 jupyterlab>=4.0
@@ -22,3 +21,7 @@ black>=24.0
 ruff>=0.3
 pre-commit>=3.5
 codespell
+mypy>=1.8
+
+# Changelog generation
+towncrier

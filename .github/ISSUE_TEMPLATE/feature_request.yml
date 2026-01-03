@@ -1,0 +1,116 @@
+name: 💡 Feature Request
+description: Suggest a new feature or enhancement for [PROJECT_NAME]
+title: "[FEATURE] "
+labels: ["enhancement"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for suggesting a new feature! Please provide detailed information to help us understand your request.
+
+  - type: textarea
+    id: use-case
+    attributes:
+      label: Use Case
+      description: Scientific motivation and user story
+      placeholder: |
+        Describe the scientific or research scenario where this feature would be useful.
+        Include the scientific motivation and user story.
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem-description
+    attributes:
+      label: Problem Description
+      description: What problem does this feature solve?
+      placeholder: Describe the current limitation or problem this feature would address...
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposed-solution
+    attributes:
+      label: Proposed Solution
+      description: Detailed description of desired functionality
+      placeholder: Describe how you would like this feature to work...
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives Considered
+      description: Other approaches you've considered
+      placeholder: |
+        What alternatives have you considered?
+        Are there workarounds currently available?
+        How do other tools handle this problem?
+
+  - type: textarea
+    id: implementation-ideas
+    attributes:
+      label: Implementation Ideas
+      description: Technical suggestions if available (optional)
+      placeholder: |
+        If you have ideas about how this could be implemented, please share them.
+        This could include:
+        - API design suggestions
+        - Configuration file changes
+        - UI/UX considerations
+        - Integration with existing features
+
+  - type: dropdown
+    id: feature-type
+    attributes:
+      label: Feature Type
+      description: What type of feature is this?
+      options:
+        - New CLI command
+        - Enhancement to existing command
+        - New output format
+        - Interactive feature improvement
+        - Calculation/algorithm enhancement
+        - Data integration (new data source)
+        - Performance improvement
+        - Scientific analysis tool
+        - Other (specify in additional context)
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      description: How important is this feature to your workflow?
+      options:
+        - Critical (blocking my work)
+        - High (significantly improves workflow)
+        - Medium (nice to have improvement)
+        - Low (minor convenience)
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: scientific-validation
+    attributes:
+      label: Scientific Requirements
+      description: Check if this feature involves scientific calculations or domain-specific requirements
+      options:
+        - label: This feature involves scientific calculations that need validation
+        - label: This feature requires domain expert review
+        - label: This feature affects data accuracy or scientific integrity
+        - label: This feature requires literature citations or references
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional Context
+      description: Any additional information, mockups, or examples
+      placeholder: |
+        Add any other context about the feature request here:
+        - Screenshots or mockups
+        - Links to relevant literature
+        - Examples from other tools
+        - References to specific scientific practices

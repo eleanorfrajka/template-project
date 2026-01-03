@@ -30,6 +30,7 @@ This template includes tools for testing, documentation, versioning, citation, p
    :maxdepth: 2
    :caption: Development Guide
 
+   contributing.md
    style_guide.md
    writing_tests.md
    build_docs.md

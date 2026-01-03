@@ -1,8 +1,8 @@
 import matplotlib
 import numpy as np
 import xarray as xr
-from pandas.io.formats.style import Styler
 from pandas import DataFrame
+from pandas.io.formats.style import Styler
 
 from template_project import plotters
 

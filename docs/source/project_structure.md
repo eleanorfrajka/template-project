@@ -144,6 +144,34 @@ The tags above give an indication of what parts of this template project are use
 
 ---
 
+## 🤖 Automation Features
+
+This template includes several automation features to streamline development:
+
+### Dependabot (Dependency Updates)
+- **File**: `.github/dependabot.yml`
+- **Purpose**: Automatically creates PRs to update Python dependencies and GitHub Actions
+- **Schedule**: Weekly on Mondays
+- **To disable**: Delete `.github/dependabot.yml` or comment out the package ecosystems you don't want
+
+### Towncrier (Automated Changelog)
+- **Files**: `pyproject.toml` ([tool.towncrier] section), `changelog.d/`
+- **Purpose**: Generates changelogs from fragment files
+- **Usage**: Create `.md` files in `changelog.d/` describing changes, then run `towncrier build`
+- **To disable**: 
+  - Remove `towncrier` from `requirements-dev.txt`
+  - Remove `[tool.towncrier]` section from `pyproject.toml`
+  - Delete `changelog.d/` directory
+
+### Pre-commit Hooks
+- **File**: `.pre-commit-config.yaml`  
+- **Purpose**: Runs code quality checks before each commit
+- **To disable**: Remove the file or run `pre-commit uninstall`
+
+**Note**: These automation features are optional but recommended for maintaining code quality and staying up-to-date with dependencies.
+
+---
+
 ## ✅ Summary
 
 This template is a starting point for research or open-source Python projects. It supports:

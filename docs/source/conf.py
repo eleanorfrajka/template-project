@@ -29,9 +29,25 @@ extensions = [
     "sphinx.ext.autodoc",
     "sphinx.ext.viewcode",
     "sphinx.ext.napoleon",
+    "sphinx.ext.intersphinx",
     "nbsphinx",
     "myst_parser",
 ]
+
+# Configure nbsphinx for example notebooks
+# Allow errors in notebooks (useful for template examples)
+nbsphinx_allow_errors = True
+nbsphinx_execute = "auto"
+nbsphinx_kernel_name = "python3"
+
+# Intersphinx mapping for cross-references
+intersphinx_mapping = {
+    "python": ("https://docs.python.org/3", None),
+    "numpy": ("https://numpy.org/doc/stable/", None),
+    "pandas": ("https://pandas.pydata.org/docs/", None),
+    "xarray": ("https://docs.xarray.dev/en/stable/", None),
+    "matplotlib": ("https://matplotlib.org/stable/", None),
+}
 
 templates_path = ["_templates"]
 

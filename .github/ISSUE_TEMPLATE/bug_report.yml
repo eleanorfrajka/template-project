@@ -1,0 +1,137 @@
+name: 🐛 Bug Report
+description: Report a bug or unexpected behavior in [PROJECT_NAME]
+title: "[BUG] "
+labels: ["bug"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report a bug! Please fill out the sections below to help us diagnose and fix the issue.
+
+  - type: textarea
+    id: bug-description
+    attributes:
+      label: Bug Description
+      description: Clear description of the issue
+      placeholder: Describe what went wrong...
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps-to-reproduce
+    attributes:
+      label: Steps to Reproduce
+      description: Step-by-step instructions to reproduce the bug
+      placeholder: |
+        1. Step one
+        2. Step two
+        3. Step three
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected-behavior
+    attributes:
+      label: Expected Behavior
+      description: What should have happened?
+      placeholder: Describe the expected outcome...
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual-behavior
+    attributes:
+      label: Actual Behavior
+      description: What actually happened?
+      placeholder: Describe what actually occurred...
+    validations:
+      required: true
+
+  - type: textarea
+    id: error-messages
+    attributes:
+      label: Error Messages
+      description: Include complete error traceback if applicable
+      render: shell
+      placeholder: Paste complete error traceback here...
+
+  - type: textarea
+    id: sample-data
+    attributes:
+      label: Sample Data
+      description: Attach minimal YAML configuration that reproduces the issue
+      render: yaml
+      placeholder: |
+        cruise_name: "Minimal reproduction case"
+        stations:
+          - name: "TEST_STN"
+            latitude: 60.0
+            longitude: -30.0
+            # etc...
+
+  - type: dropdown
+    id: os
+    attributes:
+      label: Operating System
+      description: What operating system are you using?
+      options:
+        - Ubuntu 20.04
+        - Ubuntu 22.04
+        - macOS 12
+        - macOS 13
+        - macOS 14
+        - Windows 10
+        - Windows 11
+        - Other (specify in additional context)
+    validations:
+      required: true
+
+  - type: dropdown
+    id: python-version
+    attributes:
+      label: Python Version
+      description: What version of Python are you using?
+      options:
+        - "3.9"
+        - "3.10"
+        - "3.11"
+        - "3.12"
+        - Other (specify in additional context)
+    validations:
+      required: true
+
+  - type: dropdown
+    id: installation-method
+    attributes:
+      label: Installation Method
+      description: How did you install [PROJECT_NAME]?
+      options:
+        - pip
+        - conda
+        - source (development)
+        - Other (specify in additional context)
+    validations:
+      required: true
+
+  - type: textarea
+    id: system-info
+    attributes:
+      label: System Information
+      description: |
+        Please run the following commands and paste the output:
+        ```bash
+        python --version
+        [project_name] --version
+        pip show [project_name]
+        uname -a  # Linux/macOS only
+        ```
+      render: shell
+      placeholder: Paste system information output here...
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional Context
+      description: Add any other context, screenshots, or information about the problem
+      placeholder: Any additional information that might be helpful...

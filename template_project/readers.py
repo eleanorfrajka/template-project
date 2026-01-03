@@ -1,5 +1,5 @@
 from pathlib import Path
-from typing import Union
+from typing import Callable, List, Union
 
 import pandas as pd
 import xarray as xr
@@ -11,7 +11,7 @@ from template_project.read_rapid import read_rapid
 log = logger.log
 
 
-def _get_reader(array_name: str):
+def _get_reader(array_name: str) -> Callable:
     """Return the reader function for the given array name.
 
     Parameters
@@ -85,11 +85,11 @@ def load_sample_dataset(array_name: str = "rapid") -> xr.Dataset:
 def load_dataset(
     array_name: str,
     source: str = None,
-    file_list: Union[str | list[str]] = None,
+    file_list: Union[str, List[str], None] = None,
     transport_only: bool = True,
     data_dir: Union[str, Path, None] = None,
     redownload: bool = False,
-) -> list[xr.Dataset]:
+) -> List[xr.Dataset]:
     """Load raw datasets from a selected AMOC observing array.
 
     Parameters
@@ -143,7 +143,7 @@ def load_dataset(
     return datasets
 
 
-def _summarise_datasets(datasets: list, array_name: str):
+def _summarise_datasets(datasets: List[xr.Dataset], array_name: str) -> None:
     """Print and log a summary of loaded datasets."""
     summary_lines = []
     summary_lines.append(f"Summary for array '{array_name}':")

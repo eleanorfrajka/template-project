@@ -13,35 +13,47 @@ Please prefix your pull request title with one of the following tags for clarity
 - `[CLEANUP]` for general maintenance
 
 Example:
-> `[FIX] Correct dimension handling in OSNAP reader`
+> `[FEAT] Add PNG map generation for cruise track visualization`
 
-**Description:**
+## Summary
+Brief description of changes and motivation.
 
-Please describe your changes clearly and concisely.
+## Type of Change
+- [ ] Bug fix (non-breaking change fixing an issue)
+- [ ] New feature (non-breaking change adding functionality)
+- [ ] Breaking change (fix/feature causing existing functionality to not work)
+- [ ] Documentation update
+- [ ] Performance improvement
+- [ ] Refactoring (no functional changes)
 
-- What is the purpose of this pull request?
-- What issue(s) does it address? Please link them (e.g., closes #12).
-- Briefly explain the approach taken.
+## Testing
+- [ ] All existing tests pass
+- [ ] New tests added for new functionality
+- [ ] Manual testing performed (describe scenarios)
+- [ ] I have run `pytest` to check that all tests pass
+- [ ] I have run `pre-commit run --all-files` to lint and format the code
 
-**Checklist:**
+## Documentation
+- [ ] Docstrings updated
+- [ ] User documentation updated
+- [ ] Examples/tutorials updated if needed
+- [ ] I have followed the coding conventions in CONTRIBUTING.md
 
-- [ ] I have followed the [coding conventions](https://amoccommunity.github.io/amocarray/conventions.html).
-- [ ] I have updated or added tests to cover my changes.
-- [ ] I have updated the documentation if needed.
-- [ ] I have run `pytest` to check that all tests pass.
-- [ ] I have run `pre-commit run --all-files` to lint and format the code.
+## Scientific Validation
+(For calculation/algorithm changes)
+- [ ] Cross-checked with published methods
+- [ ] Tested against known reference values
+- [ ] Units and coordinate systems validated
 
-**Related Issues / Pull Requests:**
+## Breaking Changes
+List any breaking changes and migration path for users.
 
-Link any related issues, pull requests, or discussions:
-- Fixes #
-- Related to #
+## Related Issues
+Closes #123, Addresses #456
 
-**Additional Notes:**
-
+## Additional Notes
 Include any additional information reviewers might need:
 
 - Screenshots (if UI/outputs are affected)
 - Design decisions or trade-offs
 - Anything reviewers should look at closely
-
