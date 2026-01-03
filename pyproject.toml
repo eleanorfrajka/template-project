@@ -1,7 +1,7 @@
 [build-system]
 build-backend = "setuptools.build_meta"
 requires = [
-  "setuptools>=42",
+  "setuptools>=68",
   "setuptools-scm[toml]>=3.4",
   "wheel",
 ]
@@ -11,6 +11,9 @@ name = "template-project-efw"
 description = "Example template project for docs, pip install and git"
 readme = "README.md"
 license = { file = "LICENSE" }
+authors = [
+  { name = "Eleanor Frajka-Williams", email = "eleanorfrajka@gmail.com" },
+]
 maintainers = [
   { name = "Eleanor Frajka-Williams", email = "eleanorfrajka@gmail.com" },
 ]
@@ -22,29 +25,32 @@ classifiers = [
   "Programming Language :: Python :: 3.11",
   "Programming Language :: Python :: 3.12",
 ]
-dynamic = [
-  "dependencies",
-  "version",
-]
-urls.documentation = "https://github.com/eleanorfrajka/template-project"
-urls.homepage = "https://github.com/eleanorfrajka/template-project"
-urls.repository = "https://github.com/eleanorfrajka/template-project"
+# Define which fields are read from files/tools
+dynamic = ["version", "dependencies", "optional-dependencies"]
+[project.urls]
+documentation = "https://github.com/eleanorfrajka/template-project"
+homepage = "https://github.com/eleanorfrajka/template-project"
+repository = "https://github.com/eleanorfrajka/template-project"
 
 
 [tool.setuptools.packages.find]
 where = ["."]
 include = ["template_project"]
 
+[tool.setuptools.package-data]
+"template_project" = ["py.typed", "*.yaml", "*.yml", "*.json"]
+
 [tool.setuptools.dynamic]
-dependencies = { file = [
-  "requirements.txt",
-] }
-readme = { file = "README.md", content-type = "text/markdown" }
+dependencies = { file = ["requirements.txt"] }
+
+[tool.setuptools.dynamic.optional-dependencies]
+dev = { file = ["requirements-dev.txt"] }
+# pip install -e ".[dev]"
+# Note: Add other groups like 'docs', 'test' as needed
 
 [tool.setuptools_scm]
 write_to = "template_project/_version.py"
 write_to_template = "__version__ = '{version}'"
-tag_regex = "^(?P<prefix>v)?(?P<version>[^\\+]+)(?P<suffix>.*)?$"
 version_scheme = "no-guess-dev"
 local_scheme = "no-local-version"
 
@@ -63,28 +69,153 @@ line-length = 88
 target-version = ['py39']
 
 [tool.ruff]
-# …any other top‑level settings you use (extend, cache-dir, line-length, exclude, etc.)…
+target-version = "py39"
+line-length = 88
 
 [tool.ruff.lint]
 select = [
-  "D",       # pydocstyle
   "E",       # pycodestyle errors
-  "F",       # pyflakes errors
   "W",       # pycodestyle warnings
-  "C90",     # mccabe complexity
-  "ANN",     # type annotations
+  "F",       # pyflakes errors
+  "I",       # isort
   "B",       # flake8-bugbear
-  "BLE",     # bleach checks
-  "TRY",     # tryceratops
-  "ARG",     # flake8-arguments
-  "SLF",     # flake8-self
+  "UP",      # pyupgrade
+  "D",       # pydocstyle (Docstrings)
+  "C901",    # mccabe complexity
+  "PLR",     # pylint refactor (includes function length)
 ]
 ignore = [
   "D107",    # missing docstring in __init__
   "D203",    # 1 blank line required before class docstring
   "D213",    # multi-line summary docstring style
   "D401",    # first line should be in imperative mood
-  "E501",    # line‑length
-  "PLR0913", # too many arguments
-  "C901",    # complexity
+  "E501",    # line‑length (handled by black)
 ]
+
+[tool.ruff.lint.pydocstyle]
+convention = "numpy"
+
+[tool.ruff.lint.mccabe]
+# Maximum allowed complexity for functions (start lenient, can tighten later)
+max-complexity = 15
+
+[tool.ruff.lint.pylint]
+# Maximum number of statements in a function body (your CONTRIBUTING.md suggests ~50 lines)
+max-statements = 75
+# Maximum number of arguments for function / method
+max-args = 8
+# Maximum number of branches for function / method body  
+max-branches = 20
+# Maximum number of return statements in function / method body
+max-returns = 8
+
+[tool.mypy]
+python_version = "3.9"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = false  # Start lenient, can tighten later
+disallow_incomplete_defs = true
+check_untyped_defs = true
+disallow_untyped_decorators = true
+no_implicit_optional = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+warn_unreachable = true
+strict_equality = true
+
+# Scientific computing packages often lack good type stubs
+[[tool.mypy.overrides]]
+module = [
+    "matplotlib.*",
+    "netCDF4.*",
+    "scipy.*",
+    "xarray.*",
+    "pandas.*",
+]
+ignore_missing_imports = true
+
+# Testing configuration with pytest markers
+# Usage examples:
+#   pytest                         # Run all tests
+#   pytest -m "not slow"          # Skip slow tests
+#   pytest -m "integration"       # Run only integration tests  
+#   pytest -m "unit and not slow" # Run fast unit tests
+#   pytest -m "network"           # Run only tests requiring network
+#   pytest -m "file_io"           # Run only file I/O tests
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = "test_*.py"
+addopts = "--verbose --strict-markers --tb=short --maxfail=3"
+minversion = "6.0"
+filterwarnings = [
+    "error",
+    "ignore::UserWarning",
+    "ignore::DeprecationWarning",
+    "ignore::RuntimeWarning",
+]
+markers = [
+    "slow: marks tests as slow (deselect with '-m \"not slow\"')",
+    "integration: marks integration tests",
+    "unit: marks unit tests",
+    "network: marks tests requiring network access",
+    "file_io: marks tests that interact with file system",
+]
+
+[tool.coverage.run]
+source = ["template_project"]
+omit = [
+    "template_project/_version.py",
+    "*/tests/*",
+]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "if self.debug:",
+    "if settings.DEBUG",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if 0:",
+    "if __name__ == .__main__.:",
+    "class .*\\bProtocol\\):",
+    "@(abc\\.)?abstractmethod",
+]
+show_missing = true
+
+[tool.towncrier]
+# Configuration for automated changelog generation
+package = "template_project"
+package_dir = "template_project"
+filename = "CHANGELOG.md"
+directory = "changelog.d"
+start_string = "<!-- towncrier release notes start -->\n"
+underlines = ["", "", ""]
+template = "changelog.d/_template.md"
+title_format = "## [{version}] - {date}"
+issue_format = "[#{issue}](https://github.com/[OWNER]/[REPO]/issues/{issue})"
+
+[[tool.towncrier.type]]
+directory = "feature"
+name = "Features"
+showcontent = true
+
+[[tool.towncrier.type]]
+directory = "bugfix"
+name = "Bug Fixes"
+showcontent = true
+
+[[tool.towncrier.type]]
+directory = "doc"
+name = "Documentation"
+showcontent = true
+
+[[tool.towncrier.type]]
+directory = "removal"
+name = "Deprecations and Removals"
+showcontent = true
+
+[[tool.towncrier.type]]
+directory = "misc"
+name = "Miscellaneous"
+showcontent = false

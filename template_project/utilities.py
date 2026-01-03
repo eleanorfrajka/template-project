@@ -3,8 +3,8 @@ from pathlib import Path
 from typing import Callable, Dict, List, Optional, Union
 from urllib.parse import urlparse
 
-import xarray as xr
 import requests
+import xarray as xr
 
 from template_project import logger
 from template_project.logger import log_debug, log_error, log_info

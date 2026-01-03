@@ -1,11 +1,14 @@
 from pathlib import Path
+from typing import Any, Tuple, Union
 
-from pandas import DataFrame
 import matplotlib.pyplot as plt
 import xarray as xr
+from pandas import DataFrame
 
 
-def plot_monthly_transport(ds: xr.Dataset, var: str = "moc_mar_hc10") -> None:
+def plot_monthly_transport(
+    ds: xr.Dataset, var: str = "moc_mar_hc10"
+) -> Tuple[Any, Any]:
     """Plot original and monthly averaged transport time series.
 
     Parameters
@@ -47,24 +50,25 @@ def plot_monthly_transport(ds: xr.Dataset, var: str = "moc_mar_hc10") -> None:
     return fig, ax
 
 
-def show_variables(data):
+def show_variables(data: Union[str, xr.Dataset]) -> Any:
     """
     Processes an xarray Dataset or a netCDF file, extracts variable information,
     and returns a styled DataFrame with details about the variables.
 
-    Parameters:
+    Parameters
+    ----------
     data (str or xr.Dataset): The input data, either a file path to a netCDF file or an xarray Dataset.
 
-    Returns:
+    Returns
+    -------
     pandas.io.formats.style.Styler: A styled DataFrame containing the following columns:
         - dims: The dimension of the variable (or "string" if it is a string type).
         - name: The name of the variable.
         - units: The units of the variable (if available).
         - comment: Any additional comments about the variable (if available).
     """
-
     if isinstance(data, str):
-        print("information is based on file: {}".format(data))
+        print(f"information is based on file: {data}")
         dataset = xr.Dataset(data)
         variables = dataset.variables
     elif isinstance(data, xr.Dataset):
@@ -111,15 +115,17 @@ def show_variables(data):
     return vars
 
 
-def show_attributes(data):
+def show_attributes(data: Union[str, xr.Dataset]) -> DataFrame:
     """
     Processes an xarray Dataset or a netCDF file, extracts attribute information,
     and returns a DataFrame with details about the attributes.
 
-    Parameters:
+    Parameters
+    ----------
     data (str or xr.Dataset): The input data, either a file path to a netCDF file or an xarray Dataset.
 
-    Returns:
+    Returns
+    -------
     pandas.DataFrame: A DataFrame containing the following columns:
         - Attribute: The name of the attribute.
         - Value: The value of the attribute.
@@ -127,7 +133,7 @@ def show_attributes(data):
     from netCDF4 import Dataset
 
     if isinstance(data, str):
-        print("information is based on file: {}".format(data))
+        print(f"information is based on file: {data}")
         rootgrp = Dataset(data, "r", format="NETCDF4")
         attributes = rootgrp.ncattrs()
         get_attr = lambda key: getattr(rootgrp, key)

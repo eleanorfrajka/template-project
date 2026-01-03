@@ -1,0 +1,134 @@
+name: 🔬 Scientific Accuracy Issue
+description: Report calculation errors or domain-specific accuracy issues
+title: "[SCIENTIFIC] "
+labels: ["scientific-accuracy", "bug"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping ensure the scientific accuracy of [PROJECT_NAME]! This template is for reporting issues with calculations, algorithms, or domain-specific functionality.
+
+  - type: textarea
+    id: accuracy-issue
+    attributes:
+      label: Scientific Accuracy Issue
+      description: Describe the calculation or domain-specific issue
+      placeholder: |
+        Describe the specific calculation, algorithm, or scientific functionality that appears incorrect.
+        Be as specific as possible about what is wrong.
+    validations:
+      required: true
+
+  - type: textarea
+    id: reference-method
+    attributes:
+      label: Reference Method
+      description: Cite correct method or expected result
+      placeholder: |
+        Provide references to:
+        - Published methods or standards
+        - Expected calculation results
+        - Established scientific practices
+        - Literature citations
+    validations:
+      required: true
+
+  - type: textarea
+    id: comparison
+    attributes:
+      label: Comparison
+      description: Show difference between expected and actual results
+      placeholder: |
+        Provide specific examples showing:
+        - Expected result: [value/behavior]
+        - Actual result: [value/behavior]
+        - Test case: [input values used]
+
+        Include numerical examples where possible.
+    validations:
+      required: true
+
+  - type: textarea
+    id: impact-assessment
+    attributes:
+      label: Impact Assessment
+      description: Assess effect on scientific accuracy
+      placeholder: |
+        Describe the impact of this issue:
+        - How significant is the error?
+        - What scientific results might be affected?
+        - Does this affect research planning decisions?
+        - Are there safety implications?
+    validations:
+      required: true
+
+  - type: textarea
+    id: validation-data
+    attributes:
+      label: Test Case / Validation Data
+      description: Provide validation data or test case
+      placeholder: |
+        Provide test cases or validation data:
+        - Input parameters
+        - Expected outputs
+        - Reference calculations
+        - Test configurations (YAML)
+
+        This helps us verify the fix.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: calculation-type
+    attributes:
+      label: Type of Calculation
+      description: What type of calculation is affected?
+      options:
+        - Mathematical calculations
+        - Statistical computations
+        - Coordinate transformations
+        - Data processing algorithms
+        - Optimization routines
+        - Scheduling algorithms
+        - Data validation
+        - Unit conversions
+        - Other (specify in additional context)
+    validations:
+      required: true
+
+  - type: dropdown
+    id: accuracy-level
+    attributes:
+      label: Required Accuracy Level
+      description: What level of accuracy is expected?
+      options:
+        - High precision (< 1% error)
+        - Standard precision (< 5% error)
+        - Approximate (< 10% error)
+        - Order of magnitude correct
+        - Qualitative correctness only
+    validations:
+      required: true
+
+  - type: textarea
+    id: literature-references
+    attributes:
+      label: Literature References
+      description: Relevant scientific literature or standards
+      placeholder: |
+        Provide citations for:
+        - Relevant publications
+        - Technical standards
+        - Established methods
+        - Reference implementations
+
+        Example format:
+        Smith, J. et al. (2023). "Standard Methods in Oceanography." Journal of Marine Science.
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional Context
+      description: Any other relevant scientific context
+      placeholder: Any additional scientific context, institutional practices, or domain expertise that might be relevant...

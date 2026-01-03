@@ -78,31 +78,66 @@ pytest tests/test_tools.py::test_convert_units_basic
 
 ## 📊 Checking Test Coverage
 
-You can use `pytest-cov` to measure how much of your code is covered by tests.
+Test coverage shows which lines of code are executed during testing. Higher coverage generally means better testing, but 100% coverage doesn't guarantee perfect tests.
 
-### 1. Install the extra dev dependency:
-Make sure this line is in your `requirements-dev.txt`:
-```txt
-pytest-cov
-```
-Then install:
+### Quick Coverage Check
 ```bash
-pip install -r requirements-dev.txt
+# Basic coverage report in terminal
+pytest --cov=template_project --cov-report=term-missing
 ```
 
-### 2. Run tests with coverage:
-```bash
-pytest --cov=template_project
-```
-This will show a summary of test coverage by file.
+This shows:
+- **Percentage covered** for each file
+- **Missing lines** that aren't tested
 
-To generate an HTML report:
+### Detailed Coverage Analysis
+
+For a comprehensive view, generate an HTML report:
 ```bash
 pytest --cov=template_project --cov-report=html
 ```
-Then open the `htmlcov/index.html` file in your browser to view a coverage dashboard.
+Then open `htmlcov/index.html` in your browser.
 
-> 📉 Files with low coverage help you find missing tests.
+### Reading Coverage Reports
+
+**Terminal output example:**
+```
+Name                    Stmts   Miss  Cover   Missing
+-----------------------------------------------------
+template_project/tools.py    20      3    85%   63, 96-97
+template_project/utils.py    78     24    69%   79-80, 113-120
+-----------------------------------------------------
+TOTAL                       354     76    79%
+```
+
+**What this means:**
+- **Stmts**: Total executable statements
+- **Miss**: Statements not covered by tests  
+- **Cover**: Percentage covered
+- **Missing**: Specific line numbers not tested
+
+**HTML report shows:**
+- 🟢 **Green lines**: Covered by tests
+- 🔴 **Red lines**: Not covered by tests
+- 🟡 **Yellow lines**: Partially covered (e.g., branches)
+
+### Coverage Guidelines
+
+**Target coverage levels:**
+- **80%+**: Good coverage for most projects
+- **90%+**: Excellent coverage 
+- **100%**: Often impractical (includes error handling, edge cases)
+
+**Focus on:**
+- Core business logic functions
+- Complex algorithms and calculations
+- Error handling paths
+- Public API functions
+
+**Less critical to test:**
+- Simple getters/setters
+- Third-party library integration
+- Configuration/setup code
 
 
 If you're using [pre-commit hooks](precommit_guide.md), you can configure them to run `pytest` before each commit. This helps you catch test failures early.
@@ -111,11 +146,13 @@ If you're using [pre-commit hooks](precommit_guide.md), you can configure them t
 
 ## Summary Cheatsheet
 
-| Task                    | Command                             |
-|-------------------------|--------------------------------------|
-| Run all tests           | `pytest`                             |
-| Run specific test file  | `pytest tests/test_xyz.py`           |
-| Run specific test       | `pytest tests/test_xyz.py::test_name`|
-| Install test tools      | `pip install -r requirements-dev.txt`|
+| Task                    | Command                                    |
+|-------------------------|---------------------------------------------|
+| Run all tests           | `pytest`                                   |
+| Run specific test file  | `pytest tests/test_xyz.py`                 |
+| Run specific test       | `pytest tests/test_xyz.py::test_name`      |
+| Coverage report (terminal) | `pytest --cov=template_project --cov-report=term-missing` |
+| Coverage report (HTML) | `pytest --cov=template_project --cov-report=html` |
+| Install test tools      | `pip install -r requirements-dev.txt`     |
 
 > ✅ Tests help you make confident changes. Use them early, and use them often!

@@ -22,3 +22,7 @@ black>=24.0
 ruff>=0.3
 pre-commit>=3.5
 codespell
+mypy>=1.8
+
+# Changelog generation
+towncrier
