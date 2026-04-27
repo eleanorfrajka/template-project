@@ -1,7 +1,7 @@
 numpy>=1.23
 pandas>=2.0
 xarray>=2023.12.0
-netcdf4>=1.6
+netcdf4>=1.7.2
 scipy>=1.10
 
 # Plotting
