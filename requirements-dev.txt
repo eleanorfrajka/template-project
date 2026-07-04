@@ -7,7 +7,7 @@ myst-nb>=1.0
 nbsphinx>=0.9  # optional, confirm usage
 
 # Documentation
-sphinx>=7.2
+sphinx>=7.4.7
 sphinx-rtd-theme>=2.0
 pypandoc>=1.11  # optional, confirm usage
 myst-parser>=3.0.1
