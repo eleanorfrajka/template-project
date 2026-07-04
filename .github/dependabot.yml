@@ -4,7 +4,7 @@ updates:
   - package-ecosystem: "pip"
     directory: "/"
     schedule:
-      interval: "weekly"
+      interval: "monthly"
       day: "monday"
       time: "09:00"
     open-pull-requests-limit: 10
@@ -12,9 +12,9 @@ updates:
       prefix: "[DEPS]"
       include: "scope"
     reviewers:
-      - "[MAINTAINER-USERNAME]"  # Replace with actual maintainer username
+      - "eleanorfrajka"  # Replace with actual maintainer username
     assignees:
-      - "[MAINTAINER-USERNAME]"  # Replace with actual maintainer username
+      - "eleanorfrajka"  # Replace with actual maintainer username
     labels:
       - "dependencies"
       - "automated"
@@ -31,7 +31,7 @@ updates:
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
-      interval: "weekly"
+      interval: "monthly"
       day: "monday"
       time: "09:00"
     open-pull-requests-limit: 5
@@ -39,9 +39,9 @@ updates:
       prefix: "[CI]"
       include: "scope"
     reviewers:
-      - "[MAINTAINER-USERNAME]"  # Replace with actual maintainer username
+      - "eleanorfrajka"  # Replace with actual maintainer username
     assignees:
-      - "[MAINTAINER-USERNAME]"  # Replace with actual maintainer username
+      - "eleanorfrajka"  # Replace with actual maintainer username
     labels:
       - "github-actions"
       - "automated"
