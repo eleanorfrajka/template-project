@@ -95,13 +95,29 @@ make html
 
 ---
 
+## 🛠️ Using this template
+
+The key files to update when adapting this template to your own project:
+
+| File | What to change |
+|------|---------------|
+| `pyproject.toml` | Package name, description, author, URLs |
+| `README.md` | Title, description, GitHub URLs |
+| `CITATION.cff` | Author, ORCID, project title, URL |
+| `environment.yml` | Conda environment name |
+| `docs/source/conf.py` | Project name, author, copyright |
+| `template_project/logger.py` | Logger name (after renaming the directory) |
+
+The fastest approach is a global find-and-replace of `template_project` → `your_package_name`
+and `template-project` → `your-project-name`, then rename the `template_project/` directory.
+
+See the full [customisation checklist](customisation_checklist.md) for a complete step-by-step guide.
+
+---
+
 ## 🤝 Contributing
 
 Contributions are welcome!  Please also consider adding an [issue](https://github.com/eleanorfrajka/template-project/issues) when something isn't clear.
-
-See the [customisation checklist](customisation_checklist.md) to adapt this template to your own project.
-
-For information about planned improvements and the development roadmap, see [MODERNIZATION_PLAN.md](MODERNIZATION_PLAN.md).
 
 ---
 

@@ -98,7 +98,7 @@ def test_safe_update_attrs_existing_key_logs(caplog):
     ds = xr.Dataset(attrs={"project": "MOVE"})
     new_attrs = {"project": "OSNAP"}
 
-    with caplog.at_level("DEBUG", logger="amocarray"):
+    with caplog.at_level("DEBUG", logger="template_project"):
         utilities.safe_update_attrs(ds, new_attrs, overwrite=False, verbose=True)
 
     assert any(

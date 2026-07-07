@@ -5,14 +5,13 @@ This module provides a centrally configured logger for the project,
 with support for file and console output at different verbosity levels.
 """
 
-# amocarray/logger.py
 import datetime
 import logging
 from pathlib import Path
 from typing import Any
 
 # Global logger instance (will be configured by setup_logger)
-log = logging.getLogger("amocarray")
+log = logging.getLogger("template_project")
 log.setLevel(logging.DEBUG)  # capture everything; handlers filter later
 
 # Global logging flag
