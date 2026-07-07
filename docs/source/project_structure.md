@@ -52,7 +52,7 @@ template-project/
 │   └── moc_transports.nc         # [data] Example data file used for the template.
 │
 ├── logs/                         # [core] Log output from structured logging
-│   └── amocarray_*.log           # [core]
+│   └── template_project_*.log    # [core]
 │
 ├── .github/                      # [ci] GitHub-specific workflows (e.g., Actions)
 │   ├── workflows/
