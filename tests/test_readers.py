@@ -45,15 +45,15 @@ def test_load_dataset(array_name, expected_var):
             ds,
             xr.Dataset,
         ), f"Each dataset for {array_name} should be an xarray.Dataset"
-        assert (
-            "TIME" in ds or "time" in ds
-        ), f"{array_name} dataset should have TIME or time coordinate"
-        assert (
-            expected_var in ds
-        ), f"{array_name} dataset should contain variable {expected_var}"
-        assert (
-            "source_file" in ds.attrs
-        ), f"{array_name} dataset should include 'source_file' metadata"
-        assert (
-            "project" in ds.attrs
-        ), f"{array_name} dataset should include 'project' metadata"
+        assert "TIME" in ds or "time" in ds, (
+            f"{array_name} dataset should have TIME or time coordinate"
+        )
+        assert expected_var in ds, (
+            f"{array_name} dataset should contain variable {expected_var}"
+        )
+        assert "source_file" in ds.attrs, (
+            f"{array_name} dataset should include 'source_file' metadata"
+        )
+        assert "project" in ds.attrs, (
+            f"{array_name} dataset should include 'project' metadata"
+        )

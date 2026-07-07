@@ -1,5 +1,7 @@
+"""Data loading functions for oceanographic datasets."""
+
+from collections.abc import Callable
 from pathlib import Path
-from typing import Callable, List, Union
 
 import pandas as pd
 import xarray as xr
@@ -38,7 +40,7 @@ def _get_reader(array_name: str) -> Callable:
     except KeyError:
         raise ValueError(
             f"Unknown array name: {array_name}. Valid options are: {list(readers.keys())}",
-        )
+        ) from None
 
 
 def load_sample_dataset(array_name: str = "rapid") -> xr.Dataset:
@@ -85,11 +87,11 @@ def load_sample_dataset(array_name: str = "rapid") -> xr.Dataset:
 def load_dataset(
     array_name: str,
     source: str = None,
-    file_list: Union[str, List[str], None] = None,
+    file_list: str | list[str] | None = None,
     transport_only: bool = True,
-    data_dir: Union[str, Path, None] = None,
+    data_dir: str | Path | None = None,
     redownload: bool = False,
-) -> List[xr.Dataset]:
+) -> list[xr.Dataset]:
     """Load raw datasets from a selected AMOC observing array.
 
     Parameters
@@ -124,8 +126,6 @@ def load_dataset(
     if logger.LOGGING_ENABLED:
         logger.setup_logger(array_name=array_name)
 
-    # Use logger globally
-    log = logger.log
     log_info(f"Loading dataset for array: {array_name}")
 
     reader = _get_reader(array_name)
@@ -143,7 +143,7 @@ def load_dataset(
     return datasets
 
 
-def _summarise_datasets(datasets: List[xr.Dataset], array_name: str) -> None:
+def _summarise_datasets(datasets: list[xr.Dataset], array_name: str) -> None:
     """Print and log a summary of loaded datasets."""
     summary_lines = []
     summary_lines.append(f"Summary for array '{array_name}':")

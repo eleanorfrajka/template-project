@@ -1,6 +1,9 @@
+"""General-purpose utilities for data handling and downloading."""
+
+from collections.abc import Callable
+from ftplib import FTP
 from functools import wraps
 from pathlib import Path
-from typing import Callable, Dict, List, Optional, Union
 from urllib.parse import urlparse
 
 import requests
@@ -13,10 +16,11 @@ log = logger.log
 
 
 def get_default_data_dir() -> Path:
+    """Return the default data directory for the project."""
     return Path(__file__).resolve().parent.parent / "data"
 
 
-def apply_defaults(default_source: str, default_files: List[str]) -> Callable:
+def apply_defaults(default_source: str, default_files: list[str]) -> Callable:
     """Decorator to apply default values for 'source' and 'file_list' parameters if they are None.
 
     Parameters
@@ -36,8 +40,8 @@ def apply_defaults(default_source: str, default_files: List[str]) -> Callable:
     def decorator(func: Callable) -> Callable:
         @wraps(func)
         def wrapper(
-            source: Optional[str] = None,
-            file_list: Optional[List[str]] = None,
+            source: str | None = None,
+            file_list: list[str] | None = None,
             *args,
             **kwargs,
         ) -> Callable:
@@ -45,7 +49,7 @@ def apply_defaults(default_source: str, default_files: List[str]) -> Callable:
                 source = default_source
             if file_list is None:
                 file_list = default_files
-            return func(source=source, file_list=file_list, *args, **kwargs)
+            return func(*args, source=source, file_list=file_list, **kwargs)
 
         return wrapper
 
@@ -82,8 +86,8 @@ def _is_valid_url(url: str) -> bool:
 
 def resolve_file_path(
     file_name: str,
-    source: Union[str, Path, None],
-    download_url: Optional[str],
+    source: str | Path | None,
+    download_url: str | None,
     local_data_dir: Path,
     redownload: bool = False,
 ) -> Path:
@@ -132,7 +136,7 @@ def resolve_file_path(
             return download_file(download_url, local_data_dir, redownload=redownload)
         except Exception as e:
             log_error("Failed to download %s: %s", download_url, e)
-            raise FileNotFoundError(f"Failed to download {download_url}: {e}")
+            raise FileNotFoundError(f"Failed to download {download_url}: {e}") from e
 
     # If no options succeeded
     raise FileNotFoundError(
@@ -196,12 +200,11 @@ def download_file(url: str, dest_folder: str, redownload: bool = False) -> str:
 
 def safe_update_attrs(
     ds: xr.Dataset,
-    new_attrs: Dict[str, str],
+    new_attrs: dict[str, str],
     overwrite: bool = False,
     verbose: bool = True,
 ) -> xr.Dataset:
-    """Safely update attributes of an xarray Dataset without overwriting existing keys,
-    unless explicitly allowed.
+    """Safely update Dataset attributes without overwriting existing keys.
 
     Parameters
     ----------

@@ -1,6 +1,7 @@
+"""Functions for saving xarray Datasets to NetCDF files."""
+
 from numbers import Number
 from pathlib import Path
-from typing import Union
 
 import numpy as np
 import xarray as xr
@@ -8,13 +9,11 @@ import xarray as xr
 
 def save_dataset(
     ds: xr.Dataset,
-    output_file: Union[str, Path] = "../data/test.nc",
+    output_file: str | Path = "../data/test.nc",
     delete_existing: bool = False,
     prompt_user: bool = True,
 ) -> bool:
-    """
-    Attempts to save the dataset to a NetCDF file. If a TypeError occurs due to invalid attribute values,
-    it converts the invalid attributes to strings and retries the save operation.
+    """Save a Dataset to NetCDF, converting invalid attributes to strings on TypeError.
 
     Parameters
     ----------

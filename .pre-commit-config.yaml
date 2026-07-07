@@ -1,25 +1,9 @@
 repos:
-  - repo: https://github.com/psf/black
-    rev: 24.3.0
-    hooks:
-      - id: black
-        language_version: python3
-        files: \.(py|ipynb)$
-        exclude: ^data/
-
   - repo: https://github.com/codespell-project/codespell
-    rev: v2.2.6  # Check for the latest version
+    rev: v2.2.6
     hooks:
       - id: codespell
-        args: ["--ignore-words-list", "nd"]  # Optional: ignore some false positives
-
-#  - repo: https://github.com/pycqa/isort
-#    rev: 5.13.2
-#    hooks:
-#      - id: isort
-#        language_version: python3
-#        files: \.(py|ipynb)$
-#        exclude: ^data/
+        args: ["--ignore-words-list", "nd"]
 
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.5.0
@@ -35,23 +19,11 @@ repos:
         exclude: ^data/
       - id: check-added-large-files
 
-  - repo: local
-    hooks:
-      - id: pytest
-        name: pytest
-        entry: pytest -q
-        language: system
-        types: [python]
-        exclude: ^data/
-
-  - repo: https://github.com/charliermarsh/ruff-pre-commit
-    rev: v0.3.0
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.6.0
     hooks:
       - id: ruff
-        args: [
-          "--fix",
-          "--exit-zero",
-          "--select",
-          "E,F,W,C90,ANN,B,BLE,TRY,ARG,SLF",
-        ]
+        args: ["--fix"]
+        exclude: ^data/
+      - id: ruff-format
         exclude: ^data/

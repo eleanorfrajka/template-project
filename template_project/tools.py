@@ -1,5 +1,7 @@
+"""Core scientific tools and unit conversion utilities."""
+
 import logging
-from typing import Any, Dict, Union
+from typing import Any
 
 import xarray as xr
 
@@ -42,7 +44,7 @@ unit_str_format = {
 
 
 def reformat_units_var(
-    ds: xr.Dataset, var_name: str, unit_format: Dict[str, str] = unit_str_format
+    ds: xr.Dataset, var_name: str, unit_format: dict[str, str] = unit_str_format
 ) -> str:
     """
     Renames units in the dataset based on the provided dictionary for OG1.
@@ -68,7 +70,7 @@ def convert_units_var(
     var_values: Any,
     current_unit: str,
     new_unit: str,
-    unit_conversion: Dict[str, Dict[str, Union[str, float]]] = unit_conversion,
+    unit_conversion: dict[str, dict[str, str | float]] = unit_conversion,
 ) -> Any:
     """
     Convert the units of variables in an xarray Dataset to preferred units.  This is useful, for instance, to convert cm/s to m/s.

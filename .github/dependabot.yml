@@ -1,32 +1,5 @@
 version: 2
 updates:
-  # Enable version updates for Python dependencies
-  - package-ecosystem: "pip"
-    directory: "/"
-    schedule:
-      interval: "weekly"
-      day: "monday"
-      time: "09:00"
-    open-pull-requests-limit: 10
-    commit-message:
-      prefix: "[DEPS]"
-      include: "scope"
-    reviewers:
-      - "[MAINTAINER-USERNAME]"  # Replace with actual maintainer username
-    assignees:
-      - "[MAINTAINER-USERNAME]"  # Replace with actual maintainer username
-    labels:
-      - "dependencies"
-      - "automated"
-    # Group minor and patch updates together
-    groups:
-      minor-and-patch:
-        patterns:
-          - "*"
-        update-types:
-          - "minor"
-          - "patch"
-
   # Enable version updates for GitHub Actions
   - package-ecosystem: "github-actions"
     directory: "/"
@@ -38,10 +11,6 @@ updates:
     commit-message:
       prefix: "[CI]"
       include: "scope"
-    reviewers:
-      - "[MAINTAINER-USERNAME]"  # Replace with actual maintainer username
-    assignees:
-      - "[MAINTAINER-USERNAME]"  # Replace with actual maintainer username
     labels:
       - "github-actions"
       - "automated"

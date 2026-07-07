@@ -1,5 +1,7 @@
+"""Visualization utilities for oceanographic data."""
+
 from pathlib import Path
-from typing import Any, Tuple, Union
+from typing import Any
 
 import matplotlib.pyplot as plt
 import xarray as xr
@@ -9,7 +11,7 @@ from pandas.io.formats.style import Styler
 
 def plot_monthly_transport(
     ds: xr.Dataset, var: str = "moc_mar_hc10"
-) -> Tuple[Any, Any]:
+) -> tuple[Any, Any]:
     """Plot original and monthly averaged transport time series.
 
     Parameters
@@ -51,10 +53,8 @@ def plot_monthly_transport(
     return fig, ax
 
 
-def show_variables(data: Union[str, xr.Dataset]) -> Styler:
-    """
-    Processes an xarray Dataset or a netCDF file, extracts variable information,
-    and returns a styled DataFrame with details about the variables.
+def show_variables(data: str | xr.Dataset) -> Styler:
+    """Extract variable information from a Dataset or netCDF file as a styled DataFrame.
 
     Parameters
     ----------
@@ -116,10 +116,8 @@ def show_variables(data: Union[str, xr.Dataset]) -> Styler:
     return vars
 
 
-def show_attributes(data: Union[str, xr.Dataset]) -> DataFrame:
-    """
-    Processes an xarray Dataset or a netCDF file, extracts attribute information,
-    and returns a DataFrame with details about the attributes.
+def show_attributes(data: str | xr.Dataset) -> DataFrame:
+    """Extract attribute information from a Dataset or netCDF file as a DataFrame.
 
     Parameters
     ----------
@@ -137,11 +135,15 @@ def show_attributes(data: Union[str, xr.Dataset]) -> DataFrame:
         print(f"information is based on file: {data}")
         rootgrp = Dataset(data, "r", format="NETCDF4")
         attributes = rootgrp.ncattrs()
-        get_attr = lambda key: getattr(rootgrp, key)
+
+        def get_attr(key):
+            return getattr(rootgrp, key)
     elif isinstance(data, xr.Dataset):
         print("information is based on xarray Dataset")
         attributes = data.attrs.keys()
-        get_attr = lambda key: data.attrs[key]
+
+        def get_attr(key):
+            return data.attrs[key]
     else:
         raise TypeError("Input data must be a file path (str) or an xarray Dataset")
 

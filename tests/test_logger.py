@@ -44,9 +44,9 @@ def test_log_warning_creates_entry(tmp_path):
 
     time.sleep(0.1)
     log_file = next(logs_dir.glob("TESTWARN_*_read.log"), None)
-    assert (
-        log_file is not None
-    ), "No log file matching pattern TESTWARN_*_read.log found"
+    assert log_file is not None, (
+        "No log file matching pattern TESTWARN_*_read.log found"
+    )
 
     with open(log_file) as f:
         contents = f.read()

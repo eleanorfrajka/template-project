@@ -7,7 +7,7 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 import datetime
 
-year = datetime.datetime.now(tz=datetime.timezone.utc).date().year
+year = datetime.datetime.now(tz=datetime.UTC).date().year
 
 # Should not need to add paths if the docs.yml and docs_deploy.yml install the package.
 # import os

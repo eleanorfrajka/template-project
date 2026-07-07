@@ -1,5 +1,6 @@
+"""Reader for RAPID mooring array transport data."""
+
 from pathlib import Path
-from typing import Union
 
 import xarray as xr
 
@@ -33,10 +34,10 @@ RAPID_FILE_METADATA = {
 
 @apply_defaults(RAPID_DEFAULT_SOURCE, RAPID_DEFAULT_FILES)
 def read_rapid(
-    source: Union[str, Path, None],
-    file_list: Union[str, list[str]],
+    source: str | Path | None,
+    file_list: str | list[str],
     transport_only: bool = True,
-    data_dir: Union[str, Path, None] = None,
+    data_dir: str | Path | None = None,
     redownload: bool = False,
 ) -> list[xr.Dataset]:
     """Load the RAPID transport dataset from a URL or local file path into an xarray.Dataset.
@@ -105,7 +106,9 @@ def read_rapid(
             ds = xr.open_dataset(file_path)
         except Exception as e:
             log_error("Failed to open NetCDF file: %s: %s", file_path, e)
-            raise FileNotFoundError(f"Failed to open NetCDF file: {file_path}: {e}")
+            raise FileNotFoundError(
+                f"Failed to open NetCDF file: {file_path}: {e}"
+            ) from e
 
         file_metadata = RAPID_FILE_METADATA.get(file, {})
         log_info("Attaching metadata to RAPID dataset from file: %s", file)

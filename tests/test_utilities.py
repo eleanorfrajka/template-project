@@ -39,7 +39,8 @@ def test_download_file_http(mock_get):
         out_path = Path(tmpdir) / "testfile.txt"
 
         downloaded = utilities.download_file(url, tmpdir)
-        assert Path(downloaded).exists()
+        assert Path(downloaded) == out_path
+        assert out_path.exists()
         with open(downloaded, "rb") as f:
             assert f.read() == b"test content"
 
