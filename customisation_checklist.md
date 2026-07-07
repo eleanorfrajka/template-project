@@ -75,9 +75,9 @@ mv template_project/ your_package_name/
 ## 4. Quick check — search for remaining template references
 
 ```bash
-grep -r "template.project\|template_project\|eleanorfrajka\|Frajka-Williams" \
-     --include="*.py" --include="*.md" --include="*.toml" \
-     --include="*.yml" --include="*.cff" --include="*.rst" .
+grep -rE 'template[-_.]project|eleanorfrajka|Frajka-Williams' \
+     --include='*.py' --include='*.md' --include='*.toml' \
+     --include='*.yml' --include='*.cff' --include='*.rst' .
 ```
 
 Any hits outside of this checklist file itself should be reviewed.

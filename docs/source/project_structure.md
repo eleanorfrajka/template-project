@@ -52,7 +52,7 @@ template-project/
 │   └── moc_transports.nc         # [data] Example data file used for the template.
 │
 ├── logs/                         # [core] Log output from structured logging
-│   └── template_project_*.log    # [core]
+│   └── <ARRAY>_<timestamp>_read.log  # [core] e.g. MOVE_20260707T10_read.log
 │
 ├── .github/                      # [ci] GitHub-specific workflows (e.g., Actions)
 │   ├── workflows/
