@@ -103,9 +103,10 @@
            <div itemprop="articleBody">
              
   <h1>Source code for template_project.writers</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">numbers</span><span class="w"> </span><span class="kn">import</span> <span class="n">Number</span>
+<span></span><span class="sd">&quot;&quot;&quot;Functions for saving xarray Datasets to NetCDF files.&quot;&quot;&quot;</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">numbers</span><span class="w"> </span><span class="kn">import</span> <span class="n">Number</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Union</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xr</span>
@@ -115,13 +116,11 @@
 <a class="viewcode-back" href="../../template_project.html#template_project.writers.save_dataset">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">save_dataset</span><span class="p">(</span>
     <span class="n">ds</span><span class="p">:</span> <span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">,</span>
-    <span class="n">output_file</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Path</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;../data/test.nc&quot;</span><span class="p">,</span>
+    <span class="n">output_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span> <span class="o">=</span> <span class="s2">&quot;../data/test.nc&quot;</span><span class="p">,</span>
     <span class="n">delete_existing</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="n">prompt_user</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Attempts to save the dataset to a NetCDF file. If a TypeError occurs due to invalid attribute values,</span>
-<span class="sd">    it converts the invalid attributes to strings and retries the save operation.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Save a Dataset to NetCDF, converting invalid attributes to strings on TypeError.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>

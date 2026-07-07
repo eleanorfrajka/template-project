@@ -103,8 +103,10 @@
            <div itemprop="articleBody">
              
   <h1>Source code for template_project.tools</h1><div class="highlight"><pre>
-<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Union</span>
+<span></span><span class="sd">&quot;&quot;&quot;Core scientific tools and unit conversion utilities.&quot;&quot;&quot;</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xr</span>
 
@@ -149,7 +151,7 @@
 <div class="viewcode-block" id="reformat_units_var">
 <a class="viewcode-back" href="../../template_project.html#template_project.tools.reformat_units_var">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">reformat_units_var</span><span class="p">(</span>
-    <span class="n">ds</span><span class="p">:</span> <span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">,</span> <span class="n">var_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">unit_format</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">unit_str_format</span>
+    <span class="n">ds</span><span class="p">:</span> <span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">,</span> <span class="n">var_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">unit_format</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">unit_str_format</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Renames units in the dataset based on the provided dictionary for OG1.</span>
@@ -178,7 +180,7 @@
     <span class="n">var_values</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
     <span class="n">current_unit</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="n">new_unit</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-    <span class="n">unit_conversion</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">]]]</span> <span class="o">=</span> <span class="n">unit_conversion</span><span class="p">,</span>
+    <span class="n">unit_conversion</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">float</span><span class="p">]]</span> <span class="o">=</span> <span class="n">unit_conversion</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Convert the units of variables in an xarray Dataset to preferred units.  This is useful, for instance, to convert cm/s to m/s.</span>
