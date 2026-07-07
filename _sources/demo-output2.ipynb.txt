@@ -24,10 +24,10 @@
    "id": "6a1920f3",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2026-07-07T10:13:20.217261Z",
-     "iopub.status.busy": "2026-07-07T10:13:20.217095Z",
-     "iopub.status.idle": "2026-07-07T10:13:22.176252Z",
-     "shell.execute_reply": "2026-07-07T10:13:22.175373Z"
+     "iopub.execute_input": "2026-07-07T11:04:01.165626Z",
+     "iopub.status.busy": "2026-07-07T11:04:01.165420Z",
+     "iopub.status.idle": "2026-07-07T11:04:02.066945Z",
+     "shell.execute_reply": "2026-07-07T11:04:02.066010Z"
     }
    },
    "outputs": [],
@@ -43,10 +43,10 @@
    "id": "f6051cc7",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2026-07-07T10:13:22.178530Z",
-     "iopub.status.busy": "2026-07-07T10:13:22.178256Z",
-     "iopub.status.idle": "2026-07-07T10:13:22.216949Z",
-     "shell.execute_reply": "2026-07-07T10:13:22.216347Z"
+     "iopub.execute_input": "2026-07-07T11:04:02.068944Z",
+     "iopub.status.busy": "2026-07-07T11:04:02.068706Z",
+     "iopub.status.idle": "2026-07-07T11:04:02.107020Z",
+     "shell.execute_reply": "2026-07-07T11:04:02.106343Z"
     }
    },
    "outputs": [
@@ -54,70 +54,70 @@
      "name": "stderr",
      "output_type": "stream",
      "text": [
-      "20260707T101322 INFO     setup_logger Logger initialized for array: rapid, writing to /home/runner/work/template-project/template-project/logs/RAPID_20260707T10_read.log\n"
+      "20260707T110402 INFO     setup_logger Logger initialized for array: rapid, writing to /home/runner/work/template-project/template-project/logs/RAPID_20260707T11_read.log\n"
      ]
     },
     {
      "name": "stderr",
      "output_type": "stream",
      "text": [
-      "20260707T101322 INFO     load_dataset Loading dataset for array: rapid\n"
+      "20260707T110402 INFO     load_dataset Loading dataset for array: rapid\n"
      ]
     },
     {
      "name": "stderr",
      "output_type": "stream",
      "text": [
-      "20260707T101322 INFO     read_rapid Starting to read RAPID dataset\n"
+      "20260707T110402 INFO     read_rapid Starting to read RAPID dataset\n"
      ]
     },
     {
      "name": "stderr",
      "output_type": "stream",
      "text": [
-      "20260707T101322 INFO     resolve_file_path Using cached file: /home/runner/work/template-project/template-project/data/moc_transports.nc\n"
+      "20260707T110402 INFO     resolve_file_path Using cached file: /home/runner/work/template-project/template-project/data/moc_transports.nc\n"
      ]
     },
     {
      "name": "stderr",
      "output_type": "stream",
      "text": [
-      "20260707T101322 INFO     read_rapid Opening RAPID dataset: /home/runner/work/template-project/template-project/data/moc_transports.nc\n"
+      "20260707T110402 INFO     read_rapid Opening RAPID dataset: /home/runner/work/template-project/template-project/data/moc_transports.nc\n"
      ]
     },
     {
      "name": "stderr",
      "output_type": "stream",
      "text": [
-      "20260707T101322 INFO     read_rapid Attaching metadata to RAPID dataset from file: moc_transports.nc\n"
+      "20260707T110402 INFO     read_rapid Attaching metadata to RAPID dataset from file: moc_transports.nc\n"
      ]
     },
     {
      "name": "stderr",
      "output_type": "stream",
      "text": [
-      "20260707T101322 INFO     read_rapid Renaming 'time' dimension/coordinate to 'TIME'\n"
+      "20260707T110402 INFO     read_rapid Renaming 'time' dimension/coordinate to 'TIME'\n"
      ]
     },
     {
      "name": "stderr",
      "output_type": "stream",
      "text": [
-      "20260707T101322 INFO     read_rapid Successfully loaded 1 RAPID dataset(s)\n"
+      "20260707T110402 INFO     read_rapid Successfully loaded 1 RAPID dataset(s)\n"
      ]
     },
     {
      "name": "stderr",
      "output_type": "stream",
      "text": [
-      "20260707T101322 INFO     load_dataset Successfully loaded 1 dataset(s) for array: rapid\n"
+      "20260707T110402 INFO     load_dataset Successfully loaded 1 dataset(s) for array: rapid\n"
      ]
     },
     {
      "name": "stderr",
      "output_type": "stream",
      "text": [
-      "20260707T101322 INFO     _summarise_datasets \n",
+      "20260707T110402 INFO     _summarise_datasets \n",
       "Summary for array 'rapid':\n",
       "Total datasets loaded: 1\n",
       "\n",
@@ -175,10 +175,10 @@
    "id": "210d69fb",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2026-07-07T10:13:22.218710Z",
-     "iopub.status.busy": "2026-07-07T10:13:22.218558Z",
-     "iopub.status.idle": "2026-07-07T10:13:23.170281Z",
-     "shell.execute_reply": "2026-07-07T10:13:23.169523Z"
+     "iopub.execute_input": "2026-07-07T11:04:02.108953Z",
+     "iopub.status.busy": "2026-07-07T11:04:02.108777Z",
+     "iopub.status.idle": "2026-07-07T11:04:03.127021Z",
+     "shell.execute_reply": "2026-07-07T11:04:03.126259Z"
     }
    },
    "outputs": [
@@ -214,10 +214,10 @@
    "id": "087bdd98",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2026-07-07T10:13:23.172165Z",
-     "iopub.status.busy": "2026-07-07T10:13:23.172001Z",
-     "iopub.status.idle": "2026-07-07T10:13:23.190624Z",
-     "shell.execute_reply": "2026-07-07T10:13:23.189880Z"
+     "iopub.execute_input": "2026-07-07T11:04:03.128734Z",
+     "iopub.status.busy": "2026-07-07T11:04:03.128572Z",
+     "iopub.status.idle": "2026-07-07T11:04:03.145537Z",
+     "shell.execute_reply": "2026-07-07T11:04:03.144839Z"
     }
    },
    "outputs": [
