@@ -25,8 +25,13 @@ def show_variables(data: str | xr.Dataset) -> Styler:
         - comment: Any additional comments about the variable (if available).
     """
     if isinstance(data, str):
+        # A file path: open with netCDF4 (the per-variable branch below reads the
+        # netCDF4.Variable API — .dimensions/.units/.comment). xr.Dataset(str) would
+        # try to build a dataset from the string as a mapping and raise.
+        from netCDF4 import Dataset
+
         log_info("information is based on file: %s", data)
-        dataset = xr.Dataset(data)
+        dataset = Dataset(data, "r", format="NETCDF4")
         variables = dataset.variables
     elif isinstance(data, xr.Dataset):
         log_info("information is based on xarray Dataset")
@@ -38,21 +43,27 @@ def show_variables(data: str | xr.Dataset) -> Styler:
     for i, key in enumerate(variables):
         var = variables[key]
         if isinstance(data, str):
+            # netCDF4.Variable: attributes via getattr, dims via .dimensions.
             dims = var.dimensions[0] if len(var.dimensions) == 1 else "string"
-            units = "" if not hasattr(var, "units") else var.units
-            comment = "" if not hasattr(var, "comment") else var.comment
+            units = getattr(var, "units", "")
+            comment = getattr(var, "comment", "")
+            standard_name = getattr(var, "standard_name", "")
+            dtype = str(var.dtype)
         else:
+            # xarray Variable: attributes via .attrs, dims via .dims.
             dims = var.dims[0] if len(var.dims) == 1 else "string"
             units = var.attrs.get("units", "")
             comment = var.attrs.get("comment", "")
+            standard_name = var.attrs.get("standard_name", "")
+            dtype = str(var.data.dtype)
 
         info[i] = {
             "name": key,
             "dims": dims,
             "units": units,
             "comment": comment,
-            "standard_name": var.attrs.get("standard_name", ""),
-            "dtype": str(var.dtype) if isinstance(data, str) else str(var.data.dtype),
+            "standard_name": standard_name,
+            "dtype": dtype,
         }
 
     vars = DataFrame(info).T

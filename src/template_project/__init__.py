@@ -5,13 +5,14 @@ Public API
 Verb-style convenience functions delegate to the subpackages:
 
     import template_project as tp
-    ds = tp.read("rapid")        # -> readers.load_dataset
+    datasets = tp.read("rapid")  # -> readers.load_dataset; returns a list of Datasets
+    ds = datasets[0]
     tp.write(ds, "out.nc")       # -> writers.save_dataset
     tp.plot(ds)                  # -> plotters.plot_monthly_transport
     tp.process(ds)               # -> processors.process
 
-The subpackages remain importable directly, e.g.
-``from template_project.readers import load_dataset``.
+`tp.read` returns a ``list`` of Datasets (one per file). The subpackages remain
+importable directly, e.g. ``from template_project.readers import load_dataset``.
 """
 
 try:

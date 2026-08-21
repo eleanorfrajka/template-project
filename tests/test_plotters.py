@@ -55,6 +55,19 @@ def test_show_variables_returns_styler():
     assert isinstance(styled, Styler)
 
 
+def test_show_variables_from_file_path(tmp_path):
+    # The str/file-path branch must open the file (netCDF4), not crash on xr.Dataset(str).
+    ds = xr.Dataset(
+        {"moc_mar_hc10": (["TIME"], [1.0, 2.0, 3.0], {"units": "Sv"})},
+        coords={"TIME": [0, 1, 2]},
+    )
+    ncfile = tmp_path / "vars.nc"
+    ds.to_netcdf(ncfile)
+
+    styled = plotters.show_variables(str(ncfile))
+    assert isinstance(styled, Styler)
+
+
 def test_show_attributes_returns_styler():
     # Create a dummy dataset
     ds = xr.Dataset(
