@@ -7,12 +7,12 @@ import numpy as np
 import xarray as xr
 
 from template_project.logger import log_error, log_info, log_warning
-from template_project.utilities import cast_output_dtypes
+from template_project.utilities import cast_output_dtypes, get_default_data_dir
 
 
 def save_dataset(
     ds: xr.Dataset,
-    output_file: str | Path = "../data/test.nc",
+    output_file: str | Path | None = None,
     *,
     compress: bool = True,
     complevel: int = 4,
@@ -30,8 +30,9 @@ def save_dataset(
     ----------
     ds : xarray.Dataset
         The dataset to be saved.
-    output_file : str or Path
-        The path to the output NetCDF file. Defaults to '../data/test.nc'.
+    output_file : str or Path, optional
+        The path to the output NetCDF file. Defaults to ``<cwd>/data/test.nc``
+        (via :func:`~template_project.utilities.get_default_data_dir`).
     compress : bool
         Apply lossless zlib compression to every data variable (writes NETCDF4).
         Defaults to True. When False, writes uncompressed NETCDF4_CLASSIC.
@@ -59,6 +60,8 @@ def save_dataset(
 
     Based on: https://github.com/pydata/xarray/issues/3743
     """
+    if output_file is None:
+        output_file = get_default_data_dir() / "test.nc"
     output_path = Path(output_file)
     if output_path.exists():
         if prompt_user:
@@ -89,7 +92,10 @@ def save_dataset(
     if compress:
         # zlib compression requires the NETCDF4 format (not NETCDF4_CLASSIC).
         nc_format = "NETCDF4"
-        ds = ds.copy()
+        # Shallow copy: shares data buffers (no duplication of large arrays) but
+        # gives independent attrs dicts, so the coord-attr edits below don't mutate
+        # the caller's dataset.
+        ds = ds.copy(deep=False)
         # Strip coord attributes that clash with xarray's automatic CF encoding.
         for coord in ds.coords:
             for key in ("units", "calendar"):

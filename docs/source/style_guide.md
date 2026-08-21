@@ -15,8 +15,7 @@ def convert_units_var(
     values: xr.DataArray,
     current: str,
     target: str,
-) -> xr.DataArray:
-    ...
+) -> xr.DataArray: ...
 ```
 
 ### 🐍 Naming

@@ -51,26 +51,29 @@ def find_best_dtype(var_name: str, da: xr.DataArray) -> type:
 
     - String / datetime / object variables: unchanged.
     - ``time`` in name: unchanged (preserve datetime64 / float encoding).
-    - ``*_qc`` suffix or ``flag`` in name: ``int8``.
+    - ``*_qc`` suffix or ``flag`` in name: ``int8`` (name match is case-insensitive).
     - ``serial_number`` or ``serial``: ``int32``.
     - ``latitude`` / ``longitude`` in name: ``float64``.
-    - Integer input: downsize to ``int32`` if stored as ``int64``, else unchanged.
+    - Signed 64-bit integer input: downsize to ``int32``; unsigned integers are left
+      unchanged (``uint64`` values can exceed the ``int32`` range).
     - ``float64`` input: ``float32``.
     - Anything else: unchanged.
 
     """
     input_dtype = da.dtype.type
+    name = var_name.lower()
     if da.dtype.kind in ("U", "S", "O", "M"):
         return input_dtype
-    if "time" in var_name.lower():
+    if "time" in name:
         return input_dtype
-    if var_name.endswith("_qc") or "flag" in var_name:
+    if name.endswith("_qc") or "flag" in name:
         return np.int8
-    if var_name in ("serial_number", "serial"):
+    if name in ("serial_number", "serial"):
         return np.int32
-    if "latitude" in var_name.lower() or "longitude" in var_name.lower():
+    if "latitude" in name or "longitude" in name:
         return np.float64
-    if da.dtype.kind in ("i", "u") and da.dtype.itemsize == _INT64_NBYTES:
+    # Only downcast *signed* int64 -> int32; uint64 values can exceed int32 range.
+    if da.dtype.kind == "i" and da.dtype.itemsize == _INT64_NBYTES:
         return np.int32
     if input_dtype == np.float64:
         return np.float32
@@ -106,7 +109,7 @@ def cast_output_dtypes(
 
     """
     keep = set(keep_dtype or ())
-    updates: dict[str, xr.Variable] = {}
+    updates: dict[str, xr.DataArray] = {}
     for vname in ds.data_vars:
         if vname in keep:
             continue
@@ -119,15 +122,15 @@ def cast_output_dtypes(
         ):
             # NaN cannot be represented as an integer; replace before casting.
             # QC/flag variables use 9 (CF "missing value"); other integer vars use 0.
-            fill_val = 9 if (vname.endswith("_qc") or "flag" in vname) else 0
-            safe_vals = np.where(np.isfinite(var.values), var.values, fill_val)
-            updates[vname] = xr.Variable(
-                var.dims, safe_vals.astype(target), attrs=var.attrs
-            )
+            name = vname.lower() if isinstance(vname, str) else str(vname)
+            fill_val = 9 if (name.endswith("_qc") or "flag" in name) else 0
+            # xr.where keeps dask arrays lazy, so a larger-than-RAM dataset still
+            # streams to disk chunk-by-chunk instead of being computed into memory.
+            new = xr.where(np.isfinite(var), var, fill_val).astype(target)
         else:
-            updates[vname] = xr.Variable(
-                var.dims, var.values.astype(target), attrs=var.attrs
-            )
+            new = var.astype(target)
+        new.attrs = dict(var.attrs)
+        updates[vname] = new
     if not updates:
         return ds
     return ds.assign(updates)

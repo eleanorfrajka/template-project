@@ -27,6 +27,7 @@ This lets Python find your package and reflects changes without needing to reins
 If you're working in a Jupyter notebook and haven't installed the package, insert this before importing:
 ```python
 import sys
+
 sys.path.append("/path/to/your/template-project")
 ```
 Then you can run:

@@ -111,26 +111,27 @@ def setup_logger(array_name: str, output_dir: str = "logs") -> None:
     log_filename = f"{array_name.upper()}_{timestamp}_read.log"
     log_path = output_path / log_filename
 
-    # Prevent duplicate handlers in case of multiple calls
-    if not any(
+    # A file handler for this exact path is already attached — nothing to do.
+    if any(
         isinstance(h, logging.FileHandler) and h.baseFilename == str(log_path)
         for h in log.handlers
     ):
-        file_handler = logging.FileHandler(log_path, encoding="utf-8", mode="w")
-        formatter = logging.Formatter(
+        return
+
+    # Remove stale file handlers from previous runs, but preserve any stream/stdout
+    # handlers the caller attached (e.g. via log_to_stdout()) — clearing all handlers
+    # would silently drop console output the user explicitly enabled.
+    for h in list(log.handlers):
+        if isinstance(h, logging.FileHandler):
+            log.removeHandler(h)
+            h.close()
+
+    file_handler = logging.FileHandler(log_path, encoding="utf-8", mode="w")
+    file_handler.setFormatter(
+        logging.Formatter(
             fmt="%(asctime)s %(levelname)-8s %(funcName)s %(message)s",
             datefmt="%Y%m%dT%H%M%S",
         )
-        file_handler.setFormatter(formatter)
-
-        # Optional: console handler
-        console_handler = logging.StreamHandler()
-        console_handler.setFormatter(formatter)
-
-        # Clear existing handlers first
-        log.handlers.clear()
-
-        log.addHandler(file_handler)
-        log.addHandler(console_handler)
-
-        log.info(f"Logger initialized for array: {array_name}, writing to {log_path}")
+    )
+    log.addHandler(file_handler)
+    log.info("Logger initialized for array: %s, writing to %s", array_name, log_path)

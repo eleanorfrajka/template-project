@@ -70,6 +70,16 @@ def test_save_dataset_compresses_data_vars(tmp_path):
     assert reopened["mock_variable"].encoding.get("zlib") is True
 
 
+def test_compress_does_not_mutate_caller_coord_attrs(tmp_path):
+    ds = create_dummy_dataset()
+    ds["x"].attrs["units"] = "count"  # a coord attr the writer strips before writing
+    outfile = tmp_path / "nomutate.nc"
+
+    assert save_dataset(ds, output_file=outfile, delete_existing=True)
+    # The shallow copy must leave the caller's dataset untouched.
+    assert ds["x"].attrs.get("units") == "count"
+
+
 def test_optimise_dtype_downcasts_float64_by_default(tmp_path):
     ds = create_dummy_dataset()  # mock_variable is float64
     outfile = tmp_path / "optimised.nc"

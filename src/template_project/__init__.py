@@ -51,10 +51,11 @@ def read(array_name: str = "rapid", **kwargs: Any) -> list[xr.Dataset]:
     return readers.load_dataset(array_name, **kwargs)
 
 
-def write(
-    ds: xr.Dataset, output_file: str | Path = "../data/test.nc", **kwargs: Any
-) -> bool:
-    """Save a Dataset to NetCDF (delegates to ``writers.save_dataset``)."""
+def write(ds: xr.Dataset, output_file: str | Path | None = None, **kwargs: Any) -> bool:
+    """Save a Dataset to NetCDF (delegates to ``writers.save_dataset``).
+
+    ``output_file`` defaults to ``<cwd>/data/test.nc`` when omitted.
+    """
     return writers.save_dataset(ds, output_file, **kwargs)
 
 

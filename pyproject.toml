@@ -57,7 +57,8 @@ docs = [
 # One command: `pip install -e ".[dev]"`.
 dev = [
   "template-project-efw[test,docs]",
-  "ruff>=0.6",
+  "ruff==0.16.4",         # pin exactly: ruff's formatter output varies by version.
+                          # Keep in sync with the ruff pin in .github/workflows/tests.yml.
   "jupyterlab>=4.0",
   "nbconvert>=7.8",
   "towncrier",

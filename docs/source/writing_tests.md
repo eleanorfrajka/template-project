@@ -23,6 +23,7 @@ Tests are written as plain Python functions and typically use assertions to chec
 ```python
 # tests/test_math.py
 
+
 def test_addition():
     assert 1 + 1 == 2
 ```
@@ -32,6 +33,7 @@ To test your own project modules, just import them like normal:
 ```python
 # tests/test_processors.py
 from template_project.processors import convert_units_var
+
 
 def test_convert_units_basic():
     result = convert_units_var(10, "m", "km")
