@@ -33,7 +33,7 @@ jobs:
 
     - name: Install package
       run: |
-        micromamba run -n template-project python -m pip install -e . --force-reinstall
+        micromamba run -n template-project python -m pip install -e ".[dev]" --force-reinstall
         # Force version file regeneration with setuptools-scm
         micromamba run -n template-project python -c "import setuptools_scm; print('Version detected:', setuptools_scm.get_version())"
         # Verify what version the docs will see

@@ -31,11 +31,11 @@ jobs:
             - conda-forge
           channel_priority: strict
 
-    - name: Install package (editable)
+    - name: Install package (editable, with docs + tooling deps)
       shell: bash -l {0}
       run: |
         micromamba run -n template-project python -m pip install --upgrade pip
-        micromamba run -n template-project python -m pip install -e . --no-deps --force-reinstall
+        micromamba run -n template-project python -m pip install -e ".[dev]"
 
     # Assumes that the notebook to be documented is located within notebooks/ and is called demo.ipynb
     # In the example below, we've set `--ExecutePreprocessor.allow_errors=False` to fail if there are notebook errors
