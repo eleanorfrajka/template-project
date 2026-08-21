@@ -83,3 +83,19 @@ jobs:
 
       - name: Format check (ruff format)
         run: ruff format --check .
+
+  # Single stable gate for branch protection: require ONLY this check on main.
+  # It stays green as long as every required leg (the whole `test` matrix + `lint`)
+  # succeeds, so changing the matrix never breaks the required-checks list again.
+  # The 3.14 experimental leg uses continue-on-error, so its failure does not fail
+  # `test` and therefore does not fail this gate.
+  tests-complete:
+    if: always()
+    needs: [test, lint]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verify all required jobs passed
+        run: |
+          echo "test  = ${{ needs.test.result }}"
+          echo "lint  = ${{ needs.lint.result }}"
+          [[ "${{ needs.test.result }}" == "success" && "${{ needs.lint.result }}" == "success" ]] || exit 1

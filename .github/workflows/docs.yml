@@ -25,11 +25,11 @@ jobs:
       with:
         environment-file: docs/environment.yml
         init-shell: bash
+        cache-environment: true
         condarc: |
           channels:
             - conda-forge
           channel_priority: strict
-          cache-environment: true
 
     - name: Install package (editable)
       shell: bash -l {0}
