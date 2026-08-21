@@ -1,12 +1,11 @@
 """Core scientific tools and unit conversion utilities."""
 
-import logging
 from typing import Any
 
 import xarray as xr
 
-# Initialize logging
-_log = logging.getLogger(__name__)
+from template_project.logger import log_warning
+
 # Various conversions from the key to units_name with the multiplicative conversion factor
 unit_conversion = {
     "cm/s": {"units_name": "m/s", "factor": 0.01},
@@ -59,11 +58,7 @@ def reformat_units_var(
     xarray.Dataset: The dataset with renamed units.
     """
     old_unit = ds[var_name].attrs["units"]
-    if old_unit in unit_format:
-        new_unit = unit_format[old_unit]
-    else:
-        new_unit = old_unit
-    return new_unit
+    return unit_format.get(old_unit, old_unit)
 
 
 def convert_units_var(
@@ -96,6 +91,7 @@ def convert_units_var(
         new_values = var_values * conversion_factor
     else:
         new_values = var_values
-        print(f"No conversion information found for {current_unit} to {new_unit}")
-    #        raise ValueError(f"No conversion information found for {current_unit} to {new_unit}")
+        log_warning(
+            "No conversion information found for %s to %s", current_unit, new_unit
+        )
     return new_values

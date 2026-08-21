@@ -27,6 +27,7 @@ This lets Python find your package and reflects changes without needing to reins
 If you're working in a Jupyter notebook and haven't installed the package, insert this before importing:
 ```python
 import sys
+
 sys.path.append("/path/to/your/template-project")
 ```
 Then you can run:
@@ -51,8 +52,7 @@ This usually means something is wrong with the local installation process. Try t
 ```bash
 virtualenv venv
 source venv/bin/activate && micromamba deactivate
-pip install -r requirements.txt
-pip install -e .
+pip install -e ".[dev]"
 ```
 
 If this works locally, your GitHub Actions will likely succeed too.

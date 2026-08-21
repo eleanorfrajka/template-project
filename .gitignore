@@ -1,5 +1,8 @@
-*/_version.py
-data/temp.nc
+**/_version.py
+
+# Data files — not stored in the repository (downloaded/generated at runtime).
+# Anchored to the repo root so any package data under template_project/ is NOT excluded.
+/data/
 
 
 logs/*log

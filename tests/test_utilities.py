@@ -2,6 +2,7 @@ import tempfile
 from pathlib import Path
 from unittest.mock import MagicMock, patch
 
+import numpy as np
 import pytest
 import xarray as xr
 
@@ -79,7 +80,51 @@ def test_apply_defaults_decorator_applies_source_and_file_list():
     ],
 )
 def test_is_valid_url(url, expected):
-    assert utilities._is_valid_url(url) == expected
+    assert utilities.is_valid_url(url) == expected
+
+
+@pytest.mark.parametrize(
+    "var_name,data,expected",
+    [
+        ("temperature", np.array([1.0, 2.0], dtype="float64"), np.float32),
+        ("count", np.array([1, 2], dtype="int64"), np.int32),
+        ("temperature_qc", np.array([0, 1], dtype="int64"), np.int8),
+        # QC/flag name match is case-insensitive (uppercase CF convention).
+        ("TEMP_QC", np.array([0.0, 1.0], dtype="float64"), np.int8),
+        ("QC_FLAG", np.array([0.0], dtype="float64"), np.int8),
+        ("serial", np.array([123, 456], dtype="int64"), np.int32),
+        ("latitude", np.array([1.0], dtype="float32"), np.float64),
+        ("time", np.array([1.0, 2.0], dtype="float64"), np.float64),
+        # Unsigned 64-bit is NOT downcast to int32 (would overflow large values).
+        ("bigcount", np.array([1, 2], dtype="uint64"), np.uint64),
+    ],
+)
+def test_find_best_dtype(var_name, data, expected):
+    da = xr.DataArray(data)
+    assert utilities.find_best_dtype(var_name, da) == expected
+
+
+def test_cast_output_dtypes_replaces_nan_and_downcasts():
+    ds = xr.Dataset(
+        {
+            "temp": ("x", np.array([1.0, 2.0], dtype="float64")),
+            "temp_qc": ("x", np.array([1.0, np.nan], dtype="float64")),
+        }
+    )
+    out = utilities.cast_output_dtypes(ds)
+    # float64 measurement -> float32; float QC with NaN -> int8 with CF fill 9.
+    assert out["temp"].dtype == np.float32
+    assert out["temp_qc"].dtype == np.int8
+    assert out["temp_qc"].values.tolist() == [1, 9]
+    # Input dataset is not modified.
+    assert ds["temp"].dtype == np.float64
+    assert np.isnan(ds["temp_qc"].values[1])
+
+
+def test_cast_output_dtypes_keep_dtype():
+    ds = xr.Dataset({"juld": ("x", np.array([1.0e9, 2.0e9], dtype="float64"))})
+    out = utilities.cast_output_dtypes(ds, keep_dtype=["juld"])
+    assert out["juld"].dtype == np.float64
 
 
 def test_safe_update_attrs_add_new_attribute():

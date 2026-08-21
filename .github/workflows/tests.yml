@@ -2,37 +2,40 @@ name: Run tests
 
 on:
   push:
-    branches: [ "main" ]
-    paths:
-      - '**.py'
-      - 'template_project/**'
-      - 'tests/**'
-      - 'pyproject.toml'
-      - 'requirements*.txt'
-      - '.pre-commit-config.yaml'
+    branches: ["main"]
+    paths-ignore: ['**.md', '**.rst']   # skip the suite on pure docs changes
   pull_request:
-    branches: [ "main" ]
-    paths:
-      - '**.py'
-      - 'template_project/**'
-      - 'tests/**'
-      - 'pyproject.toml'
-      - 'requirements*.txt'
-      - '.pre-commit-config.yaml'
+    branches: ["main"]
+    paths-ignore: ['**.md', '**.rst']
+
+# Cancel superseded runs when a branch/PR is pushed again in quick succession.
+concurrency:
+  group: tests-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   test:
     name: ${{ matrix.os }} / Py ${{ matrix.python-version }}
     runs-on: ${{ matrix.os }}
+    # Experimental legs (3.14) are allowed to fail without failing the workflow.
+    continue-on-error: ${{ matrix.experimental == true }}
     defaults:
       run:
         shell: bash
     strategy:
+      # Fail fast: cancel the rest of the matrix as soon as one required leg fails.
+      # The 3.14 experimental leg uses continue-on-error, so its failure never
+      # cancels the required legs.
       fail-fast: true
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
-        # Testing across all selected supported versions from your spec
-        python-version: ["3.11", "3.12"]
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        python-version: ["3.11"]     # full 3-OS coverage on the primary version
+        include:
+          # Supported range 3.11–3.13, ubuntu-only to keep the job count down.
+          - { os: ubuntu-latest, python-version: "3.12" }
+          - { os: ubuntu-latest, python-version: "3.13" }
+          # 3.14: experimental (allow-failure) — deps may not have wheels yet.
+          - { os: ubuntu-latest, python-version: "3.14", experimental: true }
 
     steps:
       - name: Checkout code
@@ -42,16 +45,57 @@ jobs:
         uses: actions/setup-python@v6
         with:
           python-version: ${{ matrix.python-version }}
+          allow-prereleases: true
+          cache: "pip"
 
-      - name: Install dependencies
+      - name: Install package (dev extra = runtime + test + docs + tooling)
         run: |
-          python -m pip install --upgrade pip setuptools wheel
-          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-
-      - name: Install package
-        run: |
-          python -m pip install -e .[dev] --force-reinstall --prefer-binary
+          python -m pip install --upgrade pip
+          python -m pip install -e ".[dev]"
 
       - name: Test with pytest
+        # Skip network-marked tests in CI (they download from external hosts and would
+        # make the suite flaky/offline-fragile). Coverage gate runs once, on the
+        # canonical ubuntu + 3.11 leg; other legs run without coverage.
+        run: >
+          pytest -m "not network"
+          ${{ (matrix.os == 'ubuntu-latest' && matrix.python-version == '3.11')
+              && '--cov=template_project --cov-report=term-missing' || '' }}
+
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+
+      - name: Install ruff
+        # Pin the exact version so CI and local checks never drift (an unpinned
+        # ruff can format code differently between versions). Keep in sync with
+        # the `ruff==` pin in the pyproject dev extra.
+        run: python -m pip install "ruff==0.16.4"
+
+      - name: Lint (ruff check)
+        run: ruff check .
+
+      - name: Format check (ruff format)
+        run: ruff format --check .
+
+  # Single stable gate for branch protection: require ONLY this check on main.
+  # It stays green as long as every required leg (the whole `test` matrix + `lint`)
+  # succeeds, so changing the matrix never breaks the required-checks list again.
+  # The 3.14 experimental leg uses continue-on-error, so its failure does not fail
+  # `test` and therefore does not fail this gate.
+  tests-complete:
+    if: always()
+    needs: [test, lint]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verify all required jobs passed
         run: |
-          pytest
+          echo "test  = ${{ needs.test.result }}"
+          echo "lint  = ${{ needs.lint.result }}"
+          [[ "${{ needs.test.result }}" == "success" && "${{ needs.lint.result }}" == "success" ]] || exit 1

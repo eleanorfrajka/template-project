@@ -1,56 +1,12 @@
-"""Visualization utilities for oceanographic data."""
+"""Tabular inspection of Dataset variables and attributes."""
 
-from pathlib import Path
 from typing import Any
 
-import matplotlib.pyplot as plt
 import xarray as xr
 from pandas import DataFrame
 from pandas.io.formats.style import Styler
 
-
-def plot_monthly_transport(
-    ds: xr.Dataset, var: str = "moc_mar_hc10"
-) -> tuple[Any, Any]:
-    """Plot original and monthly averaged transport time series.
-
-    Parameters
-    ----------
-    ds : xr.Dataset
-        Dataset with a time dimension and a transport variable.
-    var : str, optional
-        Name of the variable to plot. Default is "moc_mar_hc10".
-    """
-    here = Path(__file__).resolve().parent
-    plt.style.use(here / "template_project.mplstyle")
-
-    da = ds[var]
-    ds_monthly = ds.resample(TIME="ME").mean()
-
-    fig, ax = plt.subplots()
-    ax.plot(ds.TIME, da, color="grey", alpha=0.5, linewidth=0.5, label="Original")
-    ax.plot(
-        ds_monthly.TIME,
-        ds_monthly[var],
-        color="red",
-        linewidth=1.0,
-        label="Monthly Avg",
-    )
-    ax.axhline(0, color="black", linestyle="--", linewidth=0.5)
-
-    ax.set_title("RAPID 26°N - AMOC")
-
-    # Use variable attributes if present
-    label = da.attrs.get("long_name", var)
-    units = da.attrs.get("units", "")
-    ax.set_ylabel(f"{label} [{units}]" if units else label)
-
-    ax.spines["top"].set_visible(False)
-    ax.spines["right"].set_visible(False)
-    ax.legend()
-    plt.tight_layout()
-
-    return fig, ax
+from template_project.logger import log_info
 
 
 def show_variables(data: str | xr.Dataset) -> Styler:
@@ -69,11 +25,16 @@ def show_variables(data: str | xr.Dataset) -> Styler:
         - comment: Any additional comments about the variable (if available).
     """
     if isinstance(data, str):
-        print(f"information is based on file: {data}")
-        dataset = xr.Dataset(data)
+        # A file path: open with netCDF4 (the per-variable branch below reads the
+        # netCDF4.Variable API — .dimensions/.units/.comment). xr.Dataset(str) would
+        # try to build a dataset from the string as a mapping and raise.
+        from netCDF4 import Dataset
+
+        log_info("information is based on file: %s", data)
+        dataset = Dataset(data, "r", format="NETCDF4")
         variables = dataset.variables
     elif isinstance(data, xr.Dataset):
-        print("information is based on xarray Dataset")
+        log_info("information is based on xarray Dataset")
         variables = data.variables
     else:
         raise TypeError("Input data must be a file path (str) or an xarray Dataset")
@@ -82,21 +43,27 @@ def show_variables(data: str | xr.Dataset) -> Styler:
     for i, key in enumerate(variables):
         var = variables[key]
         if isinstance(data, str):
+            # netCDF4.Variable: attributes via getattr, dims via .dimensions.
             dims = var.dimensions[0] if len(var.dimensions) == 1 else "string"
-            units = "" if not hasattr(var, "units") else var.units
-            comment = "" if not hasattr(var, "comment") else var.comment
+            units = getattr(var, "units", "")
+            comment = getattr(var, "comment", "")
+            standard_name = getattr(var, "standard_name", "")
+            dtype = str(var.dtype)
         else:
+            # xarray Variable: attributes via .attrs, dims via .dims.
             dims = var.dims[0] if len(var.dims) == 1 else "string"
             units = var.attrs.get("units", "")
             comment = var.attrs.get("comment", "")
+            standard_name = var.attrs.get("standard_name", "")
+            dtype = str(var.data.dtype)
 
         info[i] = {
             "name": key,
             "dims": dims,
             "units": units,
             "comment": comment,
-            "standard_name": var.attrs.get("standard_name", ""),
-            "dtype": str(var.dtype) if isinstance(data, str) else str(var.data.dtype),
+            "standard_name": standard_name,
+            "dtype": dtype,
         }
 
     vars = DataFrame(info).T
@@ -132,17 +99,17 @@ def show_attributes(data: str | xr.Dataset) -> DataFrame:
     from netCDF4 import Dataset
 
     if isinstance(data, str):
-        print(f"information is based on file: {data}")
+        log_info("information is based on file: %s", data)
         rootgrp = Dataset(data, "r", format="NETCDF4")
         attributes = rootgrp.ncattrs()
 
-        def get_attr(key):
+        def get_attr(key: str) -> Any:
             return getattr(rootgrp, key)
     elif isinstance(data, xr.Dataset):
-        print("information is based on xarray Dataset")
+        log_info("information is based on xarray Dataset")
         attributes = data.attrs.keys()
 
-        def get_attr(key):
+        def get_attr(key: str) -> Any:
             return data.attrs[key]
     else:
         raise TypeError("Input data must be a file path (str) or an xarray Dataset")

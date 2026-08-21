@@ -47,15 +47,15 @@ If you're using conda-based environment management, create an environment from t
 
 ```bash
 # Using conda
-conda env create -f environment.yml
+conda env create -f docs/environment.yml
 conda activate template-project
 
 # Using mamba (faster)
-mamba env create -f environment.yml
+mamba env create -f docs/environment.yml
 mamba activate template-project
 
 # Using micromamba (lightweight)
-micromamba create -f environment.yml
+micromamba create -f docs/environment.yml
 micromamba activate template-project
 ```
 
@@ -63,8 +63,7 @@ micromamba activate template-project
 ```bash
 python -m venv venv
 source venv/bin/activate  # On Windows use `venv\Scripts\activate`
-pip install -r requirements.txt
-pip install -r requirements-dev.txt  # For development tools and testing
+pip install -e ".[dev]"  # Runtime plus development tools and testing
 ```
 
 > 🔁 Both methods install all runtime and development dependencies.

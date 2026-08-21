@@ -72,12 +72,16 @@ def read_rapid(
     """
     log_info("Starting to read RAPID dataset")
 
+    # ``@apply_defaults`` has already substituted RAPID_DEFAULT_FILES when file_list
+    # was None. Only fall back to the transport-only set when the caller did not pick
+    # their own files — otherwise transport_only would silently discard an explicit
+    # file_list.
     if file_list is None:
         file_list = RAPID_DEFAULT_FILES
-    if transport_only:
-        file_list = RAPID_TRANSPORT_FILES
     if isinstance(file_list, str):
         file_list = [file_list]
+    if transport_only and file_list == RAPID_DEFAULT_FILES:
+        file_list = RAPID_TRANSPORT_FILES
 
     local_data_dir = Path(data_dir) if data_dir else utilities.get_default_data_dir()
     local_data_dir.mkdir(parents=True, exist_ok=True)
@@ -89,8 +93,11 @@ def read_rapid(
             log_warning("Skipping non-NetCDF file: %s", file)
             continue
 
+        source_str = str(source)
         download_url = (
-            f"{source.rstrip('/')}/{file}" if utilities._is_valid_url(source) else None
+            f"{source_str.rstrip('/')}/{file}"
+            if utilities.is_valid_url(source_str)
+            else None
         )
 
         file_path = utilities.resolve_file_path(

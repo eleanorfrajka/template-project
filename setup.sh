@@ -33,17 +33,10 @@ source venv/bin/activate
 echo "⬆️ Upgrading pip, setuptools, and wheel..."
 pip install --upgrade pip setuptools wheel
 
-# Install main requirements
-if [ -f "requirements.txt" ]; then
-    echo "📦 Installing main requirements..."
-    pip install --force-reinstall -r requirements.txt
-fi
-
-# Install dev requirements
-if [ -f "requirements-dev.txt" ]; then
-    echo "🛠️ Installing development requirements..."
-    pip install --force-reinstall -r requirements-dev.txt
-fi
+# Install the package with the dev extra (runtime + test + docs + tooling).
+# All dependencies are declared in pyproject.toml; there are no requirements*.txt files.
+echo "📦 Installing template-project with the [dev] extra..."
+pip install -e ".[dev]"
 
 echo "🧪 Verifying test environment..."
 which pytest

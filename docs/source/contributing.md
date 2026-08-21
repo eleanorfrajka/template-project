@@ -15,18 +15,12 @@ Thank you for your interest in contributing to this project! This guide will hel
 2. **Create Development Environment**:
    ```bash
    # Option A: Using conda/mamba (recommended)
-   conda env create -f environment.yml
+   conda env create -f docs/environment.yml
    conda activate [project-name]
-   pip install -e .
+   pip install -e ".[dev]"
 
    # Option B: Using pip
-   pip install -r requirements-dev.txt
-   pip install -e .
-   ```
-
-3. **Install Pre-commit Hooks**:
-   ```bash
-   pre-commit install
+   pip install -e ".[dev]"
    ```
 
 ## Development Workflow
@@ -42,8 +36,7 @@ git checkout -b fix/bug-description
 
 We maintain high code quality standards with automated tools:
 
-- **Code Formatting**: We use [Black](https://black.readthedocs.io/) with 88-character line length
-- **Linting**: [Ruff](https://docs.astral.sh/ruff/) for comprehensive code analysis
+- **Linting & Formatting**: We use [Ruff](https://docs.astral.sh/ruff/) for both linting and formatting (88-character line length), enforced by the CI `lint` job (`ruff check .` and `ruff format --check .`)
 - **Type Hints**: Required for all new functions and methods
 - **Documentation**: NumPy-style docstrings for all public functions
 
@@ -67,14 +60,14 @@ pytest --cov=template_project --cov-report term-missing
 Before committing, run the full quality check suite:
 
 ```bash
-# Format code
-black .
-
 # Check and fix linting issues
 ruff check --fix .
 
-# Run all pre-commit hooks
-pre-commit run --all-files
+# Format code
+ruff format .
+
+# Verify formatting the way CI does
+ruff format --check .
 ```
 
 ### 5. Scientific Validation
@@ -152,7 +145,7 @@ Fill out the pull request template completely, including:
 - **Coverage Target**: Aim for >80% test coverage
 
 ### Reproducibility
-- **Environment Files**: Keep environment.yml and requirements.txt updated
+- **Environment Files**: Keep `pyproject.toml` dependencies (and `docs/environment.yml`) updated
 - **Seed Values**: Use fixed random seeds in tests
 - **Version Pinning**: Pin critical dependencies
 

@@ -4,8 +4,10 @@ from collections.abc import Callable
 from ftplib import FTP
 from functools import wraps
 from pathlib import Path
+from typing import Any
 from urllib.parse import urlparse
 
+import numpy as np
 import requests
 import xarray as xr
 
@@ -14,10 +16,124 @@ from template_project.logger import log_debug, log_error, log_info
 
 log = logger.log
 
+# Byte width of a 64-bit integer; float64/int64 storage is downcast in find_best_dtype.
+_INT64_NBYTES = 8
+
 
 def get_default_data_dir() -> Path:
-    """Return the default data directory for the project."""
-    return Path(__file__).resolve().parent.parent / "data"
+    """Return the default data directory (``./data`` under the current working directory).
+
+    Resolved relative to the working directory rather than the installed package
+    location, so downloads never land inside ``site-packages`` and the result is
+    independent of the source layout (flat vs ``src/``).
+    """
+    return Path.cwd() / "data"
+
+
+def find_best_dtype(var_name: str, da: xr.DataArray) -> type:
+    """Determine the optimal storage dtype for a variable.
+
+    Parameters
+    ----------
+    var_name : str
+        Variable name.
+    da : xr.DataArray
+        Data array to inspect.
+
+    Returns
+    -------
+    type
+        Recommended numpy dtype.
+
+    Notes
+    -----
+    Rules applied in order:
+
+    - String / datetime / object variables: unchanged.
+    - ``time`` in name: unchanged (preserve datetime64 / float encoding).
+    - ``*_qc`` suffix or ``flag`` in name: ``int8`` (name match is case-insensitive).
+    - ``serial_number`` or ``serial``: ``int32``.
+    - ``latitude`` / ``longitude`` in name: ``float64``.
+    - Signed 64-bit integer input: downsize to ``int32``; unsigned integers are left
+      unchanged (``uint64`` values can exceed the ``int32`` range).
+    - ``float64`` input: ``float32``.
+    - Anything else: unchanged.
+
+    """
+    input_dtype = da.dtype.type
+    name = var_name.lower()
+    if da.dtype.kind in ("U", "S", "O", "M"):
+        return input_dtype
+    if "time" in name:
+        return input_dtype
+    if name.endswith("_qc") or "flag" in name:
+        return np.int8
+    if name in ("serial_number", "serial"):
+        return np.int32
+    if "latitude" in name or "longitude" in name:
+        return np.float64
+    # Only downcast *signed* int64 -> int32; uint64 values can exceed int32 range.
+    if da.dtype.kind == "i" and da.dtype.itemsize == _INT64_NBYTES:
+        return np.int32
+    if input_dtype == np.float64:
+        return np.float32
+    return input_dtype
+
+
+def cast_output_dtypes(
+    ds: xr.Dataset, keep_dtype: list[str] | None = None
+) -> xr.Dataset:
+    """Cast each data variable to its optimal storage dtype for NetCDF output.
+
+    Calls :func:`find_best_dtype` per data variable and rebuilds only those whose
+    dtype changes; attributes are preserved and the input dataset is not modified.
+    **Coordinates are never touched** (so a ``TIME`` coordinate keeps full precision),
+    and ``find_best_dtype`` already preserves datetime and ``*time*``-named variables.
+
+    ``float64`` -> ``float32`` is lossy (~7 significant digits). That is fine for most
+    geophysical measurements but wrong for high-dynamic-range quantities where error
+    accumulates (e.g. a float time axis such as "seconds since 1970"). Pass such
+    variable names in *keep_dtype* to preserve their dtype.
+
+    Parameters
+    ----------
+    ds : xr.Dataset
+        Dataset to cast.
+    keep_dtype : list of str, optional
+        Data-variable names to leave at their original dtype.
+
+    Returns
+    -------
+    xr.Dataset
+        New dataset with optimised dtypes (or the same object if nothing changed).
+
+    """
+    keep = set(keep_dtype or ())
+    updates: dict[str, xr.DataArray] = {}
+    for vname in ds.data_vars:
+        if vname in keep:
+            continue
+        var = ds[vname]
+        target = find_best_dtype(vname, var)
+        if np.dtype(target) == var.dtype:
+            continue
+        if np.issubdtype(np.dtype(target), np.integer) and np.issubdtype(
+            var.dtype, np.floating
+        ):
+            # NaN cannot be represented as an integer; replace before casting.
+            # QC/flag variables use 9 (CF "missing value"); other integer vars use 0.
+            name = vname.lower() if isinstance(vname, str) else str(vname)
+            fill_val = 9 if (name.endswith("_qc") or "flag" in name) else 0
+            # xr.where keeps dask arrays lazy, so a larger-than-RAM dataset still
+            # streams to disk chunk-by-chunk instead of being computed into memory.
+            new = xr.where(np.isfinite(var), var, fill_val).astype(target)
+        else:
+            new = var.astype(target)
+        new.attrs = dict(var.attrs)
+        updates[vname] = new
+    if not updates:
+        return ds
+    return ds.assign(updates)
 
 
 def apply_defaults(default_source: str, default_files: list[str]) -> Callable:
@@ -42,8 +158,8 @@ def apply_defaults(default_source: str, default_files: list[str]) -> Callable:
         def wrapper(
             source: str | None = None,
             file_list: list[str] | None = None,
-            *args,
-            **kwargs,
+            *args: Any,
+            **kwargs: Any,
         ) -> Callable:
             if source is None:
                 source = default_source
@@ -56,7 +172,7 @@ def apply_defaults(default_source: str, default_files: list[str]) -> Callable:
     return decorator
 
 
-def _is_valid_url(url: str) -> bool:
+def is_valid_url(url: str) -> bool:
     """Validate if a given string is a valid URL with supported schemes.
 
     Parameters
@@ -80,7 +196,7 @@ def _is_valid_url(url: str) -> bool:
                 result.path,  # Ensure there's a path, not necessarily its format
             ],
         )
-    except Exception:
+    except (ValueError, AttributeError):
         return False
 
 
@@ -113,7 +229,7 @@ def resolve_file_path(
 
     """
     # Use local source if provided
-    if source and not _is_valid_url(source):
+    if source and not is_valid_url(str(source)):
         source_path = Path(source)
         candidate_file = source_path / file_name
         if candidate_file.exists():
@@ -224,13 +340,12 @@ def safe_update_attrs(
 
     """
     for key, value in new_attrs.items():
-        if key in ds.attrs:
-            if not overwrite:
-                if verbose:
-                    log_debug(
-                        f"Attribute '{key}' already exists in dataset attrs and will not be overwritten.",
-                    )
-                continue  # Skip assignment
+        if key in ds.attrs and not overwrite:
+            if verbose:
+                log_debug(
+                    f"Attribute '{key}' already exists in dataset attrs and will not be overwritten.",
+                )
+            continue  # Skip assignment
         ds.attrs[key] = value
 
     return ds

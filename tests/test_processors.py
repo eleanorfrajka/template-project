@@ -1,8 +1,8 @@
 import numpy as np
 import xarray as xr
 
-from template_project import tools
-from template_project.tools import reformat_units_var
+from template_project import processors
+from template_project.processors import reformat_units_var
 
 
 def test_reformat_units_var_sv_conversion():
@@ -34,5 +34,23 @@ def test_convert_units_var():
     var_values = 100
     current_units = "cm/s"
     new_units = "m/s"
-    converted_values = tools.convert_units_var(var_values, current_units, new_units)
+    converted_values = processors.convert_units_var(
+        var_values, current_units, new_units
+    )
     assert converted_values == 1.0
+
+
+def test_process_normalises_units():
+    ds = xr.Dataset(
+        {
+            "velocity": xr.DataArray(
+                data=np.array([100.0, 200.0]),
+                dims=["time"],
+                attrs={"units": "cm/s"},
+            ),
+        }
+    )
+    out = processors.process(ds)
+    # process() normalises the unit string; the input dataset is untouched.
+    assert out["velocity"].attrs["units"] == "cm s-1"
+    assert ds["velocity"].attrs["units"] == "cm/s"

@@ -32,6 +32,22 @@ def test_enable_and_disable_logging():
     logger.disable_logging()
 
 
+def test_setup_logger_preserves_stdout_handler(tmp_path):
+    logs_dir = tmp_path / "logs"
+    logs_dir.mkdir()
+    logger.enable_logging()
+    logger.log.handlers.clear()
+
+    stdout_handler = logger.log_to_stdout()
+    logger.setup_logger(array_name="keephandler", output_dir=logs_dir)
+
+    # setup_logger must not drop the stdout handler the caller attached.
+    assert stdout_handler in logger.log.handlers
+
+    logger.log.handlers.clear()
+    logging.shutdown()
+
+
 def test_log_warning_creates_entry(tmp_path):
     logs_dir = tmp_path / "logs"
     logs_dir.mkdir()

@@ -1,0 +1,11 @@
+name: template-project
+# Conda-only base for the docs build: Python + pip + pandoc (pandoc is needed by
+# nbsphinx/pypandoc and has no pip wheel). The package itself and all its Python
+# dependencies are installed with `pip install -e ".[dev]"` in an explicit workflow
+# step — NOT here — so the editable build runs with a known working directory and
+# any pip error is reported directly instead of buried in micromamba env creation.
+channels: [conda-forge]
+dependencies:
+  - python=3.11
+  - pip
+  - pandoc

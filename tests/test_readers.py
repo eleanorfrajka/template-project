@@ -6,6 +6,7 @@ from template_project import logger, readers
 logger.disable_logging()
 
 
+@pytest.mark.network
 def test_load_sample_dataset_rapid():
     ds = readers.load_sample_dataset("rapid")
     assert isinstance(ds, xr.Dataset), "Expected an xarray.Dataset"
@@ -29,6 +30,7 @@ def test_load_dataset_invalid_array():
         readers.load_dataset("invalid")
 
 
+@pytest.mark.network
 @pytest.mark.parametrize(
     "array_name, expected_var",
     [

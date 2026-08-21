@@ -11,12 +11,11 @@ It combines Python code conventions, documentation standards, and metadata forma
 ### ✅ Function Definitions
 - Use **type hints** for all parameters and return types.
 ```python
-def convert_units(
+def convert_units_var(
     values: xr.DataArray,
     current: str,
     target: str,
-) -> xr.DataArray:
-    ...
+) -> xr.DataArray: ...
 ```
 
 ### 🐍 Naming
@@ -84,21 +83,19 @@ def convert_units_var(
 
 ---
 
-## 🔁 Automating Formatting (Optional)
+## 🔁 Automating Formatting
 
-The project uses tools like `black`, `ruff`, and `pytest` to enforce style, linting, and test consistency. These are integrated into the workflow using [pre-commit hooks](precommit_guide.md).
-
-You don’t need to run them manually, but setting up pre-commit ensures your code follows project standards automatically.
+The project uses `ruff` for linting, formatting, **and** type-annotation checks (via its `ANN` rules), plus `pytest` for tests. Style is enforced by the CI `lint` job, which runs `ruff check .` and `ruff format --check .` on every pull request. See the [linting & formatting guide](precommit_guide.md) for the commands to run locally.
 
 ---
 
 ## 🛠 Optional: VSCode Setup for Auto-formatting
 
-To automatically format code when you save a file, add this to your **Workspace Settings** (`.vscode/settings.json`):
+To automatically format code when you save a file, add this to your **Workspace Settings** (`.vscode/settings.json`) using the [Ruff VSCode extension](https://marketplace.visualstudio.com/items?itemName=charliermarsh.ruff):
 ```json
 {
-  "python.formatting.provider": "black",
   "editor.formatOnSave": true,
+  "editor.defaultFormatter": "charliermarsh.ruff",
   "editor.codeActionsOnSave": {
     "source.organizeImports": true
   }
@@ -110,7 +107,7 @@ You can also add a VSCode task to format manually:
 {
   "label": "Format Code",
   "type": "shell",
-  "command": "black . && ruff check . --fix",
+  "command": "ruff format . && ruff check . --fix",
   ...
 }
 ```
@@ -120,7 +117,6 @@ You can also add a VSCode task to format manually:
 
 ## 💡 Future Considerations
 
-- Add `mypy` for static type checking
 - Use Sphinx for auto-generating documentation (already partially configured)
 
 ---

@@ -15,20 +15,21 @@ A minimal, modular Python project structure for collaborative research and repro
 
 ```
 template-project/
-├── template_project              # [core] Main Python package with scientific code
-│   ├── __init__.py               # [core] Makes this a Python package
-│   ├── plotters.py               # [core] Functions to plot data
-│   ├── readers.py                # [core] Functions to read raw data into xarray datasets
-│   ├── read_rapid.py             # [core] Example for a separate module for a specific dataset
-│   ├── writers.py                # [core] Functions to write data (e.g., to NetCDF)
-│   ├── tools.py                  # [core] Utilities for unit conversion, calculations, etc.
-│   ├── logger.py                 # [core] Structured logging configuration for reproducible runs
-│   ├── template_project.mplstyle # [core] Default plotting parameters
-│   └── utilities.py              # [core] Helper functions (e.g., file download or parsing)
+├── src/                          # [core] "src layout" — package lives here, not the repo root
+│   └── template_project/         # [core] Main Python package with scientific code
+│       ├── __init__.py           # [core] Makes this a Python package; exposes read/write/plot/process verbs
+│       ├── plotters/             # [core] Functions to plot data (transport.py, tables.py)
+│       ├── readers/              # [core] Functions to read raw data into xarray datasets
+│       │   └── rapid.py          # [core] Example reader for a specific dataset (RAPID)
+│       ├── writers/              # [core] Functions to write data, e.g. to NetCDF (netcdf.py)
+│       ├── processors/           # [core] Unit conversion, calculations, etc. (units.py)
+│       ├── logger.py             # [core] Structured logging configuration for reproducible runs
+│       ├── template_project.mplstyle # [core] Default plotting parameters
+│       └── utilities.py          # [core] Helper functions (e.g., file download or parsing)
 │
 ├── tests/                        # [test] Unit tests using pytest
-│   ├── test_readers.py           # [test] Test functions in readers.py
-│   ├── test_tools.py             # [test] Test functions in tools.py
+│   ├── test_readers.py           # [test] Test functions in readers/
+│   ├── test_processors.py        # [test] Test functions in processors/
 │   ├── test_utilities.py         # [test] Test functions in utilities.py
 │   └── ...
 │
@@ -42,6 +43,7 @@ template-project/
 │   │   └── _static               # [docs] Figures
 │   │       ├── css/custom.css    # [docs, style] Custom style sheet for docs
 │   │       └── logo.png          # [docs] logo for top left of docs/
+│   ├── environment.yml           # [docs, meta] Conda env (python 3.11 + pandoc + pip install -e .[dev])
 │   └── Makefile                  # [docs] Build the docs
 │
 ├── notebooks/                    # [demo] Example notebooks
@@ -64,10 +66,7 @@ template-project/
 │   └── PULL_REQUEST_TEMPLATE.md  # [ci, meta] Template for pull requests on Github
 │
 ├── .gitignore                    # [meta] Exclude build files, logs, data, etc.
-├── requirements.txt              # [meta] Pip requirements
-├── requirements-dev.txt          # [meta] Pip requirements for development (docs, tests, linting)
-├── .pre-commit-config.yaml       # [style] Instructions for pre-commits to run (linting)
-├── pyproject.toml                # [ci, meta, style] Build system and config linters
+├── pyproject.toml                # [ci, meta, style] Build system, dependencies (test/docs/dev extras), ruff config
 ├── CITATION.cff                  # [meta] So Github can populate the "cite" button
 ├── README.md                     # [meta] Project overview and getting started
 └── LICENSE                       # [meta] Open source license (e.g., MIT as default)
@@ -103,16 +102,15 @@ The tags above give an indication of what parts of this template project are use
   - ✅ Very permissive — allows commercial and private use, modification, and distribution.
   - 🔗 More license info: [choosealicense.com](https://choosealicense.com/)
 - **`.gitignore`** – Tells Git which files/folders to ignore (e.g., system files, data outputs).
-- **`requirements.txt`** – Lists the Python packages your project needs to run.
+- **`pyproject.toml`** – Declares the Python packages your project needs to run, plus optional `test`, `docs`, and `dev` extras.
 
 ---
 
 ## 🧰 Python Packaging and Development
 
-- **`pyproject.toml`** – A modern configuration file for building, installing, and describing your package (e.g. name, author, dependencies).
-- **`requirements-dev.txt`** – Additional tools for developers (testing, linting, formatting, etc.).
-- **`template_project/`** – Your main code lives here. Python will treat this as an importable module.
-- **`pip install -e .`** – Lets you install your project locally in a way that updates as you edit files.
+- **`pyproject.toml`** – A modern configuration file for building, installing, and describing your package (e.g. name, author, dependencies). Runtime dependencies plus the `test`, `docs`, and `dev` extras (testing, linting, formatting, docs tools) are all declared here.
+- **`src/template_project/`** – Your main code lives here, under a top-level `src/` directory (the "src layout"). Keeping the package out of the repo root means tests import the installed package rather than the working copy. Python treats this as an importable module (the import name is still `template_project`).
+- **`pip install -e ".[dev]"`** – Installs your project locally (editable) together with the full development toolchain, updating as you edit files.
 
 ---
 
@@ -140,7 +138,7 @@ The tags above give an indication of what parts of this template project are use
 
 - **`CITATION.cff`** – Machine-readable citation info. Lets GitHub generate a "Cite this repository" button.
 - **`CONTRIBUTING.md`** – Guidelines for contributing to the project. Useful if you welcome outside help.
-- **`.pre-commit-config.yaml`** – Configuration for running automated checks (e.g., code formatting) before each commit.
+- **`docs/environment.yml`** – Conda/mamba environment for building the docs (python 3.11 + pandoc, then `pip install -e .[dev]`).
 
 ---
 
@@ -159,14 +157,14 @@ This template includes several automation features to streamline development:
 - **Purpose**: Generates changelogs from fragment files
 - **Usage**: Create `.md` files in `changelog.d/` describing changes, then run `towncrier build`
 - **To disable**: 
-  - Remove `towncrier` from `requirements-dev.txt`
+  - Remove `towncrier` from the `dev` extra in `pyproject.toml`
   - Remove `[tool.towncrier]` section from `pyproject.toml`
   - Delete `changelog.d/` directory
 
-### Pre-commit Hooks
-- **File**: `.pre-commit-config.yaml`  
-- **Purpose**: Runs code quality checks before each commit
-- **To disable**: Remove the file or run `pre-commit uninstall`
+### Linting & Formatting (Ruff)
+- **Config**: `[tool.ruff]` section of `pyproject.toml`
+- **Purpose**: `ruff` handles both linting and formatting; the CI `lint` job runs `ruff check .` and `ruff format --check .` on every pull request
+- **Note**: This project does not use `pre-commit`; linting is enforced CI-side. See the [linting & formatting guide](precommit_guide.md).
 
 **Note**: These automation features are optional but recommended for maintaining code quality and staying up-to-date with dependencies.
 

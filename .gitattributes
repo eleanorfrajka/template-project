@@ -1,0 +1,11 @@
+# Normalize line endings on text files (avoids CRLF churn across macOS/Windows/Linux CI).
+* text=auto
+
+# Jupyter notebooks are examples/documentation here — keep them out of GitHub's
+# language statistics (which otherwise report the repo as mostly "Jupyter Notebook").
+*.ipynb linguist-documentation
+
+# Generated demo-output notebooks copied into docs/source/ during the docs build are
+# display artifacts, not authored source: mark generated so PR diffs collapse them and
+# they do not count toward language stats. (Mirrors oceanarray's linguist-generated use.)
+docs/source/*output*.ipynb linguist-generated=true

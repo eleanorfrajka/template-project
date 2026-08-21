@@ -145,7 +145,7 @@ Our [documentation](https://eleanorfrajka.github.io/template-project/) is built 
 To build the documentation locally you need to install a few extra requirements:
 
 - Install `make` for your computer, e.g. on ubuntu with `sudo apt install make`
-- Install the additional python requirements. Activate the environment you use for working with glidertest, navigate to the top directory of this repo, then run `pip install -r requirements-dev.txt`
+- Install the additional python requirements. Activate the environment you use for working with glidertest, navigate to the top directory of this repo, then run `pip install -e ".[dev]"`
 
 Once you have the extras installed, you can build the docs locally by navigating to the `docs/` directory and running `make clean html`. This command will create a directory called `build/` which contains the html files of the documentation. Open the file `docs/build/html/index.html` in your browser, and you will see the docs with your changes applied. After making more changes, just run make clean html again to rebuild the docs.
 
