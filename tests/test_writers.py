@@ -70,6 +70,14 @@ def test_save_dataset_compresses_data_vars(tmp_path):
     assert reopened["mock_variable"].encoding.get("zlib") is True
 
 
+def test_save_dataset_creates_missing_parent_dir(tmp_path):
+    ds = create_dummy_dataset()
+    outfile = tmp_path / "nested" / "sub" / "out.nc"  # parent dirs don't exist yet
+
+    assert save_dataset(ds, output_file=outfile)
+    assert outfile.exists()
+
+
 def test_compress_does_not_mutate_caller_coord_attrs(tmp_path):
     ds = create_dummy_dataset()
     ds["x"].attrs["units"] = "count"  # a coord attr the writer strips before writing

@@ -86,6 +86,10 @@ def save_dataset(
             )
             return False
 
+    # Ensure the target directory exists (mirrors the reader's data-dir handling);
+    # otherwise to_netcdf fails when writing into a not-yet-created folder.
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+
     if optimise_dtype:
         ds = cast_output_dtypes(ds, keep_dtype=keep_dtype)
 
