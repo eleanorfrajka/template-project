@@ -51,8 +51,7 @@ This usually means something is wrong with the local installation process. Try t
 ```bash
 virtualenv venv
 source venv/bin/activate && micromamba deactivate
-pip install -r requirements.txt
-pip install -e .
+pip install -e ".[dev]"
 ```
 
 If this works locally, your GitHub Actions will likely succeed too.

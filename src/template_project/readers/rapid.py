@@ -89,8 +89,11 @@ def read_rapid(
             log_warning("Skipping non-NetCDF file: %s", file)
             continue
 
+        source_str = str(source)
         download_url = (
-            f"{source.rstrip('/')}/{file}" if utilities._is_valid_url(source) else None
+            f"{source_str.rstrip('/')}/{file}"
+            if utilities.is_valid_url(source_str)
+            else None
         )
 
         file_path = utilities.resolve_file_path(

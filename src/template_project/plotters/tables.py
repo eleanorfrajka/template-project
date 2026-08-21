@@ -1,56 +1,12 @@
-"""Visualization utilities for oceanographic data."""
+"""Tabular inspection of Dataset variables and attributes."""
 
-from pathlib import Path
 from typing import Any
 
-import matplotlib.pyplot as plt
 import xarray as xr
 from pandas import DataFrame
 from pandas.io.formats.style import Styler
 
-
-def plot_monthly_transport(
-    ds: xr.Dataset, var: str = "moc_mar_hc10"
-) -> tuple[Any, Any]:
-    """Plot original and monthly averaged transport time series.
-
-    Parameters
-    ----------
-    ds : xr.Dataset
-        Dataset with a time dimension and a transport variable.
-    var : str, optional
-        Name of the variable to plot. Default is "moc_mar_hc10".
-    """
-    here = Path(__file__).resolve().parent
-    plt.style.use(here / "template_project.mplstyle")
-
-    da = ds[var]
-    ds_monthly = ds.resample(TIME="ME").mean()
-
-    fig, ax = plt.subplots()
-    ax.plot(ds.TIME, da, color="grey", alpha=0.5, linewidth=0.5, label="Original")
-    ax.plot(
-        ds_monthly.TIME,
-        ds_monthly[var],
-        color="red",
-        linewidth=1.0,
-        label="Monthly Avg",
-    )
-    ax.axhline(0, color="black", linestyle="--", linewidth=0.5)
-
-    ax.set_title("RAPID 26°N - AMOC")
-
-    # Use variable attributes if present
-    label = da.attrs.get("long_name", var)
-    units = da.attrs.get("units", "")
-    ax.set_ylabel(f"{label} [{units}]" if units else label)
-
-    ax.spines["top"].set_visible(False)
-    ax.spines["right"].set_visible(False)
-    ax.legend()
-    plt.tight_layout()
-
-    return fig, ax
+from template_project.logger import log_info
 
 
 def show_variables(data: str | xr.Dataset) -> Styler:
@@ -69,11 +25,11 @@ def show_variables(data: str | xr.Dataset) -> Styler:
         - comment: Any additional comments about the variable (if available).
     """
     if isinstance(data, str):
-        print(f"information is based on file: {data}")
+        log_info("information is based on file: %s", data)
         dataset = xr.Dataset(data)
         variables = dataset.variables
     elif isinstance(data, xr.Dataset):
-        print("information is based on xarray Dataset")
+        log_info("information is based on xarray Dataset")
         variables = data.variables
     else:
         raise TypeError("Input data must be a file path (str) or an xarray Dataset")
@@ -132,17 +88,17 @@ def show_attributes(data: str | xr.Dataset) -> DataFrame:
     from netCDF4 import Dataset
 
     if isinstance(data, str):
-        print(f"information is based on file: {data}")
+        log_info("information is based on file: %s", data)
         rootgrp = Dataset(data, "r", format="NETCDF4")
         attributes = rootgrp.ncattrs()
 
-        def get_attr(key):
+        def get_attr(key: str) -> Any:
             return getattr(rootgrp, key)
     elif isinstance(data, xr.Dataset):
-        print("information is based on xarray Dataset")
+        log_info("information is based on xarray Dataset")
         attributes = data.attrs.keys()
 
-        def get_attr(key):
+        def get_attr(key: str) -> Any:
             return data.attrs[key]
     else:
         raise TypeError("Input data must be a file path (str) or an xarray Dataset")

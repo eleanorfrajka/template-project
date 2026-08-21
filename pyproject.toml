@@ -22,32 +22,57 @@ classifiers = [
   "Programming Language :: Python :: 3 :: Only",
   "Programming Language :: Python :: 3.11",
   "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
 ]
-# Define which fields are read from files/tools
-dynamic = ["version", "dependencies", "optional-dependencies"]
+# Runtime dependencies live here (no requirements.txt); only the version is dynamic.
+dependencies = [
+  "numpy>=1.23",
+  "pandas>=2.0",
+  "xarray>=2023.12.0",
+  "netcdf4>=1.7.2",       # xarray NetCDF read/write engine (used implicitly)
+  "scipy>=1.10",
+  "matplotlib>=3.7",
+  "requests>=2.28",       # HTTP downloads in utilities.download_file
+]
+dynamic = ["version"]
 [project.urls]
 documentation = "https://github.com/eleanorfrajka/template-project"
 homepage = "https://github.com/eleanorfrajka/template-project"
 repository = "https://github.com/eleanorfrajka/template-project"
 
+[project.optional-dependencies]
+test = [
+  "pytest>=8.4.2",
+  "pytest-cov>=4.1",
+]
+docs = [
+  "sphinx>=7.4.7",
+  "sphinx-rtd-theme>=2.0",
+  "myst-nb>=1.3.0",
+  "myst-parser>=3.0.1",
+  "nbsphinx>=0.9",
+  "pypandoc>=1.11",
+]
+# Everything a contributor needs: runtime + test + docs + tooling.
+# One command: `pip install -e ".[dev]"`.
+dev = [
+  "template-project-efw[test,docs]",
+  "ruff>=0.6",
+  "jupyterlab>=4.0",
+  "nbconvert>=7.8",
+  "towncrier",
+]
+
 
 [tool.setuptools.packages.find]
-where = ["."]
-include = ["template_project"]
+where = ["src"]
+include = ["template_project", "template_project.*"]
 
 [tool.setuptools.package-data]
-"template_project" = ["py.typed", "*.yaml", "*.yml", "*.json"]
-
-[tool.setuptools.dynamic]
-dependencies = { file = ["requirements.txt"] }
-
-[tool.setuptools.dynamic.optional-dependencies]
-dev = { file = ["requirements.txt", "requirements-dev.txt"] }
-# pip install -e ".[dev]"
-# Note: Add other groups like 'docs', 'test' as needed
+"template_project" = ["py.typed", "*.mplstyle", "*.yaml", "*.yml", "*.json"]
 
 [tool.setuptools_scm]
-write_to = "template_project/_version.py"
+write_to = "src/template_project/_version.py"
 write_to_template = "__version__ = '{version}'"
 version_scheme = "no-guess-dev"
 local_scheme = "no-local-version"
@@ -77,6 +102,13 @@ select = [
   "D",       # pydocstyle (Docstrings)
   "C901",    # mccabe complexity
   "PLR",     # pylint refactor (includes function length)
+  "ANN",     # flake8-annotations (require type annotations)
+  "TRY",     # tryceratops (exception-handling anti-patterns)
+  "BLE",     # flake8-blind-except (no bare `except Exception`)
+  "SLF",     # flake8-self (no private-member access from outside)
+  "ARG",     # flake8-unused-arguments
+  "SIM",     # flake8-simplify
+  "RUF",     # ruff-specific rules
 ]
 ignore = [
   "D107",    # missing docstring in __init__
@@ -84,10 +116,14 @@ ignore = [
   "D213",    # multi-line summary docstring style
   "D401",    # first line should be in imperative mood
   "E501",    # line‑length (handled by ruff format)
+  "ANN401",  # allow typing.Any (common in xarray/dataset helper signatures)
+  "TRY003",  # allow long messages in raised exceptions
 ]
 
 [tool.ruff.lint.per-file-ignores]
-"tests/*" = ["D100", "D103"]
+# Tests don't need docstrings, type annotations, private-member guards, or
+# unused-argument checks (mock signatures often take args they ignore).
+"tests/*" = ["D100", "D103", "ANN", "SLF001", "ARG"]
 "docs/source/conf.py" = ["D100"]
 
 [tool.ruff.lint.pydocstyle]
@@ -106,31 +142,6 @@ max-args = 8
 max-branches = 20
 # Maximum number of return statements in function / method body
 max-returns = 8
-
-[tool.mypy]
-python_version = "3.11"
-warn_return_any = true
-warn_unused_configs = true
-disallow_untyped_defs = false  # Start lenient, can tighten later
-disallow_incomplete_defs = true
-check_untyped_defs = true
-disallow_untyped_decorators = true
-no_implicit_optional = true
-warn_redundant_casts = true
-warn_unused_ignores = true
-warn_unreachable = true
-strict_equality = true
-
-# Scientific computing packages often lack good type stubs
-[[tool.mypy.overrides]]
-module = [
-    "matplotlib.*",
-    "netCDF4.*",
-    "scipy.*",
-    "xarray.*",
-    "pandas.*",
-]
-ignore_missing_imports = true
 
 # Testing configuration with pytest markers
 # Usage examples:

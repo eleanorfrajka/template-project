@@ -1,4 +1,9 @@
-"""Data loading functions for oceanographic datasets."""
+"""Data loading functions for oceanographic datasets.
+
+The :func:`load_dataset` dispatcher maps an ``array_name`` to a reader implementation.
+Add a new array by writing a reader submodule (see :mod:`.rapid`) and registering it in
+:func:`_get_reader`.
+"""
 
 from collections.abc import Callable
 from pathlib import Path
@@ -8,9 +13,15 @@ import xarray as xr
 
 from template_project import logger
 from template_project.logger import log_info
-from template_project.read_rapid import read_rapid
+from template_project.readers.rapid import read_rapid
 
 log = logger.log
+
+__all__ = [
+    "load_dataset",
+    "load_sample_dataset",
+    "read_rapid",
+]
 
 
 def _get_reader(array_name: str) -> Callable:
@@ -86,7 +97,7 @@ def load_sample_dataset(array_name: str = "rapid") -> xr.Dataset:
 
 def load_dataset(
     array_name: str,
-    source: str = None,
+    source: str | None = None,
     file_list: str | list[str] | None = None,
     transport_only: bool = True,
     data_dir: str | Path | None = None,
@@ -180,8 +191,6 @@ def _summarise_datasets(datasets: list[xr.Dataset], array_name: str) -> None:
 
     summary = "\n".join(summary_lines)
 
-    # Print to console
-    print(summary)
-
-    # Write to log
+    # Route the summary through the logger (attach a handler / call
+    # logger.log_to_stdout() to see it on the console).
     log_info("\n" + summary)

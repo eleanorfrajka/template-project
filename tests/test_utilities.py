@@ -2,6 +2,7 @@ import tempfile
 from pathlib import Path
 from unittest.mock import MagicMock, patch
 
+import numpy as np
 import pytest
 import xarray as xr
 
@@ -79,7 +80,23 @@ def test_apply_defaults_decorator_applies_source_and_file_list():
     ],
 )
 def test_is_valid_url(url, expected):
-    assert utilities._is_valid_url(url) == expected
+    assert utilities.is_valid_url(url) == expected
+
+
+@pytest.mark.parametrize(
+    "var_name,data,expected",
+    [
+        ("temperature", np.array([1.0, 2.0], dtype="float64"), np.float32),
+        ("count", np.array([1, 2], dtype="int64"), np.int32),
+        ("temperature_qc", np.array([0, 1], dtype="int64"), np.int8),
+        ("serial", np.array([123, 456], dtype="int64"), np.int32),
+        ("latitude", np.array([1.0], dtype="float32"), np.float64),
+        ("time", np.array([1.0, 2.0], dtype="float64"), np.float64),
+    ],
+)
+def test_find_best_dtype(var_name, data, expected):
+    da = xr.DataArray(data)
+    assert utilities.find_best_dtype(var_name, da) == expected
 
 
 def test_safe_update_attrs_add_new_attribute():

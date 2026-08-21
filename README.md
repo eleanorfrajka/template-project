@@ -11,12 +11,12 @@ This repository is designed to help researchers and developers (especially in th
 
 ## 🚀 What's Included
 
-- ✅ Example Python package layout: `template_project/*.py`
+- ✅ Example Python package layout: verb subpackages under `src/template_project/` (src layout)
 - 📓 Jupyter notebook demo: `notebooks/demo.ipynb`
 - 📄 Markdown and Sphinx-based documentation in `docs/`
 - 🔍 Tests with `pytest` in `tests/`, CI with GitHub Actions
-- 🎨 Code style via `black`, `ruff`, `pre-commit`
-- 📦 Package config via `pyproject.toml` + optional PyPI release workflow
+- 🎨 Code style via `ruff` (lint + format), enforced by the CI `lint` job
+- 📦 Package config + dependencies via `pyproject.toml` + optional PyPI release workflow
 - 🧾 Machine-readable citation: `CITATION.cff`
 
 ---
@@ -28,23 +28,23 @@ template-project/
 ├── .github/workflows/          # CI/CD for tests, docs, PyPI
 ├── docs/                       # Sphinx documentation  
 ├── notebooks/                  # Example Jupyter notebooks
-├── template_project/           # Main Python package
-│   ├── tools.py
-│   ├── readers.py  
-│   ├── plotters.py
-│   └── utilities.py
+├── src/template_project/       # Main Python package (src layout)
+│   ├── readers/                #   tp.read()   — data loading (rapid.py + dispatch)
+│   ├── writers/                #   tp.write()  — NetCDF output (netcdf.py)
+│   ├── plotters/               #   tp.plot()   — figures + table views
+│   ├── processors/             #   tp.process()— unit conversion (units.py)
+│   ├── utilities.py            #   shared helpers
+│   └── logger.py               #   logging config
 ├── tests/                      # Pytest test suite
-├── pyproject.toml              # Modern packaging config
-├── environment.yml             # Conda environment
-├── requirements.txt            # Core dependencies
-├── requirements-dev.txt        # Development dependencies
+├── pyproject.toml              # Packaging + all dependencies (extras: test/docs/dev)
+├── docs/environment.yml        # Conda environment for the docs build
 └── CITATION.cff                # Academic citation
 ```
 
 ## Key Features
 
 - 📦 **Modern Python packaging** with `pyproject.toml` and automated versioning
-- 🧪 **Testing setup** with pytest and pre-commit hooks for code quality  
+- 🧪 **Testing setup** with pytest and a ruff-based CI `lint` job for code quality  
 - 📚 **Documentation** with Sphinx, supporting both Markdown and reStructuredText
 - 🔄 **CI/CD workflows** for automated testing, docs building, and PyPI publishing
 - 📊 **Scientific Python** integration with numpy, pandas, xarray, matplotlib
@@ -61,14 +61,17 @@ Install in development mode:
 git clone https://github.com/eleanorfrajka/template-project.git
 cd template-project
 
-# Option A: Using conda/mamba (recommended)
-conda env create -f environment.yml
-conda activate template-project
-pip install -e .
+# Option A: pip (primary)
+pip install -e ".[dev]"
 
-# Option B: Using pip
+# Option B: conda/mamba (used by the docs build)
+conda env create -f docs/environment.yml
+conda activate template-project
 pip install -e ".[dev]"
 ```
+
+All dependencies are declared in `pyproject.toml`; the `dev` extra installs the runtime,
+test, docs, and tooling dependencies in one step.
 
 To run tests:
 
@@ -101,15 +104,15 @@ The key files to update when adapting this template to your own project:
 
 | File | What to change |
 |------|---------------|
-| `pyproject.toml` | Package name, description, author, URLs |
+| `pyproject.toml` | Package name, description, author, URLs, dependencies |
 | `README.md` | Title, description, GitHub URLs |
 | `CITATION.cff` | Author, ORCID, project title, URL |
-| `environment.yml` | Conda environment name |
+| `docs/environment.yml` | Conda environment name |
 | `docs/source/conf.py` | Project name, author, copyright |
-| `template_project/logger.py` | Logger name (after renaming the directory) |
+| `src/template_project/logger.py` | Logger name (after renaming the directory) |
 
 The fastest approach is a global find-and-replace of `template_project` → `your_package_name`
-and `template-project` → `your-project-name`, then rename the `template_project/` directory.
+and `template-project` → `your-project-name`, then rename the `src/template_project/` directory.
 
 See the full [customisation checklist](customisation_checklist.md) for a complete step-by-step guide.
 
@@ -131,3 +134,9 @@ I'll also (once I know how) add instructions for how to publish the package to c
 
 This repository includes a `CITATION.cff` file so that users of this template can include one in their own project.  
 There is no need to cite this repository directly.
+
+---
+
+## 🙏 Acknowledgements
+
+Portions of this project were developed with the assistance of [Claude Code](https://claude.com/claude-code), Anthropic's agentic coding tool.

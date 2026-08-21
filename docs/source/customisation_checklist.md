@@ -8,10 +8,10 @@ Use `grep` or your editor’s search tool to find these across the project.
 
 ## 📁 Core Package and Import Paths
 
-- [ ] Rename `template_project/` → `your_project_name/` (*Recommended:* Don't use spaces or dashes.  Underscores are OK.)
+- [ ] Rename `src/template_project/` → `src/your_project_name/` (*Recommended:* Don't use spaces or dashes.  Underscores are OK.)
 - [ ] Update imports in all source and test files:
   - `from template_project import ...`
-  - `template_project.tools`, `template_project.readers`, etc.
+  - `template_project.processors`, `template_project.readers`, etc.
 - [ ] Check for relative paths in notebooks: `from template_project import ...`
 
 ---
@@ -31,11 +31,11 @@ Use `grep` or your editor’s search tool to find these across the project.
 ### `pyproject.toml`
 - [ ] `name = "template-project-efw"` → use your PyPI-compatible name
 - [ ] Update `description`, `maintainers`, and `urls`
-- [ ] Edit `write_to = "template_project/_version.py"`
+- [ ] Edit `write_to = "src/template_project/_version.py"`
 
-### `.pre-commit-config.yaml`
-- [ ] Edit coverage and file match patterns (e.g., `pytest --cov=...`, excludes)
-- [ ] Adjust if you rename data folders or want to lint different paths
+### Linting (`[tool.ruff]` in `pyproject.toml`)
+- [ ] Linting is ruff-only, enforced by the CI `lint` job (`ruff check .` and `ruff format --check .`); this project no longer uses `.pre-commit-config.yaml`
+- [ ] Adjust the `[tool.ruff]` config if you rename data folders or want to lint different paths
 
 ---
 
@@ -74,15 +74,15 @@ Use `grep` or your editor’s search tool to find these across the project.
 
 ### `README.md`
 - [ ] Replace:
-  - `template_project/*.py`
+  - `src/template_project/**/*.py`
   - `Template for a Python project for oceanography`
 - [ ] Customize usage examples and purpose statement
 - [ ] Add badges for Zenodo or PyPI once those steps are completed
 
 ### `CONTRIBUTING.md`
-- [ ] Update module paths in examples (e.g., `template_project.tools`)
+- [ ] Update module paths in examples (e.g., `template_project.processors`)
 - [ ] Mention your GitHub handle or org instead of “Eleanor”
-- [ ] Replace style file references like `template_project/template_project.mplstyle`
+- [ ] Replace style file references like `src/template_project/template_project.mplstyle`
 
 ---
 

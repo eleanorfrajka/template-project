@@ -30,11 +30,11 @@ def test_addition():
 To test your own project modules, just import them like normal:
 
 ```python
-# tests/test_tools.py
-from template_project.tools import convert_units
+# tests/test_processors.py
+from template_project.processors import convert_units_var
 
 def test_convert_units_basic():
-    result = convert_units(10, "m", "km")
+    result = convert_units_var(10, "m", "km")
     assert result == 0.01
 ```
 
@@ -46,7 +46,7 @@ def test_convert_units_basic():
 
 Make sure you’ve installed the dev dependencies:
 ```bash
-pip install -r requirements-dev.txt
+pip install -e ".[dev]"
 ```
 Then run:
 ```bash
@@ -57,12 +57,12 @@ This will automatically find and run any `test_*.py` files under the `tests/` fo
 
 To run a specific test file:
 ```bash
-pytest tests/test_tools.py
+pytest tests/test_processors.py
 ```
 
 To run a specific test function:
 ```bash
-pytest tests/test_tools.py::test_convert_units_basic
+pytest tests/test_processors.py::test_convert_units_basic
 ```
 
 ---
@@ -104,7 +104,7 @@ Then open `htmlcov/index.html` in your browser.
 ```
 Name                    Stmts   Miss  Cover   Missing
 -----------------------------------------------------
-template_project/tools.py    20      3    85%   63, 96-97
+template_project/processors/units.py    20      3    85%   63, 96-97
 template_project/utils.py    78     24    69%   79-80, 113-120
 -----------------------------------------------------
 TOTAL                       354     76    79%
@@ -140,7 +140,7 @@ TOTAL                       354     76    79%
 - Configuration/setup code
 
 
-If you're using [pre-commit hooks](precommit_guide.md), you can configure them to run `pytest` before each commit. This helps you catch test failures early.
+Run `pytest` locally before pushing so you catch test failures early. The CI test job also runs the suite on every pull request. See the [linting & formatting guide](precommit_guide.md) for the ruff checks CI enforces.
 
 ---
 
@@ -153,6 +153,6 @@ If you're using [pre-commit hooks](precommit_guide.md), you can configure them t
 | Run specific test       | `pytest tests/test_xyz.py::test_name`      |
 | Coverage report (terminal) | `pytest --cov=template_project --cov-report=term-missing` |
 | Coverage report (HTML) | `pytest --cov=template_project --cov-report=html` |
-| Install test tools      | `pip install -r requirements-dev.txt`     |
+| Install test tools      | `pip install -e ".[dev]"`     |
 
 > ✅ Tests help you make confident changes. Use them early, and use them often!

@@ -1,0 +1,10 @@
+name: template-project
+channels: [conda-forge]
+dependencies:
+  - python=3.11
+  - pip
+  - pandoc
+  - pip:
+      # dev extra = runtime + test + docs + tooling (defined in pyproject.toml).
+      # Path is relative to the repo root (where the docs workflow creates the env).
+      - -e .[dev]

@@ -1,11 +1,17 @@
 :mod:`template_project API`
 ---------------------------
 
-.. automodule:: template_project.readers
-   :members:
+Top-level verbs
+~~~~~~~~~~~~~~~~
+
+.. automodule:: template_project
+   :members: read, write, plot, process
    :undoc-members:
 
-.. automodule:: template_project.plotters
+Subpackages
+~~~~~~~~~~~~
+
+.. automodule:: template_project.readers
    :members:
    :undoc-members:
 
@@ -13,11 +19,14 @@
    :members:
    :undoc-members:
 
-.. automodule:: template_project.tools
+.. automodule:: template_project.plotters
+   :members:
+   :undoc-members:
+
+.. automodule:: template_project.processors
    :members:
    :undoc-members:
 
 .. automodule:: template_project.utilities
    :members:
    :undoc-members:
-

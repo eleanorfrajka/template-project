@@ -8,11 +8,11 @@ This is useful for checking formatting, linking, and rendering before publishing
 
 ## 📦 Step 1: Install Documentation Dependencies
 
-The required tools are listed in `requirements-dev.txt`. These are included **because the project uses Sphinx-based documentation** and may include Jupyter notebooks or Markdown-based pages.
+The required tools are declared in the `dev` extra in `pyproject.toml`. These are included **because the project uses Sphinx-based documentation** and may include Jupyter notebooks or Markdown-based pages.
 
 To install them:
 ```bash
-pip install -r requirements-dev.txt
+pip install -e ".[dev]"
 ```
 This installs:
 - `sphinx`
@@ -91,7 +91,7 @@ These explain the syntax and tools supported when writing `.md` or `.rst` pages 
 
 | Task                       | Command                |
 |----------------------------|------------------------|
-| Install dependencies       | `pip install -r requirements-dev.txt` |
+| Install dependencies       | `pip install -e ".[dev]"` |
 | Build the docs             | `make html` (from inside `docs/`)     |
 | Preview locally            | `open _build/html/index.html`        |
 

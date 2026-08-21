@@ -25,32 +25,27 @@ jobs:
       with:
         fetch-depth: 0
 
-    - name: Set up Python
-      uses: actions/setup-python@v6
-      with:
-        python-version: "3.9"
-
     - name: Setup Micromamba
       uses: mamba-org/setup-micromamba@v3
       with:
-        environment-file: environment.yml
+        environment-file: docs/environment.yml
         cache-environment: true
 
     - name: Install package
       run: |
-        python -m pip install -e . --force-reinstall
+        micromamba run -n template-project python -m pip install -e . --force-reinstall
         # Force version file regeneration with setuptools-scm
-        python -c "import setuptools_scm; print('Version detected:', setuptools_scm.get_version())"
+        micromamba run -n template-project python -c "import setuptools_scm; print('Version detected:', setuptools_scm.get_version())"
         # Verify what version the docs will see
-        python -c "from template_project._version import __version__; print('Docs will use version:', __version__)"
+        micromamba run -n template-project python -c "from template_project._version import __version__; print('Docs will use version:', __version__)"
 
     - name: Build documentation
       run: |
         set -e
-        jupyter nbconvert --to notebook --execute notebooks/demo.ipynb --output=demo-output2.ipynb --ExecutePreprocessor.allow_errors=False
+        micromamba run -n template-project jupyter nbconvert --to notebook --execute notebooks/demo.ipynb --output=demo-output2.ipynb --ExecutePreprocessor.allow_errors=False
         mv notebooks/*output2.ipynb docs/source/
         pushd docs
-        make clean html
+        micromamba run -n template-project make clean html
         popd
 
     - name: Deploy to GitHub Pages
@@ -58,3 +53,7 @@ jobs:
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: docs/build/html
+        # Replace gh-pages with a single commit each deploy: the built site is
+        # regenerable, and keeping full history re-committed the whole site every
+        # run (107 copies of the built demo notebook bloated gh-pages to ~71 MB).
+        force_orphan: true
