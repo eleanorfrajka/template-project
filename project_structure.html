@@ -1,0 +1,370 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>What’s in This Template Project? &mdash; template_project v0.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=20758594" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=8b92e751"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Getting Started with GitHub" href="github_intro.html" />
+    <link rel="prev" title="Customisation Checklist for New Projects" href="customisation_checklist.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            template_project
+              <img src="_static/logo_template.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Getting Started: Setup and Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customisation_checklist.html">Customisation Checklist for New Projects</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">What’s in This Template Project?</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#project-structure-overview">🔍 Project Structure Overview</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#template-project-file-structure">📁 <code class="docutils literal notranslate"><span class="pre">template-project</span></code> File Structure</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#notes">🔍 Notes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-basics-always-included">🔰 The Basics (Always Included)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#python-packaging-and-development">🧰 Python Packaging and Development</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#testing-and-continuous-integration">🧪 Testing and Continuous Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#documentation">📝 Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#metadata-and-community">🧾 Metadata and Community</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#automation-features">🤖 Automation Features</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#dependabot-dependency-updates">Dependabot (Dependency Updates)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#towncrier-automated-changelog">Towncrier (Automated Changelog)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#linting-formatting-ruff">Linting &amp; Formatting (Ruff)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#summary">✅ Summary</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">GitHub basics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="github_intro.html">Getting Started with GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="github_tags_guide.html">GitHub Tags for Oceanographic Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gitworkflow_solo.html">Solo Git Workflow for Your Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gitcollab.html">Collaborating on Someone Else’s Repository</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Development Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="style_guide.html">Project Style Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="writing_tests.html">Writing and Running Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="build_docs.html">Building Documentation Locally</a></li>
+<li class="toctree-l1"><a class="reference internal" href="precommit_guide.html">Linting &amp; Formatting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="actions_overview.html">GitHub Actions: Automating Your Project</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Project Management</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="citation_guide.html">How to Cite This Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pypi_guide.html">Publishing Your Project to PyPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gitorg_transfer.html">Transferring a Repository to an Organisation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Help and reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="http://github.com/eleanorfrajka/template-project">GitHub Repo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="template_project.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">template_project</span> <span class="pre">API</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ / Troubleshooting</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">template_project</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">What’s in This Template Project?</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/project_structure.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="whats-in-this-template-project">
+<h1>What’s in This Template Project?<a class="headerlink" href="#whats-in-this-template-project" title="Link to this heading"></a></h1>
+<blockquote>
+<div><p>🐍 This project is designed for a <strong>Python-based code repository</strong>. It includes features to help you manage, test, document, and share your code.</p>
+</div></blockquote>
+<p>Below is an overview of the files and folders you’ll find in the <code class="docutils literal notranslate"><span class="pre">template-project</span></code>, along with what they do and why they’re useful. If you’re new to GitHub or Python packaging, this is your orientation.</p>
+<hr class="docutils" />
+<section id="project-structure-overview">
+<h2>🔍 Project Structure Overview<a class="headerlink" href="#project-structure-overview" title="Link to this heading"></a></h2>
+<p>📷 <em>This is what the template looks like when you clone or fork it:</em></p>
+</section>
+</section>
+<section id="template-project-file-structure">
+<h1>📁 <code class="docutils literal notranslate"><span class="pre">template-project</span></code> File Structure<a class="headerlink" href="#template-project-file-structure" title="Link to this heading"></a></h1>
+<p>A minimal, modular Python project structure for collaborative research and reproducible workflows.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>template-project/
+├── src/                          # [core] "src layout" — package lives here, not the repo root
+│   └── template_project/         # [core] Main Python package with scientific code
+│       ├── __init__.py           # [core] Makes this a Python package; exposes read/write/plot/process verbs
+│       ├── plotters/             # [core] Functions to plot data (transport.py, tables.py)
+│       ├── readers/              # [core] Functions to read raw data into xarray datasets
+│       │   └── rapid.py          # [core] Example reader for a specific dataset (RAPID)
+│       ├── writers/              # [core] Functions to write data, e.g. to NetCDF (netcdf.py)
+│       ├── processors/           # [core] Unit conversion, calculations, etc. (units.py)
+│       ├── logger.py             # [core] Structured logging configuration for reproducible runs
+│       ├── template_project.mplstyle # [core] Default plotting parameters
+│       └── utilities.py          # [core] Helper functions (e.g., file download or parsing)
+│
+├── tests/                        # [test] Unit tests using pytest
+│   ├── test_readers.py           # [test] Test functions in readers/
+│   ├── test_processors.py        # [test] Test functions in processors/
+│   ├── test_utilities.py         # [test] Test functions in utilities.py
+│   └── ...
+│
+├── docs/                         # [docs]
+│   ├── source/                   # [docs] Sphinx documentation source files
+│   │   ├── conf.py               # [docs] Setup for documentation
+│   │   ├── index.rst             # [docs] Main page with menus in *.rst
+│   │   ├── setup.md              # [docs] One of the documentation pages in *.md
+│   │   ├── template_project.rst  # [docs] The file to create the API based on docstrings
+│   │   ├── ...                   # [docs] More *.md or *.rst linked in index.rst
+│   │   └── _static               # [docs] Figures
+│   │       ├── css/custom.css    # [docs, style] Custom style sheet for docs
+│   │       └── logo.png          # [docs] logo for top left of docs/
+│   ├── environment.yml           # [docs, meta] Conda env (python 3.11 + pandoc + pip install -e .[dev])
+│   └── Makefile                  # [docs] Build the docs
+│
+├── notebooks/                    # [demo] Example notebooks
+│   ├── demo.ipynb                # [demo] Also run in docs.yml to appear in docs
+│   └── ...
+│
+├── data/                         # [data]
+│   └── moc_transports.nc         # [data] Example data file used for the template.
+│
+├── logs/                         # [core] Log output from structured logging
+│   └── &lt;ARRAY&gt;_&lt;timestamp&gt;_read.log  # [core] e.g. MOVE_20260707T10_read.log
+│
+├── .github/                      # [ci] GitHub-specific workflows (e.g., Actions)
+│   ├── workflows/
+│   │   ├── docs.yml              # [ci] Test build documents on *pull-request*
+│   │   ├── docs_deploy.yml       # [ci] Build and deploy documents on "merge"
+│   │   ├── pypi.yml              # [ci] Package and release on GitHub.com "release"
+│   │   └── test.yml              # [ci] Run pytest on tests/test_&lt;name&gt;.py on *pull-request*
+│   ├── ISSUE_TEMPLATE.md         # [ci, meta] Template for issues on Github
+│   └── PULL_REQUEST_TEMPLATE.md  # [ci, meta] Template for pull requests on Github
+│
+├── .gitignore                    # [meta] Exclude build files, logs, data, etc.
+├── pyproject.toml                # [ci, meta, style] Build system, dependencies (test/docs/dev extras), ruff config
+├── CITATION.cff                  # [meta] So Github can populate the "cite" button
+├── README.md                     # [meta] Project overview and getting started
+└── LICENSE                       # [meta] Open source license (e.g., MIT as default)
+</pre></div>
+</div>
+<p>The tags above give an indication of what parts of this template project are used for what purposes, where:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">[core]</span></code> – Scientific core logic or core functions used across the project.</p></li>
+</ul>
+<!--- `# [api]` – Public-facing functions or modules users are expected to import and use.-->
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">[docs]</span></code> – Documentation sources, configs, and assets for building project docs.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">[test]</span></code> – Automated tests for validating functionality.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">[demo]</span></code> – Notebooks and minimal working examples for demos or tutorials.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">[data]</span></code> – Sample or test data files.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">[ci]</span></code> – Continuous integration setup (GitHub Actions).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">[style]</span></code> – Configuration for code style, linting, and formatting.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">[meta]</span></code> – Project metadata (e.g., citation info, license, README).</p></li>
+</ul>
+<p><strong>Note:</strong> There are also files that you may end up generating but which don’t necessarily appear in the project on GitHub.com (due to being ignored by your <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code>).  These may include your environment (<code class="docutils literal notranslate"><span class="pre">venv/</span></code>, if you use pip and virtual environments), distribution files <code class="docutils literal notranslate"><span class="pre">dist/</span></code> for building packages to deploy on http://pypi.org, <code class="docutils literal notranslate"><span class="pre">htmlcov/</span></code> for coverage reports for tests, <code class="docutils literal notranslate"><span class="pre">template_project_efw.egg-info</span></code> for editable installs (e.g., <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-e</span> <span class="pre">.</span></code>).</p>
+<section id="notes">
+<h2>🔍 Notes<a class="headerlink" href="#notes" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>Modularity</strong>: Code is split by function (reading, writing, tools).</p></li>
+<li><p><strong>Logging</strong>: All major functions support structured logging to <code class="docutils literal notranslate"><span class="pre">logs/</span></code>.</p></li>
+<li><p><strong>Tests</strong>: Pytest-compatible tests are in <code class="docutils literal notranslate"><span class="pre">tests/</span></code>, with one file per module.</p></li>
+<li><p><strong>Docs</strong>: Sphinx documentation is in <code class="docutils literal notranslate"><span class="pre">docs/</span></code>.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="the-basics-always-included">
+<h2>🔰 The Basics (Always Included)<a class="headerlink" href="#the-basics-always-included" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">README.md</span></code></strong> – The first thing people see when they visit your GitHub repo. Use this to explain what your project is, how to install it, and how to get started.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">LICENSE</span></code></strong> – Explains what others are allowed to do with your code. This template uses the <strong>MIT License</strong>:</p>
+<ul>
+<li><p>✅ Very permissive — allows commercial and private use, modification, and distribution.</p></li>
+<li><p>🔗 More license info: <a class="reference external" href="https://choosealicense.com/">choosealicense.com</a></p></li>
+</ul>
+</li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">.gitignore</span></code></strong> – Tells Git which files/folders to ignore (e.g., system files, data outputs).</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code></strong> – Declares the Python packages your project needs to run, plus optional <code class="docutils literal notranslate"><span class="pre">test</span></code>, <code class="docutils literal notranslate"><span class="pre">docs</span></code>, and <code class="docutils literal notranslate"><span class="pre">dev</span></code> extras.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="python-packaging-and-development">
+<h2>🧰 Python Packaging and Development<a class="headerlink" href="#python-packaging-and-development" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code></strong> – A modern configuration file for building, installing, and describing your package (e.g. name, author, dependencies). Runtime dependencies plus the <code class="docutils literal notranslate"><span class="pre">test</span></code>, <code class="docutils literal notranslate"><span class="pre">docs</span></code>, and <code class="docutils literal notranslate"><span class="pre">dev</span></code> extras (testing, linting, formatting, docs tools) are all declared here.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">src/template_project/</span></code></strong> – Your main code lives here, under a top-level <code class="docutils literal notranslate"><span class="pre">src/</span></code> directory (the “src layout”). Keeping the package out of the repo root means tests import the installed package rather than the working copy. Python treats this as an importable module (the import name is still <code class="docutils literal notranslate"><span class="pre">template_project</span></code>).</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-e</span> <span class="pre">&quot;.[dev]&quot;</span></code></strong> – Installs your project locally (editable) together with the full development toolchain, updating as you edit files.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="testing-and-continuous-integration">
+<h2>🧪 Testing and Continuous Integration<a class="headerlink" href="#testing-and-continuous-integration" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">tests/</span></code></strong> – Folder for test files. Use these to make sure your code works as expected.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">.github/workflows/</span></code></strong> – GitHub Actions automation:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">tests.yml</span></code> – Runs your tests automatically when you push changes.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">docs.yml</span></code> – Builds your documentation to check for errors.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">docs_deploy.yml</span></code> – Publishes documentation to GitHub Pages.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pypi.yml</span></code> – Builds and uploads a release to PyPI when you tag a new version.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="documentation">
+<h2>📝 Documentation<a class="headerlink" href="#documentation" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">docs/</span></code></strong> – Contains Sphinx and Markdown files to build your documentation site.</p>
+<ul>
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">html</span></code> or use GitHub Actions to generate a website.</p></li>
+</ul>
+</li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">.vscode/</span></code></strong> – Optional settings for Visual Studio Code (e.g., interpreter paths).</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">notebooks/</span></code></strong> – A place to keep example Jupyter notebooks.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="metadata-and-community">
+<h2>🧾 Metadata and Community<a class="headerlink" href="#metadata-and-community" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">CITATION.cff</span></code></strong> – Machine-readable citation info. Lets GitHub generate a “Cite this repository” button.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">CONTRIBUTING.md</span></code></strong> – Guidelines for contributing to the project. Useful if you welcome outside help.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">docs/environment.yml</span></code></strong> – Conda/mamba environment for building the docs (python 3.11 + pandoc, then <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-e</span> <span class="pre">.[dev]</span></code>).</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="automation-features">
+<h2>🤖 Automation Features<a class="headerlink" href="#automation-features" title="Link to this heading"></a></h2>
+<p>This template includes several automation features to streamline development:</p>
+<section id="dependabot-dependency-updates">
+<h3>Dependabot (Dependency Updates)<a class="headerlink" href="#dependabot-dependency-updates" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>File</strong>: <code class="docutils literal notranslate"><span class="pre">.github/dependabot.yml</span></code></p></li>
+<li><p><strong>Purpose</strong>: Automatically creates PRs to update Python dependencies and GitHub Actions</p></li>
+<li><p><strong>Schedule</strong>: Weekly on Mondays</p></li>
+<li><p><strong>To disable</strong>: Delete <code class="docutils literal notranslate"><span class="pre">.github/dependabot.yml</span></code> or comment out the package ecosystems you don’t want</p></li>
+</ul>
+</section>
+<section id="towncrier-automated-changelog">
+<h3>Towncrier (Automated Changelog)<a class="headerlink" href="#towncrier-automated-changelog" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Files</strong>: <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> ([tool.towncrier] section), <code class="docutils literal notranslate"><span class="pre">changelog.d/</span></code></p></li>
+<li><p><strong>Purpose</strong>: Generates changelogs from fragment files</p></li>
+<li><p><strong>Usage</strong>: Create <code class="docutils literal notranslate"><span class="pre">.md</span></code> files in <code class="docutils literal notranslate"><span class="pre">changelog.d/</span></code> describing changes, then run <code class="docutils literal notranslate"><span class="pre">towncrier</span> <span class="pre">build</span></code></p></li>
+<li><p><strong>To disable</strong>:</p>
+<ul>
+<li><p>Remove <code class="docutils literal notranslate"><span class="pre">towncrier</span></code> from the <code class="docutils literal notranslate"><span class="pre">dev</span></code> extra in <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code></p></li>
+<li><p>Remove <code class="docutils literal notranslate"><span class="pre">[tool.towncrier]</span></code> section from <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code></p></li>
+<li><p>Delete <code class="docutils literal notranslate"><span class="pre">changelog.d/</span></code> directory</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="linting-formatting-ruff">
+<h3>Linting &amp; Formatting (Ruff)<a class="headerlink" href="#linting-formatting-ruff" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Config</strong>: <code class="docutils literal notranslate"><span class="pre">[tool.ruff]</span></code> section of <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code></p></li>
+<li><p><strong>Purpose</strong>: <code class="docutils literal notranslate"><span class="pre">ruff</span></code> handles both linting and formatting; the CI <code class="docutils literal notranslate"><span class="pre">lint</span></code> job runs <code class="docutils literal notranslate"><span class="pre">ruff</span> <span class="pre">check</span> <span class="pre">.</span></code> and <code class="docutils literal notranslate"><span class="pre">ruff</span> <span class="pre">format</span> <span class="pre">--check</span> <span class="pre">.</span></code> on every pull request</p></li>
+<li><p><strong>Note</strong>: This project does not use <code class="docutils literal notranslate"><span class="pre">pre-commit</span></code>; linting is enforced CI-side. See the <a class="reference internal" href="precommit_guide.html"><span class="std std-doc">linting &amp; formatting guide</span></a>.</p></li>
+</ul>
+<p><strong>Note</strong>: These automation features are optional but recommended for maintaining code quality and staying up-to-date with dependencies.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="summary">
+<h2>✅ Summary<a class="headerlink" href="#summary" title="Link to this heading"></a></h2>
+<p>This template is a starting point for research or open-source Python projects. It supports:</p>
+<ul class="simple">
+<li><p>Clean project structure</p></li>
+<li><p>Reproducible environments</p></li>
+<li><p>Easy testing</p></li>
+<li><p>Auto-publishing documentation</p></li>
+<li><p>Optional packaging for PyPI</p></li>
+</ul>
+<blockquote>
+<div><p>💡 Use what you need. Delete what you don’t. This is your scaffold for doing good, shareable science/code.</p>
+</div></blockquote>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="customisation_checklist.html" class="btn btn-neutral float-left" title="Customisation Checklist for New Projects" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="github_intro.html" class="btn btn-neutral float-right" title="Getting Started with GitHub" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Eleanor Frajka-Williams, FirstName LastName.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

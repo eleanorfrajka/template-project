@@ -1,0 +1,292 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>template_project.writers.netcdf &mdash; template_project v0.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=20758594" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=8b92e751"></script>
+      <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            template_project
+              <img src="../../../_static/logo_template.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup.html">Getting Started: Setup and Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../customisation_checklist.html">Customisation Checklist for New Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../project_structure.html">What’s in This Template Project?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../project_structure.html#template-project-file-structure">📁 <code class="docutils literal notranslate"><span class="pre">template-project</span></code> File Structure</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">GitHub basics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../github_intro.html">Getting Started with GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../github_tags_guide.html">GitHub Tags for Oceanographic Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../gitworkflow_solo.html">Solo Git Workflow for Your Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../gitcollab.html">Collaborating on Someone Else’s Repository</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Development Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing.html">Contributing Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../style_guide.html">Project Style Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../writing_tests.html">Writing and Running Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../build_docs.html">Building Documentation Locally</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../precommit_guide.html">Linting &amp; Formatting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../actions_overview.html">GitHub Actions: Automating Your Project</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Project Management</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../citation_guide.html">How to Cite This Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../pypi_guide.html">Publishing Your Project to PyPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../gitorg_transfer.html">Transferring a Repository to an Organisation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Help and reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="http://github.com/eleanorfrajka/template-project">GitHub Repo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../template_project.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">template_project</span> <span class="pre">API</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../faq.html">FAQ / Troubleshooting</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">template_project</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+          <li class="breadcrumb-item"><a href="../../template_project.html">template_project</a></li>
+      <li class="breadcrumb-item active">template_project.writers.netcdf</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for template_project.writers.netcdf</h1><div class="highlight"><pre>
+<span></span><span class="sd">"""Functions for saving xarray Datasets to NetCDF files."""</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">numbers</span><span class="w"> </span><span class="kn">import</span> <span class="n">Number</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xr</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">template_project.logger</span><span class="w"> </span><span class="kn">import</span> <span class="n">log_error</span><span class="p">,</span> <span class="n">log_info</span><span class="p">,</span> <span class="n">log_warning</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">template_project.utilities</span><span class="w"> </span><span class="kn">import</span> <span class="n">cast_output_dtypes</span><span class="p">,</span> <span class="n">get_default_data_dir</span>
+
+
+<div class="viewcode-block" id="save_dataset">
+<a class="viewcode-back" href="../../../template_project.html#template_project.writers.save_dataset">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">save_dataset</span><span class="p">(</span>
+    <span class="n">ds</span><span class="p">:</span> <span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">,</span>
+    <span class="n">output_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="o">*</span><span class="p">,</span>
+    <span class="n">compress</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">complevel</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span>
+    <span class="n">optimise_dtype</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">keep_dtype</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">delete_existing</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">prompt_user</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Save a Dataset to NetCDF with optional compression and dtype optimisation.</span>
+
+<span class="sd">    Dask-backed datasets stream to disk chunk-by-chunk (the data is never loaded</span>
+<span class="sd">    into memory here), so this works for datasets larger than RAM.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    ds : xarray.Dataset</span>
+<span class="sd">        The dataset to be saved.</span>
+<span class="sd">    output_file : str or Path, optional</span>
+<span class="sd">        The path to the output NetCDF file. Defaults to ``&lt;cwd&gt;/data/test.nc``</span>
+<span class="sd">        (via :func:`~template_project.utilities.get_default_data_dir`).</span>
+<span class="sd">    compress : bool</span>
+<span class="sd">        Apply lossless zlib compression to every data variable (writes NETCDF4).</span>
+<span class="sd">        Defaults to True. When False, writes uncompressed NETCDF4_CLASSIC.</span>
+<span class="sd">    complevel : int</span>
+<span class="sd">        zlib compression level 1-9 (higher = smaller/slower). Defaults to 4.</span>
+<span class="sd">    optimise_dtype : bool</span>
+<span class="sd">        Downcast data variables to a smaller storage dtype via</span>
+<span class="sd">        :func:`~template_project.utilities.cast_output_dtypes` (e.g. float64-&gt;float32)</span>
+<span class="sd">        before writing. Defaults to True. Coordinates and datetime/``*time*`` variables</span>
+<span class="sd">        are always preserved; float32 is lossy (~7 significant digits), so set this</span>
+<span class="sd">        False — or list precision-critical variables in *keep_dtype* — when full</span>
+<span class="sd">        precision matters.</span>
+<span class="sd">    keep_dtype : list of str, optional</span>
+<span class="sd">        Data-variable names to keep at full precision when ``optimise_dtype`` is True.</span>
+<span class="sd">    delete_existing : bool</span>
+<span class="sd">        Whether to delete the file if it already exists. Defaults to False.</span>
+<span class="sd">    prompt_user : bool</span>
+<span class="sd">        Whether to prompt interactively before deleting an existing file. Defaults to</span>
+<span class="sd">        False (safe for notebooks, scripts, and CI); set True for interactive use.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    bool</span>
+<span class="sd">        True if the dataset was saved successfully, False otherwise.</span>
+
+<span class="sd">    Based on: https://github.com/pydata/xarray/issues/3743</span>
+<span class="sd">    """</span>
+    <span class="k">if</span> <span class="n">output_file</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">output_file</span> <span class="o">=</span> <span class="n">get_default_data_dir</span><span class="p">()</span> <span class="o">/</span> <span class="s2">"test.nc"</span>
+    <span class="n">output_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">output_file</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">output_path</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">prompt_user</span><span class="p">:</span>
+            <span class="n">user_input</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="nb">input</span><span class="p">(</span><span class="sa">f</span><span class="s2">"File '</span><span class="si">{</span><span class="n">output_file</span><span class="si">}</span><span class="s2">' already exists. Delete it? (y/n): "</span><span class="p">)</span>
+                <span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+                <span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+            <span class="p">)</span>
+            <span class="k">if</span> <span class="n">user_input</span> <span class="o">!=</span> <span class="s2">"y"</span><span class="p">:</span>
+                <span class="n">log_info</span><span class="p">(</span><span class="s2">"File not deleted. Aborting save operation."</span><span class="p">)</span>
+                <span class="k">return</span> <span class="kc">False</span>
+            <span class="n">output_path</span><span class="o">.</span><span class="n">unlink</span><span class="p">()</span>
+            <span class="n">log_info</span><span class="p">(</span><span class="s2">"File '</span><span class="si">%s</span><span class="s2">' deleted. Re-saving."</span><span class="p">,</span> <span class="n">output_file</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">delete_existing</span><span class="p">:</span>
+            <span class="n">output_path</span><span class="o">.</span><span class="n">unlink</span><span class="p">()</span>
+            <span class="n">log_info</span><span class="p">(</span><span class="s2">"File '</span><span class="si">%s</span><span class="s2">' deleted. Re-saving."</span><span class="p">,</span> <span class="n">output_file</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">log_warning</span><span class="p">(</span>
+                <span class="s2">"File '</span><span class="si">%s</span><span class="s2">' already exists and delete_existing is False. "</span>
+                <span class="s2">"Aborting save operation."</span><span class="p">,</span>
+                <span class="n">output_file</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="c1"># Ensure the target directory exists (mirrors the reader's data-dir handling);</span>
+    <span class="c1"># otherwise to_netcdf fails when writing into a not-yet-created folder.</span>
+    <span class="n">output_path</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">optimise_dtype</span><span class="p">:</span>
+        <span class="n">ds</span> <span class="o">=</span> <span class="n">cast_output_dtypes</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="n">keep_dtype</span><span class="o">=</span><span class="n">keep_dtype</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">compress</span><span class="p">:</span>
+        <span class="c1"># zlib compression requires the NETCDF4 format (not NETCDF4_CLASSIC).</span>
+        <span class="n">nc_format</span> <span class="o">=</span> <span class="s2">"NETCDF4"</span>
+        <span class="c1"># Shallow copy: shares data buffers (no duplication of large arrays) but</span>
+        <span class="c1"># gives independent attrs dicts, so the coord-attr edits below don't mutate</span>
+        <span class="c1"># the caller's dataset.</span>
+        <span class="n">ds</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">deep</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="c1"># Strip coord attributes that clash with xarray's automatic CF encoding.</span>
+        <span class="k">for</span> <span class="n">coord</span> <span class="ow">in</span> <span class="n">ds</span><span class="o">.</span><span class="n">coords</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">"units"</span><span class="p">,</span> <span class="s2">"calendar"</span><span class="p">):</span>
+                <span class="n">ds</span><span class="p">[</span><span class="n">coord</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="n">encoding</span> <span class="o">=</span> <span class="p">{</span><span class="n">var</span><span class="p">:</span> <span class="p">{</span><span class="s2">"zlib"</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s2">"complevel"</span><span class="p">:</span> <span class="n">complevel</span><span class="p">}</span> <span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">ds</span><span class="o">.</span><span class="n">data_vars</span><span class="p">}</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">nc_format</span> <span class="o">=</span> <span class="s2">"NETCDF4_CLASSIC"</span>
+        <span class="n">encoding</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">return</span> <span class="n">_write_netcdf</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="n">output_file</span><span class="p">,</span> <span class="n">nc_format</span><span class="p">,</span> <span class="n">encoding</span><span class="p">)</span></div>
+
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_write_netcdf</span><span class="p">(</span>
+    <span class="n">ds</span><span class="p">:</span> <span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">,</span>
+    <span class="n">output_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span><span class="p">,</span>
+    <span class="n">nc_format</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">encoding</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Write *ds* to NetCDF, coercing invalid attributes to strings on TypeError."""</span>
+    <span class="n">valid_types</span> <span class="o">=</span> <span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">Number</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">number</span><span class="p">,</span> <span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">ds</span><span class="o">.</span><span class="n">to_netcdf</span><span class="p">(</span><span class="n">output_file</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="n">nc_format</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="n">encoding</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">TypeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">log_warning</span><span class="p">(</span><span class="s2">"</span><span class="si">%s</span><span class="s2">: </span><span class="si">%s</span><span class="s2">"</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">varname</span><span class="p">,</span> <span class="n">variable</span> <span class="ow">in</span> <span class="n">ds</span><span class="o">.</span><span class="n">variables</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">variable</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">valid_types</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="nb">bool</span><span class="p">):</span>
+                    <span class="n">log_info</span><span class="p">(</span>
+                        <span class="s2">"variable '</span><span class="si">%s</span><span class="s2">': converting attribute '</span><span class="si">%s</span><span class="s2">' (value '</span><span class="si">%s</span><span class="s2">') to string."</span><span class="p">,</span>
+                        <span class="n">varname</span><span class="p">,</span>
+                        <span class="n">k</span><span class="p">,</span>
+                        <span class="n">v</span><span class="p">,</span>
+                    <span class="p">)</span>
+                    <span class="n">variable</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">ds</span><span class="o">.</span><span class="n">to_netcdf</span><span class="p">(</span><span class="n">output_file</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="n">nc_format</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="n">encoding</span><span class="p">)</span>
+        <span class="k">except</span> <span class="p">(</span><span class="ne">TypeError</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">,</span> <span class="ne">OSError</span><span class="p">)</span> <span class="k">as</span> <span class="n">e2</span><span class="p">:</span>
+            <span class="n">log_error</span><span class="p">(</span><span class="s2">"Failed to save dataset: </span><span class="si">%s</span><span class="s2">"</span><span class="p">,</span> <span class="n">e2</span><span class="p">)</span>
+            <span class="n">datetime_vars</span> <span class="o">=</span> <span class="p">[</span>
+                <span class="n">var</span> <span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">ds</span><span class="o">.</span><span class="n">variables</span> <span class="k">if</span> <span class="n">ds</span><span class="p">[</span><span class="n">var</span><span class="p">]</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="s2">"datetime64[ns]"</span>
+            <span class="p">]</span>
+            <span class="n">log_error</span><span class="p">(</span><span class="s2">"Variables with dtype datetime64[ns]: </span><span class="si">%s</span><span class="s2">"</span><span class="p">,</span> <span class="n">datetime_vars</span><span class="p">)</span>
+            <span class="n">float_attrs</span> <span class="o">=</span> <span class="p">[</span>
+                <span class="n">attr</span> <span class="k">for</span> <span class="n">attr</span> <span class="ow">in</span> <span class="n">ds</span><span class="o">.</span><span class="n">attrs</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="n">attr</span><span class="p">],</span> <span class="nb">float</span><span class="p">)</span>
+            <span class="p">]</span>
+            <span class="n">log_error</span><span class="p">(</span><span class="s2">"Attributes with dtype float64: </span><span class="si">%s</span><span class="s2">"</span><span class="p">,</span> <span class="n">float_attrs</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">True</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Eleanor Frajka-Williams, FirstName LastName.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

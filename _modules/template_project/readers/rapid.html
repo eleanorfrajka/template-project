@@ -1,0 +1,283 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>template_project.readers.rapid &mdash; template_project v0.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=20758594" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=8b92e751"></script>
+      <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            template_project
+              <img src="../../../_static/logo_template.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup.html">Getting Started: Setup and Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../customisation_checklist.html">Customisation Checklist for New Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../project_structure.html">What’s in This Template Project?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../project_structure.html#template-project-file-structure">📁 <code class="docutils literal notranslate"><span class="pre">template-project</span></code> File Structure</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">GitHub basics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../github_intro.html">Getting Started with GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../github_tags_guide.html">GitHub Tags for Oceanographic Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../gitworkflow_solo.html">Solo Git Workflow for Your Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../gitcollab.html">Collaborating on Someone Else’s Repository</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Development Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing.html">Contributing Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../style_guide.html">Project Style Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../writing_tests.html">Writing and Running Tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../build_docs.html">Building Documentation Locally</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../precommit_guide.html">Linting &amp; Formatting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../actions_overview.html">GitHub Actions: Automating Your Project</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Project Management</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../citation_guide.html">How to Cite This Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../pypi_guide.html">Publishing Your Project to PyPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../gitorg_transfer.html">Transferring a Repository to an Organisation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Help and reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="http://github.com/eleanorfrajka/template-project">GitHub Repo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../template_project.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">template_project</span> <span class="pre">API</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../faq.html">FAQ / Troubleshooting</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">template_project</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+          <li class="breadcrumb-item"><a href="../../template_project.html">template_project</a></li>
+          <li class="breadcrumb-item"><a href="../readers.html">template_project.readers</a></li>
+      <li class="breadcrumb-item active">template_project.readers.rapid</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for template_project.readers.rapid</h1><div class="highlight"><pre>
+<span></span><span class="sd">"""Reader for RAPID mooring array transport data."""</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xr</span>
+
+<span class="c1"># Import the modules used</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">template_project</span><span class="w"> </span><span class="kn">import</span> <span class="n">logger</span><span class="p">,</span> <span class="n">utilities</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">template_project.logger</span><span class="w"> </span><span class="kn">import</span> <span class="n">log_error</span><span class="p">,</span> <span class="n">log_info</span><span class="p">,</span> <span class="n">log_warning</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">template_project.utilities</span><span class="w"> </span><span class="kn">import</span> <span class="n">apply_defaults</span>
+
+<span class="n">log</span> <span class="o">=</span> <span class="n">logger</span><span class="o">.</span><span class="n">log</span>  <span class="c1"># Use the global logger</span>
+
+<span class="c1"># Default list of RAPID data files</span>
+<span class="n">RAPID_DEFAULT_SOURCE</span> <span class="o">=</span> <span class="s2">"https://rapid.ac.uk/sites/default/files/rapid_data/"</span>
+<span class="n">RAPID_TRANSPORT_FILES</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"moc_transports.nc"</span><span class="p">]</span>
+<span class="n">RAPID_DEFAULT_FILES</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"moc_transports.nc"</span><span class="p">]</span>
+
+<span class="c1"># Inline metadata dictionary</span>
+<span class="n">RAPID_METADATA</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"description"</span><span class="p">:</span> <span class="s2">"RAPID 26N transport estimates dataset"</span><span class="p">,</span>
+    <span class="s2">"project"</span><span class="p">:</span> <span class="s2">"RAPID-AMOC 26°N array"</span><span class="p">,</span>
+    <span class="s2">"web_link"</span><span class="p">:</span> <span class="s2">"https://rapid.ac.uk/rapidmoc"</span><span class="p">,</span>
+    <span class="s2">"note"</span><span class="p">:</span> <span class="s2">"Dataset accessed and processed via xarray"</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="c1"># File-specific metadata placeholder</span>
+<span class="n">RAPID_FILE_METADATA</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"moc_transports.nc"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"data_product"</span><span class="p">:</span> <span class="s2">"RAPID layer transport time series"</span><span class="p">,</span>
+    <span class="p">},</span>
+<span class="p">}</span>
+
+
+<div class="viewcode-block" id="read_rapid">
+<a class="viewcode-back" href="../../../template_project.html#template_project.readers.read_rapid">[docs]</a>
+<span class="nd">@apply_defaults</span><span class="p">(</span><span class="n">RAPID_DEFAULT_SOURCE</span><span class="p">,</span> <span class="n">RAPID_DEFAULT_FILES</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">read_rapid</span><span class="p">(</span>
+    <span class="n">source</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">file_list</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+    <span class="n">transport_only</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">data_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">redownload</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">"""Load the RAPID transport dataset from a URL or local file path into an xarray.Dataset.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    source : str, optional</span>
+<span class="sd">        URL or local path to the NetCDF file(s).</span>
+<span class="sd">        Defaults to the RAPID data repository URL.</span>
+<span class="sd">    file_list : str or list of str, optional</span>
+<span class="sd">        Filename or list of filenames to process.</span>
+<span class="sd">        If None, will attempt to list files in the source directory.</span>
+<span class="sd">    transport_only : bool, optional</span>
+<span class="sd">        If True, restrict to transport files only.</span>
+<span class="sd">    data_dir : str, Path or None, optional</span>
+<span class="sd">        Optional local data directory.</span>
+<span class="sd">    redownload : bool, optional</span>
+<span class="sd">        If True, force redownload of the data.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    xr.Dataset</span>
+<span class="sd">        The loaded xarray dataset with basic inline metadata.</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    ValueError</span>
+<span class="sd">        If the source is neither a valid URL nor a directory path.</span>
+<span class="sd">    FileNotFoundError</span>
+<span class="sd">        If no valid NetCDF files are found in the provided file list.</span>
+
+<span class="sd">    """</span>
+    <span class="n">log_info</span><span class="p">(</span><span class="s2">"Starting to read RAPID dataset"</span><span class="p">)</span>
+
+    <span class="c1"># ``@apply_defaults`` has already substituted RAPID_DEFAULT_FILES when file_list</span>
+    <span class="c1"># was None. Only fall back to the transport-only set when the caller did not pick</span>
+    <span class="c1"># their own files — otherwise transport_only would silently discard an explicit</span>
+    <span class="c1"># file_list.</span>
+    <span class="k">if</span> <span class="n">file_list</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">file_list</span> <span class="o">=</span> <span class="n">RAPID_DEFAULT_FILES</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">file_list</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="n">file_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">file_list</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">transport_only</span> <span class="ow">and</span> <span class="n">file_list</span> <span class="o">==</span> <span class="n">RAPID_DEFAULT_FILES</span><span class="p">:</span>
+        <span class="n">file_list</span> <span class="o">=</span> <span class="n">RAPID_TRANSPORT_FILES</span>
+
+    <span class="n">local_data_dir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">data_dir</span><span class="p">)</span> <span class="k">if</span> <span class="n">data_dir</span> <span class="k">else</span> <span class="n">utilities</span><span class="o">.</span><span class="n">get_default_data_dir</span><span class="p">()</span>
+    <span class="n">local_data_dir</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">datasets</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">file_list</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">file</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">".nc"</span><span class="p">):</span>
+            <span class="n">log_warning</span><span class="p">(</span><span class="s2">"Skipping non-NetCDF file: </span><span class="si">%s</span><span class="s2">"</span><span class="p">,</span> <span class="n">file</span><span class="p">)</span>
+            <span class="k">continue</span>
+
+        <span class="n">source_str</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">source</span><span class="p">)</span>
+        <span class="n">download_url</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">source_str</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s1">'/'</span><span class="p">)</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">file</span><span class="si">}</span><span class="s2">"</span>
+            <span class="k">if</span> <span class="n">utilities</span><span class="o">.</span><span class="n">is_valid_url</span><span class="p">(</span><span class="n">source_str</span><span class="p">)</span>
+            <span class="k">else</span> <span class="kc">None</span>
+        <span class="p">)</span>
+
+        <span class="n">file_path</span> <span class="o">=</span> <span class="n">utilities</span><span class="o">.</span><span class="n">resolve_file_path</span><span class="p">(</span>
+            <span class="n">file_name</span><span class="o">=</span><span class="n">file</span><span class="p">,</span>
+            <span class="n">source</span><span class="o">=</span><span class="n">source</span><span class="p">,</span>
+            <span class="n">download_url</span><span class="o">=</span><span class="n">download_url</span><span class="p">,</span>
+            <span class="n">local_data_dir</span><span class="o">=</span><span class="n">local_data_dir</span><span class="p">,</span>
+            <span class="n">redownload</span><span class="o">=</span><span class="n">redownload</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">log_info</span><span class="p">(</span><span class="s2">"Opening RAPID dataset: </span><span class="si">%s</span><span class="s2">"</span><span class="p">,</span> <span class="n">file_path</span><span class="p">)</span>
+            <span class="n">ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">log_error</span><span class="p">(</span><span class="s2">"Failed to open NetCDF file: </span><span class="si">%s</span><span class="s2">: </span><span class="si">%s</span><span class="s2">"</span><span class="p">,</span> <span class="n">file_path</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">"Failed to open NetCDF file: </span><span class="si">{</span><span class="n">file_path</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span>
+            <span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">e</span>
+
+        <span class="n">file_metadata</span> <span class="o">=</span> <span class="n">RAPID_FILE_METADATA</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="p">{})</span>
+        <span class="n">log_info</span><span class="p">(</span><span class="s2">"Attaching metadata to RAPID dataset from file: </span><span class="si">%s</span><span class="s2">"</span><span class="p">,</span> <span class="n">file</span><span class="p">)</span>
+        <span class="n">utilities</span><span class="o">.</span><span class="n">safe_update_attrs</span><span class="p">(</span>
+            <span class="n">ds</span><span class="p">,</span>
+            <span class="p">{</span>
+                <span class="s2">"source_file"</span><span class="p">:</span> <span class="n">file</span><span class="p">,</span>
+                <span class="s2">"source_path"</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">file_path</span><span class="p">),</span>
+                <span class="o">**</span><span class="n">RAPID_METADATA</span><span class="p">,</span>
+                <span class="o">**</span><span class="n">file_metadata</span><span class="p">,</span>
+            <span class="p">},</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="s2">"time"</span> <span class="ow">in</span> <span class="n">ds</span><span class="o">.</span><span class="n">dims</span> <span class="ow">or</span> <span class="s2">"time"</span> <span class="ow">in</span> <span class="n">ds</span><span class="o">.</span><span class="n">coords</span><span class="p">:</span>
+            <span class="n">log_info</span><span class="p">(</span><span class="s2">"Renaming 'time' dimension/coordinate to 'TIME'"</span><span class="p">)</span>
+            <span class="n">ds</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">rename</span><span class="p">({</span><span class="s2">"time"</span><span class="p">:</span> <span class="s2">"TIME"</span><span class="p">})</span>
+
+        <span class="n">datasets</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ds</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">datasets</span><span class="p">:</span>
+        <span class="n">log_error</span><span class="p">(</span><span class="s2">"No valid RAPID NetCDF files found in </span><span class="si">%s</span><span class="s2">"</span><span class="p">,</span> <span class="n">file_list</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"No valid RAPID NetCDF files found in </span><span class="si">{</span><span class="n">file_list</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+
+    <span class="n">log_info</span><span class="p">(</span><span class="s2">"Successfully loaded </span><span class="si">%d</span><span class="s2"> RAPID dataset(s)"</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">datasets</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">datasets</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Eleanor Frajka-Williams, FirstName LastName.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
